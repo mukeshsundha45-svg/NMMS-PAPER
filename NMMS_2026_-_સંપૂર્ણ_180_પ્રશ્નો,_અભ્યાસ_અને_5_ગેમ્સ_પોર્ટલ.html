@@ -1,0 +1,1801 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="artifact-type" content="tool">
+<meta name="design-style" content="sticker">
+<title>NMMS 2026 ગુજરાતી — સંપૂર્ણ ૧૮૦ પ્રશ્નો અને ગેમ્સ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..900;1,9..40,400..900&family=Noto+Sans+Gujarati:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  color-scheme: light;
+  --background: #fef7ff;
+  --surface-container-low: #ffffff;
+  --surface-container: #f8eef8;
+  --surface-container-high: #f2e8f2;
+  --on-surface: #2e1a28;
+  --on-surface-variant: #604868;
+  --outline: #907898;
+  --outline-variant: #dcc8e0;
+  --primary: #c2207f;
+  --on-primary: #ffffff;
+  --primary-container: #f9d4eb;
+  --on-primary-container: #2e1a28;
+  --secondary: #7c52aa;
+  --on-secondary: #ffffff;
+  --secondary-container: #ece2f8;
+  --tertiary: #0096cc;
+  --tertiary-container: #d8f2fc;
+  --error: #c53030;
+  --error-container: #fde8e8;
+  --on-error: #ffffff;
+  --positive: #15803d;
+  --positive-container: #dcfce7;
+  --warning: #b45309;
+  --warning-container: #fef3c7;
+  --focus: #c2207f;
+  --data-1: #c2207f;
+  --data-2: #7c52aa;
+  --data-3: #0096cc;
+  --data-4: #d96a00;
+  --data-context: #c8b8d0;
+
+  --font-headline: 'Noto Sans Gujarati', 'DM Sans', sans-serif;
+  --font-body: 'Noto Sans Gujarati', 'DM Sans', sans-serif;
+  --font-label: 'Noto Sans Gujarati', 'DM Sans', sans-serif;
+
+  --display-size: clamp(1.65rem, 1.3rem + 1.4vw, 2.35rem);
+  --headline-size: clamp(1.2rem, 1.05rem + 0.5vw, 1.5rem);
+  --subhead-size: clamp(1.05rem, 0.98rem + 0.25vw, 1.1875rem);
+  --body-size: clamp(0.95rem, 0.92rem + 0.15vw, 1.05rem);
+  --label-size: 0.8125rem;
+
+  --rounded: 1rem;
+  --rounded-lg: 1.75rem;
+  --rounded-full: 9999px;
+
+  --shadow-pink: 0 4px 16px rgb(224 64 160 / 0.18);
+  --shadow-pink-deep: 0 10px 28px rgb(224 64 160 / 0.30);
+  --shadow-grape: 0 4px 16px rgb(124 82 170 / 0.18);
+  --shadow-sky: 0 4px 16px rgb(0 150 204 / 0.18);
+  --pop-scale: scale(1.03);
+  --lift: translateY(-3px);
+
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2.25rem;
+  --space-2xl: 3.5rem;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur-micro: 120ms;
+  --dur-short: 220ms;
+  --dur-long: 420ms;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body {
+  overflow-x: clip;
+  margin: 0;
+  padding: 0;
+  background: var(--background);
+  color: var(--on-surface);
+  font-family: var(--font-body);
+  font-size: var(--body-size);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+header { position: static !important; }
+button, input, select, textarea { font-family: inherit; }
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.page-grid {
+  display: grid;
+  gap: var(--space-lg);
+  padding: var(--space-md) var(--space-md) var(--space-xl);
+  max-width: 1180px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.page-grid * { min-width: 0; }
+
+/* Hero & Main Tabs */
+.hero-panel {
+  background: var(--surface-container-low);
+  border-radius: var(--rounded-lg);
+  box-shadow: var(--shadow-pink);
+  padding: var(--space-lg) var(--space-xl);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+}
+.hero-title-wrap { flex: 1 1 320px; }
+.eyebrow-pill {
+  display: inline-block;
+  background: var(--primary-container);
+  color: var(--on-primary-container);
+  font-size: var(--label-size);
+  font-weight: 700;
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--rounded-full);
+  margin-bottom: var(--space-sm);
+}
+.display {
+  margin: 0;
+  font-family: var(--font-headline);
+  font-weight: 900;
+  font-size: var(--display-size);
+  line-height: 1.15;
+  color: var(--on-surface);
+}
+.display em { font-style: normal; color: var(--primary); }
+.hero-sub {
+  margin: var(--space-xs) 0 0;
+  color: var(--on-surface-variant);
+  max-width: 60ch;
+}
+
+.mode-switch {
+  display: flex;
+  gap: var(--space-sm);
+  background: var(--surface-container-high);
+  padding: var(--space-xs);
+  border-radius: var(--rounded-full);
+}
+.mode-btn {
+  min-height: 46px;
+  padding: var(--space-sm) var(--space-lg);
+  border: 0;
+  border-radius: var(--rounded-full);
+  background: transparent;
+  color: var(--on-surface-variant);
+  font-weight: 700;
+  font-size: var(--body-size);
+  cursor: pointer;
+  transition: transform var(--dur-short) var(--ease-bounce), background-color var(--dur-short) var(--ease-out), color var(--dur-short) var(--ease-out);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+.mode-btn:hover { transform: var(--pop-scale); color: var(--on-surface); }
+.mode-btn.active {
+  background: var(--primary);
+  color: var(--on-primary);
+  box-shadow: var(--shadow-pink);
+}
+
+/* Panels */
+.view-section { display: none; }
+.view-section.active { display: block; }
+
+/* Study Filter Bar (Strictly 2 filters) */
+.study-controls {
+  background: var(--surface-container-low);
+  border-radius: var(--rounded);
+  box-shadow: var(--shadow-sky);
+  padding: var(--space-lg);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+  gap: var(--space-md);
+  align-items: end;
+  margin-bottom: var(--space-lg);
+}
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+.control-label {
+  font-size: var(--label-size);
+  font-weight: 700;
+  color: var(--on-surface-variant);
+}
+.input-row {
+  display: flex;
+  gap: var(--space-sm);
+  align-items: center;
+}
+.pill-input, .pill-select {
+  width: 100%;
+  min-height: 46px;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--rounded-full);
+  border: 2px solid var(--outline);
+  background: var(--surface-container);
+  color: var(--on-surface);
+  font-size: var(--body-size);
+  font-weight: 600;
+  transition: border-color var(--dur-micro) var(--ease-out), background-color var(--dur-micro) var(--ease-out);
+}
+.pill-select { padding-right: var(--space-xl); cursor: pointer; }
+.pill-input:focus, .pill-select:focus {
+  border-color: var(--primary);
+  background: var(--surface-container-low);
+}
+
+.btn {
+  min-height: 46px;
+  padding: var(--space-sm) var(--space-lg);
+  border: 0;
+  border-radius: var(--rounded-full);
+  font-weight: 700;
+  font-size: var(--body-size);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  transition: transform var(--dur-short) var(--ease-bounce), box-shadow var(--dur-short) var(--ease-out), background-color var(--dur-micro) var(--ease-out);
+  white-space: nowrap;
+}
+.btn:hover:not(:disabled) { transform: var(--pop-scale); }
+.btn:active:not(:disabled) { transform: scale(0.97); }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.btn-primary {
+  background: var(--primary);
+  color: var(--on-primary);
+  box-shadow: var(--shadow-pink);
+}
+.btn-primary:hover:not(:disabled) { box-shadow: var(--shadow-pink-deep); }
+.btn-secondary {
+  background: var(--secondary);
+  color: var(--on-secondary);
+  box-shadow: var(--shadow-grape);
+}
+.btn-soft {
+  background: var(--surface-container);
+  color: var(--on-surface);
+}
+.btn-soft:hover:not(:disabled) { background: var(--surface-container-high); }
+
+.jump-msg {
+  font-size: var(--label-size);
+  color: var(--error);
+  font-weight: 600;
+  min-height: 1.2em;
+}
+
+/* Pagination */
+.pagination-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  margin: var(--space-md) 0;
+}
+.page-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+}
+.page-pill {
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 var(--space-sm);
+  border: 0;
+  border-radius: var(--rounded-full);
+  background: var(--surface-container-low);
+  color: var(--on-surface);
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: var(--shadow-grape);
+  transition: transform var(--dur-micro) var(--ease-bounce), background-color var(--dur-micro) var(--ease-out);
+}
+.page-pill:hover { transform: var(--pop-scale); }
+.page-pill.active {
+  background: var(--primary);
+  color: var(--on-primary);
+  box-shadow: var(--shadow-pink);
+}
+
+/* Study Question Cards */
+.questions-list {
+  display: grid;
+  gap: var(--space-lg);
+}
+.q-card {
+  background: var(--surface-container-low);
+  border-radius: var(--rounded);
+  box-shadow: var(--shadow-pink);
+  padding: var(--space-lg);
+  transition: transform var(--dur-short) var(--ease-out);
+}
+.q-card:nth-child(3n+2) { box-shadow: var(--shadow-sky); }
+.q-card:nth-child(3n+3) { box-shadow: var(--shadow-grape); }
+.q-card.highlight-jump {
+  outline: 3px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.q-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-sm);
+}
+.q-num-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  background: var(--primary-container);
+  color: var(--on-primary-container);
+  font-weight: 800;
+  font-size: var(--label-size);
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--rounded-full);
+}
+.q-sec-tag {
+  font-size: var(--label-size);
+  font-weight: 700;
+  color: var(--secondary);
+  background: var(--secondary-container);
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--rounded-full);
+}
+.q-text {
+  font-size: var(--subhead-size);
+  font-weight: 700;
+  color: var(--on-surface);
+  margin: 0 0 var(--space-md);
+  white-space: pre-line;
+  max-width: 70ch;
+}
+.q-diagram-box {
+  background: var(--surface-container);
+  border-radius: var(--rounded);
+  padding: var(--space-md);
+  margin-bottom: var(--space-md);
+  display: flex;
+  justify-content: center;
+  overflow-x: auto;
+}
+.q-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+.q-opt {
+  background: var(--surface-container);
+  border-radius: var(--rounded-full);
+  padding: var(--space-sm) var(--space-md);
+  font-weight: 600;
+  color: var(--on-surface);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+.q-opt.is-correct-shown {
+  background: var(--positive-container);
+  color: var(--positive);
+}
+
+.exp-drawer {
+  margin-top: var(--space-md);
+  background: var(--surface-container);
+  border-radius: var(--rounded);
+  padding: var(--space-md) var(--space-lg);
+  display: none;
+}
+.exp-drawer.open { display: block; }
+.exp-ans-pill {
+  display: inline-block;
+  background: var(--positive-container);
+  color: var(--positive);
+  font-weight: 800;
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--rounded-full);
+  margin-bottom: var(--space-sm);
+}
+.exp-steps {
+  margin: 0;
+  padding-left: var(--space-lg);
+  color: var(--on-surface);
+}
+.exp-steps li { margin-bottom: var(--space-xs); }
+
+/* GAMES TAB */
+.scoreboard-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(150px, 100%), 1fr));
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+.stat-card {
+  background: var(--surface-container-low);
+  border-radius: var(--rounded);
+  box-shadow: var(--shadow-pink);
+  padding: var(--space-md) var(--space-lg);
+}
+.stat-card:nth-child(2) { box-shadow: var(--shadow-sky); }
+.stat-card:nth-child(3) { box-shadow: var(--shadow-grape); }
+.stat-card:nth-child(4) { box-shadow: var(--shadow-pink); }
+.stat-label {
+  font-size: var(--label-size);
+  font-weight: 700;
+  color: var(--on-surface-variant);
+}
+.stat-value {
+  font-size: var(--headline-size);
+  font-weight: 900;
+  color: var(--primary);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+}
+.stat-card:nth-child(2) .stat-value { color: var(--secondary); }
+.stat-card:nth-child(3) .stat-value { color: var(--on-surface); }
+
+.games-layout {
+  display: grid;
+  grid-template-columns: 270px minmax(0, 1fr);
+  gap: var(--space-lg);
+  align-items: start;
+}
+.game-selector {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  background: var(--surface-container-low);
+  border-radius: var(--rounded);
+  box-shadow: var(--shadow-grape);
+  padding: var(--space-md);
+}
+.game-tab-btn {
+  min-height: 50px;
+  padding: var(--space-sm) var(--space-md);
+  border: 0;
+  border-radius: var(--rounded-full);
+  background: var(--surface-container);
+  color: var(--on-surface);
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  transition: transform var(--dur-short) var(--ease-bounce), background-color var(--dur-micro) var(--ease-out);
+}
+.game-tab-btn:hover { transform: var(--pop-scale); }
+.game-tab-btn.active {
+  background: var(--primary);
+  color: var(--on-primary);
+  box-shadow: var(--shadow-pink);
+}
+
+.game-arena {
+  background: var(--surface-container-low);
+  border-radius: var(--rounded-lg);
+  box-shadow: var(--shadow-pink);
+  padding: var(--space-lg) var(--space-xl);
+  position: relative;
+  overflow: hidden;
+  min-height: 440px;
+}
+.arena-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+.arena-title {
+  margin: 0;
+  font-size: var(--headline-size);
+  font-weight: 900;
+  color: var(--on-surface);
+}
+.quiz-q-box {
+  background: var(--surface-container);
+  border-radius: var(--rounded);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-md);
+  font-size: var(--subhead-size);
+  font-weight: 700;
+  white-space: pre-line;
+}
+.quiz-options-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+.quiz-opt-btn {
+  min-height: 52px;
+  padding: var(--space-sm) var(--space-md);
+  border: 2px solid var(--outline-variant);
+  border-radius: var(--rounded-full);
+  background: var(--surface-container-low);
+  color: var(--on-surface);
+  font-weight: 700;
+  font-size: var(--body-size);
+  text-align: left;
+  cursor: pointer;
+  transition: transform var(--dur-short) var(--ease-bounce), background-color var(--dur-micro) var(--ease-out), border-color var(--dur-micro) var(--ease-out);
+}
+.quiz-opt-btn:hover:not(:disabled) {
+  transform: var(--pop-scale);
+  border-color: var(--primary);
+}
+.quiz-opt-btn.correct {
+  background: var(--positive-container);
+  border-color: var(--positive);
+  color: var(--positive);
+}
+.quiz-opt-btn.wrong {
+  background: var(--error-container);
+  border-color: var(--error);
+  color: var(--error);
+}
+
+.feedback-banner {
+  border-radius: var(--rounded);
+  padding: var(--space-md);
+  margin-bottom: var(--space-md);
+  font-weight: 700;
+  display: none;
+}
+.feedback-banner.show { display: block; }
+.feedback-banner.ok { background: var(--positive-container); color: var(--positive); }
+.feedback-banner.bad { background: var(--error-container); color: var(--error); }
+
+/* Timer Bar */
+.timer-track {
+  width: 100%;
+  height: 12px;
+  background: var(--surface-container-high);
+  border-radius: var(--rounded-full);
+  overflow: hidden;
+  margin-bottom: var(--space-md);
+}
+.timer-fill {
+  height: 100%;
+  background: var(--tertiary);
+  border-radius: var(--rounded-full);
+  transition: width 250ms linear;
+}
+.timer-fill.danger { background: var(--error); }
+
+/* Balloon & Emoji Stage */
+.fx-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 5;
+}
+.balloon-pop {
+  position: absolute;
+  bottom: -40px;
+  font-size: 2.2rem;
+  animation: floatUp 1.5s var(--ease-out) forwards;
+}
+.funny-emoji-pop {
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+  font-size: 4rem;
+  animation: wobblePop 0.9s var(--ease-bounce) forwards;
+}
+@keyframes floatUp {
+  0% { transform: translateY(0) scale(0.8); opacity: 1; }
+  100% { transform: translateY(-380px) scale(1.25); opacity: 0; }
+}
+@keyframes wobblePop {
+  0% { transform: translate(-50%, -50%) scale(0.3) rotate(-15deg); opacity: 0; }
+  40% { transform: translate(-50%, -50%) scale(1.25) rotate(12deg); opacity: 1; }
+  70% { transform: translate(-50%, -50%) scale(1) rotate(-8deg); opacity: 1; }
+  100% { transform: translate(-50%, -80%) scale(0.9) rotate(0); opacity: 0; }
+}
+
+/* Racing Track */
+.race-track {
+  background: var(--surface-container);
+  border-radius: var(--rounded);
+  padding: var(--space-md);
+  margin-bottom: var(--space-md);
+  position: relative;
+}
+.race-lane {
+  height: 52px;
+  background: var(--surface-container-high);
+  border-radius: var(--rounded-full);
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 var(--space-md);
+  overflow: hidden;
+}
+.race-car {
+  position: absolute;
+  left: 8px;
+  font-size: 2rem;
+  transition: left var(--dur-long) var(--ease-bounce);
+  transform: scaleX(-1);
+}
+.race-finish {
+  position: absolute;
+  right: 12px;
+  font-size: 1.75rem;
+}
+
+/* Step Solver */
+.solver-steps-box {
+  display: grid;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+.solver-step {
+  background: var(--surface-container);
+  border-radius: var(--rounded);
+  padding: var(--space-sm) var(--space-md);
+  font-weight: 600;
+  border-left: 5px solid var(--secondary);
+}
+
+/* Shape Puzzle SVG Animation */
+.shape-stage {
+  background: var(--surface-container);
+  border-radius: var(--rounded);
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+.anim-line {
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+  animation: drawStroke 0.7s var(--ease-out) forwards;
+}
+@keyframes drawStroke {
+  to { stroke-dashoffset: 0; }
+}
+
+/* Footer */
+.site-footer {
+  text-align: center;
+  padding: var(--space-lg) var(--space-md);
+  background: var(--surface-container-low);
+  border-radius: var(--rounded-lg);
+  box-shadow: var(--shadow-grape);
+  margin-top: var(--space-lg);
+}
+.creator-credit {
+  margin: 0;
+  font-weight: 900;
+  font-size: var(--subhead-size);
+  color: var(--primary);
+  letter-spacing: 0.04em;
+}
+.footer-note {
+  margin: var(--space-xs) 0 0;
+  font-size: var(--label-size);
+  color: var(--on-surface-variant);
+}
+
+/* Mobile Responsive */
+@media (max-width: 820px) {
+  .games-layout {
+    grid-template-columns: 1fr;
+  }
+  .game-selector {
+    flex-direction: row;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: var(--space-sm);
+    gap: var(--space-sm);
+    scrollbar-width: none;
+  }
+  .game-selector::-webkit-scrollbar { display: none; }
+  .game-tab-btn {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 640px) {
+  .page-grid { padding: var(--space-sm); gap: var(--space-md); }
+  .hero-panel { padding: var(--space-md); }
+  .game-arena { padding: var(--space-md); }
+  .q-card { padding: var(--space-md); }
+  .mode-switch { width: 100%; justify-content: stretch; }
+  .mode-btn { flex: 1; justify-content: center; padding: var(--space-sm); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+</head>
+<body>
+<div class="page-grid">
+
+  <!-- Header & Tab Switcher -->
+  <header class="hero-panel">
+    <div class="hero-title-wrap">
+      <span class="eyebrow-pill">NMMS 2026 • ગુજરાતી માધ્યમ (TYPE A)</span>
+      <h1 class="display">NMMS 2026 <em>૧૮૦</em> પ્રશ્નો &amp; ગેમ્સ</h1>
+      <p class="hero-sub">ધોરણ ૮ ના વિદ્યાર્થીઓ માટે MAT અને SAT ના સંપૂર્ણ ૧૮૦ પ્રશ્નો — સ્ટેપ-બાય-સ્ટેપ સમજૂતી અને ૫ ઇન્ટરેક્ટિવ ગેમ્સ સાથે.</p>
+    </div>
+    <nav class="mode-switch" aria-label="મુખ્ય વિભાગો">
+      <button type="button" id="tab-study-btn" class="mode-btn active" onclick="switchMainTab('study')">📖 અભ્યાસ (1–180)</button>
+      <button type="button" id="tab-games-btn" class="mode-btn" onclick="switchMainTab('games')">🎮 ગેમ્સ (5)</button>
+    </nav>
+  </header>
+
+  <!-- TAB 1: STUDY (અભ્યાસ) -->
+  <main id="study-section" class="view-section active" aria-label="અભ્યાસ વિભાગ">
+    <!-- Strictly 2 Filters -->
+    <section class="study-controls" aria-label="અભ્યાસ ફિલ્ટર્સ">
+      <div class="control-group">
+        <label class="control-label" for="per-page-select">૧. પેજ દીઠ પ્રશ્નોની સંખ્યા પસંદ કરો</label>
+        <select id="per-page-select" class="pill-select" onchange="changePerPage(this.value)">
+          <option value="10">૧૦ પ્રશ્નો / પેજ</option>
+          <option value="20" selected>૨૦ પ્રશ્નો / પેજ</option>
+          <option value="50">૫૦ પ્રશ્નો / પેજ</option>
+          <option value="180">બધા ૧૮૦ પ્રશ્નો</option>
+        </select>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="jump-input">૨. સીધો પ્રશ્ન શોધ / જમ્પ (૧ થી ૧૮૦)</label>
+        <div class="input-row">
+          <input id="jump-input" class="pill-input" type="number" min="1" max="180" value="1" onkeydown="if(event.key==='Enter') jumpToQuestion()">
+          <button type="button" class="btn btn-primary" onclick="jumpToQuestion()">જમ્પ કરો</button>
+        </div>
+        <div id="jump-error" class="jump-msg" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <div id="pagination-top" class="pagination-bar"></div>
+    <div id="study-list" class="questions-list"></div>
+    <div id="pagination-bottom" class="pagination-bar"></div>
+  </main>
+
+  <!-- TAB 2: GAMES (ગેમ્સ) -->
+  <section id="games-section" class="view-section" aria-label="ગેમ્સ વિભાગ">
+    <!-- Scoreboard ONLY inside Games tab -->
+    <div class="scoreboard-strip" aria-label="સ્કોરબોર્ડ">
+      <div class="stat-card">
+        <div class="stat-label">કુલ પોઇન્ટ્સ</div>
+        <div id="stat-points" class="stat-value">0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">હાલની સ્ટ્રીક</div>
+        <div id="stat-streak" class="stat-value">0 🔥</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">શ્રેષ્ઠ સ્ટ્રીક</div>
+        <div id="stat-best" class="stat-value">0 🏆</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">કુલ સાચા જવાબ</div>
+        <div id="stat-correct" class="stat-value">0</div>
+      </div>
+    </div>
+
+    <div class="games-layout">
+      <!-- Swipeable horizontal strip on mobile / sidebar on desktop -->
+      <div class="game-selector" role="tablist" aria-label="૫ સ્પેશિયલ ગેમ્સ">
+        <button type="button" id="gbtn-speed" class="game-tab-btn active" onclick="selectGame('speed')">⚡ ૧. સ્પીડ ચેલેન્જ</button>
+        <button type="button" id="gbtn-balloon" class="game-tab-btn" onclick="selectGame('balloon')">🎈 ૨. બલૂન &amp; ઇમોજી</button>
+        <button type="button" id="gbtn-racing" class="game-tab-btn" onclick="selectGame('racing')">🏎️ ૩. રેસિંગ ચેલેન્જ</button>
+        <button type="button" id="gbtn-solver" class="game-tab-btn" onclick="selectGame('solver')">🧮 ૪. સ્ટેપ-સોલ્વર</button>
+        <button type="button" id="gbtn-shapes" class="game-tab-btn" onclick="selectGame('shapes')">🔺 ૫. આકાર શોધ પઝલ</button>
+      </div>
+
+      <!-- Front and Center Game Arena -->
+      <div id="game-arena" class="game-arena">
+        <div id="fx-layer" class="fx-overlay" aria-hidden="true"></div>
+        <div id="arena-content"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p class="creator-credit">CREATED BY MUKESH MAHESHWARI</p>
+    <p class="footer-note">આધાર: NMMS 2026 ગુજરાતી (TYPE A) — સંપૂર્ણ ૧૮૦ પ્રશ્નો અને સ્ટેપ-બાય-સ્ટેપ ઉકેલ માર્ગદર્શિકા</p>
+  </footer>
+
+</div>
+
+<api-shim></api-shim>
+<script>
+// Compact dataset: [id, sec('M'|'S'), question, options[], ans, explanation, diagId]
+const QUESTIONS = [
+[1,'M',`NSG : રાષ્ટ્રીય સુરક્ષા :: NDRF : ?`,[`(A) મનોરંજન`,`(B) આપત્તિ વ્યવસ્થાપન`,`(C) અન્ન ઉત્પાદન`,`(D) માહિતી સંચાર`],`B`,`NSG (National Security Guard) રાષ્ટ્રીય સુરક્ષા અને આતંકવાદ વિરોધી કામગીરી કરે છે.\nNDRF (National Disaster Response Force) ભૂકંપ, પૂર, વાવાઝોડું જેવી આપત્તિ સમયે બચાવ અને રાહત કામગીરી કરે છે.\nતેથી સાચો જવાબ (B) આપત્તિ વ્યવસ્થાપન છે.`],
+[2,'M',`Three : Triangle :: Six : ?`,[`(A) Pentagon`,`(B) Heptagon`,`(C) Tetragon`,`(D) Hexagon`],`D`,`Three એટલે 3 અને Triangle એટલે 3 બાજુ ધરાવતી આકૃતિ.\nSix એટલે 6. છ બાજુ ધરાવતી આકૃતિને Hexagon (ષટ્કોણ) કહેવાય.\n(Pentagon = 5, Heptagon = 7, Octagon = 8)\nતેથી સાચો જવાબ (D) Hexagon છે.`],
+[3,'M',`આજે સોમવાર છે તો બરાબર 40 દિવસ પછી કયો વાર હશે?`,[`(A) શનિ`,`(B) મંગળ`,`(C) ગુરુ`,`(D) શુક્ર`],`A`,`એક અઠવાડિયામાં 7 દિવસ હોય છે.\n40 ÷ 7 = 5 અઠવાડિયા અને શેષ 5 દિવસ.\nસોમવાર પછી 5 દિવસ ગણતાં: મંગળ (1), બુધ (2), ગુરુ (3), શુક્ર (4), શનિ (5).\nતેથી 40 દિવસ પછી શનિવાર આવશે.`],
+[4,'M',`AQI નો અર્થ શું થાય છે?`,[`(A) Air Quality Information`,`(B) Air Quality Index`,`(C) Arm Quality Information`,`(D) Air Quantity Index`],`B`,`AQI નું પૂરું નામ Air Quality Index (હવા ગુણવત્તા સૂચકાંક) છે.\nતેના દ્વારા હવામાં PM2.5 અને PM10 જેવા પ્રદૂષકોના આધારે હવાની ગુણવત્તા મપાય છે.`],
+[5,'M',`ગુજરાતમાં હાલના જિલ્લાની કુલ સંખ્યા કેટલી છે?`,[`(A) 32`,`(B) 33`,`(C) 34`,`(D) 30`],`C`,`ગુજરાત રાજ્યમાં વાવ-થરાદ જિલ્લાની રચના થયા બાદ કુલ જિલ્લાઓની સંખ્યા 34 થઈ છે.\nતેથી સાચો જવાબ (C) 34 છે.`],
+[6,'M',`7, 13, 25, 49, 97, .......... ?`,[`(A) 173`,`(B) 210`,`(C) 193`,`(D) 197`],`C`,`નિયમ: દરેક સંખ્યાને 2 વડે ગુણીને 1 બાદ કરવો.\n7 × 2 - 1 = 13 | 13 × 2 - 1 = 25 | 25 × 2 - 1 = 49 | 49 × 2 - 1 = 97\nઆગળની સંખ્યા: 97 × 2 - 1 = 194 - 1 = 193.`],
+[7,'M',`આપેલી આકૃતિમાં પ્રશ્નાર્થચિહ્નની જગ્યાએ કઈ સંખ્યા આવશે?`,[`(A) 110`,`(B) 140`,`(C) 124`,`(D) 120`],`D`,`પ્રથમ આકૃતિ: (6 + 2) × (4 + 4) = 8 × 8 = 64.\nબીજી આકૃતિ: (3 + 9) × (5 + 3) = 12 × 8 = 96.\nત્રીજી આકૃતિ: (3 + 7) × (8 + 4) = 10 × 12 = 120.`,'q7'],
+[8,'M',`એક લાઈનમાં લવ ડાબી બાજુથી 9મા સ્થાને છે. કુશ જમણી બાજુથી 16મા સ્થાને છે. બંનેના સ્થાનની અદલાબદલી કરતાં લવ ડાબી બાજુથી 25મા સ્થાને આવે છે. તો લાઈનમાં કુલ કેટલાં બાળકો હશે?`,[`(A) 26`,`(B) 41`,`(C) 15`,`(D) 40`],`D`,`અદલાબદલી પછી લવનું સ્થાન ડાબેથી 25મું છે, એટલે કુશનું મૂળ સ્થાન ડાબેથી 25મું અને જમણેથી 16મું હતું.\nકુલ સંખ્યા = ડાબેથી સ્થાન + જમણેથી સ્થાન - 1\n= 25 + 16 - 1 = 40 બાળકો.`],
+[9,'M',`ચાર મિત્રો જય, વિજય, અજય અને સુજય બેંચ પર બેઠા છે. અજય અને સુજય પાસે-પાસે બેઠા છે. વિજય જય કે અજયની બાજુમાં નથી. જય બેંચના છેડે બેઠો છે. યોગ્ય બેઠકક્રમ પસંદ કરો.`,[`(A) જય – વિજય – અજય – સુજય`,`(B) જય – સુજય – વિજય – અજય`,`(C) જય – અજય – વિજય – સુજય`,`(D) જય – અજય – સુજય – વિજય`],`D`,`વિકલ્પ (D) જય – અજય – સુજય – વિજય મુજબ:\n1. જય બેંચના છેડે છે.\n2. અજય અને સુજય પાસે-પાસે છે.\n3. વિજય જય કે અજયની બાજુમાં નથી.\nબધી શરતોનું પાલન થાય છે.`],
+[10,'M',`આપેલી આકૃતિમાં પ્રશ્નાર્થચિહ્નની જગ્યાએ કઈ સંખ્યા આવશે?`,[`(A) 61`,`(B) 75`,`(C) 85`,`(D) 82`],`C`,`નિયમ: નીચેની બંને સંખ્યાઓના વર્ગોનો સરવાળો.\nપ્રથમ આકૃતિ: 4² + 5² = 16 + 25 = 41.\nબીજી આકૃતિ: 7² + 6² = 49 + 36 = 85.`,'q10'],
+[11,'M',`જો '+' નો અર્થ '-', '-' નો અર્થ '×', '×' નો અર્થ '÷' અને '÷' નો અર્થ '+' હોય તો 89 ÷ 121 × 11 + 14 - 7 ની કિંમત શોધો.`,[`(A) 2`,`(B) 14`,`(C) 36`,`(D) 32`],`A`,`ચિહ્નો બદલતાં: 89 + 121 ÷ 11 - 14 × 7\nBODMAS મુજબ: 121 ÷ 11 = 11 અને 14 × 7 = 98.\nહવે 89 + 11 - 98 = 100 - 98 = 2.`],
+[12,'M',`જો A નો અર્થ '-', B નો અર્થ '÷', C નો અર્થ '+' અને D નો અર્થ '×' હોય તો 15B3C24A12D2 ની કિંમત શોધો.`,[`(A) 3`,`(B) 5`,`(C) 7`,`(D) 9`],`B`,`ચિહ્નો બદલતાં: 15 ÷ 3 + 24 - 12 × 2\nBODMAS: 15 ÷ 3 = 5 અને 12 × 2 = 24.\nહવે 5 + 24 - 24 = 5.`],
+[13,'M',`જો ZEBRA ને સાંકેતિક ભાષામાં 2652181 લખવામાં આવે તો LION ને કેવી રીતે લખી શકાય?`,[`(A) 1291514`,`(B) 2652181`,`(C) 1814215`,`(D) 1526129`],`A`,`અંગ્રેજી મૂળાક્ષર ક્રમ (A=1..Z=26) પ્રમાણે:\nZ=26, E=5, B=2, R=18, A=1 → 2652181.\nતે જ રીતે L=12, I=9, O=15, N=14 → 1291514.`],
+[14,'M',`ABD : CBA :: QRT : ?`,[`(A) SRQ`,`(B) BSC`,`(C) DWO`,`(D) OSQ`],`A`,`ABD ને ઊલટા ક્રમમાં લખતાં DBA થાય. પ્રથમ અક્ષર D પહેલાંનો અક્ષર C લેતાં CBA બને.\nતે જ રીતે QRT ને ઊલટું લખતાં TRQ થાય. T પહેલાંનો અક્ષર S લેતાં SRQ બને.`],
+[15,'M',`જો CONGRATULATION ને સાંકેતિક ભાષામાં NOITULATARGNOC લખાય તો THANKYOU ને કેવી રીતે લખાય?`,[`(A) UOYNKAHT`,`(B) UOYKNAHT`,`(C) YOUKNAHT`,`(D) UOYKNHAT`],`B`,`શબ્દને પાછળથી આગળ (ઊલટા ક્રમમાં) લખવાનો છે.\nTHANKYOU ને ઊલટા ક્રમમાં લખતાં UOYKNAHT મળે.`],
+[16,'M',`જો A નો અર્થ ÷, B નો અર્થ ×, C નો અર્થ + અને D નો અર્થ - હોય તો 44A11B7D5C9 ની કિંમત શોધો.`,[`(A) 40`,`(B) 36`,`(C) 30`,`(D) 32`],`D`,`ચિહ્નો બદલતાં: 44 ÷ 11 × 7 - 5 + 9\n44 ÷ 11 = 4 → 4 × 7 = 28 → 28 - 5 + 9 = 32.`],
+[17,'M',`નીચે આપેલા શબ્દોને તાર્કિક રીતે ક્રમમાં ગોઠવો.\n(1) વ્યાજ (2) મુદલ (3) મુદત (4) વ્યાજ-મુદલ (5) વ્યાજ દર`,[`(A) 2, 5, 3, 1, 4`,`(B) 2, 5, 1, 3, 4`,`(C) 5, 4, 1, 2, 3`,`(D) 2, 3, 5, 1, 4`],`A & D`,`પ્રથમ મુદલ (2), પછી વ્યાજ દર (5) અને મુદત (3) [બંનેનો ક્રમ બદલાઈ શકે], તેનાથી વ્યાજ (1) અને અંતે વ્યાજ-મુદલ (4) મળે.\nઅધિકૃત Answer Key મુજબ (A) અને (D) બંને સાચા છે.`],
+[18,'M',`નીચે આપેલી પ્રક્રિયાને તાર્કિક રીતે ક્રમમાં ગોઠવો.\n(i) જાહેરાત (ii) રૂબરૂ મુલાકાત (iii) અરજી પત્રક (iv) નિમણૂક (v) પરીક્ષા (HSC) (vi) પસંદગી (vii) ખુશી`,[`(A) v, i, iii, ii, vi, iv, vii`,`(B) v, ii, i, iii, iv, vii, vi`,`(C) iii, i, iv, ii, vi, v, vii`,`(D) v, i, ii, iii, vii, iv, vi`],`A`,`યોગ્ય ક્રમ: પરીક્ષા પાસ (v) → જાહેરાત (i) → અરજી પત્રક (iii) → રૂબરૂ મુલાકાત (ii) → પસંદગી (vi) → નિમણૂક (iv) → ખુશી (vii).`],
+[19,'M',`નીચેના કાળને યોગ્ય ક્રમમાં ગોઠવો.\n(1) પરમાણુકાળ (2) ધાતુકાળ (3) પાષાણકાળ (4) મિશ્રધાતુકાળ (5) આધુનિકકાળ`,[`(A) 1, 3, 4, 2, 5`,`(B) 3, 2, 4, 5, 1`,`(C) 3, 2, 4, 1, 5`,`(D) 1, 3, 4, 2, 5`],`C`,`ઇતિહાસના કાળનો ક્રમ: પાષાણકાળ (3) → ધાતુકાળ (2) → મિશ્રધાતુકાળ (4) → પરમાણુકાળ (1) → આધુનિકકાળ (5).`],
+[20,'M',`આપેલા અવકાશી પદાર્થોને કદ મુજબ નાના થી મોટા ક્રમમાં ગોઠવો.\n(1) આકાશગંગા (2) ચંદ્ર (3) તારા (4) સૂર્ય (5) પૃથ્વી`,[`(A) 1, 4, 3, 2, 5`,`(B) 2, 3, 4, 5, 1`,`(C) 2, 5, 4, 3, 1`,`(D) 4, 3, 2, 5, 1`],`C`,`નાના થી મોટા કદનો ક્રમ: ચંદ્ર (2) → પૃથ્વી (5) → સૂર્ય (4) → તારા (3) → આકાશગંગા (1).`],
+[21,'M',`નીચે આપેલા શબ્દોને અર્થપૂર્ણ ક્રમમાં ગોઠવો.\n(1) પોલીસ (2) ગુનો (3) રજા (4) ચુકાદો (5) સુનાવણી`,[`(A) વિકલ્પ A`,`(B) વિકલ્પ B`,`(C) વિકલ્પ C`,`(D) GRACE (ગ્રેસ માર્ક્સ)`],`GRACE`,`આપેલા શબ્દો વચ્ચે કોઈ એક નિશ્ચિત ક્રમ નક્કી થતો નથી.\nઅધિકૃત Final Answer Key મુજબ આ પ્રશ્નમાં GRACE આપવામાં આવ્યું છે.`],
+[22,'M',`નીચેના અંગ્રેજી શબ્દોને શબ્દકોશના ક્રમ પ્રમાણે ગોઠવો.\n(1) DISSIDENT (2) DISSOLVE (3) DISSENT (4) DISSOLUTE (5) DISSOLUTION`,[`(A) 3, 1, 4, 5, 2`,`(B) 3, 2, 1, 4, 5`,`(C) 3, 1, 4, 2, 5`,`(D) 3, 2, 4, 5, 1`],`A`,`શબ્દકોશ ક્રમ: DISSENT (3) → DISSIDENT (1) → DISSOLUTE (4) → DISSOLUTION (5) → DISSOLVE (2).`],
+[23,'M',`આપેલી આકૃતિમાં કુલ કેટલા ચોરસ છે?`,[`(A) 30`,`(B) 25`,`(C) 20`,`(D) 32`],`A`,`4 × 4 ગ્રીડમાં:\n1×1 ચોરસ = 16\n2×2 ચોરસ = 9\n3×3 ચોરસ = 4\n4×4 ચોરસ = 1\nકુલ = 16 + 9 + 4 + 1 = 30 ચોરસ.`,'q23'],
+[24,'M',`નીચે આપેલી આકૃતિઓમાંથી જુદી પડતી આકૃતિ શોધો.`,[`(A) આકૃતિ A`,`(B) આકૃતિ B`,`(C) આકૃતિ C`,`(D) આકૃતિ D`],`C & D`,`અંદરના ભાગોની સંખ્યા અને રેખાઓની રચના મુજબ અધિકૃત Final Answer Key માં વિકલ્પ (C) અને (D) બંને માન્ય રાખવામાં આવ્યા છે.`],
+[25,'M',`FAN શબ્દની અરીસી છબી શોધો.`,[`(A) છબી A`,`(B) છબી B (ИAF પ્રતિબિંબ)`,`(C) છબી C`,`(D) છબી D`],`B`,`અરીસામાં ડાબી-જમણી બાજુ બદલાય છે. FAN નો પ્રતિબિંબિત ક્રમ N, A, F ઉલટાઈને વિકલ્પ (B) મુજબ દેખાય છે.`,'q25'],
+[26,'M',`પ્રશ્નચિત્રમાં આપેલી અધૂરી ભૌમિતિક આકૃતિને યોગ્ય ભાગ પસંદ કરીને પૂર્ણ કરો.`,[`(A) ભાગ A`,`(B) ભાગ B`,`(C) ભાગ C`,`(D) ભાગ D`],`B`,`આકૃતિની બહારની સીમા, ઊંચાઈ અને ત્રાંસી રેખાની દિશા ચકાસતાં વિકલ્પ (B) યોગ્ય રીતે આકૃતિ પૂર્ણ કરે છે.`],
+[27,'M',`નીચે આપેલી ચાર આકૃતિઓમાંથી એક આકૃતિ જુદી પડે છે. જુદી પડતી આકૃતિ શોધો.`,[`(A) આકૃતિ A`,`(B) આકૃતિ B`,`(C) આકૃતિ C`,`(D) આકૃતિ D`],`B`,`કાળા પટ્ટાની સ્થિતિ અને આકૃતિના છેડાની રચના તપાસતાં વિકલ્પ (B) બાકીની આકૃતિઓથી અલગ પડે છે.`],
+[28,'M',`આપેલી સમસ્યા આકૃતિમાં ખાલી જગ્યામાં બંધબેસે તેવો ભાગ પસંદ કરો.`,[`(A) ભાગ A`,`(B) ભાગ B`,`(C) ભાગ C`,`(D) ભાગ D`],`C`,`કાળા-સફેદ વર્તુળોની ગોઠવણી, ત્રાંસી રેખાઓની દિશા અને પંક્તિનું જોડાણ જોતાં વિકલ્પ (C) યોગ્ય છે.`],
+[29,'M',`આપેલી આકૃતિમાં ત્રિકોણોની સંખ્યા શોધો.`,[`(A) 32`,`(B) 30`,`(C) 35`,`(D) 28`],`GRACE`,`વર્તુળની અંદર કાપતી રેખાઓથી બનતા નાના અને સંયુક્ત ત્રિકોણોની ગણતરી અંગે અધિકૃત Final Answer Key માં GRACE આપવામાં આવ્યું છે.`,'q29'],
+[30,'M',`સમસ્યા આકૃતિની શ્રેણીને પૂર્ણ કરતી યોગ્ય આકૃતિ પસંદ કરો.`,[`(A) આકૃતિ A`,`(B) આકૃતિ B`,`(C) આકૃતિ C`,`(D) આકૃતિ D`],`A`,`વર્તુળના ચાર ભાગોમાં +, 0 અને બે ત્રાંસી રેખાઓ ક્રમશઃ સ્થાન બદલે છે. ચોથી આકૃતિમાં + નીચે ડાબે, 0 નીચે જમણે અને // ઉપર જમણે વિકલ્પ (A) માં છે.`,'q30'],
+[31,'M',`એક રેલગાડી અમદાવાદથી પશ્ચિમ દિશામાં 120 કિમી અંતર કાપે છે. ત્યાંથી દક્ષિણ તરફ 30 કિમી જાય છે. ત્યારબાદ પૂર્વ દિશામાં 120 કિમી જાય છે અને ફરી દક્ષિણ તરફ ચાલે છે. તો રેલગાડી હાલમાં અમદાવાદથી કઈ દિશામાં હશે?`,[`(A) ઉત્તર`,`(B) પૂર્વ`,`(C) દક્ષિણ`,`(D) પશ્ચિમ`],`C`,`પશ્ચિમ 120 કિમી અને પૂર્વ 120 કિમી એકબીજાને રદ કરે છે. બંને વખત દક્ષિણ તરફ ચાલવાથી અંતિમ દિશા (C) દક્ષિણ રહે છે.`],
+[32,'M',`Y એ X ની પૂર્વ દિશામાં છે. X એ Z ની ઉત્તર દિશામાં છે. P એ Z ની દક્ષિણ દિશામાં છે. તો P એ Y ની કઈ દિશામાં હશે?`,[`(A) દક્ષિણ`,`(B) ઉત્તર`,`(C) અગ્નિ`,`(D) નૈઋત્ય`],`D`,`X એ Z ની ઉપર, Y એ X ની જમણે અને P એ Z ની નીચે છે. તેથી Y થી P દક્ષિણ અને પશ્ચિમ વચ્ચે એટલે કે (D) નૈઋત્ય દિશામાં છે.`],
+[33,'M',`એક વિદ્યાર્થી તેની ઘડિયાળ એવી રીતે ગોઠવે છે કે 8:00 વાગ્યે મિનિટ કાંટો ઉત્તર દિશા તરફ રહે. તો 10:30 વાગ્યે કલાક કાંટો કઈ દિશા તરફ રહેશે?`,[`(A) ઈશાન`,`(B) અગ્નિ`,`(C) નૈઋત્ય`,`(D) વાયવ્ય`],`D`,`12=ઉત્તર, 3=પૂર્વ, 6=દક્ષિણ, 9=પશ્ચિમ થાય. 10:30 વાગ્યે કલાક કાંટો 10 અને 11 વચ્ચે એટલે કે ઉત્તર-પશ્ચિમ વચ્ચે (D) વાયવ્ય દિશામાં રહેશે.`],
+[34,'M',`100 મીટર લાંબી ટ્રેન 150 મીટર લાંબા પ્લેટફોર્મની બરાબર મધ્યમાં ઊભી છે. પ્લેટફોર્મ સંપૂર્ણપણે બહાર નીકળતાં પહેલાં ટ્રેને ઓછામાં ઓછું કેટલું અંતર કાપવું પડે?`,[`(A) 100 મીટર`,`(B) 125 મીટર`,`(C) 150 મીટર`,`(D) 175 મીટર`],`B`,`પ્લેટફોર્મનો અડધો ભાગ = 150 ÷ 2 = 75 મીટર.\nટ્રેનનો અડધો ભાગ = 100 ÷ 2 = 50 મીટર.\nસંપૂર્ણ બહાર નીકળવા કાપવું પડતું અંતર = 75 + 50 = 125 મીટર.`],
+[35,'M',`ઘડિયાળ : સમય :: ચશ્મા : ?`,[`(A) આંખો`,`(B) દૃષ્ટિ`,`(C) કાચ`,`(D) લેન્સ`],`B`,`ઘડિયાળ સમય જાણવા માટે વપરાય છે, તેમ ચશ્મા દૃષ્ટિ સુધારવા અને સ્પષ્ટ જોવા માટે વપરાય છે.`],
+[36,'M',`એમ્બ્યુલન્સ : 108 :: ફાયર બ્રિગેડ : ?`,[`(A) 101`,`(B) 100`,`(C) 181`,`(D) 1098`],`A`,`એમ્બ્યુલન્સ માટે 108 અને ફાયર બ્રિગેડની મદદ માટે પરંપરાગત ઇમરજન્સી નંબર 101 છે.`],
+[37,'M',`પરિમિતિ : ચોરસ :: ? : વર્તુળ`,[`(A) ત્રિજ્યા`,`(B) જીવ`,`(C) વ્યાસ`,`(D) પરિઘ`],`D`,`ચોરસની બહારની સીમાની લંબાઈને પરિમિતિ કહે છે, તેમ વર્તુળની વક્ર સીમાની લંબાઈને પરિઘ કહે છે.`],
+[38,'M',`એક છોકરીએ ઓળખાણ આપતાં કહ્યું, "તે મારા કાકાના પિતાની પુત્રીનો પુત્ર છે." છોકરાનો છોકરી સાથે શું સંબંધ હશે?`,[`(A) ભત્રીજો`,`(B) કાકા`,`(C) જમાઈ`,`(D) ફોઈનો દીકરો`],`D`,`કાકાના પિતા = દાદા → દાદાની પુત્રી = ફોઈ → ફોઈનો પુત્ર = (D) ફોઈનો દીકરો.`],
+[39,'M',`જો કોઈ મહિનાની 23મી તારીખના આગલા દિવસે શનિવાર હોય તો 1 તારીખે કયો વાર આવશે?`,[`(A) બુધવાર`,`(B) ગુરુવાર`,`(C) શુક્રવાર`,`(D) શનિવાર`],`D`,`23મી ના આગલા દિવસે એટલે 22મી એ શનિવાર છે.\n22 - 1 = 21 દિવસ = 3 પૂર્ણ અઠવાડિયા.\nતેથી 1 તારીખે પણ શનિવાર જ હશે.`],
+[40,'M',`નીચેનામાંથી કયું વર્ષ લીપવર્ષ નથી?`,[`(A) 2400`,`(B) 2000`,`(C) 2200`,`(D) 1600`],`C`,`સદીનું વર્ષ 400 વડે નિઃશેષ ભાગાય તો જ લીપવર્ષ ગણાય. 2200 ÷ 400 પૂર્ણ ભાગી શકાતું નથી, તેથી 2200 લીપવર્ષ નથી.`],
+[41,'M',`FESTIVAL શબ્દના અંગ્રેજી મૂળાક્ષરોને તેમના મૂળાક્ષરોના ક્રમ પ્રમાણે ગોઠવો.`,[`(A) AEFILSTV`,`(B) AFEILSTV`,`(C) AEFLISTV`,`(D) AFELISTV`],`A`,`FESTIVAL ના અક્ષરોને ચડતા મૂળાક્ષર ક્રમમાં ગોઠવતાં: A, E, F, I, L, S, T, V → AEFILSTV.`],
+[42,'M',`ત્રણ વિદ્યાર્થીઓની ઉંમર ત્રણ ક્રમિક સંખ્યાઓ છે. જો તેમની ઉંમરનો સરવાળો 51 વર્ષ હોય તો ત્રણેયની ઉંમર શોધો.`,[`(A) 15 વર્ષ, 16 વર્ષ, 17 વર્ષ`,`(B) 16 વર્ષ, 17 વર્ષ, 18 વર્ષ`,`(C) 17 વર્ષ, 18 વર્ષ, 19 વર્ષ`,`(D) ત્રણેયની ઉંમર 17 વર્ષ`],`B`,`વચ્ચેની ઉંમર = 51 ÷ 3 = 17.\nત્રણ ક્રમિક સંખ્યાઓ = 16, 17, 18 (16+17+18 = 51).`],
+[43,'M',`NOMENCLATURE શબ્દમાંથી અક્ષરોનો માત્ર એક જ વાર ઉપયોગ કરીને કયો શબ્દ બનાવી શકાતો નથી?`,[`(A) LECTURE`,`(B) CULTURE`,`(C) ENTER`,`(D) COURT`],`B`,`NOMENCLATURE માં U માત્ર એક જ વાર છે, જ્યારે CULTURE માં U બે વાર આવે છે. તેથી CULTURE બનાવી શકાતો નથી.`],
+[44,'M',`નીચેનામાંથી કયો રંગ મેઘધનુષના રંગોમાં જોવા મળતો નથી?`,[`(A) જાંબલી`,`(B) પીળો`,`(C) લાલ`,`(D) કાળો`],`D`,`મેઘધનુષના સાત રંગો (જા-ની-વા-લી-પી-ના-રા) માં કાળો રંગ સામેલ નથી.`],
+[45,'M',`7, 11, 13, 17, .......... ?`,[`(A) 18`,`(B) 19`,`(C) 23`,`(D) 29`],`B`,`આ ક્રમિક અવિભાજ્ય સંખ્યાઓની શ્રેણી છે. 17 પછી આવતી અવિભાજ્ય સંખ્યા 19 છે.`],
+[46,'M',`નીચે આપેલા ચાર વિકલ્પોમાંથી બાકીના વિકલ્પોથી અલગ પડતો વિકલ્પ શોધો.`,[`(A) ભારત`,`(B) યુરોપ`,`(C) આફ્રિકા`,`(D) એશિયા`],`A`,`યુરોપ, આફ્રિકા અને એશિયા ખંડ છે, જ્યારે ભારત એક દેશ છે.`],
+[47,'M',`જો કોઈ સાંકેતિક ભાષામાં KERALA માટે LFSBMB લખવામાં આવે તો આ જ ભાષામાં ANDHRA માટે કયો કોડ લખી શકાય?`,[`(A) BOERIA`,`(B) BOESIA`,`(C) BOESIB`,`(D) BOETIB`],`GRACE`,`દરેક અક્ષર +1 આગળ વધારતાં ANDHRA → BOEISB મળે છે, જે વિકલ્પોમાં નથી. તેથી અધિકૃત Key માં GRACE આપવામાં આવ્યું છે.`],
+[48,'M',`વિસ્તારની દૃષ્ટિએ રાજ્યોનો યોગ્ય ક્રમ ગોઠવો. (a) મધ્યપ્રદેશ (b) મહારાષ્ટ્ર (c) ઉત્તરપ્રદેશ (d) ગુજરાત (e) રાજસ્થાન`,[`(A) e, a, b, c, d`,`(B) e, a, c, d, b`,`(C) e, a, d, c, b`,`(D) a, b, e, c, d`],`A`,`મોટાથી નાના વિસ્તારનો ક્રમ: રાજસ્થાન (e) > મધ્યપ્રદેશ (a) > મહારાષ્ટ્ર (b) > ઉત્તરપ્રદેશ (c) > ગુજરાત (d).`],
+[49,'M',`તમારા પિતાના પિતાના એકમાત્ર પુત્રની પુત્રીનો તમારી સાથે શું સંબંધ થાય?`,[`(A) ફોઈ`,`(B) બહેન`,`(C) માતા`,`(D) પિતરાઈ બહેન`],`B`,`પિતાના પિતા = દાદા → દાદાનો એકમાત્ર પુત્ર = પિતા → પિતાની પુત્રી = બહેન.`],
+[50,'M',`જો ઊષા નિશા કરતાં ઊંચી છે. નિશા મિતલ કરતાં ઊંચી છે. સરિતા ઊષા કરતાં ઊંચી છે. વર્ષા મિતલ કરતાં નીચી છે. તો નીચેનામાંથી કોણ સૌથી ઊંચું છે?`,[`(A) ઊષા`,`(B) સરિતા`,`(C) નિશા`,`(D) મિતલ`],`B`,`ઊંચાઈનો ક્રમ: સરિતા > ઊષા > નિશા > મિતલ > વર્ષા.\nતેથી સૌથી ઊંચું (B) સરિતા છે.`],
+[51,'M',`નીચે આપેલા શબ્દોને યોગ્ય તાર્કિક ક્રમ મુજબ ગોઠવો.\n(1) ગીગાબાઇટ (2) બાઇટ (3) ટેરાબાઇટ (4) કિલોબાઇટ`,[`(A) 4, 2, 3, 1`,`(B) 1, 2, 3, 4`,`(C) 2, 4, 1, 3`,`(D) 3, 4, 1, 2`],`C`,`નાના થી મોટો મેમરી એકમ: બાઇટ (2) < કિલોબાઇટ (4) < ગીગાબાઇટ (1) < ટેરાબાઇટ (3).`],
+[52,'M',`આપેલી વર્તુળાકાર આકૃતિમાં પ્રશ્નાર્થચિહ્નની જગ્યાએ કઈ સંખ્યા આવશે?`,[`(A) 21`,`(B) 17`,`(C) 19`,`(D) 23`],`B`,`વિપરીત ખંડોના સરવાળાની જોડીઓ વચ્ચે 3 નો તફાવત છે: 15+7=22, 8+17=25 (25-22=3); 9+4=13, 11+5=16 (16-13=3). તેથી ? = 17.`,'q52'],
+[53,'M',`જો લાલને પીળો, પીળાને લીલો, લીલાને સફેદ અને સફેદને નારંગી કહેવામાં આવે તો દૂધનો રંગ કયો હશે?`,[`(A) લાલ`,`(B) પીળો`,`(C) નારંગી`,`(D) લીલો`],`C`,`દૂધનો વાસ્તવિક રંગ સફેદ છે અને સફેદને નારંગી કહેવામાં આવે છે. તેથી જવાબ (C) નારંગી.`],
+[54,'M',`સૂર્ય તરફ મોં કરીને ઊભેલો એક માણસ ડાબી બાજુ બે વાર વળે છે. તો તે કઈ દિશામાં મુખ રાખીને ઊભો છે?`,[`(A) દક્ષિણ`,`(B) ઉત્તર`,`(C) પશ્ચિમ`,`(D) પૂર્વ`],`C & D`,`સૂર્યોદય (પૂર્વ) વખતે બે વાર ડાબે વળતાં પશ્ચિમ (C) અને સૂર્યાસ્ત (પશ્ચિમ) વખતે પૂર્વ (D) મળે. તેથી બંને માન્ય છે.`],
+[55,'M',`રમેશ પૂર્વ દિશામાં 5 કિમી ચાલે છે. પછી ડાબી બાજુ વળીને 4 કિમી ચાલે છે. ફરીથી તે ડાબી બાજુ વળીને 5 કિમી ચાલે છે. તો તે પ્રારંભિક બિંદુથી કઈ દિશામાં છે?`,[`(A) દક્ષિણ`,`(B) પૂર્વ`,`(C) ઉત્તર`,`(D) પશ્ચિમ`],`C`,`પૂર્વ 5 કિમી → ઉત્તર 4 કિમી → પશ્ચિમ 5 કિમી. પૂર્વ અને પશ્ચિમ રદ થતાં પ્રારંભિક બિંદુથી 4 કિમી ઉત્તર દિશામાં છે.`],
+[56,'M',`સંબંધને અનુસરીને ખાલી જગ્યા પૂરો. 14 : 196 :: 23 : ?`,[`(A) 429`,`(B) 426`,`(C) 529`,`(D) 576`],`C`,`14² = 196. તે જ રીતે 23² = 23 × 23 = 529.`],
+[57,'M',`નીચેનામાંથી કઈ સંખ્યા અલગ પડે છે?`,[`(A) 9`,`(B) 16`,`(C) 25`,`(D) 30`],`D`,`9 (3²), 16 (4²), 25 (5²) પૂર્ણ વર્ગ સંખ્યાઓ છે, જ્યારે 30 પૂર્ણ વર્ગ નથી.`],
+[58,'M',`નીચેનામાંથી અલગ પડતો શબ્દ શોધો.`,[`(A) સોનું`,`(B) પ્લેટિનમ`,`(C) પારો`,`(D) ચાંદી`],`C`,`સોનું, પ્લેટિનમ અને ચાંદી ઘન ધાતુઓ છે, જ્યારે પારો સામાન્ય તાપમાને પ્રવાહી ધાતુ છે.`],
+[59,'M',`શ્રેણી પૂર્ણ કરો: 0, 3, 8, 15, 24, ........?`,[`(A) 34`,`(B) 35`,`(C) 36`,`(D) 37`],`B`,`તફાવત: +3, +5, +7, +9. આગળનો તફાવત +11 ઉમેરતાં 24 + 11 = 35.`],
+[60,'M',`નીચેના શબ્દોને તાર્કિક ક્રમમાં ગોઠવો. (1) વરસાદ (2) સૂર્યપ્રકાશ (3) બાષ્પીભવન (4) વાદળ`,[`(A) 2, 3, 4, 1`,`(B) 3, 2, 4, 1`,`(C) 4, 1, 3, 2`,`(D) 1, 4, 3, 2`],`A`,`જળચક્રનો ક્રમ: સૂર્યપ્રકાશ (2) → બાષ્પીભવન (3) → વાદળ (4) → વરસાદ (1).`],
+[61,'M',`કિલોગ્રામ : વજન :: કિલોમીટર : ?`,[`(A) સમય`,`(B) તાપમાન`,`(C) અંતર`,`(D) જથ્થો`],`C`,`કિલોગ્રામ વજન માપવાનો એકમ છે, તેમ કિલોમીટર અંતર માપવાનો એકમ છે.`],
+[62,'M',`નીચેનામાંથી કયો શબ્દ અલગ પડે છે?`,[`(A) સૂર્ય`,`(B) ચંદ્ર`,`(C) પૃથ્વી`,`(D) મંગળ`],`GRACE`,`સૂર્ય તારો, ચંદ્ર ઉપગ્રહ અને પૃથ્વી/મંગળ ગ્રહ હોવાથી એક જ નિશ્ચિત વિકલ્પ નક્કી થતો નથી. અધિકૃત Key માં GRACE આપેલ છે.`],
+[63,'M',`આપેલી આકૃતિમાં છાયાંકિત ભાગને અપૂર્ણાંક સ્વરૂપે દર્શાવો.`,[`(A) 1/4`,`(B) 2/8`,`(C) આપેલ બંને`,`(D) એક પણ નહિ`],`C`,`છાયાંકિત ભાગ 1/4 છે અને તેનો સમકક્ષ અપૂર્ણાંક 2/8 પણ થાય. તેથી (C) આપેલ બંને સાચા છે.`,'q63'],
+[64,'M',`નીચેનામાંથી કયો વિકલ્પ બાકીની શ્રેણીથી અલગ પડે છે?`,[`(A) હૃદય`,`(B) કિડની`,`(C) આંખ`,`(D) ફેફસાં`],`A & C`,`શરીરના અંગોના અલગ-અલગ તંત્ર આધારિત વર્ગીકરણ મુજબ અધિકૃત Key માં (A) અને (C) બંને માન્ય છે.`],
+[65,'M',`નીચે આપેલી આકૃતિની શ્રેણીમાં પ્રશ્નાર્થચિહ્નની જગ્યાએ યોગ્ય આકૃતિ પસંદ કરો.`,[`(A) આકૃતિ A`,`(B) આકૃતિ B`,`(C) આકૃતિ C`,`(D) આકૃતિ D`],`B`,`આકારોની સંખ્યા (4, 2, 1) અને સ્થાન ચક્રીય રીતે બદલાય છે. ખૂટતી આકૃતિમાં ઉપર 4 ત્રિકોણ, વચ્ચે 2 X અને નીચે 1 વર્તુળ વિકલ્પ (B) માં છે.`,'q65'],
+[66,'M',`નીચેની આકૃતિઓમાંથી જુદી પડતી આકૃતિ ઓળખો.`,[`(A) આકૃતિ A`,`(B) આકૃતિ B`,`(C) આકૃતિ C`,`(D) આકૃતિ D`],`A`,`વિકલ્પ (A) માં બંને કાળા બિંદુઓ મધ્ય રેખાની અલગ-અલગ બાજુ છે, જ્યારે અન્યમાં એક જ બાજુ છે.`],
+[67,'M',`આજે મંગળવાર છે. તો હવે પછીના 135મા દિવસે કયો વાર આવશે?`,[`(A) સોમવાર`,`(B) મંગળવાર`,`(C) બુધવાર`,`(D) ગુરુવાર`],`D`,`135 ÷ 7 = 19 અઠવાડિયા અને શેષ 2 દિવસ.\nમંગળવાર + 2 દિવસ = બુધવાર, ગુરુવાર.`],
+[68,'M',`રતાંધળાપણું : વિટામિન A તો સ્કર્વી : ?`,[`(A) વિટામિન C`,`(B) વિટામિન D`,`(C) વિટામિન E`,`(D) વિટામિન K`],`A`,`વિટામિન A ની ઊણપથી રતાંધળાપણું અને વિટામિન C ની ઊણપથી સ્કર્વી રોગ થાય છે.`],
+[69,'M',`48, 45, 39, 30, 18, ............ ?`,[`(A) 3`,`(B) 5`,`(C) 1`,`(D) 0`],`A`,`ઘટાડાનો ક્રમ: -3, -6, -9, -12. આગળ -15 કરતાં 18 - 15 = 3.`],
+[70,'M',`ઓડોમીટર : અંતર :: બેરોમીટર : ?`,[`(A) દબાણ`,`(B) પવન`,`(C) તાપમાન`,`(D) ઊંચાઈ`],`A`,`ઓડોમીટરથી વાહનનું અંતર અને બેરોમીટરથી હવાનું દબાણ મપાય છે.`],
+[71,'M',`7 : 49 :: 8 : ?`,[`(A) 25`,`(B) 49`,`(C) 64`,`(D) 79`],`C`,`7² = 49, તેમ 8² = 64.`],
+[72,'M',`તામિલનાડુ : ચેન્નાઈ :: આંધ્રપ્રદેશ : ?`,[`(A) હૈદરાબાદ`,`(B) અમરાવતી`,`(C) કેરળ`,`(D) મદ્રાસ`],`B`,`તામિલનાડુની રાજધાની ચેન્નાઈ છે, તેમ આંધ્રપ્રદેશની રાજધાની અમરાવતી છે.`],
+[73,'M',`ગ્રેહામ બેલ : ટેલિફોન :: થોમસ એડિસન : ?`,[`(A) ઓરોબેન`,`(B) બલ્બ`,`(C) રેડિયો`,`(D) ઇન્ટરનેટ`],`B`,`ગ્રેહામ બેલે ટેલિફોન અને થોમસ એડિસને વીજળીના બલ્બનો વ્યવહારુ વિકાસ કર્યો.`],
+[74,'M',`અખો : છપ્પા :: નરસિંહ મહેતા : ?`,[`(A) પ્રભાતિયા`,`(B) આખ્યાન`,`(C) રાસ`,`(D) ગરબી`],`A`,`અખાના છપ્પા અને નરસિંહ મહેતાનાં પ્રભાતિયા જાણીતાં છે.`],
+[75,'M',`27 : 9 :: 125 : ?`,[`(A) 25`,`(B) 10`,`(C) 5`,`(D) 15`],`A`,`27 = 3³ અને 9 = 3². તે જ રીતે 125 = 5³ અને 5² = 25.`],
+[76,'M',`નીચે આપેલા શબ્દોને સાચી પ્રક્રિયા પ્રમાણે ગોઠવો. (1) બીજ (2) છોડ (3) ફૂલ (4) ફળ (5) અંકુર`,[`(A) 1, 5, 2, 3, 4`,`(B) 5, 1, 2, 3, 4`,`(C) 1, 3, 5, 4, 2`,`(D) 1, 4, 3, 2, 5`],`A`,`વિકાસ ક્રમ: બીજ (1) → અંકુર (5) → છોડ (2) → ફૂલ (3) → ફળ (4).`],
+[77,'M',`નીચે આપેલી પ્રક્રિયાને યોગ્ય ક્રમમાં ગોઠવો. (1) ડોક્ટરની સલાહ (2) નિદાન (3) તાવ (4) સારું થવું (5) દવા`,[`(A) 1, 3, 5, 4, 2`,`(B) 1, 5, 2, 3, 4`,`(C) 3, 1, 2, 5, 4`,`(D) 5, 1, 2, 3, 4`],`C`,`ક્રમ: તાવ (3) → ડોક્ટરની સલાહ (1) → નિદાન (2) → દવા (5) → સારું થવું (4).`],
+[78,'M',`અંગ્રેજી શબ્દકોશના પ્રમાણમાં નીચેના શબ્દોને યોગ્ય ક્રમમાં ગોઠવો.`,[`(A) APPLE, ANT, ALL, AXE`,`(B) ALL, ANT, APPLE, AXE`,`(C) ANT, ALL, AXE, APPLE`,`(D) APPLE, AXE, ANT, ALL`],`B`,`બીજા અક્ષરો (L, N, P, X) મુજબ ક્રમ: ALL → ANT → APPLE → AXE.`],
+[79,'M',`પ્રશ્નાર્થચિહ્નની જગ્યાએ નીચેના વિકલ્પો પૈકી કયો વિકલ્પ આવશે?`,[`(A) 16`,`(B) 18`,`(C) 20`,`(D) 22`],`B`,`બહારની સંખ્યાઓના વર્ગમૂળનો સરવાળો = અંદરની સંખ્યા.\n1) √16+√1+√9+√4 = 4+1+3+2 = 10.\n2) √25+√4+√16+√9 = 5+2+4+3 = 14.\n3) √36+√9+√25+√16 = 6+3+5+4 = 18.`,'q79'],
+[80,'M',`પ્રશ્નાર્થચિહ્નની જગ્યાએ યોગ્ય સંખ્યા શોધો.`,[`(A) 432`,`(B) 334`,`(C) 512`,`(D) 501`],`C`,`પ્રથમ આકૃતિમાં 4³=64, 5³=125, 6³=216.\nબીજી આકૃતિમાં 7³=343, 9³=729, તેથી વચ્ચેની સંખ્યા 8³ = 512.`,'q80'],
+[81,'M',`આપેલી ત્રિકોણાકાર આકૃતિઓમાં પ્રશ્નાર્થચિહ્નની જગ્યાએ કઈ સંખ્યા આવશે?`,[`(A) 525`,`(B) 576`,`(C) 550`,`(D) 560`],`B`,`ત્રણેય ખૂણાઓની સંખ્યાના સરવાળાનો વર્ગ = મધ્ય સંખ્યા.\n1) (1+2+3)² = 6² = 36.\n2) (4+5+6)² = 15² = 225.\n3) (7+8+9)² = 24² = 576.`,'q81'],
+[82,'M',`[ફકરો: મોબાઇલ ફોન અને ઇન્ટરનેટ] ફકરા અનુસાર મોબાઇલ ફોનનો સૌથી મોટો લાભ શું છે?`,[`(A) સમય સરસ રીતે પસાર થાય છે.`,`(B) વાસ્તવિક રમતો રમી શકાય છે.`,`(C) આંખો મજબૂત બને છે.`,`(D) ઘરે બેઠા ઘણી માહિતી મળી રહે છે.`],`D`,`ફકરામાં જણાવ્યા મુજબ વિદ્યાર્થીઓ મોબાઇલ અને ઇન્ટરનેટથી ઘરે બેઠા ઘણી માહિતી મેળવી શકે છે.`],
+[83,'M',`[ફકરો: મોબાઇલ ફોન અને ઇન્ટરનેટ] મોબાઇલથી વિદ્યાર્થીઓ કઈ રીતે મિત્રો સાથે જોડાયેલા રહી શકે છે?`,[`(A) વાસ્તવિક વાતચીત દ્વારા`,`(B) ઇન્ટરનેટ દ્વારા`,`(C) પુસ્તકો વાંચીને`,`(D) કસરત કરીને`],`B`,`ફકરા અનુસાર મોબાઇલ અને ઇન્ટરનેટ દ્વારા વિદ્યાર્થીઓ મિત્રો સાથે જોડાયેલા રહી શકે છે.`],
+[84,'M',`[ફકરો: મોબાઇલ ફોન અને ઇન્ટરનેટ] ફકરાનો મુખ્ય વિચાર શું છે?`,[`(A) મોબાઇલ ખરાબ છે.`,`(B) મોબાઇલનો ઓચિંતો (ઉચિત) ઉપયોગ જરૂરી છે.`,`(C) મોબાઇલથી ઘણા નુકસાન છે.`,`(D) વિદ્યાર્થીઓએ મોબાઇલનો ખૂબ જ ઉપયોગ કરવો જોઈએ.`],`B`,`ફકરાનો અંતિમ સંદેશ એ છે કે ટેકનોલોજીનો સમજદારીપૂર્વક અને જરૂરિયાત મુજબ ઉપયોગ કરવો જોઈએ.`],
+[85,'S',`આપેલી સંખ્યાઓની આકૃતિમાં પ્રશ્નાર્થચિહ્નની જગ્યાએ યોગ્ય સંખ્યા શોધો.\n8   9   7\n5   1   6\n2   4   2\n21  37  ?`,[`(A) 15`,`(B) 58`,`(C) 20`,`(D) 9`],`C`,`સ્તંભ નિયમ: (પ્રથમ × ત્રીજી) + બીજી.\n1) 8 × 2 + 5 = 21.\n2) 9 × 4 + 1 = 37.\n3) 7 × 2 + 6 = 14 + 6 = 20.`],
+[86,'S',`[કોષ્ટક: જિલ્લો A(ઘઉં 250, ચોખા 150, બાજરી 80), B(180, 220, 100), C(300, 100, 90), D(200, 280, 50)] તમામ ચાર જિલ્લાઓમાં મળીને કયા અનાજનું કુલ ઉત્પાદન સૌથી ઓછું છે?`,[`(A) ઘઉં`,`(B) બાજરી`,`(C) ચોખા`,`(D) ઘઉં અને ચોખા બંનેનું સરખું છે.`],`B`,`ઘઉં = 250+180+300+200 = 930 ટન.\nચોખા = 150+220+100+280 = 750 ટન.\nબાજરી = 80+100+90+50 = 320 ટન.\nસૌથી ઓછું ઉત્પાદન બાજરીનું છે.`],
+[87,'S',`તમામ જિલ્લાઓમાં ઘઉંના કુલ ઉત્પાદન અને ચોખાના કુલ ઉત્પાદન વચ્ચે કેટલો તફાવત છે?`,[`(A) 160 ટન`,`(B) 200 ટન`,`(C) 250 ટન`,`(D) 180 ટન`],`D`,`ઘઉં કુલ = 930 ટન, ચોખા કુલ = 750 ટન.\nતફાવત = 930 - 750 = 180 ટન.`],
+[88,'S',`ચાર જિલ્લાઓમાં ચોખાના ઉત્પાદનની સરેરાશ કેટલી છે?`,[`(A) 190 ટન`,`(B) 200.5 ટન`,`(C) 175.5 ટન`,`(D) 187.5 ટન`],`D`,`ચોખાનું કુલ ઉત્પાદન = 750 ટન.\nસરેરાશ = 750 ÷ 4 = 187.5 ટન.`],
+[89,'S',`[કોષ્ટક: AC(40×35), TV(60×45), Fridge(50×28), Washing Machine(50×32)] કયા બે ઉપકરણોના વેચાણમાંથી થયેલ કુલ આવક સમાન છે?`,[`(A) AC અને Fridge`,`(B) TV અને Fridge`,`(C) TV અને Washing Machine`,`(D) AC અને Washing Machine`],`A`,`AC = 40 × 35 = 1400 હજાર.\nTV = 60 × 45 = 2700 હજાર.\nFridge = 50 × 28 = 1400 હજાર.\nWashing Machine = 50 × 32 = 1600 હજાર.\nAC અને Fridge ની આવક સમાન (1400 હજાર) છે.`],
+[90,'S',`AC ની સરેરાશ કિંમત (35 હજાર) TV ની સરેરાશ કિંમત (45 હજાર) કરતાં આશરે કેટલા ટકા ઓછી છે?`,[`(A) 20%`,`(B) 10%`,`(C) 25.5%`,`(D) 22.22%`],`D`,`તફાવત = 45 - 35 = 10.\nટકાવારી ઘટાડો = (10 ÷ 45) × 100 = 22.22% આશરે.`],
+[91,'S',`પ્રોટીન એ કેવા પ્રકારનો પદાર્થ છે?`,[`(A) હાઇડ્રોજનયુક્ત`,`(B) નાઇટ્રોજનયુક્ત`,`(C) સલ્ફરયુક્ત`,`(D) ફોસ્ફરસયુક્ત`],`B`,`પ્રોટીન એમિનો એસિડના બનેલા નાઇટ્રોજનયુક્ત પદાર્થ છે જે શરીરના સ્નાયુઓ અને પેશીઓના નિર્માણમાં મદદ કરે છે.`],
+[92,'S',`નીચેનામાંથી કયું વિધાન રવિપાક માટે અસત્ય છે?`,[`(A) તે સામાન્ય રીતે ઓક્ટોબરથી માર્ચ દરમિયાન લેવામાં આવે છે.`,`(B) ડાંગર અને મકાઈ એ રવિ પાકનાં મુખ્ય ઉદાહરણો છે.`,`(C) ઘઉં અને ચણા રવિપાક તરીકે ઓળખાય છે.`,`(D) તેને શિયાળુ પાક પણ કહેવામાં આવે છે.`],`B`,`ડાંગર અને મકાઈ ખરીફ (ચોમાસુ) પાક છે, રવિ પાક નથી. તેથી વિધાન (B) અસત્ય છે.`],
+[93,'S',`દહીં, લીંબુનો રસ, નારંગીનો રસ અને વિનેગરનો સ્વાદ ખાટો હોય છે. આ ખાટા સ્વાદનું મુખ્ય કારણ કયું રાસાયણિક પદાર્થ છે?`,[`(A) બેઝિક`,`(B) એસિડ`,`(C) ક્ષાર`,`(D) તટસ્થ પદાર્થ`],`B`,`ખાટા સ્વાદનું મુખ્ય કારણ એસિડ છે (દહીંમાં લેક્ટિક, લીંબુમાં સાઇટ્રિક, વિનેગરમાં એસિટિક એસિડ).`],
+[94,'S',`વસંતઋતુની સાથેનો વિશેષ ઉત્સવ કયો છે?`,[`(A) હોળી`,`(B) જન્માષ્ટમી`,`(C) નવરાત્રી`,`(D) મકરસંક્રાંતિ`],`A`,`વસંતઋતુમાં ફાગણ પૂનમે ઉજવાતો વિશેષ ઉત્સવ હોળી છે.`],
+[95,'S',`મનુષ્ય તથા ઢોરમાં બેક્ટેરિયા દ્વારા થતો ગંભીર રોગ કયો છે?`,[`(A) મેલેરિયા`,`(B) એન્થ્રેક્સ`,`(C) ફૂટ અને માઉથ ડિસીઝ`,`(D) ડિપ્થેરીયા`],`B`,`એન્થ્રેક્સ Bacillus anthracis બેક્ટેરિયાથી મનુષ્ય અને ઢોર બંનેમાં થતો ગંભીર રોગ છે.`],
+[96,'S',`નીચેનામાંથી કયા રાજ્યમાંથી કુદરતી વાયુ મળી આવે છે?`,[`(A) પંજાબ`,`(B) ગુજરાત`,`(C) કેરળ`,`(D) ત્રિપુરા`],`B`,`ગુજરાત (અંકલેશ્વર, ખંભાત વગેરે) કુદરતી વાયુ અને પેટ્રોલિયમ ઉત્પાદન માટે જાણીતું છે.`],
+[97,'S',`ગોઇટર રોગ માટે કયો અંતઃસ્ત્રાવ જવાબદાર છે?`,[`(A) ઇન્સ્યુલિન`,`(B) થાયરોક્સિન`,`(C) એડ્રિનાલિન`,`(D) ઇસ્ટ્રોજન`],`B`,`આયોડિનની ઊણપથી થાયરોઇડ ગ્રંથિના થાયરોક્સિન હોર્મોનનું ઉત્પાદન અસરગ્રસ્ત થતાં ગોઇટર થાય છે.`],
+[98,'S',`પાચન બાદ કાર્બોહાઇડ્રેટ પદાર્થનું ................. માં રૂપાંતરણ થાય છે?`,[`(A) ફેટી એસિડ`,`(B) ગ્લિસરોલ`,`(C) એમિનો એસિડ`,`(D) સરળ શર્કરામાં`],`D`,`પાચન બાદ કાર્બોહાઇડ્રેટનું સરળ શર્કરા (ગ્લુકોઝ) માં રૂપાંતરણ થાય છે.`],
+[99,'S',`પાલકમાં કયો એસિડ હોય છે?`,[`(A) યુરિક એસિડ`,`(B) ફોર્મિક એસિડ`,`(C) લેક્ટિક એસિડ`,`(D) ઓક્સેલિક એસિડ`],`D`,`પાલકમાં કુદરતી રીતે ઓક્સેલિક એસિડ હોય છે.`],
+[100,'S',`ભારે કસરત દરમિયાન સ્નાયુ ખેંચાઈ જાય છે તેનું મુખ્ય કારણ શું છે?`,[`(A) જરૂરક શ્વસન થતાં લેક્ટિક એસિડ એકઠો થવાથી`,`(B) અજારક શ્વસન થતાં લેક્ટિક એસિડ એકઠો થવાથી`,`(C) જરૂરક શ્વસન થતાં ગ્લુકોઝ એકઠો થવાથી`,`(D) અજારક શ્વસન થતાં ગ્લુકોઝ એકઠો થવાથી`],`B`,`ભારે કસરત દરમિયાન ઓક્સિજનના અભાવે અજારક શ્વસન થવાથી સ્નાયુઓમાં લેક્ટિક એસિડ એકઠો થાય છે.`],
+[101,'S',`નીચેના પ્રાણીઓની મહત્તમ ઝડપનો ઉતરતો ક્રમ કયો છે?`,[`(A) ચિત્તો, સસલું, ખિસકોલી, ઉંદર`,`(B) ચિત્તો, ખિસકોલી, સસલું, ઉંદર`,`(C) ચિત્તો, ખિસકોલી, ઉંદર, સસલું`,`(D) ચિત્તો, સસલું, ઉંદર, ખિસકોલી`],`A`,`મહત્તમ ઝડપનો ઉતરતો ક્રમ: ચિત્તો > સસલું > ખિસકોલી > ઉંદર.`],
+[102,'S',`બે સ્ટેશન વચ્ચે 120 કિમીનું અંતર છે. ટ્રેન આ અંતર કાપવામાં 2 કલાકનો સમય લે છે. તો ઝડપ શું થશે?`,[`(A) 60 કિમી/મિનિટ`,`(B) 60 મીટર/કલાક`,`(C) 60 કિમી/કલાક`,`(D) 60 મીટર/મિનિટ`],`C`,`ઝડપ = અંતર ÷ સમય = 120 ÷ 2 = 60 કિમી/કલાક.`],
+[103,'S',`અંતર્ગોળ લેન્સ વડે કેવું પ્રતિબિંબ મળે છે?`,[`(A) આભાસી, ઊલટું, મોટું`,`(B) વાસ્તવિક, ઊલટું, મોટું`,`(C) વાસ્તવિક, ચત્તું, નાનું`,`(D) આભાસી, ચત્તું, નાનું`],`D`,`અંતર્ગોળ લેન્સ હંમેશાં આભાસી, ચત્તું અને વસ્તુ કરતાં નાનું પ્રતિબિંબ આપે છે.`],
+[104,'S',`વિદ્યુત ઢોળ (Electroplating) નો ઉપયોગ શાના માટે થાય છે?`,[`(A) ધાતુ વિઘટન`,`(B) સસ્તી ધાતુ પર મોંઘી ધાતુ ચડાવવા`,`(C) પાણીને શુદ્ધ કરવા`,`(D) વીજળીનો કરંટ આપવા`],`B`,`Electroplating દ્વારા સસ્તી ધાતુની વસ્તુ પર કાટ અટકાવવા અને આકર્ષક બનાવવા મોંઘી ધાતુનું પાતળું પડ ચડાવાય છે.`],
+[105,'S',`રાસાયણિક ખાતરોના વધુ પડતા ઉપયોગને કારણે શું પરિણામ મળે છે?`,[`(A) માટીની ગુણવત્તા વધે`,`(B) પાણીની ગુણવત્તા વધે`,`(C) જમીનની ફળદ્રુપતા ઘટે`,`(D) પાણી શુદ્ધ થાય`],`C`,`રાસાયણિક ખાતરોના વધુ પડતા ઉપયોગથી જમીનની કુદરતી ફળદ્રુપતા ઘટે છે.`],
+[106,'S',`કિશોરાવસ્થામાં સંતુલિત આહાર કેમ જરૂરી છે?`,[`(A) જરૂરી ઊંઘ માટે`,`(B) વૃદ્ધિ અને વિકાસ માટે`,`(C) રમવા માટે`,`(D) ચહેરાના નિખાર માટે`],`B`,`કિશોરાવસ્થામાં ઝડપી શારીરિક વૃદ્ધિ અને વિકાસ માટે સંતુલિત આહાર અત્યંત જરૂરી છે.`],
+[107,'S',`ભારતનું પ્રથમ આરક્ષિત જંગલ કયું છે?`,[`(A) સાતપુડા રાષ્ટ્રીય ઉદ્યાન`,`(B) કાઝીરંગા રાષ્ટ્રીય ઉદ્યાન`,`(C) રણથંભોર રાષ્ટ્રીય ઉદ્યાન`,`(D) ગીર રાષ્ટ્રીય ઉદ્યાન`],`A`,`ધોરણ 8 વિજ્ઞાન પાઠ્યપુસ્તક મુજબ સાતપુડા રાષ્ટ્રીય ઉદ્યાન ભારતનું પ્રથમ આરક્ષિત જંગલ છે.`],
+[108,'S',`રુધિર ગંઠાવવાની પ્રક્રિયામાં મુખ્યત્વે શું જવાબદાર છે?`,[`(A) શ્વેતકણ`,`(B) લાલ રક્તકણ`,`(C) ત્રાકકણ`,`(D) પ્લાઝ્મા`],`C`,`ઈજા વખતે લોહી વહેતું અટકાવવા ત્રાકકણ (Platelets) રુધિર ગંઠાવવાની પ્રક્રિયા કરે છે.`],
+[109,'S',`નીચેનામાંથી કયું ઉદાહરણ એકલિંગી પુષ્પનું છે?`,[`(A) સરસવ`,`(B) ગુલાબ`,`(C) મકાઈ`,`(D) પેટુનિયા`],`C`,`મકાઈમાં નર અને માદા પુષ્પો અલગ હોવાથી તે એકલિંગી પુષ્પનું ઉદાહરણ છે.`],
+[110,'S',`નીચેનામાંથી કઈ ગ્રંથિ પાચનમાર્ગ સાથે સંકળાયેલી છે?`,[`(A) યકૃત`,`(B) એડ્રિનલ`,`(C) થાયરોઇડ`,`(D) પિટ્યુટરી`],`A`,`યકૃત (Liver) શરીરની સૌથી મોટી ગ્રંથિ છે જે ચરબીના પાચન માટે પિત્તરસ બનાવે છે.`],
+[111,'S',`કાર્બન ડાયોક્સાઇડયુક્ત રુધિરને શરીરના તમામ ભાગોમાંથી હૃદય તરફ કોણ લઈ જાય છે?`,[`(A) ફેફસાંની ધમની`,`(B) ફેફસાંની શિરા`,`(C) ધમની`,`(D) શિરા`],`D`,`શિરાઓ શરીરના વિવિધ ભાગોમાંથી કાર્બન ડાયોક્સાઇડયુક્ત રુધિરને પાછું હૃદય તરફ લઈ જાય છે.`],
+[112,'S',`સાદું લોલક 20 દોલન પૂર્ણ કરવા માટે 52 સેકન્ડનો સમય લે છે, તો તેનો આવર્તકાળ કેટલો હોય?`,[`(A) 2.6 સેકન્ડ`,`(B) 0.26 સેકન્ડ`,`(C) 0.52 સેકન્ડ`,`(D) 5.2 સેકન્ડ`],`A`,`આવર્તકાળ = કુલ સમય ÷ દોલનની સંખ્યા = 52 ÷ 20 = 2.6 સેકન્ડ.`],
+[113,'S',`નીચેનામાંથી કયું ઉપકરણ વિદ્યુતપ્રવાહની ઉષ્મીય અસરના સિદ્ધાંત પર કાર્ય કરતું નથી?`,[`(A) ઇલેક્ટ્રિક હીટર`,`(B) ફ્યુઝ`,`(C) ઇલેક્ટ્રિક સગડી`,`(D) વિદ્યુત ઘંટડી`],`D`,`વિદ્યુત ઘંટડી ચુંબકીય અસર પર કાર્ય કરે છે, જ્યારે બાકીના ઉષ્મીય અસર પર કાર્ય કરે છે.`],
+[114,'S',`એક માણસ સમતલ અરીસાથી 15 cm દૂર ઊભો છે. તો માણસ અને તેના પ્રતિબિંબ વચ્ચેનું અંતર કેટલું હશે?`,[`(A) 5 cm`,`(B) 10 cm`,`(C) 15 cm`,`(D) 30 cm`],`D`,`વસ્તુનું અંતર 15 cm + પ્રતિબિંબનું અંતર 15 cm = કુલ અંતર 30 cm.`],
+[115,'S',`નીચેનામાંથી કયું એન્ટિબાયોટિક છે?`,[`(A) સોડિયમ બાયકાર્બોનેટ`,`(B) આલ્કોહોલ`,`(C) ટેટ્રાસાયક્લિન`,`(D) યીસ્ટ`],`C`,`ટેટ્રાસાયક્લિન બેક્ટેરિયાજન્ય રોગો સામે વપરાતી એન્ટિબાયોટિક દવા છે.`],
+[116,'S',`નીચેનામાંથી કોનો ઉપયોગ સ્ટીલના ઉત્પાદન અને ઘણી ધાતુઓના નિષ્કર્ષણમાં થાય છે?`,[`(A) કોલટાર`,`(B) કોક`,`(C) ડામરની ગોળી`,`(D) કોલગેસ`],`B`,`કોક એ શુદ્ધ કાર્બન સ્વરૂપ છે જે સ્ટીલ ઉત્પાદન અને ધાતુ નિષ્કર્ષણમાં વપરાય છે.`],
+[117,'S',`બળતણનું કેલરી મૂલ્ય કયા એકમથી દર્શાવવામાં આવે છે?`,[`(A) કિલોજૂલ`,`(B) કિલોગ્રામ`,`(C) કિલોજૂલ પ્રતિ કિગ્રા`,`(D) કિગ્રા પ્રતિ કિલોજૂલ`],`C`,`1 કિલોગ્રામ બળતણના સંપૂર્ણ દહનથી મળતી ઉષ્માને kJ/kg (કિલોજૂલ પ્રતિ કિગ્રા) માં મપાય છે.`],
+[118,'S',`હવામાં કયા વાયુનું વધતું પ્રમાણ ગ્લોબલ વોર્મિંગનું કારણ હોવાનું માનવામાં આવે છે?`,[`(A) કાર્બન ડાયોક્સાઇડ`,`(B) ઓક્સિજન`,`(C) નાઇટ્રોજન`,`(D) સલ્ફર ડાયોક્સાઇડ`],`A`,`કાર્બન ડાયોક્સાઇડ (CO₂) મુખ્ય ગ્રીનહાઉસ વાયુ છે જે ગ્લોબલ વોર્મિંગ વધારે છે.`],
+[119,'S',`સાતપુડા કયા વન્યપ્રાણી માટે આરક્ષિત વિસ્તાર છે?`,[`(A) દીપડો`,`(B) ચિત્તો`,`(C) સિંહ`,`(D) વાઘ`],`D`,`સાતપુડા ટાઇગર રિઝર્વ મુખ્યત્વે વાઘના સંરક્ષણ માટે જાણીતું છે.`],
+[120,'S',`બેકિંગ સોડાનું રાસાયણિક સ્વરૂપ જણાવો.`,[`(A) એસિડ`,`(B) ક્ષાર`,`(C) ખાંડ`,`(D) મીઠું`],`B`,`બેકિંગ સોડા (NaHCO₃) એ હળવો ક્ષારીય (બેઝિક/ક્ષાર) ગુણધર્મ ધરાવતો પદાર્થ છે.`],
+[121,'S',`(-41) ÷ [(-40) + (-1)] = ?`,[`(A) (-1)`,`(B) 1`,`(C) -41/39`,`(D) 41/39`],`B`,`(-40) + (-1) = -41.\nહવે (-41) ÷ (-41) = 1.`],
+[122,'S',`એક બેટ્સમેને 6 દાવમાં 23, 35, 42, 38, 26 અને 64 રન બનાવ્યા તો એક દાવમાં તેની સરેરાશ કેટલી થાય?`,[`(A) 28`,`(B) 38`,`(C) 48`,`(D) 58`],`B`,`કુલ રન = 23+35+42+38+26+64 = 228.\nસરેરાશ = 228 ÷ 6 = 38.`],
+[123,'S',`નીચેની માહિતીનો મધ્યસ્થ કેટલો થાય? 25, 37, 47, 18, 19, 26, 36`,[`(A) 18`,`(B) 25`,`(C) 26`,`(D) 36`],`C`,`ચડતા ક્રમમાં: 18, 19, 25, 26, 36, 37, 47.\n7 અવલોકનોમાં ચોથી (મધ્ય) સંખ્યા = 26.`],
+[124,'S',`અજયના પિતાની ઉંમર અજયની ઉંમરના ત્રણ ગણાથી 6 વધુ છે. પિતા 45 વર્ષના છે. અજયની ઉંમર x વર્ષ હોય તો સમીકરણ કયું થાય?`,[`(A) 3x + 6 = 45`,`(B) 3x - 6 = 45`,`(C) 6x + 3 = 45`,`(D) 6x - 3 = 45`],`A`,`અજયની ઉંમરના ત્રણ ગણા = 3x, તેથી 6 વધુ = 3x + 6.\nમાટે સમીકરણ: 3x + 6 = 45.`],
+[125,'S',`કોઈ એક ત્રિકોણમાં એક ખૂણાનું માપ 48° અને બીજા ખૂણાનું માપ 53° હોય તો ત્રીજા ખૂણાનું માપ કેટલું હોય?`,[`(A) 49°`,`(B) 59°`,`(C) 69°`,`(D) 79°`],`D`,`ત્રિકોણના ત્રણેય ખૂણાઓનો સરવાળો 180°.\nત્રીજો ખૂણો = 180° - (48° + 53°) = 180° - 101° = 79°.`],
+[126,'S',`ત્રિકોણ ABC માં ∠C કાટખૂણો છે. જો AC = 12 cm અને AB = 13 cm હોય તો BC ની લંબાઈ શોધો.`,[`(A) 5 cm`,`(B) 25 cm`,`(C) 144 cm`,`(D) 169 cm`],`A`,`પાયથાગોરસ પ્રમેય: AB² = AC² + BC²\n13² = 12² + BC² → 169 = 144 + BC² → BC² = 25 → BC = 5 cm.`],
+[127,'S',`એક વસ્તુની કિંમત રૂ. 140 છે. જો દુકાનદાર તેને 25% ખોટ સાથે વેચે તો વેચાણ કિંમત કેટલી થાય?`,[`(A) રૂ. 35`,`(B) રૂ. 105`,`(C) રૂ. 115`,`(D) રૂ. 165`],`B`,`ખોટ = 140 × 25/100 = રૂ. 35.\nવેચાણ કિંમત = 140 - 35 = રૂ. 105.`],
+[128,'S',`એક વર્તુળાકાર ટ્રેકનો પરિઘ 88 સેમી છે. તો ટ્રેકની ત્રિજ્યા કેટલી થાય? (π = 22/7)`,[`(A) 7 સેમી`,`(B) 14 સેમી`,`(C) 21 સેમી`,`(D) 28 સેમી`],`B`,`પરિઘ = 2πr → 88 = 2 × (22/7) × r\nr = (88 × 7) ÷ 44 = 14 સેમી.`],
+[129,'S',`જો x = 10 હોય તો x³ - 4(x - 10) ની કિંમત કેટલી થાય?`,[`(A) 100`,`(B) 920`,`(C) 960`,`(D) 1000`],`D`,`x = 10 મૂકતાં: 10³ - 4(10 - 10) = 1000 - 4(0) = 1000.`],
+[130,'S',`6985 નું પ્રમાણિત સ્વરૂપ કયું છે?`,[`(A) 698.5 × 10¹`,`(B) 69.85 × 10²`,`(C) 6.985 × 10³`,`(D) 0.6985 × 10⁴`],`C`,`દશાંશને 3 સ્થાન ડાબે ખસેડતાં: 6985 = 6.985 × 10³.`],
+[131,'S',`કિંમત શોધો: (-3/16) × (4/5) × (15/7) × (-14/9)`,[`(A) 1/2`,`(B) -1/2`,`(C) 1/3`,`(D) -1/3`],`A`,`બે ઋણનો ગુણાકાર ધન થાય.\n(3×4×15×14) / (16×5×7×9) = (1×1×3×2) / (4×1×1×3) = 1/2.`],
+[132,'S',`(3x + 1)/4 + 1 = (x - 5)/8 હોય તો x = કેટલું?`,[`(A) 3`,`(B) -3`,`(C) 1`,`(D) -1`],`B`,`બંને બાજુ 8 વડે ગુણતાં: 2(3x + 1) + 8 = x - 5\n6x + 10 = x - 5 → 5x = -15 → x = -3.`],
+[133,'S',`નીચેનામાંથી કઈ સુરેખ પદાવલી નથી?`,[`(A) 2x + 1`,`(B) 3y - 1`,`(C) x² + 1`,`(D) 13 - 5z`],`C`,`સુરેખ પદાવલીમાં ચલની મહત્તમ ઘાત 1 હોય. x² + 1 માં x ની ઘાત 2 હોવાથી તે સુરેખ નથી.`],
+[134,'S',`નીચેનામાંથી કયો લંબચોરસનો ગુણધર્મ નથી?`,[`(A) પાસપાસેની બાજુઓ સમાન લંબાઈની હોય`,`(B) દરેક ખૂણો કાટખૂણો હોય`,`(C) વિકર્ણોની લંબાઈ સમાન હોય`,`(D) વિકર્ણો પરસ્પર દુભાગે`],`A`,`લંબચોરસમાં સામસામેની બાજુઓ સમાન હોય, પાસપાસેની બાજુઓ સમાન હોવી જરૂરી નથી.`],
+[135,'S',`કયો આલેખ આપેલી વિગતના ચોક્કસ ભાગ અને તેના કુલ ભાગ વચ્ચેનો સંબંધ દર્શાવે છે?`,[`(A) સુરેખ આલેખ`,`(B) ચિત્ર આલેખ`,`(C) લંબ આલેખ`,`(D) વર્તુળ આલેખ`],`D`,`ભાગ અને પૂર્ણ વચ્ચેનો સંબંધ દર્શાવવા વર્તુળ આલેખ (Pie Chart) વપરાય છે.`],
+[136,'S',`એક થેલીમાં 8 લાલ અને 4 પીળા દડા છે. યાદૃચ્છિક રીતે એક દડો પસંદ કરતાં તે લાલ હોવાની સંભાવના કેટલી?`,[`(A) 2/3`,`(B) 3/2`,`(C) 1/3`,`(D) 1/2`],`A`,`કુલ દડા = 8 + 4 = 12.\nલાલ દડાની સંભાવના = 8/12 = 2/3.`],
+[137,'S',`કઈ નાનીમાં નાની સંખ્યાને 3920 સાથે ગુણવાથી મળતી સંખ્યા પૂર્ણવર્ગ બને?`,[`(A) 2`,`(B) 3`,`(C) 5`,`(D) 7`],`C`,`3920 = 2⁴ × 5¹ × 7². અહીં 5 ની ઘાત એકલી છે, તેથી 5 વડે ગુણતાં 19600 (= 140²) પૂર્ણવર્ગ બને.`],
+[138,'S',`નીચેનામાંથી કઈ એક કોટિકોણોની જોડ નથી?`,[`(A) 62°, 28°`,`(B) 58°, 32°`,`(C) 78°, 22°`,`(D) 60°, 30°`],`C`,`કોટિકોણોનો સરવાળો 90° થાય. 78° + 22° = 100° હોવાથી તે કોટિકોણની જોડ નથી.`],
+[139,'S',`એક વર્ગમાં 40 વિદ્યાર્થીઓમાંથી 25% વિદ્યાર્થીઓને ફૂટબોલ પસંદ છે. તો ફૂટબોલ પસંદ ન હોય તેવા વિદ્યાર્થીઓ કેટલા?`,[`(A) 10`,`(B) 30`,`(C) 20`,`(D) 25`],`B`,`ફૂટબોલ પસંદ = 40 ના 25% = 10.\nપસંદ ન હોય તેવા = 40 - 10 = 30.`],
+[140,'S',`કિંમત શોધો: (6/-5) ÷ (-2/3)`,[`(A) 4/5`,`(B) -4/5`,`(C) 18/10`,`(D) -18/10`],`C`,`(-6/5) × (-3/2) = 18/10 (એટલે કે 9/5).`],
+[141,'S',`9 × 10⁵ + 2 × 10² + 4 × 10¹ ને સંખ્યા સ્વરૂપે કઈ રીતે લખાય?`,[`(A) 9000240`,`(B) 9000204`,`(C) 900240`,`(D) 9000024`],`C`,`900000 + 200 + 40 = 900240.`],
+[142,'S',`12ⁿ = 1728 હોય તો n નું મૂલ્ય શું થાય?`,[`(A) 4`,`(B) 2`,`(C) 5`,`(D) 3`],`D`,`12 × 12 × 12 = 1728 = 12³. તેથી n = 3.`],
+[143,'S',`કઈ સંખ્યાના 25% એ 3² બરાબર થાય?`,[`(A) 12`,`(B) 36`,`(C) 48`,`(D) 60`],`B`,`3² = 9. x × 25/100 = 9 → x/4 = 9 → x = 36.`],
+[144,'S',`5 : 10 = ............... : 30`,[`(A) 20`,`(B) 15`,`(C) 3`,`(D) 10`],`B`,`5/10 = x/30 → x = (5 × 30)/10 = 15.`],
+[145,'S',`x² - 25 નું અવયવીકરણ કયું છે?`,[`(A) (x - 5)(x + 5)`,`(B) (x - 25)(x + 25)`,`(C) (x - 5)²`,`(D) (x + 5)²`],`A`,`a² - b² = (a-b)(a+b) મુજબ x² - 5² = (x - 5)(x + 5).`],
+[146,'S',`નીચેનામાંથી કયા ચતુષ્કોણના તમામ ખૂણા કાટખૂણા છે?`,[`(A) સમબાજુ ચતુષ્કોણ`,`(B) ચોરસ`,`(C) લંબચોરસ`,`(D) બંને B અને C`],`D`,`ચોરસ અને લંબચોરસ બંનેના ચારેય ખૂણા 90° (કાટખૂણા) હોય છે.`],
+[147,'S',`x = 4/5 (x + 10) સમીકરણનો ઉકેલ શું થાય?`,[`(A) x = 40`,`(B) x = 10`,`(C) x = 5`,`(D) x = 15`],`A`,`5x = 4x + 40 → 5x - 4x = 40 → x = 40.`],
+[148,'S',`એક પેટીમાં x સફરજન છે. તેમાં બીજા એટલાં જ સફરજન ઉમેરો અને 3 કાઢી લઈએ તો 7 વધે છે. તો x નું મૂલ્ય કેટલું?`,[`(A) 6`,`(B) 10`,`(C) 5`,`(D) 4`],`C`,`સમીકરણ: 2x - 3 = 7 → 2x = 10 → x = 5.`],
+[149,'S',`કાર ચલાવનારા લોકો 40% છે. પાઈચાર્ટમાં તેમના વર્તુળાંશનો કેન્દ્રકોણ કેટલો બનશે?`,[`(A) 60°`,`(B) 144°`,`(C) 90°`,`(D) 120°`],`B`,`કેન્દ્રકોણ = (40 × 360°) ÷ 100 = 144°.`],
+[150,'S',`એક કાર 2.5 કલાકમાં 125.50 કિમી અંતર કાપે છે, તો 1 કલાકમાં સરેરાશ કેટલું અંતર કાપે?`,[`(A) 50.1 કિમી`,`(B) 25.1 કિમી`,`(C) 50.2 કિમી`,`(D) 50 કિમી`],`C`,`સરેરાશ ઝડપ = 125.50 ÷ 2.5 = 1255 ÷ 25 = 50.2 કિમી.`],
+[151,'S',`25 મોબાઇલમાંથી 5 મોબાઇલ 5G છે. તો 5G મોબાઇલ કેટલા ટકા છે?`,[`(A) 10%`,`(B) 30%`,`(C) 20%`,`(D) 25%`],`C`,`ટકાવારી = (5 ÷ 25) × 100 = 20%.`],
+[152,'S',`[ફકરો: જનીન અને આનુવંશિકતા] જનીનો એ ............... લક્ષણો માટે જવાબદાર છે.`,[`(A) વારસાગત`,`(B) સામાજિક`,`(C) આર્થિક`,`(D) સાંસ્કૃતિક`],`A`,`જનીનો માતા-પિતામાંથી સંતાનમાં વારસાગત લક્ષણોનું વહન કરે છે.`],
+[153,'S',`[ફકરો: જનીન અને આનુવંશિકતા] જનીનો સંયોજિત થવાના લીધે ...............`,[`(A) પ્રજાતિમાં એકરૂપતા વધે છે.`,`(B) નવી જૈવિક રચનાઓ રચાય છે.`,`(C) જૈવિક રચનાઓ બનવાની ગતિ મંદ પડે છે.`,`(D) જનીનની સંખ્યા વધે છે.`],`B`,`માતા-પિતાના જનીનોના અલગ સંયોજનથી સંતાનમાં વિવિધતા અને નવી જૈવિક રચનાઓ રચાય છે.`],
+[154,'S',`નીચેનામાંથી કયું લક્ષણ આનુવંશિક નથી?`,[`(A) આંખોનો રંગ`,`(B) લોહીનું જૂથ`,`(C) ભાષા બોલવાની ક્ષમતા`,`(D) ચહેરાની રચના`],`C`,`ભાષા બોલવાની ક્ષમતા પર્યાવરણ અને શિક્ષણથી શીખાય છે, તે જનીનોથી મળતી નથી.`],
+[155,'S',`સામાજિક ન્યાયનો મુખ્ય હેતુ શું છે?`,[`(A) અસમાનતા વધારવી`,`(B) શોષણ વધારવું`,`(C) દરેકને સમાન તક આપવી`,`(D) મતભેદ વધારવા`],`C`,`સામાજિક ન્યાયનો મુખ્ય હેતુ ભેદભાવ વિના દરેક નાગરિકને સમાન તક અને અધિકાર આપવાનો છે.`],
+[156,'S',`એપિસેન્ટર શબ્દ ............... સાથે જોડાયેલ છે.`,[`(A) વાવાઝોડું`,`(B) ધરતીકંપ`,`(C) દુષ્કાળ`,`(D) પૂર`],`B`,`પૃથ્વીની સપાટી પર ભૂકંપના અધિકેન્દ્રની બરાબર ઉપરના બિંદુને એપિસેન્ટર કહે છે.`],
+[157,'S',`વૂલમાર્ક : ઊનની બનાવટ તો હોલમાર્ક : ...............`,[`(A) સોનાની બનાવટની વસ્તુઓ`,`(B) લાકડાની બનાવટની વસ્તુઓ`,`(C) પ્લાસ્ટિકની બનાવટની વસ્તુઓ`,`(D) હાથીદાંતની બનાવટની વસ્તુઓ`],`A`,`વૂલમાર્ક ઊનની શુદ્ધતા દર્શાવે છે, તેમ હોલમાર્ક સોનાના દાગીનાની શુદ્ધતા દર્શાવે છે.`],
+[158,'S',`ભારતીય બંધારણના ઘડતરમાં 'બંધારણ સભા' ના અધ્યક્ષ કોણ હતા?`,[`(A) ડૉ. રાજેન્દ્ર પ્રસાદ`,`(B) ડૉ. બી. આર. આંબેડકર`,`(C) જવાહરલાલ નેહરુ`,`(D) સરદાર પટેલ`],`A`,`બંધારણ સભાના કાયમી અધ્યક્ષ ડૉ. રાજેન્દ્ર પ્રસાદ હતા (ડૉ. આંબેડકર પ્રારૂપ સમિતિના અધ્યક્ષ હતા).`],
+[159,'S',`પૃથ્વીના સૌથી ઉપરના ઘન આવરણને શું કહેવામાં આવે છે?`,[`(A) ભુગર્ભ`,`(B) ભૂકવચ (મૃદાવરણ)`,`(C) મેન્ટલ`,`(D) જલાવરણ`],`B`,`પૃથ્વીની સૌથી બહારની પાતળી ઘન સપાટીને ભૂકવચ કે મૃદાવરણ કહે છે.`],
+[160,'S',`1857 ના સ્વાતંત્ર્ય સંગ્રામની શરૂઆત ક્યાંથી થઈ હતી?`,[`(A) દિલ્હી`,`(B) મેરઠ`,`(C) કાનપુર`,`(D) ઝાંસી`],`B`,`10 મે 1857 ના રોજ મેરઠની છાવણીમાંથી સંગ્રામની શરૂઆત થઈ હતી.`],
+[161,'S',`લોકસભાના સભ્ય બનવા માટે ઓછામાં ઓછી કેટલી ઉંમર જરૂરી છે?`,[`(A) 18 વર્ષ`,`(B) 21 વર્ષ`,`(C) 25 વર્ષ`,`(D) 30 વર્ષ`],`C`,`ભારતના બંધારણ મુજબ લોકસભાના સભ્ય માટે લઘુતમ વય 25 વર્ષ છે.`],
+[162,'S',`દાંડીકૂચની શરૂઆત ગાંધીજીએ કયા આશ્રમથી કરી હતી?`,[`(A) સેવાગ્રામ`,`(B) સાબરમતી`,`(C) કોચરબ`,`(D) વર્ધા`],`B`,`12 માર્ચ 1930 ના રોજ ગાંધીજીએ અમદાવાદના સાબરમતી આશ્રમથી દાંડીકૂચ શરૂ કરી હતી.`],
+[163,'S',`વાતાવરણમાં સૌથી વધુ પ્રમાણમાં કયો વાયુ રહેલો છે?`,[`(A) ઓક્સિજન`,`(B) નાઇટ્રોજન`,`(C) કાર્બન ડાયોક્સાઇડ`,`(D) આર્ગોન`],`B`,`પૃથ્વીના વાતાવરણમાં નાઇટ્રોજન લગભગ 78% અને ઓક્સિજન લગભગ 21% છે.`],
+[164,'S',`ભારતની સૌથી લાંબી નદી કઈ છે?`,[`(A) યમુના`,`(B) બ્રહ્મપુત્ર`,`(C) ગંગા`,`(D) ગોદાવરી`],`C`,`ભારતમાં વહેતી સૌથી લાંબી નદી ગંગા (લગભગ 2525 કિમી) છે.`],
+[165,'S',`સંસદના ઉપલા ગૃહને શું કહેવામાં આવે છે?`,[`(A) લોકસભા`,`(B) રાજ્યસભા`,`(C) વિધાનસભા`,`(D) પંચાયત`],`B`,`ભારતીય સંસદનું ઉપલું ગૃહ રાજ્યસભા અને નીચલું ગૃહ લોકસભા છે.`],
+[166,'S',`સોલંકી વંશ દરમિયાન પાટણમાં 'રાણીની વાવ' કોણે બંધાવી હતી?`,[`(A) મીનળદેવી`,`(B) ઉદયમતી`,`(C) નાયકાદેવી`,`(D) રુડાબાઈ`],`B`,`રાજા ભીમદેવ પહેલાની રાણી ઉદયમતીએ પાટણમાં વિશ્વવિખ્યાત રાણીની વાવ બંધાવી હતી.`],
+[167,'S',`મૌલિક અધિકારોનું રક્ષણ કોણ કરે છે?`,[`(A) વડાપ્રધાન`,`(B) સંસદ`,`(C) સર્વોચ્ચ અદાલત`,`(D) પોલીસ`],`C`,`બંધારણીય ઈલાજોના અધિકાર હેઠળ સર્વોચ્ચ અદાલત નાગરિકોના મૌલિક અધિકારોનું રક્ષણ કરે છે.`],
+[168,'S',`કયું અનાજ 'બંગાળના દુકાળ' અને 'હરિયાળી ક્રાંતિ' માં મુખ્ય હતું?`,[`(A) ઘઉં અને ચોખા`,`(B) બાજરી`,`(C) જુવાર`,`(D) મકાઈ`],`A`,`ભારતમાં 1960 ના દાયકામાં હરિયાળી ક્રાંતિ દ્વારા ઘઉં અને ચોખાના ઉત્પાદનમાં મોટો વધારો થયો.`],
+[169,'S',`પંચાયતી રાજ વ્યવસ્થામાં સૌથી પાયાનો એકમ કયો છે?`,[`(A) જિલ્લા પંચાયત`,`(B) તાલુકા પંચાયત`,`(C) ગ્રામ પંચાયત`,`(D) નગરપાલિકા`],`C`,`ત્રિ-સ્તરીય પંચાયતી રાજમાં ગ્રામ પંચાયત સૌથી પાયાનો એકમ છે.`],
+[170,'S',`ચંપારણ સત્યાગ્રહ કયા પાકની ખેતીના વિરોધમાં થયો હતો?`,[`(A) કપાસ`,`(B) ગળી (Indigo)`,`(C) તમાકુ`,`(D) શેરડી`],`B`,`1917 માં બિહારના ચંપારણમાં ગળીની ખેતી (તીનકઠિયા પદ્ધતિ) ના અન્યાય સામે સત્યાગ્રહ થયો.`],
+[171,'S',`ભારતમાં કયા પ્રકારની આબોહવા જોવા મળે છે?`,[`(A) ધ્રુવીય`,`(B) મોસમી`,`(C) રણ પ્રદેશની`,`(D) સમશીતોષ્ણ`],`B`,`ભારતની આબોહવા મુખ્યત્વે ઉષ્ણકટિબંધીય મોસમી આબોહવા છે.`],
+[172,'S',`રાષ્ટ્રપતિની ગેરહાજરીમાં તેમનું કાર્ય કોણ સંભાળે છે?`,[`(A) વડાપ્રધાન`,`(B) ઉપરાષ્ટ્રપતિ`,`(C) લોકસભા અધ્યક્ષ`,`(D) મુખ્ય ન્યાયાધીશ`],`B`,`રાષ્ટ્રપતિની ગેરહાજરીમાં ઉપરાષ્ટ્રપતિ કાર્યકારી રાષ્ટ્રપતિ તરીકે ફરજ બજાવે છે.`],
+[173,'S',`ગીર રાષ્ટ્રીય ઉદ્યાન કયા પ્રાણી માટે વિશ્વભરમાં પ્રખ્યાત છે?`,[`(A) બંગાળ વાઘ`,`(B) એશિયાટિક સિંહ`,`(C) એકશિંગી ગેંડો`,`(D) હાથી`],`B`,`ગુજરાતનું ગીર રાષ્ટ્રીય ઉદ્યાન એશિયાટિક સિંહોનું એકમાત્ર કુદરતી નિવાસસ્થાન છે.`],
+[174,'S',`'સ્વરાજ મારો જન્મસિદ્ધ અધિકાર છે અને તે હું મેળવીને જ રહીશ' — આ સૂત્ર કોણે આપ્યું?`,[`(A) મહાત્મા ગાંધી`,`(B) બાલ ગંગાધર ટિળક`,`(C) સુભાષચંદ્ર બોઝ`,`(D) ભગતસિંહ`],`B`,`લોકમાન્ય બાલ ગંગાધર ટિળકે આ પ્રસિદ્ધ સૂત્ર આપ્યું હતું.`],
+[175,'S',`ભારતનું કયું રાજ્ય 'મસાલાના બગીચા' તરીકે ઓળખાય છે?`,[`(A) આસામ`,`(B) કેરળ`,`(C) કર્ણાટક`,`(D) ગુજરાત`],`B`,`મરી, એલચી, લવિંગ જેવા મસાલાના ઉત્પાદન માટે કેરળ પ્રખ્યાત છે.`],
+[176,'S',`પ્લાસીનું યુદ્ધ કયા વર્ષે થયું હતું?`,[`(A) 1757`,`(B) 1764`,`(C) 1857`,`(D) 1947`],`A`,`23 જૂન 1757 ના રોજ અંગ્રેજો અને સિરાજ-ઉદ-દૌલા વચ્ચે પ્લાસીનું યુદ્ધ થયું હતું.`],
+[177,'S',`કર્કવૃત્ત ભારતના કેટલા રાજ્યોમાંથી પસાર થાય છે?`,[`(A) 6`,`(B) 7`,`(C) 8`,`(D) 9`],`C`,`કર્કવૃત્ત (23.5° ઉ.) ગુજરાત સહિત ભારતના કુલ 8 રાજ્યોમાંથી પસાર થાય છે.`],
+[178,'S',`વિશ્વ પર્યાવરણ દિવસ ક્યારે ઉજવવામાં આવે છે?`,[`(A) 22 એપ્રિલ`,`(B) 5 જૂન`,`(C) 16 સપ્ટેમ્બર`,`(D) 1 ડિસેમ્બર`],`B`,`દર વર્ષે 5 જૂનના રોજ વિશ્વ પર્યાવરણ દિવસ ઉજવાય છે.`],
+[179,'S',`ભારતના પ્રથમ વડાપ્રધાન કોણ હતા?`,[`(A) સરદાર પટેલ`,`(B) જવાહરલાલ નેહરુ`,`(C) લાલ બહાદુર શાસ્ત્રી`,`(D) ડૉ. રાજેન્દ્ર પ્રસાદ`],`B`,`સ્વતંત્ર ભારતના પ્રથમ વડાપ્રધાન પંડિત જવાહરલાલ નેહરુ હતા.`],
+[180,'S',`બિનસાંપ્રદાયિકતા (Secularism) નો અર્થ શું છે?`,[`(A) એક જ ધર્મને પ્રાધાન્ય`,`(B) રાજ્યનો કોઈ સત્તાવાર ધર્મ ન હોવો અને સર્વ ધર્મ સમભાવ`,`(C) ધર્મ પર પ્રતિબંધ`,`(D) માત્ર લઘુમતી માટે નિયમ`],`B`,`ભારતીય બંધારણ મુજબ રાજ્યનો કોઈ સત્તાવાર ધર્મ નથી અને તમામ ધર્મોને સમાન આદર આપવામાં આવે છે.`]
+];
+
+// App State
+const state = {
+  mainTab: 'study',
+  perPage: 20,
+  currentPage: 1,
+  jumpHighlightId: null,
+  activeGame: 'speed',
+  points: 0,
+  streak: 0,
+  bestStreak: 0,
+  correctCount: 0
+};
+
+// Runtime Game State
+const gameRuntime = {
+  timerId: null,
+  timeLeft: 20,
+  deck: [],
+  idx: 0,
+  answered: false,
+  racePos: 0,
+  raceGoal: 5,
+  solverStepIdx: 0,
+  shapePuzzleIdx: 0,
+  shapeAnimStep: 0
+};
+
+function shuffleArray(arr) {
+  const copy = arr.slice();
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const tmp = copy[i];
+    copy[i] = copy[j];
+    copy[j] = tmp;
+  }
+  return copy;
+}
+
+function formatExpSteps(text) {
+  const lines = text.split('\n').filter(Boolean);
+  return '<ol class="exp-steps">' + lines.map(l => `<li>${escapeHtml(l)}</li>`).join('') + '</ol>';
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+function renderDiagramSvg(diagId) {
+  if (!diagId) return '';
+  if (diagId === 'q7') {
+    return `<svg width="340" height="110" viewBox="0 0 340 110" aria-hidden="true">
+      <g font-family="DM Sans,sans-serif" font-weight="800" font-size="14" text-anchor="middle" fill="var(--on-surface)">
+        <circle cx="55" cy="55" r="24" fill="var(--primary-container)" stroke="var(--primary)" stroke-width="2.5"/>
+        <text x="55" y="60">64</text><text x="55" y="20">6</text><text x="55" y="98">2</text><text x="18" y="60">4</text><text x="92" y="60">4</text>
+        <circle cx="170" cy="55" r="24" fill="var(--secondary-container)" stroke="var(--secondary)" stroke-width="2.5"/>
+        <text x="170" y="60">96</text><text x="170" y="20">3</text><text x="170" y="98">9</text><text x="133" y="60">5</text><text x="207" y="60">3</text>
+        <circle cx="285" cy="55" r="24" fill="var(--tertiary-container)" stroke="var(--tertiary)" stroke-width="2.5"/>
+        <text x="285" y="60">?</text><text x="285" y="20">3</text><text x="285" y="98">7</text><text x="248" y="60">8</text><text x="322" y="60">4</text>
+      </g></svg>`;
+  }
+  if (diagId === 'q10') {
+    return `<svg width="260" height="110" viewBox="0 0 260 110" aria-hidden="true">
+      <g font-family="DM Sans,sans-serif" font-weight="800" font-size="15" text-anchor="middle" fill="var(--on-surface)">
+        <polygon points="65,16 25,92 105,92" fill="var(--primary-container)" stroke="var(--primary)" stroke-width="2.5"/>
+        <text x="65" y="50">41</text><text x="42" y="84">4</text><text x="88" y="84">5</text>
+        <polygon points="195,16 155,92 235,92" fill="var(--tertiary-container)" stroke="var(--tertiary)" stroke-width="2.5"/>
+        <text x="195" y="50">?</text><text x="172" y="84">7</text><text x="218" y="84">6</text>
+      </g></svg>`;
+  }
+  if (diagId === 'q23') {
+    let lines = '';
+    for (let i = 0; i <= 4; i++) {
+      lines += `<line x1="${10+i*24}" y1="10" x2="${10+i*24}" y2="106" stroke="var(--primary)" stroke-width="2"/>`;
+      lines += `<line x1="10" y1="${10+i*24}" x2="106" y2="${10+i*24}" stroke="var(--primary)" stroke-width="2"/>`;
+    }
+    return `<svg width="116" height="116" viewBox="0 0 116 116" aria-hidden="true"><rect x="10" y="10" width="96" height="96" fill="var(--surface-container-low)"/>${lines}</svg>`;
+  }
+  if (diagId === 'q25') {
+    return `<svg width="210" height="70" viewBox="0 0 210 70" aria-hidden="true">
+      <text x="55" y="45" font-family="DM Sans,sans-serif" font-weight="900" font-size="28" text-anchor="middle" fill="var(--on-surface)">FAN</text>
+      <line x1="115" y1="8" x2="115" y2="62" stroke="var(--primary)" stroke-width="3" stroke-dasharray="5 4"/>
+      <text x="165" y="45" font-family="DM Sans,sans-serif" font-weight="900" font-size="24" text-anchor="middle" fill="var(--secondary)">?</text>
+    </svg>`;
+  }
+  if (diagId === 'q29') {
+    return `<svg width="120" height="120" viewBox="0 0 120 120" aria-hidden="true">
+      <circle cx="60" cy="60" r="50" fill="var(--surface-container-low)" stroke="var(--secondary)" stroke-width="2.5"/>
+      <polygon points="60,10 17,85 103,85" fill="none" stroke="var(--primary)" stroke-width="2"/>
+      <line x1="60" y1="10" x2="60" y2="110" stroke="var(--primary)" stroke-width="2"/>
+      <line x1="10" y1="60" x2="110" y2="60" stroke="var(--tertiary)" stroke-width="2"/>
+    </svg>`;
+  }
+  if (diagId === 'q30') {
+    return `<svg width="290" height="76" viewBox="0 0 290 76" aria-hidden="true">
+      <g stroke="var(--secondary)" stroke-width="2" fill="var(--surface-container-low)">
+        <circle cx="38" cy="38" r="28"/><line x1="10" y1="38" x2="66" y2="38"/><line x1="38" y1="10" x2="38" y2="66"/>
+        <circle cx="110" cy="38" r="28"/><line x1="82" y1="38" x2="138" y2="38"/><line x1="110" y1="10" x2="110" y2="66"/>
+        <circle cx="182" cy="38" r="28"/><line x1="154" y1="38" x2="210" y2="38"/><line x1="182" y1="10" x2="182" y2="66"/>
+        <circle cx="254" cy="38" r="28" stroke="var(--primary)" stroke-dasharray="4 3"/>
+      </g>
+      <g font-family="DM Sans,sans-serif" font-weight="800" font-size="14" text-anchor="middle" fill="var(--on-surface)">
+        <text x="25" y="29">+</text><text x="51" y="29">0</text><text x="51" y="54">//</text>
+        <text x="123" y="29">+</text><text x="123" y="54">0</text><text x="97" y="54">//</text>
+        <text x="195" y="54">+</text><text x="169" y="54">0</text><text x="169" y="29">//</text>
+        <text x="254" y="43" fill="var(--primary)">?</text>
+      </g></svg>`;
+  }
+  if (diagId === 'q52') {
+    return `<svg width="130" height="130" viewBox="0 0 130 130" aria-hidden="true">
+      <circle cx="65" cy="65" r="56" fill="var(--surface-container-low)" stroke="var(--primary)" stroke-width="2.5"/>
+      <line x1="65" y1="9" x2="65" y2="121" stroke="var(--outline)" stroke-width="1.5"/>
+      <line x1="9" y1="65" x2="121" y2="65" stroke="var(--outline)" stroke-width="1.5"/>
+      <line x1="25" y1="25" x2="105" y2="105" stroke="var(--outline)" stroke-width="1.5"/>
+      <line x1="105" y1="25" x2="25" y2="105" stroke="var(--outline)" stroke-width="1.5"/>
+      <g font-family="DM Sans,sans-serif" font-weight="800" font-size="12" text-anchor="middle" fill="var(--on-surface)">
+        <text x="82" y="30">8</text><text x="104" y="50">15</text><text x="104" y="88">9</text><text x="82" y="108">11</text>
+        <text x="48" y="108" fill="var(--primary)">?</text><text x="26" y="88">7</text><text x="26" y="50">4</text><text x="48" y="30">5</text>
+      </g></svg>`;
+  }
+  if (diagId === 'q63') {
+    return `<svg width="110" height="110" viewBox="0 0 110 110" aria-hidden="true">
+      <rect x="10" y="10" width="90" height="90" fill="var(--surface-container-low)" stroke="var(--on-surface)" stroke-width="2"/>
+      <rect x="10" y="10" width="45" height="45" fill="var(--primary)"/>
+      <line x1="55" y1="10" x2="55" y2="100" stroke="var(--on-surface)" stroke-width="2"/>
+      <line x1="10" y1="55" x2="100" y2="55" stroke="var(--on-surface)" stroke-width="2"/>
+    </svg>`;
+  }
+  if (diagId === 'q65') {
+    return `<svg width="260" height="72" viewBox="0 0 260 72" aria-hidden="true">
+      <rect x="4" y="6" width="56" height="60" rx="8" fill="var(--surface-container-low)" stroke="var(--secondary)" stroke-width="2"/>
+      <text x="32" y="22" font-size="10" text-anchor="middle" fill="var(--primary)">OOOO</text>
+      <text x="32" y="40" font-size="11" text-anchor="middle" fill="var(--secondary)">▲▲</text>
+      <text x="32" y="58" font-size="11" text-anchor="middle" fill="var(--on-surface)">X</text>
+      <rect x="70" y="6" width="56" height="60" rx="8" fill="var(--surface-container-low)" stroke="var(--secondary)" stroke-width="2"/>
+      <text x="98" y="22" font-size="10" text-anchor="middle" fill="var(--on-surface)">XXXX</text>
+      <text x="98" y="40" font-size="11" text-anchor="middle" fill="var(--primary)">OO</text>
+      <text x="98" y="58" font-size="11" text-anchor="middle" fill="var(--secondary)">▲</text>
+      <rect x="136" y="6" width="56" height="60" rx="8" fill="var(--surface-container-low)" stroke="var(--primary)" stroke-width="2" stroke-dasharray="4 3"/>
+      <text x="164" y="42" font-size="18" font-weight="900" text-anchor="middle" fill="var(--primary)">?</text>
+    </svg>`;
+  }
+  if (diagId === 'q79') {
+    return `<svg width="310" height="100" viewBox="0 0 310 100" aria-hidden="true">
+      <g font-family="DM Sans,sans-serif" font-weight="800" font-size="12" text-anchor="middle" fill="var(--on-surface)">
+        <circle cx="50" cy="50" r="20" fill="var(--primary-container)" stroke="var(--primary)" stroke-width="2"/>
+        <text x="50" y="54">10</text><text x="50" y="20">16</text><text x="50" y="90">9</text><text x="18" y="54">1</text><text x="82" y="54">4</text>
+        <circle cx="155" cy="50" r="20" fill="var(--secondary-container)" stroke="var(--secondary)" stroke-width="2"/>
+        <text x="155" y="54">14</text><text x="155" y="20">25</text><text x="155" y="90">16</text><text x="123" y="54">4</text><text x="187" y="54">9</text>
+        <circle cx="260" cy="50" r="20" fill="var(--tertiary-container)" stroke="var(--tertiary)" stroke-width="2"/>
+        <text x="260" y="54">?</text><text x="260" y="20">36</text><text x="260" y="90">25</text><text x="228" y="54">9</text><text x="292" y="54">16</text>
+      </g></svg>`;
+  }
+  if (diagId === 'q80') {
+    return `<svg width="240" height="90" viewBox="0 0 240 90" aria-hidden="true">
+      <g font-family="DM Sans,sans-serif" font-weight="800" font-size="13" text-anchor="middle" fill="var(--on-surface)">
+        <rect x="8" y="10" width="96" height="70" rx="10" fill="var(--surface-container-low)" stroke="var(--secondary)" stroke-width="2"/>
+        <text x="35" y="35">216</text><text x="77" y="35">64</text><text x="56" y="65">125</text>
+        <rect x="136" y="10" width="96" height="70" rx="10" fill="var(--surface-container-low)" stroke="var(--primary)" stroke-width="2"/>
+        <text x="163" y="35">729</text><text x="205" y="35">343</text><text x="184" y="65" fill="var(--primary)">?</text>
+      </g></svg>`;
+  }
+  if (diagId === 'q81') {
+    return `<svg width="280" height="90" viewBox="0 0 280 90" aria-hidden="true">
+      <g font-family="DM Sans,sans-serif" font-weight="800" font-size="12" text-anchor="middle" fill="var(--on-surface)">
+        <polygon points="45,18 15,76 75,76" fill="var(--primary-container)" stroke="var(--primary)" stroke-width="2"/>
+        <text x="45" y="58">36</text><text x="45" y="12">1</text><text x="10" y="84">2</text><text x="80" y="84">3</text>
+        <polygon points="140,18 110,76 170,76" fill="var(--secondary-container)" stroke="var(--secondary)" stroke-width="2"/>
+        <text x="140" y="58">225</text><text x="140" y="12">4</text><text x="105" y="84">5</text><text x="175" y="84">6</text>
+        <polygon points="235,18 205,76 265,76" fill="var(--tertiary-container)" stroke="var(--tertiary)" stroke-width="2"/>
+        <text x="235" y="58">?</text><text x="235" y="12">7</text><text x="200" y="84">8</text><text x="270" y="84">9</text>
+      </g></svg>`;
+  }
+  return '';
+}
+
+// Main Tab Switching
+function switchMainTab(tab) {
+  state.mainTab = tab;
+  const sSec = document.getElementById('study-section');
+  const gSec = document.getElementById('games-section');
+  const sBtn = document.getElementById('tab-study-btn');
+  const gBtn = document.getElementById('tab-games-btn');
+  if (!sSec || !gSec || !sBtn || !gBtn) return;
+
+  if (tab === 'study') {
+    stopTimer();
+    sSec.classList.add('active');
+    gSec.classList.remove('active');
+    sBtn.classList.add('active');
+    gBtn.classList.remove('active');
+  } else {
+    gSec.classList.add('active');
+    sSec.classList.remove('active');
+    gBtn.classList.add('active');
+    sBtn.classList.remove('active');
+    selectGame(state.activeGame);
+  }
+  savePersistentState();
+}
+
+// STUDY TAB FUNCTIONS
+function changePerPage(val) {
+  state.perPage = parseInt(val, 10) || 20;
+  state.currentPage = 1;
+  state.jumpHighlightId = null;
+  renderStudy();
+  savePersistentState();
+}
+
+function goToPage(p) {
+  const totalPages = Math.ceil(QUESTIONS.length / state.perPage);
+  if (p < 1 || p > totalPages) return;
+  state.currentPage = p;
+  state.jumpHighlightId = null;
+  renderStudy();
+  const listEl = document.getElementById('study-list');
+  if (listEl) listEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  savePersistentState();
+}
+
+function jumpToQuestion() {
+  const inp = document.getElementById('jump-input');
+  const errEl = document.getElementById('jump-error');
+  if (!inp || !errEl) return;
+  const num = parseInt(inp.value, 10);
+  if (isNaN(num) || num < 1 || num > 180) {
+    errEl.textContent = 'કૃપા કરીને ૧ થી ૧૮૦ વચ્ચેનો માન્ય પ્રશ્ન નંબર લખો.';
+    return;
+  }
+  errEl.textContent = '';
+  state.currentPage = Math.ceil(num / state.perPage);
+  state.jumpHighlightId = num;
+  renderStudy();
+  const card = document.getElementById('q-card-' + num);
+  if (card) card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  savePersistentState();
+}
+
+function toggleExplanation(id) {
+  const drawer = document.getElementById('exp-' + id);
+  const btn = document.getElementById('exp-btn-' + id);
+  if (!drawer || !btn) return;
+  const isOpen = drawer.classList.toggle('open');
+  btn.textContent = isOpen ? 'સમજૂતી છુપાવો' : 'સમજૂતી જુઓ';
+  btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+}
+
+function renderPagination(targetId, totalPages) {
+  const container = document.getElementById(targetId);
+  if (!container) return;
+  if (totalPages <= 1) {
+    container.innerHTML = `<span class="control-label">કુલ ${QUESTIONS.length} પ્રશ્નો દર્શાવેલ છે</span>`;
+    return;
+  }
+  let pills = '';
+  for (let p = 1; p <= totalPages; p++) {
+    pills += `<button type="button" class="page-pill ${p === state.currentPage ? 'active' : ''}" onclick="goToPage(${p})">${p}</button>`;
+  }
+  container.innerHTML = `
+    <button type="button" class="btn btn-soft" onclick="goToPage(${state.currentPage - 1})" ${state.currentPage === 1 ? 'disabled' : ''}>← અગાઉનું પેજ</button>
+    <div class="page-pills">${pills}</div>
+    <button type="button" class="btn btn-soft" onclick="goToPage(${state.currentPage + 1})" ${state.currentPage === totalPages ? 'disabled' : ''}>આગળનું પેજ →</button>
+  `;
+}
+
+function renderStudy() {
+  const listEl = document.getElementById('study-list');
+  if (!listEl) return;
+  const totalPages = Math.ceil(QUESTIONS.length / state.perPage);
+  if (state.currentPage > totalPages) state.currentPage = 1;
+
+  const startIdx = (state.currentPage - 1) * state.perPage;
+  const slice = QUESTIONS.slice(startIdx, startIdx + state.perPage);
+
+  renderPagination('pagination-top', totalPages);
+  renderPagination('pagination-bottom', totalPages);
+
+  listEl.innerHTML = slice.map(q => {
+    const [id, sec, text, opts, ans, exp, diag] = q;
+    const secLabel = sec === 'M' ? 'વિભાગ ૧ : MAT' : 'વિભાગ ૨ : SAT';
+    const hlClass = state.jumpHighlightId === id ? 'highlight-jump' : '';
+    const diagHtml = diag ? `<div class="q-diagram-box">${renderDiagramSvg(diag)}</div>` : '';
+    const optsHtml = opts.map(o => `<div class="q-opt">${escapeHtml(o)}</div>`).join('');
+    return `
+      <article id="q-card-${id}" class="q-card ${hlClass}">
+        <div class="q-meta">
+          <span class="q-num-badge">પ્રશ્ન ${id}</span>
+          <span class="q-sec-tag">${secLabel}</span>
+        </div>
+        <p class="q-text">${escapeHtml(text)}</p>
+        ${diagHtml}
+        <div class="q-options">${optsHtml}</div>
+        <button type="button" id="exp-btn-${id}" class="btn btn-primary" aria-expanded="false" onclick="toggleExplanation(${id})">સમજૂતી જુઓ</button>
+        <div id="exp-${id}" class="exp-drawer">
+          <div class="exp-ans-pill">સાચો જવાબ: ${escapeHtml(ans)}</div>
+          ${formatExpSteps(exp)}
+        </div>
+      </article>
+    `;
+  }).join('');
+}
+
+// GAMES TAB FUNCTIONS
+function updateScoreboardUI() {
+  const pEl = document.getElementById('stat-points');
+  const sEl = document.getElementById('stat-streak');
+  const bEl = document.getElementById('stat-best');
+  const cEl = document.getElementById('stat-correct');
+  if (pEl) pEl.textContent = String(state.points);
+  if (sEl) sEl.textContent = state.streak + ' 🔥';
+  if (bEl) bEl.textContent = state.bestStreak + ' 🏆';
+  if (cEl) cEl.textContent = String(state.correctCount);
+}
+
+function recordGameAnswer(isCorrect, bonusPts) {
+  if (isCorrect) {
+    state.streak += 1;
+    if (state.streak > state.bestStreak) state.bestStreak = state.streak;
+    state.correctCount += 1;
+    state.points += (10 + (bonusPts || 0));
+  } else {
+    state.streak = 0;
+  }
+  updateScoreboardUI();
+  savePersistentState();
+}
+
+function stopTimer() {
+  if (gameRuntime.timerId) {
+    clearInterval(gameRuntime.timerId);
+    gameRuntime.timerId = null;
+  }
+}
+
+function selectGame(gameId) {
+  stopTimer();
+  state.activeGame = gameId;
+  const ids = ['speed', 'balloon', 'racing', 'solver', 'shapes'];
+  ids.forEach(id => {
+    const b = document.getElementById('gbtn-' + id);
+    if (b) b.classList.toggle('active', id === gameId);
+  });
+
+  // Bring arena front & center smoothly on mobile
+  const arena = document.getElementById('game-arena');
+  if (arena && window.innerWidth <= 820) {
+    arena.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // Fresh shuffled deck every game start
+  const playable = QUESTIONS.filter(q => q[4] !== 'GRACE' && q[3].length === 4);
+  if (gameId === 'solver') {
+    const mathReas = playable.filter(q => /\d/.test(q[2]) && q[5].split('\n').length >= 2);
+    gameRuntime.deck = shuffleArray(mathReas);
+    gameRuntime.solverStepIdx = 0;
+  } else {
+    gameRuntime.deck = shuffleArray(playable);
+  }
+  gameRuntime.idx = 0;
+  gameRuntime.answered = false;
+  gameRuntime.racePos = 0;
+  gameRuntime.shapePuzzleIdx = 0;
+  gameRuntime.shapeAnimStep = 0;
+
+  renderActiveGame();
+}
+
+function isOptionCorrect(optText, ansStr) {
+  const m = optText.match(/^\(([A-D])\)/);
+  if (!m) return false;
+  const letter = m[1];
+  return ansStr.split('&').map(s => s.trim()).includes(letter);
+}
+
+function triggerBalloonConfetti() {
+  const fx = document.getElementById('fx-layer');
+  if (!fx) return;
+  fx.innerHTML = '';
+  const items = ['🎈', '🎉', '✨', '🎊', '🎈', '⭐', '🥳'];
+  for (let i = 0; i < 12; i++) {
+    const span = document.createElement('span');
+    span.className = 'balloon-pop';
+    span.textContent = items[i % items.length];
+    span.style.left = (8 + (i * 8) % 85) + '%';
+    span.style.animationDelay = (i * 55) + 'ms';
+    fx.appendChild(span);
+  }
+  setTimeout(() => { if (fx) fx.innerHTML = ''; }, 1700);
+}
+
+function triggerFunnyEmoji() {
+  const fx = document.getElementById('fx-layer');
+  if (!fx) return;
+  fx.innerHTML = '';
+  const funny = ['😜', '🤪', '🙈', '🐸', '😵‍💫'];
+  const span = document.createElement('span');
+  span.className = 'funny-emoji-pop';
+  span.textContent = funny[Math.floor(Math.random() * funny.length)];
+  fx.appendChild(span);
+  setTimeout(() => { if (fx) fx.innerHTML = ''; }, 1000);
+}
+
+function renderActiveGame() {
+  const arena = document.getElementById('arena-content');
+  if (!arena) return;
+  const g = state.activeGame;
+
+  if (g === 'shapes') {
+    renderShapePuzzleGame(arena);
+    return;
+  }
+
+  if (gameRuntime.idx >= gameRuntime.deck.length) {
+    gameRuntime.deck = shuffleArray(gameRuntime.deck);
+    gameRuntime.idx = 0;
+  }
+  const q = gameRuntime.deck[gameRuntime.idx];
+  const [id, , text, opts, ans, exp, diag] = q;
+  const diagHtml = diag ? `<div class="q-diagram-box">${renderDiagramSvg(diag)}</div>` : '';
+
+  if (g === 'speed') {
+    gameRuntime.timeLeft = 20;
+    arena.innerHTML = `
+      <div class="arena-header">
+        <h2 class="arena-title">⚡ સ્પીડ ચેલેન્જ ક્વિઝ</h2>
+        <span class="q-num-badge">પ્રશ્ન #${id} • <span data-role="timer-sec">20</span> સેકન્ડ</span>
+      </div>
+      <div class="timer-track"><div data-role="timer-bar" class="timer-fill" style="width:100%"></div></div>
+      <div class="quiz-q-box">${escapeHtml(text)}</div>
+      ${diagHtml}
+      <div class="quiz-options-grid">
+        ${opts.map((o, idx) => `<button type="button" class="quiz-opt-btn" onclick="submitGameOpt(${idx})">${escapeHtml(o)}</button>`).join('')}
+      </div>
+      <div data-role="game-fb" class="feedback-banner"></div>
+      <div class="input-row">
+        <button type="button" data-role="game-next-btn" class="btn btn-primary" onclick="nextGameQ()" style="display:none">આગળનો પ્રશ્ન →</button>
+        <button type="button" class="btn btn-soft" onclick="selectGame('speed')">🔀 ફરીથી શફલ</button>
+      </div>
+    `;
+    startSpeedTimer();
+  } else if (g === 'balloon') {
+    arena.innerHTML = `
+      <div class="arena-header">
+        <h2 class="arena-title">🎈 બલૂન &amp; ઇમોજી ક્વિઝ</h2>
+        <span class="q-num-badge">પ્રશ્ન #${id}</span>
+      </div>
+      <div class="quiz-q-box">${escapeHtml(text)}</div>
+      ${diagHtml}
+      <div class="quiz-options-grid">
+        ${opts.map((o, idx) => `<button type="button" class="quiz-opt-btn" onclick="submitGameOpt(${idx})">${escapeHtml(o)}</button>`).join('')}
+      </div>
+      <div data-role="game-fb" class="feedback-banner"></div>
+      <div class="input-row">
+        <button type="button" data-role="game-next-btn" class="btn btn-primary" onclick="nextGameQ()" style="display:none">આગળનો પ્રશ્ન →</button>
+        <button type="button" class="btn btn-soft" onclick="selectGame('balloon')">🔀 નવા પ્રશ્નો</button>
+      </div>
+    `;
+  } else if (g === 'racing') {
+    const pct = Math.min(88, Math.round((gameRuntime.racePos / gameRuntime.raceGoal) * 84));
+    const won = gameRuntime.racePos >= gameRuntime.raceGoal;
+    arena.innerHTML = `
+      <div class="arena-header">
+        <h2 class="arena-title">🏎️ રેસિંગ ચેલેન્જ ગેમ</h2>
+        <span class="q-num-badge">અંતર: ${gameRuntime.racePos} / ${gameRuntime.raceGoal} લેપ</span>
+      </div>
+      <div class="race-track">
+        <div class="race-lane">
+          <span class="race-car" style="left:calc(${pct}% + 8px)">🏎️</span>
+          <span class="race-finish">🏁</span>
+        </div>
+      </div>
+      ${won ? `
+        <div class="feedback-banner show ok">🏆 અભિનંદન! તમે ફિનિશ લાઇન પાર કરી! (+25 બોનસ પોઇન્ટ્સ)</div>
+        <button type="button" class="btn btn-primary" onclick="selectGame('racing')">નવી રેસ શરૂ કરો 🏁</button>
+      ` : `
+        <div class="quiz-q-box">${escapeHtml(text)}</div>
+        ${diagHtml}
+        <div class="quiz-options-grid">
+          ${opts.map((o, idx) => `<button type="button" class="quiz-opt-btn" onclick="submitGameOpt(${idx})">${escapeHtml(o)}</button>`).join('')}
+        </div>
+        <div data-role="game-fb" class="feedback-banner"></div>
+        <button type="button" data-role="game-next-btn" class="btn btn-primary" onclick="nextGameQ()" style="display:none">કાર આગળ દોડાવો →</button>
+      `}
+    `;
+  } else if (g === 'solver') {
+    const steps = exp.split('\n').filter(Boolean);
+    const shownSteps = steps.slice(0, gameRuntime.solverStepIdx);
+    arena.innerHTML = `
+      <div class="arena-header">
+        <h2 class="arena-title">🧮 મેથ્સ અને રીઝનિંગ સ્ટેપ-સોલ્વર</h2>
+        <span class="q-num-badge">પ્રશ્ન #${id}</span>
+      </div>
+      <div class="quiz-q-box">${escapeHtml(text)}</div>
+      ${diagHtml}
+      <div class="input-row" style="margin-bottom:var(--space-md);flex-wrap:wrap;">
+        <button type="button" class="btn btn-secondary" onclick="revealSolverStep()" ${gameRuntime.solverStepIdx >= steps.length ? 'disabled' : ''}>💡 આગળનું સ્ટેપ જુઓ (${gameRuntime.solverStepIdx}/${steps.length})</button>
+      </div>
+      ${shownSteps.length ? `<div class="solver-steps-box">${shownSteps.map((s, i) => `<div class="solver-step">સ્ટેપ ${i+1}: ${escapeHtml(s)}</div>`).join('')}</div>` : ''}
+      <div class="quiz-options-grid">
+        ${opts.map((o, idx) => `<button type="button" class="quiz-opt-btn" onclick="submitGameOpt(${idx})">${escapeHtml(o)}</button>`).join('')}
+      </div>
+      <div data-role="game-fb" class="feedback-banner"></div>
+      <button type="button" data-role="game-next-btn" class="btn btn-primary" onclick="nextGameQ()" style="display:none">આગળનો દાખલો →</button>
+    `;
+  }
+}
+
+function startSpeedTimer() {
+  stopTimer();
+  gameRuntime.timerId = setInterval(() => {
+    if (gameRuntime.answered) { stopTimer(); return; }
+    gameRuntime.timeLeft -= 1;
+    const secEl = document.querySelector('[data-role="timer-sec"]');
+    const barEl = document.querySelector('[data-role="timer-bar"]');
+    if (secEl) secEl.textContent = String(Math.max(0, gameRuntime.timeLeft));
+    if (barEl) {
+      barEl.style.width = Math.max(0, (gameRuntime.timeLeft / 20) * 100) + '%';
+      if (gameRuntime.timeLeft <= 6) barEl.classList.add('danger');
+    }
+    if (gameRuntime.timeLeft <= 0) {
+      stopTimer();
+      handleTimeOut();
+    }
+  }, 1000);
+}
+
+function handleTimeOut() {
+  gameRuntime.answered = true;
+  const q = gameRuntime.deck[gameRuntime.idx];
+  const btns = document.querySelectorAll('#arena-content .quiz-opt-btn');
+  btns.forEach((b, i) => {
+    b.disabled = true;
+    if (isOptionCorrect(q[3][i], q[4])) b.classList.add('correct');
+  });
+  recordGameAnswer(false, 0);
+  const fb = document.querySelector('[data-role="game-fb"]');
+  if (fb) {
+    fb.className = 'feedback-banner show bad';
+    fb.textContent = `⏰ સમય પૂરો! સાચો જવાબ: ${q[4]}`;
+  }
+  const nxt = document.querySelector('[data-role="game-next-btn"]');
+  if (nxt) nxt.style.display = 'inline-flex';
+}
+
+function submitGameOpt(optIdx) {
+  if (gameRuntime.answered) return;
+  gameRuntime.answered = true;
+  stopTimer();
+
+  const q = gameRuntime.deck[gameRuntime.idx];
+  const opts = q[3];
+  const ans = q[4];
+  const correct = isOptionCorrect(opts[optIdx], ans);
+
+  const btns = document.querySelectorAll('#arena-content .quiz-opt-btn');
+  btns.forEach((b, i) => {
+    b.disabled = true;
+    if (isOptionCorrect(opts[i], ans)) b.classList.add('correct');
+    else if (i === optIdx && !correct) b.classList.add('wrong');
+  });
+
+  let bonus = 0;
+  if (state.activeGame === 'speed' && correct) {
+    bonus = Math.max(2, Math.floor(gameRuntime.timeLeft / 2));
+  }
+  if (state.activeGame === 'racing' && correct) {
+    gameRuntime.racePos += 1;
+    if (gameRuntime.racePos >= gameRuntime.raceGoal) bonus = 25;
+  }
+
+  recordGameAnswer(correct, bonus);
+
+  if (state.activeGame === 'balloon') {
+    if (correct) triggerBalloonConfetti();
+    else triggerFunnyEmoji();
+  }
+
+  const fb = document.querySelector('[data-role="game-fb"]');
+  if (fb) {
+    fb.className = 'feedback-banner show ' + (correct ? 'ok' : 'bad');
+    fb.textContent = correct
+      ? `🎉 શાબાશ! સાચો જવાબ (+${10 + bonus} પોઇન્ટ્સ)`
+      : `😜 ખોટો જવાબ! સાચો જવાબ: ${ans} — ${q[5].split('\n')[0]}`;
+  }
+
+  if (state.activeGame === 'racing' && gameRuntime.racePos >= gameRuntime.raceGoal) {
+    setTimeout(renderActiveGame, 650);
+    return;
+  }
+
+  const nxt = document.querySelector('[data-role="game-next-btn"]');
+  if (nxt) nxt.style.display = 'inline-flex';
+}
+
+function nextGameQ() {
+  gameRuntime.idx += 1;
+  gameRuntime.answered = false;
+  gameRuntime.solverStepIdx = 0;
+  renderActiveGame();
+}
+
+function revealSolverStep() {
+  const q = gameRuntime.deck[gameRuntime.idx];
+  const steps = q[5].split('\n').filter(Boolean);
+  if (gameRuntime.solverStepIdx < steps.length) {
+    gameRuntime.solverStepIdx += 1;
+    renderActiveGame();
+  }
+}
+
+// GAME 5: Shape Counting Puzzle with Animated Colored Lines
+const SHAPE_PUZZLES = [
+  {
+    title: '૪ × ૪ ચોરસ ગ્રીડમાં કુલ ચોરસ શોધો (પ્રશ્ન ૨૩)',
+    opts: ['20', '25', '30', '32'],
+    ans: '30',
+    steps: [
+      { label: '૧×૧ ના ૧૬ નાના ચોરસ (ગુલાબી રંગ)', color: 'var(--data-1)', rect: [20, 20, 40, 40] },
+      { label: '૨×૨ ના ૯ મધ્યમ ચોરસ (જાંબલી રંગ)', color: 'var(--data-2)', rect: [20, 20, 80, 80] },
+      { label: '૩×૩ ના ૪ મોટા ચોરસ (વાદળી રંગ)', color: 'var(--data-3)', rect: [20, 20, 120, 120] },
+      { label: '૪×૪ નો ૧ સંપૂર્ણ ચોરસ (નારંગી રંગ) → કુલ 16+9+4+1 = 30', color: 'var(--data-4)', rect: [20, 20, 160, 160] }
+    ],
+    baseType: 'grid4'
+  },
+  {
+    title: '૩ × ૩ ચોરસ ગ્રીડમાં કુલ ચોરસ શોધો',
+    opts: ['9', '13', '14', '16'],
+    ans: '14',
+    steps: [
+      { label: '૧×૧ ના ૯ નાના ચોરસ (ગુલાબી)', color: 'var(--data-1)', rect: [35, 25, 45, 45] },
+      { label: '૨×૨ ના ૪ મધ્યમ ચોરસ (જાંબલી)', color: 'var(--data-2)', rect: [35, 25, 90, 90] },
+      { label: '૩×૩ નો ૧ સંપૂર્ણ ચોરસ (વાદળી) → કુલ 9+4+1 = 14', color: 'var(--data-3)', rect: [35, 25, 135, 135] }
+    ],
+    baseType: 'grid3'
+  },
+  {
+    title: 'આપેલા મોટા ત્રિકોણમાં કુલ કેટલા ત્રિકોણ છે?',
+    opts: ['6', '8', '10', '12'],
+    ans: '10',
+    steps: [
+      { label: 'પાયામાં ૪ નાના અલગ-અલગ ત્રિકોણ (1, 2, 3, 4)', color: 'var(--data-1)', poly: '100,20 30,170 65,170' },
+      { label: '૨-૨ ના જોડાણથી ૩ ત્રિકોણ (1+2, 2+3, 3+4)', color: 'var(--data-2)', poly: '100,20 30,170 100,170' },
+      { label: '૩-૩ ના જોડાણથી ૨ ત્રિકોણ (1+2+3, 2+3+4)', color: 'var(--data-3)', poly: '100,20 30,170 135,170' },
+      { label: '૧ સંપૂર્ણ મોટો ત્રિકોણ → કુલ 4+3+2+1 = 10', color: 'var(--data-4)', poly: '100,20 30,170 170,170' }
+    ],
+    baseType: 'tri4'
+  }
+];
+
+function buildShapeSvg(puzzle, stepIdx) {
+  let base = '';
+  if (puzzle.baseType === 'grid4') {
+    for (let i = 0; i <= 4; i++) {
+      base += `<line x1="${20+i*40}" y1="20" x2="${20+i*40}" y2="180" stroke="var(--outline)" stroke-width="2"/>`;
+      base += `<line x1="20" y1="${20+i*40}" x2="180" y2="${20+i*40}" stroke="var(--outline)" stroke-width="2"/>`;
+    }
+  } else if (puzzle.baseType === 'grid3') {
+    for (let i = 0; i <= 3; i++) {
+      base += `<line x1="${35+i*45}" y1="25" x2="${35+i*45}" y2="160" stroke="var(--outline)" stroke-width="2"/>`;
+      base += `<line x1="35" y1="${25+i*45}" x2="170" y2="${25+i*45}" stroke="var(--outline)" stroke-width="2"/>`;
+    }
+  } else if (puzzle.baseType === 'tri4') {
+    base = `
+      <polygon points="100,20 30,170 170,170" fill="none" stroke="var(--outline)" stroke-width="2.5"/>
+      <line x1="100" y1="20" x2="65" y2="170" stroke="var(--outline)" stroke-width="2"/>
+      <line x1="100" y1="20" x2="100" y2="170" stroke="var(--outline)" stroke-width="2"/>
+      <line x1="100" y1="20" x2="135" y2="170" stroke="var(--outline)" stroke-width="2"/>
+    `;
+  }
+
+  let highlight = '';
+  if (stepIdx > 0) {
+    const st = puzzle.steps[stepIdx - 1];
+    if (st.rect) {
+      const [x, y, w, h] = st.rect;
+      highlight = `<rect class="anim-line" x="${x}" y="${y}" width="${w}" height="${h}" fill="none" stroke="${st.color}" stroke-width="5" rx="4"/>`;
+    } else if (st.poly) {
+      highlight = `<polygon class="anim-line" points="${st.poly}" fill="none" stroke="${st.color}" stroke-width="5"/>`;
+    }
+  }
+
+  return `<svg width="200" height="195" viewBox="0 0 200 195" aria-hidden="true">${base}${highlight}</svg>`;
+}
+
+function renderShapePuzzleGame(arena) {
+  const p = SHAPE_PUZZLES[gameRuntime.shapePuzzleIdx % SHAPE_PUZZLES.length];
+  const st = gameRuntime.shapeAnimStep > 0 ? p.steps[gameRuntime.shapeAnimStep - 1] : null;
+  arena.innerHTML = `
+    <div class="arena-header">
+      <h2 class="arena-title">🔺 આકાર શોધ પઝલ</h2>
+      <span class="q-num-badge">પઝલ ${(gameRuntime.shapePuzzleIdx % SHAPE_PUZZLES.length) + 1} / ${SHAPE_PUZZLES.length}</span>
+    </div>
+    <div class="quiz-q-box">${escapeHtml(p.title)}</div>
+    <div class="shape-stage">
+      ${buildShapeSvg(p, gameRuntime.shapeAnimStep)}
+      <div class="input-row" style="flex-wrap:wrap;justify-content:center;">
+        <button type="button" class="btn btn-secondary" onclick="nextShapeAnim()">✨ રંગીન લાઇન સમજૂતી (${gameRuntime.shapeAnimStep}/${p.steps.length})</button>
+      </div>
+      ${st ? `<div class="solver-step" style="border-left-color:${st.color}">${escapeHtml(st.label)}</div>` : ''}
+    </div>
+    <div class="quiz-options-grid">
+      ${p.opts.map((o, idx) => `<button type="button" class="quiz-opt-btn" onclick="submitShapeAnswer(${idx})">${escapeHtml(o)}</button>`).join('')}
+    </div>
+    <div data-role="shape-fb" class="feedback-banner"></div>
+    <button type="button" class="btn btn-soft" onclick="nextShapePuzzle()">આગળની પઝલ →</button>
+  `;
+}
+
+function nextShapeAnim() {
+  const p = SHAPE_PUZZLES[gameRuntime.shapePuzzleIdx % SHAPE_PUZZLES.length];
+  gameRuntime.shapeAnimStep = (gameRuntime.shapeAnimStep + 1) > p.steps.length ? 1 : gameRuntime.shapeAnimStep + 1;
+  renderActiveGame();
+}
+
+function submitShapeAnswer(optIdx) {
+  if (gameRuntime.answered) return;
+  gameRuntime.answered = true;
+  const p = SHAPE_PUZZLES[gameRuntime.shapePuzzleIdx % SHAPE_PUZZLES.length];
+  const chosen = p.opts[optIdx];
+  const ok = chosen === p.ans;
+  const btns = document.querySelectorAll('#arena-content .quiz-opt-btn');
+  btns.forEach((b, i) => {
+    b.disabled = true;
+    if (p.opts[i] === p.ans) b.classList.add('correct');
+    else if (i === optIdx && !ok) b.classList.add('wrong');
+  });
+  recordGameAnswer(ok, ok ? 5 : 0);
+  const fb = document.querySelector('[data-role="shape-fb"]');
+  if (fb) {
+    fb.className = 'feedback-banner show ' + (ok ? 'ok' : 'bad');
+    fb.textContent = ok ? `🎉 બિલકુલ સાચું! કુલ આકાર = ${p.ans} (+15 પોઇન્ટ્સ)` : `ખોટું! સાચો જવાબ ${p.ans} છે. ઉપર "રંગીન લાઇન સમજૂતી" પર ક્લિક કરો.`;
+  }
+}
+
+function nextShapePuzzle() {
+  gameRuntime.shapePuzzleIdx = (gameRuntime.shapePuzzleIdx + 1) % SHAPE_PUZZLES.length;
+  gameRuntime.shapeAnimStep = 0;
+  gameRuntime.answered = false;
+  renderActiveGame();
+}
+
+// State Persistence via Gemini Notebook Shim API
+async function savePersistentState() {
+  if (!window.notebookAppApi || !window.notebookAppApi.setAppState) return;
+  try {
+    await window.notebookAppApi.setAppState({
+      mainTab: state.mainTab,
+      perPage: state.perPage,
+      currentPage: state.currentPage,
+      activeGame: state.activeGame,
+      points: state.points,
+      streak: state.streak,
+      bestStreak: state.bestStreak,
+      correctCount: state.correctCount
+    });
+  } catch (e) { /* silent fallback */ }
+}
+
+async function initApp() {
+  if (window.notebookAppApi && window.notebookAppApi.getAppState) {
+    try {
+      const saved = await window.notebookAppApi.getAppState();
+      if (saved && typeof saved === 'object') {
+        if (saved.perPage) state.perPage = saved.perPage;
+        if (saved.currentPage) state.currentPage = saved.currentPage;
+        if (saved.activeGame) state.activeGame = saved.activeGame;
+        if (typeof saved.points === 'number') state.points = saved.points;
+        if (typeof saved.streak === 'number') state.streak = saved.streak;
+        if (typeof saved.bestStreak === 'number') state.bestStreak = saved.bestStreak;
+        if (typeof saved.correctCount === 'number') state.correctCount = saved.correctCount;
+        if (saved.mainTab === 'games' || saved.mainTab === 'study') state.mainTab = saved.mainTab;
+      }
+    } catch (e) { /* use defaults */ }
+  }
+
+  const perSel = document.getElementById('per-page-select');
+  if (perSel) perSel.value = String(state.perPage);
+
+  updateScoreboardUI();
+  renderStudy();
+  switchMainTab(state.mainTab);
+
+  if (window.notebookAppApi && window.notebookAppApi.notifyAppReady) {
+    window.notebookAppApi.notifyAppReady();
+  }
+}
+
+document.addEventListener('DOMContentLoaded', initApp);
+</script>
+</body>
+</html>
