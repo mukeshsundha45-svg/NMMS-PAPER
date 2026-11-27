@@ -1,0 +1,1815 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="artifact-type" content="tool">
+<meta name="design-style" content="sticker">
+<title>NMMS 2024–25 (Set A) — અભ્યાસ અને ક્વિઝ</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..900;1,9..40,400..900&family=Noto+Sans+Gujarati:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  color-scheme: light;
+
+  /* Sticker Style Tokens */
+  --background: #fef7ff;
+  --surface-container-low: #ffffff;
+  --surface-container: #f8eef8;
+  --surface-container-high: #f2e8f2;
+
+  --on-surface: #2e1a28;
+  --on-surface-variant: #604868;
+
+  --outline: #907898;
+  --outline-variant: #dcc8e0;
+
+  --primary: #c2207f;
+  --on-primary: #ffffff;
+  --primary-container: #f080c0;
+  --on-primary-container: #2e1a28;
+  --secondary: #7c52aa;
+  --on-secondary: #ffffff;
+  --tertiary: #0096cc;
+  --error: #c53030;
+  --on-error: #ffffff;
+
+  --data-1: #c2207f;
+  --data-2: #7c52aa;
+  --data-3: #0096cc;
+  --data-4: #d96a00;
+  --data-context: #c8b8d0;
+
+  --font-headline: 'Noto Sans Gujarati', 'DM Sans', sans-serif;
+  --font-body: 'Noto Sans Gujarati', 'DM Sans', sans-serif;
+  --font-label: 'Noto Sans Gujarati', 'DM Sans', sans-serif;
+
+  --rounded: 1rem;
+  --rounded-lg: 2rem;
+  --rounded-full: 9999px;
+
+  --shadow-pink: 0 4px 16px rgb(224 64 160 / 0.2);
+  --shadow-pink-deep: 0 10px 28px rgb(224 64 160 / 0.32);
+  --shadow-grape: 0 4px 16px rgb(124 82 170 / 0.2);
+  --shadow-sky: 0 4px 16px rgb(0 150 204 / 0.2);
+  --shadow-green: 0 4px 16px rgb(21 128 61 / 0.22);
+  --pop-scale: scale(1.03);
+  --lift: translateY(-4px);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Shared Foundation Tokens */
+  --positive: #15803d;
+  --positive-bg: #dcfce7;
+  --warning: #b45309;
+  --warning-bg: #fef3c7;
+  --error-bg: #fee2e2;
+  --focus: #c2207f;
+
+  --display-size: clamp(1.75rem, 1.35rem + 1.4vw, 2.5rem);
+  --headline-size: clamp(1.25rem, 1.1rem + 0.5vw, 1.5rem);
+  --subhead-size: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+  --body-size: clamp(0.95rem, 0.92rem + 0.15vw, 1.05rem);
+  --label-size: 0.78rem;
+
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2.5rem;
+  --space-2xl: 4rem;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-micro: 120ms;
+  --dur-short: 220ms;
+  --dur-long: 420ms;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body {
+  overflow-x: clip;
+  margin: 0;
+  padding: 0;
+  background-color: var(--background);
+  color: var(--on-surface);
+  font-family: var(--font-body);
+  font-size: var(--body-size);
+  line-height: 1.6;
+}
+header { position: static !important; }
+button, input, select, textarea { font-family: inherit; }
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.page-grid {
+  display: grid;
+  gap: var(--space-lg);
+  padding: var(--space-lg);
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.page-grid * { min-width: 0; }
+
+/* Hero / Header */
+.hero-panel {
+  background: var(--surface-container-low);
+  border-radius: var(--rounded-lg);
+  box-shadow: var(--shadow-pink);
+  padding: var(--space-xl);
+  display: grid;
+  gap: var(--space-lg);
+}
+
+.hero-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+}
+
+.brand-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  background: var(--primary-container);
+  color: var(--on-primary-container);
+  font-weight: 700;
+  font-size: var(--label-size);
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--rounded-full);
+}
+
+.display {
+  font-family: var(--font-headline);
+  font-weight: 900;
+  font-size: var(--display-size);
+  line-height: 1.15;
+  margin: var(--space-sm) 0 var(--space-xs);
+  color: var(--on-surface);
+}
+.display em {
+  font-style: normal;
+  color: var(--primary);
+}
+.subtitle {
+  margin: 0;
+  color: var(--on-surface-variant);
+  max-width: 65ch;
+}
+
+/* Segmented Mode Switch */
+.segmented {
+  display: inline-flex;
+  background: var(--surface-container-high);
+  padding: var(--space-xs);
+  border-radius: var(--rounded-full);
+  gap: var(--space-xs);
+  flex-wrap: wrap;
+}
+.seg-btn {
+  border: none;
+  background: transparent;
+  color: var(--on-surface-variant);
+  font-weight: 700;
+  font-size: var(--body-size);
+  padding: var(--space-sm) var(--space-lg);
+  min-height: 44px;
+  border-radius: var(--rounded-full);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  transition: transform var(--dur-short) var(--ease-bounce), background-color var(--dur-short) var(--ease-out), color var(--dur-short) var(--ease-out), box-shadow var(--dur-short) var(--ease-out);
+}
+.seg-btn:hover { transform: var(--pop-scale); color: var(--on-surface); }
+.seg-btn.active {
+  background: var(--primary);
+  color: var(--on-primary);
+  box-shadow: var(--shadow-pink);
+}
+
+/* Stats Strip */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr));
+  gap: var(--space-md);
+}
+.stat-card {
+  background: var(--surface-container-low);
+  border-radius: var(--rounded);
+  padding: var(--space-md) var(--space-lg);
+  box-shadow: var(--shadow-pink);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+.stat-card:nth-child(3n+2) { box-shadow: var(--shadow-sky); }
+.stat-card:nth-child(3n+3) { box-shadow: var(--shadow-grape); }
+
+.stat-label {
+  font-size: var(--label-size);
+  font-weight: 700;
+  color: var(--on-surface-variant);
+}
+.stat-value {
+  font-size: 1.65rem;
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
+  color: var(--on-surface);
+  line-height: 1.1;
+}
+.stat-value.accent { color: var(--primary); }
+.stat-sub {
+  font-size: var(--label-size);
+  color: var(--on-surface-variant);
+}
+.progress-track {
+  width: 100%;
+  height: 10px;
+  background: var(--surface-container-high);
+  border-radius: var(--rounded-full);
+  overflow: hidden;
+  margin-top: var(--space-xs);
+}
+.progress-fill {
+  height: 100%;
+  background: var(--tertiary);
+  border-radius: var(--rounded-full);
+  width: 0%;
+  transition: width var(--dur-long) var(--ease-out);
+}
+
+/* Badges Row */
+.badges-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  align-items: center;
+}
+.badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--rounded-full);
+  font-size: var(--label-size);
+  font-weight: 700;
+  background: var(--surface-container);
+  color: var(--on-surface-variant);
+  transition: transform var(--dur-short) var(--ease-bounce), background-color var(--dur-short) var(--ease-out);
+}
+.badge-pill.unlocked {
+  background: var(--primary-container);
+  color: var(--on-primary-container);
+  box-shadow: var(--shadow-pink);
+}
+
+/* Filter & Control Card */
+.card {
+  background: var(--surface-container-low);
+  border-radius: var(--rounded);
+  box-shadow: var(--shadow-grape);
+  padding: var(--space-lg);
+}
+.controls-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  gap: var(--space-md);
+  align-items: end;
+}
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+.field-label {
+  font-size: var(--label-size);
+  font-weight: 700;
+  color: var(--on-surface-variant);
+}
+.input-pill, .select-pill {
+  background: var(--surface-container);
+  border: 2px solid var(--outline);
+  border-radius: var(--rounded-full);
+  padding: 0.6rem var(--space-lg);
+  min-height: 44px;
+  font-size: var(--body-size);
+  color: var(--on-surface);
+  transition: border-color var(--dur-micro) var(--ease-out), box-shadow var(--dur-micro) var(--ease-out);
+}
+.select-pill { padding-right: var(--space-xl); }
+.input-pill:focus, .select-pill:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: var(--shadow-pink);
+}
+
+.chips-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+}
+.chip {
+  border: 2px solid var(--outline-variant);
+  background: var(--surface-container-low);
+  color: var(--on-surface);
+  font-weight: 700;
+  font-size: var(--label-size);
+  padding: var(--space-sm) var(--space-md);
+  min-height: 44px;
+  border-radius: var(--rounded-full);
+  cursor: pointer;
+  transition: transform var(--dur-short) var(--ease-bounce), background-color var(--dur-micro) var(--ease-out), color var(--dur-micro) var(--ease-out), border-color var(--dur-micro) var(--ease-out);
+}
+.chip:hover { transform: var(--pop-scale); border-color: var(--secondary); }
+.chip.active {
+  background: var(--secondary);
+  color: var(--on-secondary);
+  border-color: var(--secondary);
+  box-shadow: var(--shadow-grape);
+}
+
+/* Buttons */
+.btn {
+  border: none;
+  border-radius: var(--rounded-full);
+  padding: var(--space-sm) var(--space-lg);
+  min-height: 44px;
+  font-size: var(--body-size);
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  transition: transform var(--dur-short) var(--ease-bounce), box-shadow var(--dur-short) var(--ease-out), background-color var(--dur-micro) var(--ease-out);
+}
+.btn:hover:not(:disabled) { transform: var(--pop-scale); }
+.btn:active:not(:disabled) { transform: scale(0.97); }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.btn-primary {
+  background: var(--primary);
+  color: var(--on-primary);
+  box-shadow: var(--shadow-pink);
+}
+.btn-primary:hover:not(:disabled) { box-shadow: var(--shadow-pink-deep); }
+.btn-secondary {
+  background: var(--secondary);
+  color: var(--on-secondary);
+  box-shadow: var(--shadow-grape);
+}
+.btn-quiet {
+  background: var(--surface-container);
+  color: var(--primary);
+}
+.btn-quiet:hover:not(:disabled) { background: var(--surface-container-high); }
+
+/* Workspace Split */
+.workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.95fr);
+  gap: var(--space-lg);
+  align-items: start;
+}
+
+/* Question Navigator Pills */
+.q-nav-wrap {
+  margin-top: var(--space-md);
+  background: var(--surface-container);
+  border-radius: var(--rounded);
+  padding: var(--space-md);
+}
+.q-nav-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  max-height: 156px;
+  overflow-y: auto;
+  padding: var(--space-xs);
+}
+.q-dot {
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: var(--rounded-full);
+  border: 2px solid transparent;
+  background: var(--surface-container-low);
+  color: var(--on-surface);
+  font-weight: 700;
+  font-size: var(--label-size);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--dur-micro) var(--ease-bounce), background-color var(--dur-micro) var(--ease-out);
+}
+.q-dot:hover { transform: var(--pop-scale); }
+.q-dot.current {
+  background: var(--primary);
+  color: var(--on-primary);
+  box-shadow: var(--shadow-pink);
+}
+.q-dot.solved-ok { background: var(--positive-bg); color: var(--positive); border-color: var(--positive); }
+.q-dot.solved-err { background: var(--error-bg); color: var(--error); border-color: var(--error); }
+.q-dot.grace-dot { border-color: var(--warning); }
+
+/* Question Card */
+.q-card {
+  background: var(--surface-container-low);
+  border-radius: var(--rounded-lg);
+  box-shadow: var(--shadow-pink);
+  padding: var(--space-xl);
+  display: grid;
+  gap: var(--space-lg);
+  animation: cardPop var(--dur-long) var(--ease-bounce);
+}
+@keyframes cardPop {
+  from { opacity: 0; transform: translateY(10px) scale(0.985); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.q-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+}
+.q-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  align-items: center;
+}
+.tag-num {
+  background: var(--primary);
+  color: var(--on-primary);
+  font-weight: 800;
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--rounded-full);
+  font-size: var(--label-size);
+}
+.tag-subj {
+  border: 2px solid var(--secondary);
+  color: var(--secondary);
+  font-weight: 700;
+  padding: 2px var(--space-md);
+  border-radius: var(--rounded-full);
+  font-size: var(--label-size);
+}
+.tag-grace {
+  background: var(--warning-bg);
+  color: var(--warning);
+  font-weight: 800;
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--rounded-full);
+  font-size: var(--label-size);
+}
+.tag-dual {
+  background: var(--surface-container);
+  color: var(--secondary);
+  font-weight: 800;
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--rounded-full);
+  font-size: var(--label-size);
+}
+
+.q-text {
+  font-size: var(--headline-size);
+  font-weight: 800;
+  line-height: 1.4;
+  margin: 0;
+  color: var(--on-surface);
+}
+
+/* Options List */
+.options-list {
+  display: grid;
+  gap: var(--space-sm);
+}
+.opt-btn {
+  width: 100%;
+  text-align: left;
+  background: var(--surface-container);
+  border: 2px solid transparent;
+  border-radius: var(--rounded-full);
+  padding: var(--space-sm) var(--space-lg);
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  font-size: var(--body-size);
+  font-weight: 600;
+  color: var(--on-surface);
+  cursor: pointer;
+  transition: transform var(--dur-short) var(--ease-bounce), background-color var(--dur-micro) var(--ease-out), box-shadow var(--dur-micro) var(--ease-out);
+}
+.opt-btn:hover:not(:disabled) {
+  transform: var(--pop-scale);
+  background: var(--surface-container-high);
+  box-shadow: var(--shadow-sky);
+}
+.opt-btn:disabled { cursor: default; }
+.opt-letter {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  border-radius: var(--rounded-full);
+  background: var(--surface-container-low);
+  color: var(--primary);
+  font-weight: 900;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.opt-btn.is-correct {
+  background: var(--positive-bg);
+  border-color: var(--positive);
+  color: var(--positive);
+  box-shadow: var(--shadow-green);
+}
+.opt-btn.is-correct .opt-letter {
+  background: var(--positive);
+  color: var(--on-primary);
+}
+.opt-btn.is-wrong {
+  background: var(--error-bg);
+  border-color: var(--error);
+  color: var(--error);
+  animation: shake var(--dur-long) var(--ease-out);
+}
+.opt-btn.is-wrong .opt-letter {
+  background: var(--error);
+  color: var(--on-error);
+}
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  50% { transform: translateX(6px); }
+  75% { transform: translateX(-4px); }
+}
+
+.feedback-banner {
+  border-radius: var(--rounded);
+  padding: var(--space-md) var(--space-lg);
+  font-weight: 700;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+}
+.feedback-banner.ok { background: var(--positive-bg); color: var(--positive); }
+.feedback-banner.err { background: var(--error-bg); color: var(--error); }
+.feedback-banner.grace { background: var(--warning-bg); color: var(--warning); }
+
+/* Animated Step-by-Step Panel */
+.explain-panel {
+  background: var(--surface-container-low);
+  border-radius: var(--rounded-lg);
+  box-shadow: var(--shadow-sky);
+  padding: var(--space-xl);
+  display: grid;
+  gap: var(--space-md);
+}
+.panel-title {
+  margin: 0;
+  font-size: var(--subhead-size);
+  font-weight: 800;
+  color: var(--on-surface);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.visual-stage {
+  background: var(--surface-container);
+  border-radius: var(--rounded);
+  padding: var(--space-md);
+  min-height: 170px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  overflow: hidden;
+}
+
+.steps-container {
+  display: grid;
+  gap: var(--space-sm);
+}
+.step-item {
+  background: var(--surface-container);
+  border-radius: var(--rounded);
+  padding: var(--space-md);
+  display: flex;
+  gap: var(--space-md);
+  align-items: flex-start;
+  opacity: 0.35;
+  transform: translateY(6px);
+  transition: opacity var(--dur-short) var(--ease-out), transform var(--dur-short) var(--ease-bounce), background-color var(--dur-short) var(--ease-out), box-shadow var(--dur-short) var(--ease-out);
+}
+.step-item.revealed {
+  opacity: 1;
+  transform: translateY(0);
+  background: var(--surface-container-low);
+  box-shadow: var(--shadow-grape);
+}
+.step-item.active-step {
+  box-shadow: var(--shadow-pink);
+  background: var(--surface-container-low);
+}
+.step-num {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  border-radius: var(--rounded-full);
+  background: var(--secondary);
+  color: var(--on-secondary);
+  font-weight: 800;
+  font-size: var(--label-size);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.step-item.active-step .step-num { background: var(--primary); }
+.step-text { margin: 0; font-weight: 500; }
+
+.step-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  align-items: center;
+}
+
+/* Visual Diagram Helpers */
+.viz-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+}
+.viz-node {
+  background: var(--surface-container-low);
+  color: var(--on-surface);
+  font-weight: 800;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--rounded-full);
+  box-shadow: var(--shadow-pink);
+  min-width: 44px;
+  text-align: center;
+  animation: nodePop var(--dur-short) var(--ease-bounce);
+}
+.viz-node.highlight {
+  background: var(--primary);
+  color: var(--on-primary);
+}
+.viz-arrow {
+  font-weight: 800;
+  color: var(--secondary);
+  font-size: var(--label-size);
+  background: var(--surface-container-low);
+  padding: 2px var(--space-sm);
+  border-radius: var(--rounded-full);
+}
+@keyframes nodePop {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.q-footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+/* Quiz Setup Banner */
+.quiz-bar {
+  background: var(--surface-container-low);
+  border-radius: var(--rounded);
+  box-shadow: var(--shadow-sky);
+  padding: var(--space-md) var(--space-lg);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+}
+
+/* Confetti Canvas */
+#confetti-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 999;
+}
+
+/* Empty State */
+.empty-box {
+  text-align: center;
+  padding: var(--space-2xl) var(--space-lg);
+  background: var(--surface-container-low);
+  border-radius: var(--rounded-lg);
+  box-shadow: var(--shadow-grape);
+}
+
+/* Footer */
+.site-footer {
+  background: var(--surface-container-low);
+  border-radius: var(--rounded-lg);
+  box-shadow: var(--shadow-pink);
+  padding: var(--space-xl);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+.creator-badge {
+  background: var(--primary);
+  color: var(--on-primary);
+  font-weight: 900;
+  font-size: var(--subhead-size);
+  padding: var(--space-sm) var(--space-xl);
+  border-radius: var(--rounded-full);
+  box-shadow: var(--shadow-pink);
+  letter-spacing: 0.03em;
+}
+.source-note {
+  color: var(--on-surface-variant);
+  font-size: var(--label-size);
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .workspace { grid-template-columns: 1fr; }
+  .controls-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .page-grid { padding: var(--space-sm); gap: var(--space-md); }
+  .hero-panel, .q-card, .explain-panel, .site-footer { padding: var(--space-md); }
+  .q-text { font-size: 1.15rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+</head>
+<body>
+<canvas id="confetti-canvas" aria-hidden="true"></canvas>
+
+<div class="page-grid">
+  <header class="hero-panel">
+    <div class="hero-top">
+      <div>
+        <span class="brand-kicker">NMMS 2024–25 • Paper Set A • તમામ 180 પ્રશ્નો</span>
+        <h1 class="display">NMMS <em>માસ્ટર</em> અભ્યાસ અને ક્વિઝ</h1>
+        <p class="subtitle">સત્તાવાર આન્સર કી (18-03-2025) મુજબ MAT (પ્રશ્ન 1–90) અને SAT (ગણિત, વિજ્ઞાન, સામાજિક વિજ્ઞાન — પ્રશ્ન 91–180) ની એનિમેટેડ સ્ટેપ-બાય-સ્ટેપ સમજૂતી અને ગેમ ક્વિઝ.</p>
+      </div>
+      <div class="segmented" role="tablist" aria-label="મોડ પસંદ કરો">
+        <button type="button" id="mode-study" class="seg-btn active" role="tab" aria-selected="true" onclick="switchMode('study')">અભ્યાસ અને સમજૂતી</button>
+        <button type="button" id="mode-quiz" class="seg-btn" role="tab" aria-selected="false" onclick="switchMode('quiz')">ગેમ / ક્વિઝ મોડ</button>
+      </div>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <span class="stat-label">કુલ પોઇન્ટ્સ (XP)</span>
+        <span class="stat-value accent" id="stat-xp">0</span>
+        <span class="stat-sub">સાચા જવાબ પર +10 XP</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">વર્તમાન સ્ટ્રીક</span>
+        <span class="stat-value" id="stat-streak">0 🔥</span>
+        <span class="stat-sub">શ્રેષ્ઠ સ્ટ્રીક: <strong id="stat-best">0</strong></span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">ક્વિઝ પ્રગતિ</span>
+        <span class="stat-value" id="stat-progress">0 / 180</span>
+        <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">ચોકસાઈ (Accuracy)</span>
+        <span class="stat-value" id="stat-acc">0%</span>
+        <span class="stat-sub" id="stat-counts">સાચા: 0 • ખોટા: 0</span>
+      </div>
+    </div>
+
+    <div class="badges-bar" id="badges-bar" aria-label="મેળવેલા બેજ"></div>
+  </header>
+
+  <!-- Filter & Search Controls -->
+  <section class="card" aria-label="ફિલ્ટર અને શોધ">
+    <div class="controls-grid">
+      <div class="field-group">
+        <label class="field-label" for="search-input">પ્રશ્ન નંબર (1–180) અથવા શબ્દ દ્વારા શોધો</label>
+        <input id="search-input" class="input-pill" type="search" placeholder="દા.ત. 49, ષટ્કોણ, રામાનુજન, વિટામિન..." oninput="onSearchInput(this.value)">
+      </div>
+      <div class="field-group">
+        <label class="field-label" for="jump-select">સીધા પ્રશ્ન પર જાઓ</label>
+        <select id="jump-select" class="select-pill" onchange="jumpToQuestion(this.value)"></select>
+      </div>
+      <div class="field-group">
+        <label class="field-label" for="reset-btn">પ્રગતિ રિસેટ</label>
+        <button type="button" id="reset-btn" class="btn btn-quiet" onclick="handleReset(this)">રિસેટ કરો</button>
+      </div>
+    </div>
+
+    <div class="chips-row" id="filter-chips" role="group" aria-label="વિષય ફિલ્ટર">
+      <button type="button" class="chip active" data-cat="all" onclick="setCategory('all')">બધા (180)</button>
+      <button type="button" class="chip" data-cat="mat" onclick="setCategory('mat')">MAT — માનસિક ક્ષમતા (1–90)</button>
+      <button type="button" class="chip" data-cat="math" onclick="setCategory('math')">SAT — ગણિત (91–120)</button>
+      <button type="button" class="chip" data-cat="sci" onclick="setCategory('sci')">SAT — વિજ્ઞાન (121–150)</button>
+      <button type="button" class="chip" data-cat="soc" onclick="setCategory('soc')">SAT — સામાજિક વિજ્ઞાન (151–180)</button>
+      <button type="button" class="chip" data-cat="grace" onclick="setCategory('grace')">ગ્રેસ ગુણ (9)</button>
+      <button type="button" class="chip" data-cat="dual" onclick="setCategory('dual')">બે જવાબ માન્ય (4)</button>
+    </div>
+
+    <div class="q-nav-wrap">
+      <div class="field-label" id="nav-summary" style="margin-bottom: var(--space-sm);">દર્શાવેલ પ્રશ્નો: 180</div>
+      <div class="q-nav-grid" id="q-nav-grid"></div>
+    </div>
+  </section>
+
+  <!-- Quiz Mode Quick Setup Bar -->
+  <section class="quiz-bar" id="quiz-bar" style="display: none;" aria-label="ક્વિઝ મોડ વિકલ્પો">
+    <div>
+      <strong>ગેમ / ક્વિઝ મોડ સક્રિય છે</strong> — સાચા જવાબ આપો, XP અને સ્ટ્રીક વધારો!
+    </div>
+    <div style="display:flex; flex-wrap:wrap; gap: var(--space-sm);">
+      <button type="button" class="btn btn-secondary" onclick="startQuick10()">ફટાફટ 10 પ્રશ્નોની ચેલેન્જ</button>
+      <button type="button" class="btn btn-quiet" onclick="nextUnanswered()">આગળનો બાકી પ્રશ્ન →</button>
+    </div>
+  </section>
+
+  <!-- Main Workspace -->
+  <main class="workspace" id="main-workspace">
+    <article class="q-card" id="question-card"></article>
+    <aside class="explain-panel" id="explain-panel"></aside>
+  </main>
+
+  <footer class="site-footer">
+    <div class="creator-badge">CREATED BY MUKESH MAHESHWARI</div>
+    <p class="source-note">સ્રોત: NMMS 2024–25 (Paper Set A) સત્તાવાર આન્સર કી (18-03-2025) મુજબ તમામ 180 પ્રશ્નોના સરળ ઉકેલ અને સમજૂતી.</p>
+  </footer>
+</div>
+
+<api-shim></api-shim>
+<script>
+const QUESTIONS = [
+  {i:1,c:`mat`,q:`ક્રમમાં આગળનો નંબર: 3, 6, 12, 24, 48, ....?`,o:[`100`,`96`,`64`,`72`],a:[1],e:[`દરેક સંખ્યા પહેલાની સંખ્યા કરતાં 2 ગણી છે.`,`3×2 = 6, 6×2 = 12, 12×2 = 24, 24×2 = 48.`,`તેથી 48 × 2 = 96. સાચો જવાબ (B) 96.`],v:`seq:3,6,12,24,48,?|×2`},
+  {i:2,c:`mat`,q:`ક્રમમાં આગળની સંખ્યા: 1, 1, 2, 9, 5, 8, ....?`,o:[`13`,`11`,`10`,`9`],a:[0],g:1,e:[`પ્રશ્નમાં છાપભૂલ છે: "9" ની જગ્યાએ "3" હોવું જોઈએ, જેથી શ્રેણી 1, 1, 2, 3, 5, 8 બને.`,`આ ફિબોનાચી શ્રેણી છે (પાછળની બે સંખ્યાનો સરવાળો: 5 + 8 = 13).`,`છાપભૂલને કારણે બોર્ડે બધાને ગ્રેસ ગુણ આપ્યા છે.`],v:`seq:1,1,2,3*,5,8,13|+પાછલી 2`},
+  {i:3,c:`mat`,q:`પેટર્નમાં આગળની સંખ્યા: 3, 9, 27, 81, ....?`,o:[`243`,`256`,`225`,`200`],a:[0],e:[`અહીં દરેક વખતે સંખ્યાને 3 વડે ગુણાય છે.`,`3×3 = 9, 9×3 = 27, 27×3 = 81.`,`81 × 3 = 243. સાચો જવાબ (A) 243.`],v:`seq:3,9,27,81,?|×3`},
+  {i:4,c:`mat`,q:`પૃથ્વી પર પર્વતમાળાઓની પેટર્નનું શ્રેષ્ઠ વર્ણન:`,o:[`રેન્ડમ`,`ગોળાકાર`,`રેખીય`,`અનિયમિત`],a:[0,3],e:[`પર્વતમાળાઓ પૃથ્વી પર કોઈ નિશ્ચિત ગોઠવણી વગર જુદી જુદી જગ્યાએ અને દિશામાં ફેલાયેલી છે.`,`તે ગોળ નથી અને બોર્ડે રેખીય (C) માન્ય રાખ્યું નથી.`,`સત્તાવાર કી મુજબ (A) રેન્ડમ અને (D) અનિયમિત બંને માન્ય છે.`],v:`badge:પૃથ્વી પર પર્વતમાળા = રેન્ડમ / અનિયમિત`},
+  {i:5,c:`mat`,q:`કયો આકાર ખંડ (એશિયા, આફ્રિકા, યુરોપ વગેરે) ની સીમાને શ્રેષ્ઠ રીતે રજૂ કરે?`,o:[`ચોરસ`,`ત્રિકોણાકાર`,`અનિયમિત`,`ગોળાકાર`],a:[2],e:[`ખંડોની સીમાઓ વાંકીચૂકી હોય છે, જેમાં અખાત, ખાડી અને દ્વીપકલ્પ હોય છે.`,`તેને ચોરસ, ત્રિકોણ કે ગોળ જેવા નિશ્ચિત આકારમાં ગોઠવી શકાતી નથી.`,`તેથી જવાબ (C) અનિયમિત છે.`],v:`shape:irregular`},
+  {i:6,c:`mat`,q:`છ બાજુઓવાળા બહુકોણનું નામ શું છે?`,o:[`સાર્થકકોણ`,`અષ્ટકોણ`,`પંચકોણ`,`ષટ્કોણ`],a:[3],e:[`ષટ્ એટલે 6, એટલે 6 બાજુવાળો આકાર ષટ્કોણ કહેવાય.`,`પંચકોણ = 5 બાજુ, અષ્ટકોણ = 8 બાજુ.`],v:`shape:hex`},
+  {i:7,c:`mat`,q:`નિયમિત ષટ્કોણમાં ખૂણાઓ માટે શું સાચું છે?`,o:[`90°`,`60°`,`120°`,`180°`],a:[2],e:[`નિયમિત બહુકોણનો દરેક અંતઃકોણ = (n − 2) × 180° ÷ n.`,`અહીં n = 6 મૂકતાં: (6 − 2) × 180° ÷ 6 = 720° ÷ 6 = 120°.`,`જવાબ (C) દરેક ખૂણો 120° છે.`],v:`shape:hex120`},
+  {i:8,c:`mat`,q:`ચોરસને તેના કેન્દ્રની આસપાસ 90° ફેરવવાથી કઈ આકૃતિ બને?`,o:[`લંબચોરસ`,`ચોરસ`,`સમભુજ`,`પેન્ટાગોન`],a:[1],e:[`ચોરસની ચારે બાજુ અને ચારે ખૂણા સમાન (90°) હોય છે.`,`કેન્દ્રની આસપાસ 90° ફેરવવાથી એ જ ચોરસ મળે છે, આકાર બદલાતો નથી.`],v:`shape:rot90`},
+  {i:9,c:`mat`,q:`ષટ્કોણમાં કર્ણની સંખ્યા કેટલી છે?`,o:[`9`,`12`,`6`,`8`],a:[0],g:1,e:[`કર્ણની સંખ્યાનું સૂત્ર = n(n − 3) ÷ 2 = 6 × 3 ÷ 2 = 9, જે વિકલ્પ (A) છે.`,`પરંતુ સત્તાવાર કીમાં આ પ્રશ્નમાં બધાને ગ્રેસ ગુણ આપ્યા છે.`],v:`shape:hexdiag`},
+  {i:10,c:`mat`,q:`પુસ્તક : વાંચન :: ચમચી : ....?`,o:[`ચમચીદોડ`,`લેખન`,`હલાવવું`,`ખાવું`],a:[3],e:[`પુસ્તકનું મુખ્ય કાર્ય વાંચવા માટે છે.`,`તે જ રીતે ચમચીનું મુખ્ય કાર્ય ખાવા માટે છે. જવાબ (D) ખાવું.`],v:`pair:પુસ્તક → વાંચન :: ચમચી → ખાવું`},
+  {i:11,c:`mat`,q:`જો લાઇટ ચાલુ હોય, તો સ્વીચ ચાલુ જ હોય. મેં જોયું કે સ્વીચ ચાલુ છે. ચોક્કસ શું કહી શકાય?`,o:[`લાઇટ ચાલુ છે`,`લાઇટ બંધ છે`,`લાઇટ ચાલુ હોઈ શકે કે ન પણ હોઈ શકે`,`લાઇટ ચોક્કસ બંધ છે`],a:[2],e:[`નિયમ: લાઇટ ચાલુ → સ્વીચ ચાલુ. તેનું ઊલટું હંમેશા સાચું નથી.`,`સ્વીચ ચાલુ હોય છતાં બલ્બ ફ્યુઝ હોઈ શકે અથવા વીજળી ગઈ હોઈ શકે.`,`તેથી લાઇટ વિશે ચોક્કસ કહી શકાય નહીં — જવાબ (C).`],v:`pair:લાઇટ ચાલુ ⇒ સ્વીચ ચાલુ | સ્વીચ ચાલુ ⇒ ?`},
+  {i:12,c:`mat`,q:`સસ્તન પ્રાણીને રૂંવાટી/વાળ હોય છે. કૂતરો સસ્તન પ્રાણી છે. કૂતરા વિશે શું અનુમાન થાય?`,o:[`કૂતરાને રૂંવાટી કે વાળ હોય છે`,`નથી હોતા`,`દાંત તીક્ષ્ણ છે`,`હાંફતી વખતે જીભ બહાર રહે છે`],a:[0],e:[`નિયમ: સસ્તન પ્રાણી → રૂંવાટી/વાળ હોય.`,`કૂતરો સસ્તન પ્રાણી છે, એટલે તેને રૂંવાટી કે વાળ હોય જ.`,`(C) અને (D) આપેલી માહિતીમાંથી નીકળતા નિષ્કર્ષ નથી.`],v:`pair:કૂતરો ∈ સસ્તન ⇒ રૂંવાટી/વાળ હોય`},
+  {i:13,c:`mat`,q:`બધાં ગુલાબ ફૂલ છે અને કેટલાંક ફૂલ ઝડપથી ઝાંખાં પડે છે. સાચો નિષ્કર્ષ?`,o:[`કેટલાંક ગુલાબ ઝડપથી ઝાંખાં પડે છે`,`કોઈ ગુલાબ ઝાંખાં પડતાં નથી`,`બધાં ગુલાબ ઝાંખાં પડે છે`,`કેટલાંક ફૂલો ગુલાબ નથી`],a:[0],e:[`ગુલાબ ફૂલોનો જ ભાગ છે અને કેટલાંક ફૂલ ઝાંખાં પડે છે.`,`તેથી કી મુજબ વિકલ્પ (A) કેટલાંક ગુલાબ ઝડપથી ઝાંખાં પડે છે સાચો નિષ્કર્ષ છે.`],v:`pair:ગુલાબ ⊂ ફૂલ | કેટલાંક ફૂલ → ઝાંખાં`},
+  {i:14,c:`mat`,q:`"પુષ્કળ" સાથે સૌથી વધુ મળતો શબ્દ:`,o:[`દુર્લભ`,`પૂરગ્રસ્ત`,`ઘણું વધારે`,`પૂરતું`],a:[2],e:[`પુષ્કળ = ખૂબ વધારે, ભરપૂર.`,`દુર્લભ એટલે ભાગ્યે જ મળે તેવું (વિરોધી) અને પૂરતું એટલે જરૂર જેટલું.`],v:`pair:પુષ્કળ = ઘણું વધારે`},
+  {i:15,c:`mat`,q:`બે ટ્રેન એકબીજા તરફ 50 kph અને 60 kph ની ઝડપે, શરૂઆતમાં 220 કિમી દૂર. મળવામાં કેટલો સમય?`,o:[`2 કલાક`,`2.5 કલાક`,`3 કલાક`,`3.5 કલાક`],a:[0],e:[`સામસામે આવતી ટ્રેનોની સાપેક્ષ ઝડપ ઉમેરાય: 50 + 60 = 110 km/h.`,`સમય = અંતર ÷ ઝડપ = 220 ÷ 110 = 2 કલાક.`],v:`pair:50→ ←60 (220 km) ⇒ 220 ÷ 110 = 2 કલાક`},
+  {i:16,c:`mat`,q:`શર્મિષ્ઠા > આરતી, આરતી > ગીતા, ગીતા > લીલા (ઉંમરમાં મોટી). સાચું વિધાન?`,o:[`શર્મિષ્ઠા લીલા કરતાં નાની`,`શર્મિષ્ઠા લીલા કરતાં મોટી`,`આરતી શર્મિષ્ઠા કરતાં મોટી`,`લીલા આરતી કરતાં મોટી`],a:[1],e:[`ઉતરતો ક્રમ: શર્મિષ્ઠા > આરતી > ગીતા > લીલા.`,`શર્મિષ્ઠા સૌથી મોટી અને લીલા સૌથી નાની છે, એટલે શર્મિષ્ઠા લીલા કરતાં મોટી છે.`],v:`seq:શર્મિષ્ઠા,આરતી,ગીતા,લીલા|>`},
+  {i:17,c:`mat`,q:`મહિલા કહે છે, "આ મારા પતિના ભાઈની પત્ની છે." તેનો સંબંધ?`,o:[`નણંદ`,`પુત્રવધૂ`,`દેરાણી`,`સાસુ`],a:[2],e:[`પતિનો ભાઈ = દિયર અથવા જેઠ.`,`દિયર/જેઠની પત્ની = દેરાણી/જેઠાણી. વિકલ્પોમાં (C) દેરાણી છે.`],v:`pair:પતિ → ભાઈ (દિયર) → પત્ની = દેરાણી`},
+  {i:18,c:`mat`,q:`શ્રેણીમાં ખૂટતો નંબર: 1, 3, 7, 15, 31, ....?`,o:[`61`,`63`,`65`,`67`],a:[1],e:[`તફાવત જુઓ: +2, +4, +8, +16.`,`દરેક વખતે તફાવત બમણો થાય છે, એટલે આગળ +32.`,`31 + 32 = 63. જવાબ (B) 63.`],v:`seq:1,3,7,15,31,?|×2+1`},
+  {i:19,c:`mat`,q:`સમસ્યા હલ કરવાનો સૌથી તાર્કિક રસ્તો:`,o:[`અનુમાન કરી શ્રેષ્ઠની આશા રાખવી`,`પેટર્ન શોધવી અને કારણો સમજવા`,`ભૂતકાળના અનુભવો અવગણવા`,`ચકાસણી વિના બીજાના મંતવ્ય પર આધાર રાખવો`],a:[1],e:[`તાર્કિક રીત એટલે નિરીક્ષણ કરવું, પેટર્ન શોધવી અને કારણ-પરિણામ સમજવાં.`,`બાકીના ત્રણેય વિકલ્પો અતાર્કિક છે.`],v:`badge:તાર્કિક ઉકેલ = પેટર્ન + કારણ સમજવું`},
+  {i:20,c:`mat`,q:`જટિલ સમસ્યામાં વિવેચનાત્મક વિચારસરણીનું પ્રથમ પગલું:`,o:[`નિષ્કર્ષ પર જાઓ`,`માહિતી એકત્રિત કરો અને સમસ્યાને સમજો`,`જાતે વિચાર્યા વિના બીજાના મંતવ્ય પૂછો`,`સમસ્યાને અવગણો`],a:[1],e:[`પહેલાં સમસ્યા સમજવી અને માહિતી એકત્રિત કરવી જરૂરી છે.`,`ત્યાર બાદ જ વિશ્લેષણ કરીને સાચો નિષ્કર્ષ કાઢી શકાય.`],v:`seq:માહિતી એકત્ર,વિશ્લેષણ,નિષ્કર્ષ|→`},
+  {i:21,c:`mat`,q:`મિત્ર કહે છે ગાજર ખાવાથી દૃષ્ટિ સુધરે છે. દાવાનું મૂલ્યાંકન કરવાનો શ્રેષ્ઠ અભિગમ:`,o:[`મિત્રએ કહ્યું એટલે સાચું માનો`,`વિશ્વસનીય સ્રોતોમાં વૈજ્ઞાનિક પુરાવા શોધો`,`મિત્રને કહો કે તે ખોટો છે`,`અવગણો`],a:[1],e:[`કોઈ પણ દાવો વૈજ્ઞાનિક પુરાવા અને વિશ્વસનીય સ્રોતથી તપાસીને જ સ્વીકારાય.`,`આંધળો વિશ્વાસ કે પુરાવા વિના અવગણવું યોગ્ય નથી.`],v:`badge:મૂલ્યાંકન = વૈજ્ઞાનિક પુરાવા તપાસવા`},
+  {i:22,c:`mat`,q:`મુશ્કેલ પરિસ્થિતિમાં નિર્ણય લેતી વખતે શું કરવું?`,o:[`ફક્ત લાગણીના આધારે`,`ફાયદા-ગેરફાયદાનું વિશ્લેષણ અને લાંબા ગાળાના પરિણામોનો વિચાર`,`બીજા કરે તેમ કરવું`,`તણાવ ટાળવા ઝડપથી નિર્ણય`],a:[1],e:[`સારો નિર્ણય વિચારપૂર્વક, ફાયદા-ગેરફાયદા તોલીને અને ભવિષ્યના પરિણામો જોઈને લેવાય.`],v:`badge:સારો નિર્ણય = ફાયદા-ગેરફાયદાનું વિશ્લેષણ`},
+  {i:23,c:`mat`,q:`"2 રબરની કિંમત રૂ. 1.50 તો 10 રબરની કિંમત?" ઉકેલવાની સૌથી સારી રીત:`,o:[`1.50 × 10`,`1.50 ÷ 2 પછી × 10`,`10 ÷ 2 કેલ્ક્યુલેટરથી`,`1.50 ને દસ વાર ઉમેરો`],a:[1],e:[`પહેલાં 1 રબરની કિંમત: 1.50 ÷ 2 = રૂ. 0.75.`,`પછી 10 રબરની કિંમત: 0.75 × 10 = રૂ. 7.50.`],v:`seq:2 રબર ₹1.50,÷2 → 1 રબર ₹0.75,×10 → ₹7.50|→`},
+  {i:24,c:`mat`,q:`વસ્તુની કિંમત 25% વધે અને પછી 25% ઘટે તો કુલ શું થાય?`,o:[`25% વધે`,`25% ઘટે`,`એ જ રહે`,`25% થી વધુ ઘટે`],a:[0],g:1,e:[`મૂળ કિંમત 100 લો. 25% વધતાં 125 થાય.`,`125 ના 25% = 31.25 ઘટે, એટલે નવી કિંમત 93.75 થાય (કુલ 6.25% ઘટાડો).`,`ચારમાંથી કોઈ વિકલ્પ સાચો ન હોવાથી બોર્ડે ગ્રેસ ગુણ આપ્યા.`],v:`seq:100,+25% → 125,-25% → 93.75 (-6.25%)|→`},
+  {i:25,c:`mat`,q:`પિતાની ઉંમર દીકરા કરતાં 5 ગણી છે. 20 વર્ષ પછી પિતા દીકરા કરતાં 3 ગણા મોટા થશે. પિતાની હાલની ઉંમર?`,o:[`80`,`90`,`100`,`110`],a:[2],e:[`ધારો કે દીકરો = x અને પિતા = 5x.`,`20 વર્ષ પછી: 5x + 20 = 3(x + 20) ⇒ 5x + 20 = 3x + 60 ⇒ 2x = 40 ⇒ x = 20.`,`પિતાની હાલની ઉંમર = 5 × 20 = 100 વર્ષ.`],v:`pair:હાલ 100 & 20 (+20 વર્ષે) → 120 & 40 (3 ગણા)`},
+  {i:26,c:`mat`,q:`જયકુમાર કોકિલાબેનના પુત્ર છે. દક્ષાબેન કોકિલાબેનની બહેન છે. રઈબેન દક્ષાબેનનાં માતા છે. સુરેશભાઈ રઈબેનના પુત્ર છે. સાચું વિધાન?`,o:[`જયકુમાર અને સુરેશભાઈ પિતરાઈ ભાઈઓ`,`સુરેશભાઈ જયકુમારના મામા`,`દક્ષાબેન જયકુમારની ફોઈ`,`કોકિલાબેન અને સુરેશભાઈ પિતરાઈ`],a:[1],e:[`દક્ષા અને કોકિલા બહેનો છે, બંનેનાં માતા રઈબેન છે.`,`સુરેશ રઈબેનનો પુત્ર એટલે કોકિલાબેનનો ભાઈ.`,`જયકુમાર કોકિલાબેનનો પુત્ર હોવાથી માતાનો ભાઈ = મામા.`],v:`pair:રઈબેન → (કોકિલા + સુરેશ) | કોકિલા → જયકુમાર ⇒ મામા`},
+  {i:27,c:`mat`,q:`માર્ચ : ઓગસ્ટ :: C : ....?`,o:[`G`,`I`,`H`,`J`],a:[2],e:[`માર્ચ 3 જો મહિનો અને ઓગસ્ટ 8 મો મહિનો (3 + 5 = 8).`,`C મૂળાક્ષરમાં 3 જો અક્ષર છે. 3 + 5 = 8 મો અક્ષર H.`],v:`pair:માર્ચ(3) +5 → ઓગસ્ટ(8) :: C(3) +5 → H(8)`},
+  {i:28,c:`mat`,q:`10 cm × 8 cm × 8 cm ના લંબઘનને 2 cm બાજુવાળા સમઘનમાં વિભાજિત કરતાં કુલ કેટલા સમઘન બને?`,o:[`70`,`60`,`88`,`80`],a:[3],e:[`લંબાઈમાં 10÷2 = 5, પહોળાઈમાં 8÷2 = 4, ઊંચાઈમાં 8÷2 = 4.`,`કુલ સમઘન = 5 × 4 × 4 = 80. (અથવા ઘનફળ 640 ÷ 8 = 80).`],v:`pair:5 × 4 × 4 = 80 સમઘન`},
+  {i:29,c:`mat`,q:`5⁴ અને 4⁵ વચ્ચે કયો સંબંધ સાચો?`,o:[`=`,`<`,`>`,`લગભગ =`],a:[1],e:[`5⁴ = 5×5×5×5 = 625.`,`4⁵ = 4×4×4×4×4 = 1024.`,`625 < 1024, એટલે 5⁴ < 4⁵.`],v:`pair:5⁴ = 625  <  4⁵ = 1024`},
+  {i:30,c:`mat`,q:`દીપકભાઈ રવિભાઈના ભાઈ છે. રેખાબેન અતુલભાઈનાં બહેન છે. રવિભાઈ રેખાબેનના પુત્ર છે. દીપકભાઈ રેખાબેનના શું થાય?`,o:[`પુત્ર`,`ભાઈ`,`ભાણા`,`માતા`],a:[0],e:[`રવિ રેખાબેનનો પુત્ર છે અને દીપક રવિનો ભાઈ છે.`,`તેથી દીપકભાઈ પણ રેખાબેનના પુત્ર થાય. (અતુલભાઈની માહિતી વધારાની છે.)`],v:`pair:રેખાબેન → રવિભાઈ (ભાઈ) દીપકભાઈ ⇒ પુત્ર`},
+  {i:31,c:`mat`,q:`મીઠું : NaCl :: પાણી : ....?`,o:[`H₃O⁺`,`NaOH`,`H₂O`,`OH⁻`],a:[2],e:[`મીઠાનું રાસાયણિક સૂત્ર NaCl છે.`,`તેમ પાણીનું રાસાયણિક સૂત્ર H₂O છે.`],v:`pair:મીઠું : NaCl :: પાણી : H₂O`},
+  {i:32,c:`mat`,q:`રાષ્ટ્રીય વિજ્ઞાન દિવસ : 28 ફેબ્રુઆરી :: રાષ્ટ્રીય ગણિત દિવસ : ....?`,o:[`22 માર્ચ`,`22 ઓગસ્ટ`,`22 સપ્ટેમ્બર`,`22 ડિસેમ્બર`],a:[3],e:[`મહાન ગણિતશાસ્ત્રી શ્રીનિવાસ રામાનુજનનો જન્મદિવસ 22 ડિસેમ્બર છે.`,`તે દિવસે ભારતમાં રાષ્ટ્રીય ગણિત દિવસ ઉજવાય છે.`],v:`badge:22 ડિસેમ્બર = રાષ્ટ્રીય ગણિત દિવસ (રામાનુજન)`},
+  {i:33,c:`mat`,q:`સવારે 9:00 વાગે પાયલ મેદાનમાં ઊભી છે. તેનો પડછાયો કઈ દિશામાં પડશે?`,o:[`પૂર્વ`,`પશ્ચિમ`,`ઉત્તર`,`દક્ષિણ`],a:[1],e:[`સવારે સૂર્ય પૂર્વ દિશામાં હોય છે.`,`પડછાયો હંમેશા સૂર્યની વિરુદ્ધ દિશામાં એટલે કે પશ્ચિમ દિશામાં પડે.`],v:`compass:E→W`},
+  {i:34,c:`mat`,q:`સ્નેહલ વર્ગમાં ઉપરથી 27 મા અને નીચેથી 20 મા ક્રમે છે. વર્ગમાં કેટલા વિદ્યાર્થી?`,o:[`45`,`46`,`47`,`48`],a:[1],e:[`કુલ વિદ્યાર્થી = ઉપરનો ક્રમ + નીચેનો ક્રમ − 1.`,`27 + 20 − 1 = 46 (સ્નેહલ બંને તરફથી ગણાઈ હોવાથી 1 બાદ કરવો પડે).`],v:`pair:27 + 20 − 1 = 46 વિદ્યાર્થી`},
+  {i:35,c:`mat`,q:`ACE, FHJ, KMO, ....?`,o:[`PQR`,`QRS`,`PRT`,`SRQ`],a:[2],e:[`ક્રમાંક: ACE (1,3,5), FHJ (6,8,10), KMO (11,13,15).`,`દરેક જૂથ 5 ક્રમ આગળ વધે છે અને જૂથમાં 2 નો તફાવત છે.`,`આગળ 16, 18, 20 એટલે P, R, T = PRT.`],v:`seq:ACE(1-3-5),FHJ(6-8-10),KMO(11-13-15),PRT(16-18-20)|+5`},
+  {i:36,c:`mat`,q:`Ant, Apple, Animal, Arrange, Accept ને શબ્દકોશ ક્રમમાં ગોઠવો.`,o:[`Animal, Apple, Ant, Accept, Arrange`,`Arrange, Ant, Apple, Accept, Animal`,`Accept, Animal, Ant, Apple, Arrange`,`Apple, Ant, Animal, Accept, Arrange`],a:[2],e:[`બધા A થી શરૂ થાય છે, એટલે બીજો અક્ષર જુઓ: c, n, n, p, r.`,`c પહેલાં: Accept. Animal અને Ant માં ત્રીજો અક્ષર i < t હોવાથી Animal પછી Ant.`,`પછી p (Apple) અને છેલ્લે r (Arrange) = Accept, Animal, Ant, Apple, Arrange.`],v:`seq:Accept (c),Animal (ni),Ant (nt),Apple (p),Arrange (r)|→`},
+  {i:37,c:`mat`,q:`'CARRIER' ના મૂળાક્ષરોમાંથી કયો શબ્દ બની શકે?`,o:[`FEAR`,`DEAR`,`REAR`,`CARD`],a:[2],e:[`CARRIER ના અક્ષરો: C, A, R, R, I, E, R.`,`REAR માટે R, E, A, R બધા ઉપલબ્ધ છે.`,`FEAR માં F અને DEAR/CARD માં D નથી, એટલે તે ન બને.`],v:`pair:CARRIER → R, E, A, R = REAR ✔`},
+  {i:38,c:`mat`,q:`QUESTION નું જળપ્રતિબિંબ શોધો.`,o:[`વિકલ્પ (A)`,`વિકલ્પ (B)`,`વિકલ્પ (C)`,`વિકલ્પ (D)`],a:[3],e:[`જળપ્રતિબિંબ એટલે પાણીમાં દેખાતું પ્રતિબિંબ.`,`તેમાં અક્ષરો ઉપર-નીચે ઊલટા દેખાય, પણ ડાબેથી જમણે અક્ષરોનો ક્રમ એ જ રહે.`,`કી મુજબ સાચો જવાબ વિકલ્પ (D) છે.`],v:`mirror:water|QUESTION`},
+  {i:39,c:`mat`,q:`આપેલ આકૃતિનું જળપ્રતિબિંબ શોધો. (ડાબી બાજુ પટ્ટી, ઉપર ત્રાંસી રેખા, નીચે ▷)`,o:[`વિકલ્પ (A)`,`વિકલ્પ (B)`,`વિકલ્પ (C)`,`વિકલ્પ (D)`],a:[0],e:[`જળપ્રતિબિંબમાં આકૃતિ ઉપર-નીચે ફરે છે, ડાબી-જમણી બાજુ બદલાતી નથી.`,`પટ્ટી ડાબે જ રહે, નીચેનો ▷ ઉપર આવે અને ઉપરની ત્રાંસી રેખા નીચે ઊલટી થાય.`],v:`mirror:water_fig`},
+  {i:40,c:`mat`,q:`પારદર્શક કાગળને જમણેથી ડાબે ફોલ્ડ કરતાં કેવી આકૃતિ દેખાશે? (ચોરસમાં ત્રાંસી રેખા, વચ્ચે ટપકાંવાળી ઊભી રેખા)`,o:[`વિકલ્પ (A)`,`વિકલ્પ (B)`,`વિકલ્પ (C)`,`વિકલ્પ (D)`],a:[0],e:[`ટપકાંવાળી રેખા પરથી જમણો ભાગ ડાબા ભાગ પર વળે છે.`,`બંને રેખાઓ ભેગી થઈને ફોલ્ડ રેખા પર મળતી ">" જેવી આકૃતિ બને છે, જે વિકલ્પ (A) છે.`],v:`shape:fold`},
+  {i:41,c:`mat`,q:`તારાની આકૃતિમાં 54, 162, 18, 6, 2 અને ? છે. ? ની જગ્યાએ શું આવે?`,o:[`169`,`486`,`480`,`500`],a:[1],e:[`2 થી શરૂ કરી ગોળ ફરતાં: 2 → 6 → 18 → 54 → 162 → ?.`,`દરેક વખતે 3 વડે ગુણાય છે.`,`162 × 3 = 486. જવાબ (B) 486.`],v:`seq:2,6,18,54,162,486|×3`},
+  {i:42,c:`mat`,q:`આકૃતિમાં કુલ કેટલા ચોરસ છે? (મોટો ચોરસ, વચ્ચે કાટખૂણે બે રેખા, કેન્દ્રમાં નાનો ચોરસ)`,o:[`8`,`7`,`10`,`12`],a:[2],e:[`સૌથી મોટો ચોરસ = 1 અને તેના 4 ભાગ = 4.`,`વચ્ચેનો નાનો ચોરસ = 1 અને તેના અંદરના 4 ભાગ = 4.`,`કુલ ચોરસ = 1 + 4 + 1 + 4 = 10.`],v:`shape:sq10`},
+  {i:43,c:`mat`,q:`શ્રેણી પૂર્ણ કરો: 1Z, 3X, 5V, ....`,o:[`6U`,`7T`,`7W`,`6T`],a:[1],e:[`સંખ્યાઓ: 1, 3, 5, 7 (+2 દરેક વખતે).`,`અક્ષરો: Z, X, V, T (એક અક્ષર છોડીને પાછળ જતાં −2).`,`જવાબ (B) 7T.`],v:`seq:1Z,3X,5V,7T|+2 / −2`},
+  {i:44,c:`mat`,q:`શ્રેણી પૂર્ણ કરો: 1/2, 3/2, 5/2, 7/2, ....`,o:[`8/2`,`7/3`,`9/3`,`9/2`],a:[3],e:[`દરેક અપૂર્ણાંકમાં છેદ 2 જ રહે છે.`,`અંશમાં 1, 3, 5, 7 (+2 વધારો) હોવાથી આગળ 9 આવશે. જવાબ (D) 9/2.`],v:`seq:1/2,3/2,5/2,7/2,9/2|+2 અંશ`},
+  {i:45,c:`mat`,q:`શ્રેણી પૂર્ણ કરો: B, H, M, Q, T, ....`,o:[`U`,`W`,`V`,`X`],a:[2],e:[`ક્રમાંક: B=2, H=8, M=13, Q=17, T=20.`,`તફાવત: +6, +5, +4, +3, એટલે હવે +2.`,`20 + 2 = 22 મો અક્ષર V.`],v:`seq:B(2),H(8),M(13),Q(17),T(20),V(22)|+6,+5,+4,+3,+2`},
+  {i:46,c:`mat`,q:`આકૃતિમાં વધુમાં વધુ કેટલા લંબચોરસ છે?`,o:[`6`,`8`,`9`,`10`],a:[0],g:1,e:[`સત્તાવાર કી મુજબ આ પ્રશ્નમાં બધાને ગ્રેસ ગુણ આપ્યા છે.`],v:`badge:બોર્ડ દ્વારા બધાને ગ્રેસ ગુણ`},
+  {i:47,c:`mat`,q:`આકૃતિમાં વધુમાં વધુ કેટલા ચોરસ છે?`,o:[`22`,`18`,`20`,`16`],a:[1],e:[`હરોળમાં 1, 3, 5, 3, 1 ખાનાં મુજબ 1×1 ના ચોરસ = 1+3+5+3+1 = 13.`,`વચ્ચેના ભાગમાં 2×2 ના ચોરસ = 4 અને 3×3 નો ચોરસ = 1.`,`કુલ ચોરસ = 13 + 4 + 1 = 18.`],v:`shape:sq18`},
+  {i:48,c:`mat`,q:`PICTURE ના મૂળાક્ષરોને અંગ્રેજી ક્રમમાં ગોઠવો.`,o:[`CEIPRUT`,`CEIRUTP`,`CEIPRTU`,`CEIPURT`],a:[2],e:[`PICTURE ના અક્ષરો: P, I, C, T, U, R, E.`,`A–Z ક્રમમાં ગોઠવતાં: C, E, I, P, R, T, U = CEIPRTU.`],v:`seq:C,E,I,P,R,T,U|A–Z`},
+  {i:49,c:`mat`,q:`100 મીટર લાંબી ટ્રેન 150 મીટર લાંબા પ્લેટફોર્મની બરાબર મધ્યમાં ઊભી છે. પ્લેટફોર્મની સંપૂર્ણ બહાર નીકળવા ટ્રેને ઓછામાં ઓછું કેટલું અંતર કાપવું પડે?`,o:[`100 મી`,`125 મી`,`150 મી`,`175 મી`],a:[1],e:[`ટ્રેન મધ્યમાં હોવાથી બંને બાજુ (150 − 100) ÷ 2 = 25 મીટર પ્લેટફોર્મ ખાલી છે.`,`સંપૂર્ણ બહાર નીકળવા પાછલો છેડો પ્લેટફોર્મ બહાર આવવો જોઈએ: 25 + 100 = 125 મીટર.`],v:`shape:train125`},
+  {i:50,c:`mat`,q:`ફળોને મોટાથી નાના કદના ક્રમમાં ગોઠવો: A. લીંબુ, B. તડબૂચ, C. કેરી, D. દ્રાક્ષ.`,o:[`D, B, A, C`,`D, A, B, C`,`D, A, C, B`,`B, C, A, D`],a:[3],e:[`સૌથી મોટું તડબૂચ (B), પછી કેરી (C), પછી લીંબુ (A) અને સૌથી નાની દ્રાક્ષ (D).`,`ક્રમ: B, C, A, D.`],v:`seq:તડબૂચ (B),કેરી (C),લીંબુ (A),દ્રાક્ષ (D)|>`},
+  {i:51,c:`mat`,q:`એક સંખ્યાને 6 વડે ભાગતાં શેષ 0 છે. એ જ સંખ્યાને 3 વડે ભાગતાં શેષ કેટલી રહેશે?`,o:[`0`,`2`,`3`,`6`],a:[0],e:[`6 વડે નિઃશેષ ભાગી શકાય તો તે સંખ્યા 6 નો ગુણક છે.`,`6 = 2 × 3 હોવાથી એ સંખ્યા 3 નો પણ ગુણક હોય, એટલે શેષ 0 રહે.`],v:`pair:12 ÷ 6 (શેષ 0) ⇒ 12 ÷ 3 (શેષ 0)`},
+  {i:52,c:`mat`,q:`KIRAN = IKRNA, TWINKLE = IWTNELK, તો RUTVI = ?`,o:[`URTVI`,`RUTIV`,`IVTUR`,`URTIV`],a:[3],e:[`શરૂઆતના બે અક્ષર ઊલટા (RU → UR), વચ્ચેનો અક્ષર (T) એમ જ અને છેલ્લા બે ઊલટા (VI → IV).`,`તેથી RUTVI = URTIV.`],v:`pair:RU(→UR) + T + VI(→IV) = URTIV`},
+  {i:53,c:`mat`,q:`AGE = ZTV, COLD = XLOW, તો SAME = ?`,o:[`ZHNV`,`HZNV`,`HZVN`,`ZHVN`],a:[1],e:[`દરેક અક્ષરની જગ્યાએ તેનો વિરુદ્ધ અક્ષર (A↔Z, B↔Y, ...).`,`S→H, A→Z, M→N, E→V = HZNV.`],v:`pair:S↔H, A↔Z, M↔N, E↔V ⇒ HZNV`},
+  {i:54,c:`mat`,q:`અંક: 2 4 6 8 | 1 3 5 | 7 9 0 અને મૂળાક્ષર: ક લ ર વ | અ જ ય | મ ગ ન. અમનરમ = ?`,o:[`17076`,`17706`,`17067`,`17760`],a:[2],e:[`કોડ મુજબ: અ=1, મ=7, ન=0, ર=6, મ=7.`,`તેથી અમનરમ = 17067.`],v:`pair:અ(1) મ(7) ન(0) ર(6) મ(7) = 17067`},
+  {i:55,c:`mat`,q:`તાર્કિક રીતે ઉતરતા ક્રમમાં ગોઠવો: 1. યુરેનસ 2. શનિ 3. નેપ્ચ્યુન 4. ગુરુ`,o:[`1,2,3,4`,`2,3,1,4`,`4,2,1,3`,`4,2,3,1`],a:[2],e:[`ગ્રહોના કદનો ઉતરતો ક્રમ: ગુરુ (4) > શનિ (2) > યુરેનસ (1) > નેપ્ચ્યુન (3).`],v:`seq:ગુરુ (4),શનિ (2),યુરેનસ (1),નેપ્ચ્યુન (3)|>`},
+  {i:56,c:`mat`,q:`તાર્કિક રીતે ઉતરતા ક્રમમાં ગોઠવો: 1. સાબરકાંઠા 2. ભારત 3. એશિયા 4. ગુજરાત`,o:[`3,2,4,1`,`3,2,1,4`,`3,1,2,4`,`3,1,4,2`],a:[0],e:[`મોટા વિસ્તારથી નાના તરફ: એશિયા (3) > ભારત (2) > ગુજરાત (4) > સાબરકાંઠા (1).`],v:`seq:એશિયા (3),ભારત (2),ગુજરાત (4),સાબરકાંઠા (1)|>`},
+  {i:57,c:`mat`,q:`તાર્કિક રીતે ક્રમમાં ગોઠવો: 1. ફૂલ 2. બીજ 3. ફળ 4. છોડ`,o:[`2,1,3,4`,`2,1,4,3`,`2,4,3,1`,`2,4,1,3`],a:[3],g:1,e:[`જીવનક્રમ મુજબ બીજ → છોડ → ફૂલ → ફળ (2, 4, 1, 3) બને છે.`,`સત્તાવાર કીમાં આ પ્રશ્નમાં ગ્રેસ ગુણ આપવામાં આવ્યા છે.`],v:`seq:બીજ (2),છોડ (4),ફૂલ (1),ફળ (3)|→`},
+  {i:58,c:`mat`,q:`અરીસો આકૃતિની જમણી બાજુ છે. અરીસામાં કેવી દેખાશે? (ઉપર: ચોરસ, વર્તુળ. નીચે: ત્રિકોણ, લંબચોરસ)`,o:[`વિકલ્પ (A)`,`વિકલ્પ (B)`,`વિકલ્પ (C)`,`વિકલ્પ (D)`],a:[2],e:[`ઊભા અરીસામાં ડાબી-જમણી બાજુ અદલાબદલી થાય, ઉપર-નીચે નહીં.`,`ઉપર: વર્તુળ, ચોરસ અને નીચે: લંબચોરસ, ત્રિકોણ — વિકલ્પ (C).`],v:`mirror:vert58`},
+  {i:59,c:`mat`,q:`અરીસામાં જોવાથી આકૃતિ કેવી દેખાશે? (ઉપર "ㄏ" જેવી રેખા અને જમણી તરફ તીર, ડાબા ખૂણે વર્તુળ, જમણા ખૂણે ત્રાંસી રેખાઓ)`,o:[`વિકલ્પ (A)`,`વિકલ્પ (B)`,`વિકલ્પ (C)`,`વિકલ્પ (D)`],a:[1],e:[`અરીસામાં ડાબી-જમણી બાજુ બદલાય છે: તીર ડાબી તરફ થાય, વર્તુળ જમણા ખૂણે જાય.`,`આ ગોઠવણી વિકલ્પ (B) માં છે.`],v:`mirror:vert59`},
+  {i:60,c:`mat`,q:`જયપુર : રાજસ્થાન :: લખનૌ : ?`,o:[`ગુજરાત`,`મધ્યપ્રદેશ`,`બિહાર`,`ઉત્તરપ્રદેશ`],a:[3],e:[`જયપુર રાજસ્થાનની રાજધાની છે.`,`તેમ લખનૌ ઉત્તરપ્રદેશની રાજધાની છે.`],v:`pair:જયપુર → રાજસ્થાન :: લખનૌ → ઉત્તરપ્રદેશ`},
+  {i:61,c:`mat`,q:`થરમોમીટર : તાપમાન :: ઘડિયાળ : ?`,o:[`કલાક`,`સમય`,`સેકન્ડ`,`મિનિટ`],a:[1],e:[`થરમોમીટર તાપમાન માપે છે, તેમ ઘડિયાળ સમય માપે છે.`],v:`pair:થરમોમીટર → તાપમાન :: ઘડિયાળ → સમય`},
+  {i:62,c:`mat`,q:`3 : 27 :: 5 : ?`,o:[`25`,`120`,`125`,`50`],a:[2],e:[`3 નો ઘન: 3³ = 27.`,`તેમ 5 નો ઘન: 5³ = 5 × 5 × 5 = 125.`],v:`pair:3³ = 27 :: 5³ = 125`},
+  {i:63,c:`mat`,q:`ફ્રોક : કાપડ :: ખુરશી : ?`,o:[`ટેબલ`,`બેન્ચ`,`લાકડું`,`ઓરડો`],a:[2],e:[`ફ્રોક કાપડમાંથી બને છે, તેમ ખુરશી લાકડામાંથી બને છે (કાચા માલનો સંબંધ).`],v:`pair:ફ્રોક ← કાપડ :: ખુરશી ← લાકડું`},
+  {i:64,c:`mat`,q:`52 પત્તાની ગંજીપાની થોડીમાંથી યાદચ્છિક રીતે એક પત્તું કાઢતાં તે લાલનો એક્કો હોવાની સંભાવના?`,o:[`1/52`,`3/52`,`4/52`,`5/52`],a:[0],e:[`સંભાવના = અનુકૂળ પરિણામ ÷ કુલ પરિણામ.`,`લાલનો એક્કો ફક્ત 1 જ પત્તું હોય છે, અને કુલ પત્તાં 52. તેથી 1/52.`],v:`pair:1 લાલનો એક્કો ÷ 52 કુલ પત્તાં = 1/52`},
+  {i:65,c:`mat`,q:`2.5 કલાકની મિનિટ કેટલી થાય?`,o:[`120`,`140`,`150`,`250`],a:[2],e:[`1 કલાક = 60 મિનિટ.`,`2.5 × 60 = 150 મિનિટ.`],v:`pair:2.5 × 60 = 150 મિનિટ`},
+  {i:66,c:`mat`,q:`(1)²⁰²⁵ + (2025)⁰ = ?`,o:[`1`,`2`,`0`,`2025`],a:[1],e:[`1 ની કોઈ પણ ઘાત = 1. કોઈ પણ શૂન્યેતર સંખ્યાની 0 ઘાત = 1.`,`1 + 1 = 2.`],v:`pair:1 + 1 = 2`},
+  {i:67,c:`mat`,q:`7 જાન્યુઆરીએ મંગળવાર હોય તો 21 જાન્યુઆરીએ કયો વાર આવશે?`,o:[`મંગળવાર`,`બુધવાર`,`ગુરુવાર`,`સોમવાર`],a:[0],e:[`21 − 7 = 14 દિવસનો તફાવત.`,`14 દિવસ = બરાબર 2 અઠવાડિયાં (શેષ 0), એટલે એ જ વાર: મંગળવાર.`],v:`pair:7 જાન્યુ + 14 દિવસ (2 અઠવાડિયાં) = મંગળવાર`},
+  {i:68,c:`mat`,q:`સોફિયા પશ્ચિમમાં 2 km ચાલે છે. પછી ડાબા હાથે વળીને 1 km ચાલે છે. પછી જમણા હાથે વળીને 1 km ચાલે છે. હવે તે કઈ દિશામાં ચાલતી હશે?`,o:[`ઉત્તર`,`દક્ષિણ`,`પશ્ચિમ`,`પૂર્વ`],a:[2],e:[`પશ્ચિમ તરફ 2 km → ડાબે વળતાં દક્ષિણ તરફ 1 km → જમણે વળતાં ફરી પશ્ચિમ તરફ.`],v:`compass:W_L_R`},
+  {i:69,c:`mat`,q:`(વેન આકૃતિ) ફક્ત ગુજરાતી બોલતા લોકોની સંખ્યા? (ત્રિકોણ=હિન્દી, લંબચોરસ=ગુજરાતી, વર્તુળ=અંગ્રેજી)`,o:[`21`,`23`,`54`,`15`],a:[2],e:[`લંબચોરસનો એવો ભાગ જે ત્રિકોણ કે વર્તુળ સાથે ભળેલો ન હોય, તેમાં 54 છે.`],v:`venn:54`},
+  {i:70,c:`mat`,q:`(વેન આકૃતિ) હિન્દી અને અંગ્રેજી બોલતા લોકોની સંખ્યા?`,o:[`18`,`15`,`21`,`23`],a:[0],g:1,e:[`હિન્દી અને અંગ્રેજી બંને બોલનારા = 18 + 15 = 33.`,`વિકલ્પોમાં 33 ન હોવાથી બોર્ડે ગ્રેસ ગુણ આપ્યા.`],v:`venn:33`},
+  {i:71,c:`mat`,q:`(વેન આકૃતિ) હિન્દી, ગુજરાતી અને અંગ્રેજી ત્રણેય બોલતા લોકોની સંખ્યા?`,o:[`18`,`15`,`23`,`21`],a:[1],e:[`ત્રણેય આકારો જ્યાં એકબીજાને છેદે છે તે મધ્ય ભાગમાં 15 છે.`],v:`venn:15`},
+  {i:72,c:`mat`,q:`ગુજરાતી : ગરબા, પશ્ચિમ બંગાળ : ?`,o:[`ઓણમ`,`હોળી`,`દુર્ગાપૂજા`,`ગણેશ ચતુર્થી`],a:[2],e:[`ગરબા ગુજરાતનો પ્રખ્યાત ઉત્સવ છે, તેમ દુર્ગાપૂજા પશ્ચિમ બંગાળનો પ્રખ્યાત ઉત્સવ છે.`],v:`pair:ગુજરાત : ગરબા :: પ. બંગાળ : દુર્ગાપૂજા`},
+  {i:73,c:`mat`,q:`કચ્છ : ભુજ, નર્મદા : ?`,o:[`કેવડિયા`,`આહવા`,`મોડાસા`,`રાજપીપળા`],a:[3],e:[`કચ્છ જિલ્લાનું વડું મથક ભુજ છે, તેમ નર્મદા જિલ્લાનું વડું મથક રાજપીપળા છે.`],v:`pair:કચ્છ → ભુજ :: નર્મદા → રાજપીપળા`},
+  {i:74,c:`mat`,q:`અલગ પડતો જિલ્લો શોધો.`,o:[`જામનગર`,`ભાવનગર`,`રાજકોટ`,`સુરત`],a:[2,3],e:[`રાજકોટ: બાકીના ત્રણને દરિયાકિનારો છે, રાજકોટને નથી.`,`સુરત: બાકીના ત્રણ સૌરાષ્ટ્રના છે, સુરત દક્ષિણ ગુજરાતમાં છે. તેથી C અને D બંને માન્ય.`],v:`badge:C (બિન-દરિયાઈ) અને D (દક્ષિણ ગુજરાત) બંને માન્ય`},
+  {i:75,c:`mat`,q:`અલગ પડતી રમત શોધો.`,o:[`ક્રિકેટ`,`ચેસ`,`વોલીબોલ`,`કબડ્ડી`],a:[1],e:[`ક્રિકેટ, વોલીબોલ અને કબડ્ડી મેદાનની શારીરિક રમતો છે.`,`ચેસ બેઠા બેઠા રમાતી બુદ્ધિની (ઇનડોર) રમત છે.`],v:`badge:ચેસ = ઇનડોર બૌદ્ધિક રમત`},
+  {i:76,c:`mat`,q:`દેશ : રાષ્ટ્રપતિ, રાજ્ય : ?`,o:[`મુખ્યમંત્રી`,`રાજ્યપાલ`,`ધારાસભ્ય`,`સંસદસભ્ય`],a:[1],e:[`દેશના બંધારણીય વડા રાષ્ટ્રપતિ છે, તેમ રાજ્યના બંધારણીય વડા રાજ્યપાલ છે.`],v:`pair:દેશ → રાષ્ટ્રપતિ :: રાજ્ય → રાજ્યપાલ`},
+  {i:77,c:`mat`,q:`ગામ : સરપંચ, મહાનગર પાલિકા : ?`,o:[`પ્રમુખ`,`ધારાસભ્ય`,`કમિશનર`,`મેયર`],a:[3],e:[`ગામના ચૂંટાયેલા વડા સરપંચ છે, તેમ મહાનગર પાલિકાના ચૂંટાયેલા વડા મેયર છે.`],v:`pair:ગામ → સરપંચ :: મહાનગર પાલિકા → મેયર`},
+  {i:78,c:`mat`,q:`ભારતના રાજ્યોને પૂર્વથી પશ્ચિમ ગોઠવો: 1. બિહાર 2. મધ્યપ્રદેશ 3. નાગાલેન્ડ 4. સિક્કિમ`,o:[`4-3-1-2`,`3-1-4-2`,`4-2-1-3`,`3-4-1-2`],a:[3],e:[`સૌથી પૂર્વમાં નાગાલેન્ડ (3) → સિક્કિમ (4) → બિહાર (1) → પશ્ચિમે મધ્યપ્રદેશ (2).`],v:`seq:નાગાલેન્ડ (3),સિક્કિમ (4),બિહાર (1),મધ્યપ્રદેશ (2)|પૂર્વ→પશ્ચિમ`},
+  {i:79,c:`mat`,q:`શહેરોને ઉત્તરથી દક્ષિણ ગોઠવો: 1. ભોપાલ 2. ચંદીગઢ 3. હૈદરાબાદ 4. જયપુર`,o:[`2-4-1-3`,`3-1-4-2`,`2-1-4-3`,`4-2-1-3`],a:[0],e:[`ઉત્તરથી દક્ષિણ: ચંદીગઢ (2) → જયપુર (4) → ભોપાલ (1) → હૈદરાબાદ (3).`],v:`seq:ચંદીગઢ (2),જયપુર (4),ભોપાલ (1),હૈદરાબાદ (3)|ઉત્તર→દક્ષિણ`},
+  {i:80,c:`mat`,q:`કિંમત મુજબ ઓછાથી વધુ તરફ ગોઠવો: 1. તાંબુ 2. સોનુ 3. સ્ટીલ 4. ચાંદી 5. યુરેનિયમ`,o:[`3-1-4-2-5`,`1-3-4-2-5`,`3-1-5-4-2`,`1-3-4-5-2`],a:[0],e:[`સસ્તાથી મોંઘા ક્રમમાં: સ્ટીલ (3) → તાંબુ (1) → ચાંદી (4) → સોનુ (2) → યુરેનિયમ (5).`],v:`seq:સ્ટીલ (3),તાંબુ (1),ચાંદી (4),સોનુ (2),યુરેનિયમ (5)|<`},
+  {i:81,c:`mat`,q:`ખોટી જોડ ઓળખો.`,o:[`ગાંધીનગર - અક્ષરધામ`,`સાબરકાંઠા - પાવાગઢ`,`જૂનાગઢ - ગીરનાર`,`આણંદ - અમૂલ ડેરી`],a:[1],e:[`પાવાગઢ પંચમહાલ જિલ્લામાં આવેલું છે, સાબરકાંઠામાં નહીં.`,`તેથી વિકલ્પ (B) ખોટી જોડ છે.`],v:`pair:પાવાગઢ = પંચમહાલ (સાબરકાંઠા ખોટું)`},
+  {i:82,c:`mat`,q:`યોગ્ય જોડ બનાવો: A. પર્યાવરણ દિન, B. ગાંધી જયંતિ, C. બાલ દિન, D. શિક્ષક દિન (1. 14 નવે., 2. 5 જૂન, 3. 2 ઓક્ટો., 4. 5 સપ્ટે.)`,o:[`A-2, B-1, C-3, D-4`,`A-5, B-3, C-1, D-4`,`A-2, B-3, C-1, D-4`,`A-5, B-1, C-3, D-4`],a:[2],e:[`પર્યાવરણ દિન = 5 જૂન (2), ગાંધી જયંતિ = 2 ઓક્ટોબર (3).`,`બાલ દિન = 14 નવેમ્બર (1), શિક્ષક દિન = 5 સપ્ટેમ્બર (4).`],v:`pair:A-2 • B-3 • C-1 • D-4`},
+  {i:83,c:`mat`,q:`ખોટું વિધાન શોધો: (1) ચંદ્રગ્રહણ પૂનમે થાય (2) વસંત ઋતુ એટલે ચોમાસાની શરૂઆત (3) શિશિર શિયાળામાં આવે (4) નવરાત્રી શરદ ઋતુમાં હોય`,o:[`2`,`2 અને 3`,`2 અને 4`,`1 અને 2`],a:[0],e:[`વિધાન 2 ખોટું છે: ચોમાસાની શરૂઆત વર્ષા ઋતુમાં થાય, વસંત ઋતુ ફાગણ-ચૈત્રમાં હોય.`],v:`badge:વિધાન 2 ખોટું (ચોમાસું = વર્ષા ઋતુ)`},
+  {i:84,c:`mat`,q:`સાચાં વિધાન શોધો: (1) સિંહ જોવા જૂનાગઢ/ગીર સોમનાથ (2) ઘુડખર કચ્છના રણમાં (3) પંખી અભ્યારણ નળસરોવર (4) વેળાવદર વાઘનું અભ્યારણ`,o:[`1 અને 2`,`1, 2 અને 3`,`1 અને 3`,`બધાં જ`],a:[1],e:[`1, 2 અને 3 સાચાં છે.`,`વિધાન 4 ખોટું છે કારણ કે વેળાવદર (ભાવનગર) કાળિયારનું અભ્યારણ છે.`],v:`badge:વેળાવદર = કાળિયાર અભ્યારણ (વાઘ નહીં)`},
+  {i:85,c:`mat`,q:`આકૃતિમાં કઈ સંખ્યા એવી છે જે બધી જ આકૃતિમાં આવે છે?`,o:[`3`,`5`,`6`,`19`],a:[0],e:[`લંબચોરસ, વર્તુળ, નળાકાર અને ત્રિકોણ ચારેય આકારોના સામાન્ય ભાગમાં 3 લખ્યું છે.`],v:`venn:common3`},
+  {i:86,c:`mat`,q:`વર્તુળ આકૃતિમાં 3, 8, ?, 125, 27, 2, 4, 5 છે. ? ની જગ્યાએ શું આવે?`,o:[`8`,`16`,`64`,`32`],a:[2],e:[`સામસામેની સંખ્યાઓમાં ઘનનો સંબંધ છે: 2↔8 (2³), 3↔27 (3³), 5↔125 (5³).`,`તેથી 4 ની સામે 4³ = 64.`],v:`pair:2→8 • 3→27 • 5→125 • 4→64 (n³)`},
+  {i:87,c:`mat`,q:`પહેલી ત્રણ આકૃતિઓના સંબંધ પરથી ? ની જગ્યાએ સાચો વિકલ્પ શોધો. (બહાર-અંદરના આકારો)`,o:[`વિકલ્પ (A)`,`વિકલ્પ (B)`,`વિકલ્પ (C)`,`વિકલ્પ (D)`],a:[0],e:[`પ્રથમ જોડીમાં બહાર ત્રિકોણ અને અંદર વર્તુળમાંથી બહાર વર્તુળ અને અંદર ત્રિકોણ બને છે.`,`તે જ રીતે બહાર વર્તુળ, અંદર ચોરસમાંથી બહાર ચોરસ (હેચિંગ) અને અંદર વર્તુળ (સફેદ) = વિકલ્પ (A).`],v:`shape:swap87`},
+  {i:88,c:`mat`,q:`પહેલી ત્રણ આકૃતિઓ (તારો અને તેમાંથી ઘટતી રેખાઓ) પરથી ? ની જગ્યાએ સાચો વિકલ્પ શોધો.`,o:[`વિકલ્પ (A)`,`વિકલ્પ (B)`,`વિકલ્પ (C)`,`વિકલ્પ (D)`],a:[1],e:[`ક્રમશઃ રેખાઓ ઘટતી જાય છે; કી મુજબ ચોથી આકૃતિ બે રેખાઓવાળી "∧" આકારની વિકલ્પ (B) છે.`],v:`shape:star88`},
+  {i:89,c:`mat`,q:`એક સ્ત્રી પુરુષને આંગળી ચીંધીને કહે છે કે તેના ભાઈનો પિતા એ મારા દાદાનો એકમાત્ર પુત્ર છે. સ્ત્રીનો પુરુષ સાથે શું સંબંધ?`,o:[`પુરુષની મામી`,`પુરુષની દીકરી`,`પુરુષની બહેન`,`પુરુષની મા`],a:[2],e:[`પુરુષના ભાઈનો પિતા = પુરુષના પિતા. સ્ત્રીના દાદાનો એકમાત્ર પુત્ર = સ્ત્રીના પિતા.`,`બંનેના પિતા એક જ વ્યક્તિ હોવાથી સ્ત્રી એ પુરુષની બહેન છે.`],v:`pair:બંનેના પિતા એક જ ⇒ સ્ત્રી = બહેન`},
+  {i:90,c:`mat`,q:`ક્રમિક 1 થી 20 સંખ્યાનો સરવાળો કેટલો થશે?`,o:[`200`,`210`,`220`,`420`],a:[1],e:[`સૂત્ર: n(n + 1) ÷ 2.`,`20 × 21 ÷ 2 = 420 ÷ 2 = 210.`],v:`pair:20 × 21 ÷ 2 = 210`},
+  {i:91,c:`math`,q:`ત્રિકોણોમાં (84, 14, 12), (81, 18, 9), (88, ?, 11). ? = ?`,o:[`16`,`8`,`18`,`9`],a:[0],e:[`નિયમ: ડાબી સંખ્યા = (જમણી × નીચે) ÷ 2.`,`14×12÷2 = 84; 18×9÷2 = 81.`,`? × 11 ÷ 2 = 88 ⇒ ? = 16.`],v:`shape:tri91`},
+  {i:92,c:`math`,q:`ત્રણ ચોકઠાં: [4 8 / 3 2], [9 7 / 6 3], [5 9 / ? 5]. ? = ?`,o:[`2`,`3`,`4`,`5`],a:[2],e:[`ઉપરની બે સંખ્યાનો ગુણાકાર = નીચેના બે અંકથી બનતી સંખ્યા.`,`4×8 = 32; 9×7 = 63; 5×9 = 45 → એટલે ? = 4.`],v:`pair:4×8=32 • 9×7=63 • 5×9=45 (?=4)`},
+  {i:93,c:`math`,q:`જૈમિન પાસે 21.6 મીટર લાંબું કાપડ છે. તેમાંથી 1.8 મીટરના કેટલા ટુકડા બને?`,o:[`10`,`12`,`20`,`16`],a:[1],e:[`ટુકડા = 21.6 ÷ 1.8 = 216 ÷ 18 = 12 ટુકડા.`],v:`pair:21.6 ÷ 1.8 = 12 ટુકડા`},
+  {i:94,c:`math`,q:`1/2 અને 1/3 ની સરાસરી શોધો.`,o:[`1/6`,`5/6`,`2/6`,`5/12`],a:[3],e:[`1/2 + 1/3 = 3/6 + 2/6 = 5/6.`,`સરાસરી = (5/6) ÷ 2 = 5/12.`],v:`seq:1/2 + 1/3 = 5/6,÷ 2 → 5/12|→`},
+  {i:95,c:`math`,q:`બાજુઓના માપની દૃષ્ટિએ કયો ત્રિકોણ શક્ય નથી?`,o:[`2, 3, 5 સે.મી.`,`3, 6, 7 સે.મી.`,`8, 6, 10 સે.મી.`,`10.2, 5.8, 4.5 સે.મી.`],a:[0],e:[`ત્રિકોણમાં કોઈ પણ બે બાજુનો સરવાળો ત્રીજી બાજુ કરતાં વધુ હોવો જોઈએ.`,`વિકલ્પ (A) માં 2 + 3 = 5 (વધુ નથી, બરાબર છે), એટલે ત્રિકોણ શક્ય નથી.`],v:`pair:2 + 3 = 5 (ત્રીજી બાજુથી વધુ નથી ✘)`},
+  {i:96,c:`math`,q:`એક દુકાનદાર 150 રૂ. કિંમતનું રમકડું 22% ખોટ ખાઈને વેચે છે. વેચાણ કિંમત કેટલી?`,o:[`130 રૂ.`,`183 રૂ.`,`117 રૂ.`,`127 રૂ.`],a:[2],e:[`ખોટ = 150 × 22 ÷ 100 = 33 રૂ.`,`વેચાણ કિંમત = 150 − 33 = 117 રૂ.`],v:`seq:મૂળ કિંમત 150,− 22% (33) → 117 રૂ.|→`},
+  {i:97,c:`math`,q:`સંમેય સંખ્યાઓને ચડતા ક્રમમાં ગોઠવો: −3/7, −3/2, −3/4, −3/11.`,o:[`−3/7, −3/4, −3/2, −3/11`,`−3/11, −3/7, −3/4, −3/2`,`−3/4, −3/2, −3/11, −3/7`,`−3/2, −3/4, −3/7, −3/11`],a:[3],e:[`દશાંશમાં: −3/2 = −1.5, −3/4 = −0.75, −3/7 ≈ −0.43, −3/11 ≈ −0.27.`,`ચડતો ક્રમ: −3/2 < −3/4 < −3/7 < −3/11.`],v:`seq:−3/2 (−1.5),−3/4 (−0.75),−3/7 (−0.43),−3/11 (−0.27)|<`},
+  {i:98,c:`math`,q:`ઘનની ધાર, ફલક અને શિરોબિંદુની અનુક્રમે સંખ્યા માટે કયો વિકલ્પ પસંદ કરશો?`,o:[`15, 7, 10`,`12, 6, 8`,`15, 6, 11`,`8, 6, 12`],a:[1],e:[`ઘનને 12 ધાર, 6 ફલક અને 8 શિરોબિંદુ હોય છે.`,`ઓયલર સૂત્ર: F + V − E = 6 + 8 − 12 = 2 ✔.`],v:`shape:cube`},
+  {i:99,c:`math`,q:`[7/3 × (−6/13)] + [7/5 × 6/13] = ?`,o:[`0`,`42/65`,`84/65`,`1`],a:[0],g:1,e:[`−14/13 + 42/65 = −70/65 + 42/65 = −28/65.`,`આ સાચો જવાબ કોઈ વિકલ્પમાં ન હોવાથી બોર્ડે ગ્રેસ ગુણ આપ્યા.`],v:`pair:−70/65 + 42/65 = −28/65 (ગ્રેસ)`},
+  {i:100,c:`math`,q:`એક નિયમિત બહુકોણ જેના પ્રત્યેક બહિષ્કોણનું માપ 60° હોય તેને ..... કહે છે.`,o:[`નિયમિત અષ્ટકોણ`,`ચતુષ્કોણ`,`નિયમિત ષટ્કોણ`,`ત્રિકોણ`],a:[2],e:[`બધા બહિષ્કોણનો સરવાળો 360° હોય છે.`,`બાજુઓ = 360° ÷ 60° = 6, એટલે નિયમિત ષટ્કોણ.`],v:`pair:360° ÷ 60° = 6 બાજુ = ષટ્કોણ`},
+  {i:101,c:`math`,q:`ઉર્દૂ ભાષા બોલતા વિદ્યાર્થીઓની ટકાવારી? (ગુજરાતી 40, અંગ્રેજી 12, ઉર્દૂ 9, હિન્દી 7, સિંધી 4)`,o:[`25%`,`36%`,`10%`,`12.5%`],a:[3],e:[`કુલ વિદ્યાર્થી = 40 + 12 + 9 + 7 + 4 = 72.`,`ઉર્દૂની ટકાવારી = (9 ÷ 72) × 100 = 12.5%.`],v:`pair:(9 ÷ 72) × 100 = 12.5%`},
+  {i:102,c:`math`,q:`6, 9 અને 15 વડે નિઃશેષ ભાગી શકાય તેવી નાનામાં નાની પૂર્ણવર્ગ સંખ્યા?`,o:[`810`,`900`,`90`,`400`],a:[1],e:[`6, 9, 15 નો લ.સા.અ. = 90 = 2¹ × 3² × 5¹.`,`પૂર્ણવર્ગ માટે 2 અને 5 વડે ગુણતાં: 2² × 3² × 5² = 900.`],v:`seq:લ.સા.અ. = 90,× (2×5) → 900 (30²)|→`},
+  {i:103,c:`math`,q:`તનુજાએ એક હારમાં 4 છોડ રોપ્યા. બે છોડ વચ્ચે ¾ મીટર અંતર છે. પ્રથમ અને છેલ્લા છોડ વચ્ચે કેટલું અંતર?`,o:[`2¾ મી`,`3²⁄₄ મી`,`2¼ મી`,`9/4 મી`],a:[2,3],e:[`4 છોડ વચ્ચે 3 ગાળા પડે (4 − 1 = 3).`,`કુલ અંતર = 3 × ¾ = 9/4 મી = 2¼ મી. તેથી C અને D બંને માન્ય.`],v:`shape:plants`},
+  {i:104,c:`math`,q:`આકૃતિ પરથી અંતઃકોણની જોડ ઓળખો.`,o:[`∠1 અને ∠2, ∠7 અને ∠8`,`∠1 અને ∠5, ∠2 અને ∠6`,`∠3 અને ∠5, ∠4 અને ∠6`,`∠3 અને ∠6, ∠4 અને ∠5`],a:[2],e:[`બે સમાંતર રેખાઓ વચ્ચે અને છેદિકાની એક જ બાજુએ આવેલા ખૂણા અંતઃકોણ કહેવાય.`,`∠3 અને ∠5 (ડાબી બાજુ) તથા ∠4 અને ∠6 (જમણી બાજુ) — વિકલ્પ (C).`],v:`shape:angles`},
+  {i:105,c:`math`,q:`સંમેય સંખ્યાની કઈ જોડી સમાન નથી?`,o:[`−4/−5 = 4/5`,`−5/8 = 15/−24`,`1/−3 = 3/−9`,`−7/21 = 3/9`],a:[3],e:[`વિકલ્પ (D) માં −7/21 = −1/3 (ઋણ) છે, જ્યારે 3/9 = +1/3 (ધન) છે. તેથી સમાન નથી.`],v:`pair:−7/21 = −1/3  ≠  3/9 = +1/3`},
+  {i:106,c:`math`,q:`x = −2 માટે 4(2x − 1) + 3x + 11 ની કિંમત?`,o:[`−4`,`−25`,`25`,`29`],a:[0],g:1,e:[`4(2(−2) − 1) + 3(−2) + 11 = 4(−5) − 6 + 11 = −20 − 6 + 11 = −15.`,`−15 કોઈ વિકલ્પમાં ન હોવાથી બોર્ડે ગ્રેસ ગુણ આપ્યા.`],v:`pair:−20 − 6 + 11 = −15 (ગ્રેસ)`},
+  {i:107,c:`math`,q:`કઈ આકૃતિમાં અસંખ્ય સમમિતિ રેખાઓ દર્શાવી શકાય?`,o:[`નિયમિત ષટ્કોણ`,`લંબચોરસ`,`ચતુષ્કોણ`,`વર્તુળ`],a:[3],e:[`વર્તુળના દરેક વ્યાસ પર સમમિતિ રેખા મળે અને વ્યાસ અસંખ્ય દોરી શકાય.`],v:`shape:circle_sym`},
+  {i:108,c:`math`,q:`નિયમિત બહુકોણના દરેક બહિષ્કોણનું માપ 20° હોય તો તેને કેટલી બાજુઓ હોય?`,o:[`16`,`18`,`20`,`24`],a:[1],e:[`બધા બહિષ્કોણનો સરવાળો 360°.`,`બાજુઓની સંખ્યા = 360° ÷ 20° = 18.`],v:`pair:360° ÷ 20° = 18 બાજુ`},
+  {i:109,c:`math`,q:`શાળામાં 640 વિદ્યાર્થી છે. હાર અને સ્તંભોની સંખ્યા સમાન રહે તેમ ઊભા રાખતાં કેટલાને બહાર રાખવા પડે?`,o:[`5`,`10`,`15`,`20`],a:[2],e:[`હાર = સ્તંભ એટલે પૂર્ણવર્ગ સંખ્યા જોઈએ.`,`640 થી નાનો નજીકનો પૂર્ણવર્ગ 25² = 625 છે. બહાર રાખવા પડે = 640 − 625 = 15.`],v:`pair:640 − 625 (25²) = 15`},
+  {i:110,c:`math`,q:`મનિષે પગારમાંથી 75% વાપર્યા પછી રૂ. 3000 બાકી રહ્યા. તેનો પગાર?`,o:[`9000`,`10000`,`11000`,`12000`],a:[3],e:[`બાકી ટકાવારી = 100% − 75% = 25%.`,`25% = 3000 રૂ. ⇒ 100% = 3000 × 4 = 12000 રૂ.`],v:`pair:25% = ₹3000 ⇒ 100% = ₹12000`},
+  {i:111,c:`math`,q:`લંબઘનની લંબાઈ mn, પહોળાઈ mp², ઊંચાઈ m²n²p. ઘનફળ?`,o:[`m³n³p³`,`m³n⁴p³`,`m⁴n³p³`,`m²n³p⁴`],a:[2],e:[`ઘનફળ = (mn)(mp²)(m²n²p).`,`ઘાતનો સરવાળો: m^(1+1+2)=m⁴, n^(1+2)=n³, p^(2+1)=p³ = m⁴n³p³.`],v:`pair:m⁴ · n³ · p³`},
+  {i:112,c:`math`,q:`સમબાજુ ચતુષ્કોણના વિકર્ણોની લંબાઈ 8.5 સેમી અને 16 સેમી છે. ક્ષેત્રફળ?`,o:[`64`,`64.5`,`68.5`,`68`],a:[3],e:[`સમબાજુ ચતુષ્કોણનું ક્ષેત્રફળ = ½ × વિકર્ણ₁ × વિકર્ણ₂.`,`½ × 8.5 × 16 = 8.5 × 8 = 68 ચો.સેમી.`],v:`pair:½ × 8.5 × 16 = 68 ચો.સેમી.`},
+  {i:113,c:`math`,q:`વનસ્પતિકોષનું માપ 0.00001275 મી. છે. પ્રમાણિત સ્વરૂપે?`,o:[`1275 × 10⁻⁵`,`1.275 × 10⁻⁵`,`127.5 × 10⁻⁵`,`12.75 × 10⁻⁵`],a:[1],e:[`દશાંશ ચિહ્નને જમણી બાજુ 5 સ્થાન ખસેડતાં 1.275 × 10⁻⁵ મી. મળે.`],v:`pair:0.00001275 = 1.275 × 10⁻⁵`},
+  {i:114,c:`math`,q:`એક યંત્ર 6 કલાકમાં 840 બોટલ ભરે છે. 5 કલાકમાં કેટલી ભરશે?`,o:[`740`,`730`,`710`,`700`],a:[3],e:[`1 કલાકમાં = 840 ÷ 6 = 140 બોટલ.`,`5 કલાકમાં = 140 × 5 = 700 બોટલ.`],v:`seq:6 કલાક: 840,1 કલાક: 140,5 કલાક: 700|→`},
+  {i:115,c:`math`,q:`સંમેય સંખ્યાઓ માટે કયું વિધાન ખોટું છે?`,o:[`સરવાળા-ગુણાકાર માટે ક્રમનો ગુણધર્મ પળાય છે`,`સરવાળા-ગુણાકાર માટે જૂથનો ગુણધર્મ પળાય છે`,`સરવાળા અને ગુણાકાર માટે 1 સંખ્યા તટસ્થ છે`,`a(a+b)=ab+ac અને a(a−b)=ab−ac એ વિભાજનનો ગુણધર્મ છે`],a:[2,3],e:[`(C) ખોટું: સરવાળા માટે તટસ્થ 0 અને ગુણાકાર માટે 1 છે.`,`(D) માં છાપભૂલથી a(a+b)=ab+ac લખ્યું છે (સાચું a(b+c)=ab+ac). તેથી કીમાં C અને D બંને માન્ય.`],v:`badge:C અને D બંને વિધાનો ખોટાં (બંને માન્ય)`},
+  {i:116,c:`math`,q:`ગાડી 1 લિટર પેટ્રોલમાં 16 કિમી કાપે છે. 2¾ લિટરમાં કેટલું અંતર?`,o:[`44 કિમી`,`23 કિમી`,`48 કિમી`,`24 કિમી`],a:[0],e:[`2¾ = 11/4 લિટર.`,`અંતર = 16 × (11/4) = 4 × 11 = 44 કિમી.`],v:`pair:16 × 11/4 = 44 કિમી`},
+  {i:117,c:`math`,q:`13, 16, 12, 14, 19, 12, 14, 13, 14 નો મધ્યસ્થ?`,o:[`14`,`13`,`19`,`12`],a:[0],e:[`ચડતા ક્રમમાં: 12, 12, 13, 13, 14, 14, 14, 16, 19.`,`કુલ 9 અવલોકનોમાં બરાબર વચ્ચેની 5 મી સંખ્યા = 14.`],v:`seq:12,12,13,13,[14],14,14,16,19|<`},
+  {i:118,c:`math`,q:`થેલામાં 4 લાલ અને 2 પીળા દડા છે. આંખો બંધ કરી એક દડો કાઢતાં તે લીલો હોવાની સંભાવના?`,o:[`6/6`,`4/6`,`2/6`,`0`],a:[3],e:[`થેલામાં એક પણ લીલો દડો નથી, એટલે આ અશક્ય ઘટના છે. સંભાવના = 0.`],v:`pair:0 લીલા દડા ÷ 6 કુલ દડા = 0`},
+  {i:119,c:`math`,q:`18 છોકરીઓ અને 12 છોકરાઓની સંખ્યાનો ગુણોત્તર?`,o:[`8:2`,`5:4`,`2:3`,`3:2`],a:[3],e:[`18 : 12 ને 6 વડે ભાગતાં 3 : 2 મળે.`],v:`pair:18 : 12 = 3 : 2`},
+  {i:120,c:`math`,q:`સમાંતર રેખાઓની છેદિકાથી રચાતા ખૂણા માટે કયું વિધાન ખોટું છે?`,o:[`અનુકોણની જોડ સમાન હોય છે`,`અંતઃયુગ્મકોણની જોડ એકબીજાની કોટિકોણ હોય છે`,`છેદિકાની એકબાજુના અંતઃકોણ પૂરક હોય છે`,`અંતઃ યુગ્મકોણની દરેક જોડ સમાન હોય છે`],a:[1],e:[`અંતઃયુગ્મકોણ સમાન હોય છે, કોટિકોણ (સરવાળો 90°) નહીં. એટલે (B) ખોટું છે.`],v:`badge:અંતઃયુગ્મકોણ = સમાન (કોટિકોણ ખોટું)`},
+  {i:121,c:`sci`,q:`ચાર સરખા પાત્રોમાં સમાન પાણી ભરી સૂર્યપ્રકાશમાં મૂકતાં કયા રંગની સપાટીવાળા પાત્રનું પાણી ઝડપથી ગરમ થશે?`,o:[`ગુલાબી`,`લીલો`,`કાળો`,`પીળો`],a:[2],e:[`કાળો રંગ ઉષ્માનું શોષણ સૌથી વધુ કરે છે.`,`તેથી કાળી સપાટીવાળા પાત્રનું પાણી સૌથી ઝડપથી ગરમ થાય.`],v:`badge:કાળો રંગ = ઉષ્માનું મહત્તમ શોષણ`},
+  {i:122,c:`sci`,q:`સમતલ અરીસા માટે કયું સાચું નથી?`,o:[`સીધું (ચત્તું) પ્રતિબિંબ મળે`,`આભાસી પ્રતિબિંબ મળે`,`વસ્તુ અંતર અને પ્રતિબિંબ અંતર સરખું હોય`,`વસ્તુ કરતા નાનું પ્રતિબિંબ મળે`],a:[3],e:[`સમતલ અરીસામાં પ્રતિબિંબ ચત્તું, આભાસી અને વસ્તુના જેટલા જ કદનું મળે છે.`,`વસ્તુ કરતાં નાનું પ્રતિબિંબ મળે એ વિધાન ખોટું છે.`],v:`badge:સમતલ અરીસો = સમાન કદ, ચત્તું, આભાસી`},
+  {i:123,c:`sci`,q:`જો જમીન બેઝિક હોય તો તેમાં શું ઉમેરવું જોઈએ?`,o:[`કાર્બનિક દ્રવ્ય`,`ક્વિક લાઇમ`,`સ્લેક્ડ લાઇમ`,`કેલેમાઇન દ્રાવણ`],a:[0],e:[`ક્વિક લાઇમ અને સ્લેક્ડ લાઇમ પોતે બેઝિક છે.`,`ખાતર, છાણ જેવું કાર્બનિક દ્રવ્ય એસિડ મુક્ત કરી જમીનની બેઝિક પ્રકૃતિ ઘટાડે છે.`],v:`pair:બેઝિક જમીન + કાર્બનિક દ્રવ્ય = તટસ્થીકરણ`},
+  {i:124,c:`sci`,q:`ખરીફ પાક કયો છે?`,o:[`ચણા`,`વટાણા`,`ડાંગર`,`રાઈ`],a:[2],e:[`ખરીફ પાક ચોમાસામાં વવાય છે (દા.ત. ડાંગર, મકાઈ, કપાસ).`,`ચણા, વટાણા અને રાઈ શિયાળાના રવી પાક છે.`],v:`pair:ખરીફ (ચોમાસું) = ડાંગર • રવી (શિયાળો) = ચણા, વટાણા, રાઈ`},
+  {i:125,c:`sci`,q:`કલ્ટિવેટરનો ઉપયોગ શેના માટે થાય છે?`,o:[`વાવણી કરવા`,`ખેડ કરવા`,`ખાતર છાંટવા`,`લણણી કરવા`],a:[1],e:[`કલ્ટિવેટર ટ્રેક્ટર સાથે જોડાતું સાધન છે, જે જમીન ખેડવા અને પોચી કરવા વપરાય છે.`],v:`badge:કલ્ટિવેટર = જમીન ખેડવાનું સાધન`},
+  {i:126,c:`sci`,q:`વાઇરસ દ્વારા થતો રોગ કયો છે?`,o:[`કોલેરા`,`ટાઇફોઇડ`,`ક્ષય`,`પોલિયો`],a:[3],e:[`કોલેરા, ટાઇફોઇડ અને ક્ષય બેક્ટેરિયાથી થાય છે.`,`પોલિયો વાઇરસથી થતો રોગ છે.`],v:`pair:પોલિયો = વાઇરસ • કોલેરા/ટાઇફોઇડ/ક્ષય = બેક્ટેરિયા`},
+  {i:127,c:`sci`,q:`લેક્ટોબેસિલસ બેક્ટેરિયાનું મુખ્ય કાર્ય શું છે?`,o:[`દૂધમાંથી દહીં બનાવવાનું`,`જમીનની ફળદ્રુપતા વધારવાનું`,`કચરાનું વિઘટન કરવાનું`,`આથવણ લાવવાનું`],a:[0],e:[`લેક્ટોબેસિલસ દૂધમાં વૃદ્ધિ પામી તેને દહીંમાં ફેરવે છે.`],v:`pair:દૂધ + લેક્ટોબેસિલસ → દહીં`},
+  {i:128,c:`sci`,q:`'પેટ્રોલિયમ' શબ્દમાં 'પેટ્રો' નો અર્થ શું થાય છે?`,o:[`પેટ્રોલ`,`જમીન`,`તેલ`,`ખડક`],a:[3],e:[`'પેટ્રોલિયમ' = પેટ્રો (ખડક) + ઓલિયમ (તેલ), એટલે ખડકમાંથી મળતું તેલ.`],v:`pair:પેટ્રો (ખડક) + ઓલિયમ (તેલ) = પેટ્રોલિયમ`},
+  {i:129,c:`sci`,q:`નીચેના વિકલ્પો પૈકી કોનું જ્વલનબિંદુ સૌથી ઊંચું હોય?`,o:[`પેટ્રોલ`,`CNG`,`લાકડું`,`કેરોસીન`],a:[0],e:[`સત્તાવાર કી મુજબ જવાબ (A) પેટ્રોલ રાખ્યો છે.`,`નોંધ: વિજ્ઞાન મુજબ પેટ્રોલનું જ્વલનબિંદુ સૌથી નીચું હોય છે (કદાચ પ્રશ્નમાં 'નીચું' છાપવાનું રહી ગયું હશે).`],v:`badge:સત્તાવાર કી મુજબ (A) પેટ્રોલ`},
+  {i:130,c:`sci`,q:`પંચમઢી જીવાવરણ આરક્ષિત ક્ષેત્રમાં જોવા મળતું 'બાયસન' શું છે?`,o:[`જંગલી આંબો`,`વિશાળ ખિસકોલી`,`ઉડતી ખિસકોલી`,`જંગલી બળદ`],a:[3],e:[`બાયસન (ભારતીય ગૌર) એ પંચમઢીમાં જોવા મળતો જંગલી બળદ છે.`],v:`badge:બાયસન = જંગલી બળદ (ભારતીય ગૌર)`},
+  {i:131,c:`sci`,q:`છોકરાઓમાં મોટા થયેલી સ્વરપેટી ગળાના ભાગમાં બહારની તરફ ઉપસી આવે છે, તેને શું કહે છે?`,o:[`કંઠસ્થાન`,`કંઠમણિ`,`સ્વરસ્થાન`,`સ્વરમણિ`],a:[1],e:[`તરુણાવસ્થામાં છોકરાઓની સ્વરપેટી મોટી થઈ ગળામાં ઉપસે છે, તેને કંઠમણિ (Adam's apple) કહે છે.`],v:`badge:ઉપસેલી સ્વરપેટી = કંઠમણિ`},
+  {i:132,c:`sci`,q:`મગજ સાથે જોડાયેલી ગ્રંથિ કઈ છે?`,o:[`થાઇરોઇડ`,`સ્વાદુપિંડ`,`પિટ્યુટરી`,`એડ્રિનલ`],a:[2],e:[`પિટ્યુટરી (પીયૂષ) ગ્રંથિ મગજના તળિયે જોડાયેલી હોય છે.`],v:`badge:મગજ સાથે જોડાયેલ મુખ્ય ગ્રંથિ = પિટ્યુટરી`},
+  {i:133,c:`sci`,q:`આપણાં શરીરમાં રુધિરના નિર્માણનું કામ કોણ કરે છે?`,o:[`આયર્ન`,`ચરબી`,`કાર્બોદિત`,`વિટામીન`],a:[0],e:[`લોહતત્ત્વ (આયર્ન) હિમોગ્લોબિન અને રુધિરના નિર્માણ માટે જરૂરી છે.`],v:`badge:આયર્ન (લોહતત્ત્વ) → રુધિર / હિમોગ્લોબિન નિર્માણ`},
+  {i:134,c:`sci`,q:`નીચેનામાંથી કયું જોડકું યોગ્ય નથી?`,o:[`ફોર્મિક એસિડ – કીડીના ડંખમાં`,`એસેટિક એસિડ – વિનેગર`,`લેક્ટિક એસિડ – દહીં`,`ઓક્ઝેલિક એસિડ – નારંગી`],a:[3],e:[`નારંગીમાં સાઇટ્રિક એસિડ હોય છે; ઓક્ઝેલિક એસિડ પાલકમાં હોય છે. એટલે (D) ખોટું જોડકું છે.`],v:`pair:નારંગી = સાઇટ્રિક એસિડ (ઓક્ઝેલિક = પાલક)`},
+  {i:135,c:`sci`,q:`વિનેગાર અને બેકિંગ સોડાને મિશ્ર કરતાં ......... વાયુ ઉત્પન્ન થાય છે?`,o:[`કાર્બન ડાયોક્સાઇડ`,`નાઇટ્રોજન`,`ઓક્સિજન`,`હાઇડ્રોજન`],a:[0],e:[`વિનેગાર (એસિડ) + બેકિંગ સોડા → કાર્બન ડાયોક્સાઇડ (CO₂) વાયુ ફીણ સાથે નીકળે છે.`],v:`pair:વિનેગાર + બેકિંગ સોડા → CO₂ વાયુ`},
+  {i:136,c:`sci`,q:`ભારે કસરત કરવાથી સ્નાયુઓમાં ......... એકઠું થવાના કારણે સ્નાયુઓ ખેંચાઈ જાય છે?`,o:[`કાર્બન ડાયોક્સાઇડ`,`આલ્કોહોલ`,`લેક્ટિક એસિડ`,`ઓક્સિજન`],a:[2],e:[`ઓક્સિજન ઓછો પડતાં સ્નાયુઓમાં અનોક્સિશ્વસનથી લેક્ટિક એસિડ બને છે અને સ્નાયુ ખેંચાય છે.`],v:`badge:ભારે કસરત → અનોક્સિશ્વસન → લેક્ટિક એસિડ`},
+  {i:137,c:`sci`,q:`પદાર્થે કાપેલ અંતર શોધવાનું સૂત્ર: કાપેલું અંતર = ?`,o:[`અંતર × સમય`,`સમય/ઝડપ`,`ઝડપ/સમય`,`ઝડપ × સમય`],a:[3],e:[`ઝડપ = અંતર ÷ સમય, તેથી કાપેલું અંતર = ઝડપ × સમય.`],v:`pair:અંતર = ઝડપ × સમય`},
+  {i:138,c:`sci`,q:`સાબુના પરપોટા વડે પ્રકાશનું ઘણા રંગોમાં છુટા પડવાની ઘટનાને ......... કહે છે?`,o:[`પ્રકાશનું વિભાજન`,`પ્રકાશનું શોષણ`,`પ્રકાશનું પ્રસરણ`,`પ્રકાશનું પરાવર્તન`],a:[0],e:[`શ્વેત પ્રકાશનું જુદા જુદા રંગોમાં વહેંચાઈ જવું એટલે પ્રકાશનું વિભાજન.`],v:`badge:શ્વેત પ્રકાશ → 7 રંગ = પ્રકાશનું વિભાજન`},
+  {i:139,c:`sci`,q:`કાપવામાં આવેલ પાકમાંથી દાણાઓને ભૂસામાંથી અલગ કરવાની પ્રક્રિયાને શું કહે છે?`,o:[`વિડિંગ`,`હાર્વેસ્ટિંગ`,`થ્રેશીંગ`,`ઈરિગેશન`],a:[2],e:[`દાણા અને ભૂસું છૂટા પાડવાની ક્રિયાને થ્રેશીંગ (ઝૂડવું) કહે છે.`],v:`pair:થ્રેશીંગ = દાણા-ભૂસું અલગ કરવા`},
+  {i:140,c:`sci`,q:`સુરક્ષિત દીવાસળી બનાવવા માટે શાનો ઉપયોગ થાય છે?`,o:[`લાલ ફોસ્ફરસ અને સફેદ ફોસ્ફરસ`,`એન્ટિમની ટ્રાય સલ્ફાઇડ અને પોટેસિયમ ક્લોરેટ`,`સફેદ ફોસ્ફરસ અને પોટેશિયમ ક્લોરેટ`,`એન્ટિમની ટ્રાય સલ્ફાઇડ અને સફેદ ફોસ્ફરસ`],a:[1],e:[`દીવાસળીના માથા પર એન્ટિમની ટ્રાય સલ્ફાઇડ અને પોટેસિયમ ક્લોરેટ હોય છે (સફેદ ફોસ્ફરસ ઝેરી હોવાથી વપરાતો નથી).`],v:`badge:સળીનું માથું: એન્ટિમની ટ્રાય સલ્ફાઇડ + પોટેશિયમ ક્લોરેટ`},
+  {i:141,c:`sci`,q:`નીચેનામાંથી કયું જોડકું યોગ્ય નથી?`,o:[`રેડ-ડેટા બુક → લુપ્ત જાતિઓની યાદી`,`પ્રોજેક્ટ ટાઇગર → વાઘના સંરક્ષણ માટે`,`પુનઃવનીકરણ → નાશ પામેલ જંગલોની પુનઃસ્થાપના`,`રણનિર્માણ → ફળદ્રુપ ભૂમિનું રણમાં ફેરવાઈ જવું`],a:[0],e:[`રેડ ડેટા બુકમાં ભયગ્રસ્ત (નાશપ્રાય) જાતિઓની યાદી હોય છે, લુપ્ત થઈ ગયેલી જાતિઓની નહીં.`],v:`badge:રેડ-ડેટા બુક = ભયગ્રસ્ત જાતિઓનો રેકોર્ડ`},
+  {i:142,c:`sci`,q:`કાર્બનનું લગભગ સંપૂર્ણ શુદ્ધ સ્વરૂપ કયું છે?`,o:[`ડીઝલ`,`કોલટાર`,`કોલગેસ`,`કોક`],a:[3],e:[`કોલસાને હવા વિના ગરમ કરવાથી કોક મળે છે, જે લગભગ શુદ્ધ કાર્બન છે.`],v:`badge:કોક = લગભગ શુદ્ધ કાર્બન`},
+  {i:143,c:`sci`,q:`કઈ ગ્રંથિ યોગ્ય કામ ન કરે તો ડાયાબિટિસ થાય?`,o:[`પિટ્યુટરી`,`થાઇરોઇડ`,`સ્વાદુપિંડ`,`એડ્રિનલ`],a:[2],e:[`સ્વાદુપિંડ ઇન્સ્યુલિન બનાવે છે. ઇન્સ્યુલિન ઓછું બને તો ડાયાબિટિસ થાય.`],v:`pair:સ્વાદુપિંડ → ઇન્સ્યુલિન ની ઊણપ → ડાયાબિટિસ`},
+  {i:144,c:`sci`,q:`વનસ્પતિમાં ખોરાક બનાવવાના કારખાનાં કોને કહેવાય છે?`,o:[`પર્ણ`,`પ્રકાંડ`,`ફળ`,`મૂળ`],a:[0],e:[`પર્ણમાં હરિતદ્રવ્ય હોવાથી પ્રકાશસંશ્લેષણ દ્વારા ખોરાક ત્યાં બને છે.`],v:`badge:પર્ણ = પ્રકાશસંશ્લેષણ દ્વારા ખોરાકનું કારખાનું`},
+  {i:145,c:`sci`,q:`હાઇડ્રોક્લોરિક એસિડ અને સોડિયમ હાઇડ્રોક્સાઇડ વચ્ચેની તટસ્થીકરણની પ્રક્રિયાથી શું બને છે?`,o:[`હવા અને પાણી`,`ક્ષાર અને પાણી`,`ધાતુ અને મીણ`,`તેલ અને તાંબુ`],a:[1],e:[`HCl + NaOH → NaCl (ક્ષાર) + H₂O (પાણી). એસિડ + બેઝ → ક્ષાર + પાણી.`],v:`pair:HCl + NaOH → NaCl (ક્ષાર) + H₂O (પાણી)`},
+  {i:146,c:`sci`,q:`સ્ટાર્ચનું સરળ શર્કરામાં રૂપાંતરણ કરવાનું કાર્ય કોણ કરે છે?`,o:[`અન્નનળી`,`રસાંકુરો`,`મુખગુહા`,`લાળરસ`],a:[3],e:[`લાળરસમાં રહેલો ઉત્સેચક સ્ટાર્ચને સરળ શર્કરામાં ફેરવે છે.`],v:`pair:સ્ટાર્ચ + લાળરસ → સરળ શર્કરા`},
+  {i:147,c:`sci`,q:`બાજની મહત્તમ ઝડપ 320 km/h હોય તો તેની ઝડપ m/sec માં કેટલી?`,o:[`8.89`,`320`,`889`,`88.9`],a:[3],e:[`km/h ને m/sec માં ફેરવવા 5/18 વડે ગુણાય.`,`320 × 5/18 = 1600/18 ≈ 88.9 m/sec.`],v:`pair:320 × (5/18) = 88.9 m/sec`},
+  {i:148,c:`sci`,q:`કુદરતી વાયુમાંથી મેળવવામાં આવતા ......... વાયુનો ઉપયોગ કૃત્રિમ ખાતરની બનાવટમાં થાય છે.`,o:[`કોલગેસ`,`CNG`,`હાઇડ્રોજન`,`કાર્બન ડાયોક્સાઇડ`],a:[2],e:[`કુદરતી વાયુમાંથી મળતા હાઇડ્રોજનનો ઉપયોગ એમોનિયા અને યુરિયા ખાતર બનાવવામાં થાય છે.`],v:`pair:કુદરતી વાયુ → હાઇડ્રોજન → યુરિયા ખાતર`},
+  {i:149,c:`sci`,q:`શાના દ્વારા હંમેશા ચત્તું, આભાસી અને વસ્તુના પરિમાણ કરતા નાનું પ્રતિબિંબ મળે?`,o:[`બહિર્ગોળ અરીસો, અંતર્ગોળ લેન્સ`,`અંતર્ગોળ અરીસો, બહિર્ગોળ લેન્સ`,`બહિર્ગોળ લેન્સ, સમતલ અરીસો`,`અંતર્ગોળ લેન્સ, અંતર્ગોળ અરીસો`],a:[0],e:[`બહિર્ગોળ અરીસો અને અંતર્ગોળ લેન્સ હંમેશા ચત્તું, આભાસી અને નાનું પ્રતિબિંબ આપે છે.`],v:`badge:બહિર્ગોળ અરીસો + અંતર્ગોળ લેન્સ = ચત્તું, આભાસી, નાનું`},
+  {i:150,c:`sci`,q:`એક સ્થાનેથી બીજા સ્થાન કે આગળ-પાછળ થતી પદાર્થની ગતિને શું કહે છે?`,o:[`કંપન`,`કંપવિસ્તાર`,`આવૃત્તિ`,`ઘોંઘાટ`],a:[0],e:[`પદાર્થનું પોતાના મધ્યસ્થાન ફરતે આગળ-પાછળ ગતિ કરવું એ કંપન છે.`],v:`badge:આગળ-પાછળ થતી ગતિ = કંપન`},
+  {i:151,c:`soc`,q:`અંગ્રેજ શાસન દરમિયાન કયા ધારા અંતર્ગત ભારતમાં સુપ્રીમ કોર્ટની સ્થાપના કરવામાં આવેલ?`,o:[`સનદી ધારો (1833)`,`નિયામક ધારો (1773)`,`A અને B બંને`,`એક પણ નહિ`],a:[1],e:[`ઈ.સ. 1773 ના નિયામક (રેગ્યુલેટિંગ) ધારા હેઠળ કલકત્તામાં સુપ્રીમ કોર્ટની સ્થાપના થઈ.`],v:`badge:1773 નિયામક ધારો → કલકત્તા સુપ્રીમ કોર્ટ`},
+  {i:152,c:`soc`,q:`જમીન મહેસૂલ માટે અંગ્રેજોએ બનાવેલી યોજનાઓમાં કઈ યોજના જમીન મહેસૂલ નથી?`,o:[`સહાયકારી યોજના`,`કાયમી જમાબંધી`,`રૈયતવારી પદ્ધતિ`,`મહાલવારી પદ્ધતિ`],a:[0],e:[`કાયમી જમાબંધી, રૈયતવારી અને મહાલવારી જમીન મહેસૂલ પદ્ધતિઓ છે.`,`સહાયકારી યોજના લોર્ડ વેલેસ્લીની રાજકીય અંકુશની નીતિ હતી.`],v:`badge:સહાયકારી યોજના = રાજકીય નીતિ (લોર્ડ વેલેસ્લી)`},
+  {i:153,c:`soc`,q:`ઈ.સ. 1857 ના સંગ્રામમાં કઈ નવીન રાઇફલનો ઉપયોગ કરવામાં આવ્યો હતો?`,o:[`એનફિલ્ડ`,`એ.ડબલ્યુ.એમ.`,`બ્રાઉનબેઝ`,`રોનાલ્ડ`],a:[0],e:[`નવી એનફિલ્ડ રાઇફલના ચરબીવાળા કારતૂસ 1857 ના સંગ્રામનું તાત્કાલિક કારણ બન્યા.`],v:`badge:1857 સંગ્રામ = એનફિલ્ડ રાઇફલ`},
+  {i:154,c:`soc`,q:`જૂની દિલ્લીથી કઈ દિશામાં નવી દિલ્લીનું નિર્માણ કઈ પહાડી ઉપર કરવામાં આવેલ છે?`,o:[`ઉત્તરમાં રાજસમંદની ટેકરી પર`,`દક્ષિણમાં અજયમેરુ પહાડી ઉપર`,`ઉત્તરમાં અરવલ્લીની ટેકરી ઉપર`,`દક્ષિણમાં રાયસીન પહાડી વિસ્તારમાં`],a:[3],e:[`નવી દિલ્લી જૂની દિલ્લીની દક્ષિણમાં રાયસીન પહાડી (Raisina Hill) વિસ્તારમાં બનાવવામાં આવી.`],v:`badge:જૂની દિલ્લીની દક્ષિણે → રાયસીન પહાડી`},
+  {i:155,c:`soc`,q:`ક્રાયોલાઇટ ખનિજ કયા સંસાધન તરીકે ઓળખાય છે?`,o:[`દુર્લભ સંસાધન`,`વિરલ સંસાધન`,`સામાન્ય સુલભ સંસાધન`,`સર્વ સુલભ સંસાધન`],a:[0],e:[`ક્રાયોલાઇટ દુનિયામાં ખૂબ ઓછી જગ્યાએ મળે છે, એટલે તેને દુર્લભ સંસાધન ગણવામાં આવ્યું છે.`],v:`badge:ક્રાયોલાઇટ = દુર્લભ સંસાધન (માત્ર ગ્રીનલેન્ડ વગેરે)`},
+  {i:156,c:`soc`,q:`ખનિજ પદાર્થોમાં કોને 'કાળું સોનું' કહેવામાં આવે છે?`,o:[`મેંગેનીઝ`,`સોનું`,`ખનિજતેલ`,`બૉક્સાઇટ`],a:[2],e:[`ખનિજતેલ ખૂબ કીમતી અને ઉપયોગી હોવાથી તેને 'કાળું સોનું' કહે છે.`],v:`badge:ખનિજતેલ = કાળું સોનું`},
+  {i:157,c:`soc`,q:`ભારતનું કયું રાજ્ય કપાસના ઉત્પાદનમાં પ્રથમ છે?`,o:[`ગુજરાત`,`મહારાષ્ટ્ર`,`આંધ્રપ્રદેશ`,`બિહાર`],a:[0],e:[`સત્તાવાર કી મુજબ કપાસના ઉત્પાદનમાં ગુજરાત પ્રથમ સ્થાને છે.`],v:`badge:કપાસ ઉત્પાદનમાં પ્રથમ = ગુજરાત`},
+  {i:158,c:`soc`,q:`બાળમજૂરીનો વિરોધ કરવા કયો હક આપવામાં આવેલ છે?`,o:[`સ્વતંત્રતાનો હક`,`શોષણ સામે વિરોધનો હક`,`ધાર્મિક સ્વાતંત્ર્યનો હક`,`સમાનતાનો હક`],a:[1],e:[`શોષણ સામે વિરોધનો હક બાળમજૂરી, વેઠ અને માનવવેપાર પર પ્રતિબંધ મૂકે છે.`],v:`badge:બાળમજૂરી વિરોધ = શોષણ સામે વિરોધનો હક`},
+  {i:159,c:`soc`,q:`દ્વારકેશને ફોર્ટ સેન્ટ જ્યોર્જની મુલાકાત લેવી છે. તેણે કયા શહેરમાં જવું પડશે?`,o:[`કોલકત્તા`,`મુંબઈ`,`ચેન્નાઈ`,`દિલ્લી`],a:[2],e:[`ફોર્ટ સેન્ટ જ્યોર્જ ચેન્નાઈ (મદ્રાસ) માં આવેલો કિલ્લો છે.`],v:`pair:ફોર્ટ સેન્ટ જ્યોર્જ → ચેન્નાઈ`},
+  {i:160,c:`soc`,q:`નીચે પૈકી કઈ જમીન મહેસૂલ પદ્ધતિ નથી?`,o:[`કાયમી જમાબંધી`,`ઉલગુલાન`,`મહાલવારી`,`રૈયતવારી`],a:[1],e:[`ઉલગુલાન એ બિરસા મુંડાએ કરેલું આદિવાસી આંદોલન છે, મહેસૂલ પદ્ધતિ નથી.`],v:`badge:ઉલગુલાન = બિરસા મુંડા આંદોલન`},
+  {i:161,c:`soc`,q:`અધાતુમય ખનિજનાં ઉદાહરણો કયા છે? (1) જસત (2) અબરખ (3) જિપ્સમ (4) તાંબુ`,o:[`1 અને 2`,`3 અને 4`,`2 અને 4`,`2 અને 3`],a:[3],e:[`અબરખ (2) અને જિપ્સમ (3) અધાતુમય ખનિજ છે. જસત અને તાંબુ ધાતુમય છે.`],v:`pair:અધાતુમય = અબરખ + જિપ્સમ (2 અને 3)`},
+  {i:162,c:`soc`,q:`મગફળી : જૂનાગઢ :: બાજરી : ?`,o:[`મહેસાણા`,`સાબરકાંઠા`,`બનાસકાંઠા`,`ભાવનગર`],a:[2],e:[`જૂનાગઢ મગફળી માટે જાણીતું છે, તેમ બનાસકાંઠા બાજરીના ઉત્પાદન માટે જાણીતું છે.`],v:`pair:મગફળી → જૂનાગઢ :: બાજરી → બનાસકાંઠા`},
+  {i:163,c:`soc`,q:`બંધારણ સંદર્ભે નીચે પૈકી કઈ જોડ યોગ્ય નથી?`,o:[`સમિતિઓ : 23`,`અધ્યક્ષ : ડૉ. રાજેન્દ્ર પ્રસાદ`,`બંધારણ દિવસ - 26 નવેમ્બર`,`બંધારણ સભાના કુલ સભ્યો : 250`],a:[3],e:[`બંધારણ સભાના મૂળ સભ્યો 389 હતા (વિભાજન પછી 299). 250 સાચું નથી.`],v:`badge:બંધારણ સભા: 389 સભ્યો (250 ખોટું)`},
+  {i:164,c:`soc`,q:`નીચે પૈકી કયું વિધાન રાષ્ટ્રપતિ સાથે સુસંગત નથી?`,o:[`તેઓ દેશના બંધારણીય વડા છે`,`તેઓ મંત્રીમંડળની બેઠકની અધ્યક્ષતા કરે છે`,`તેઓ દેશના પ્રથમ નાગરિક છે`,`દેશનો સમગ્ર વહીવટ તેમના નામે ચાલે છે`],a:[1],e:[`મંત્રીમંડળની બેઠકની અધ્યક્ષતા વડાપ્રધાન કરે છે, રાષ્ટ્રપતિ નહીં.`],v:`badge:મંત્રીમંડળ બેઠક અધ્યક્ષ = વડાપ્રધાન`},
+  {i:165,c:`soc`,q:`પોર્ટુગીઝોએ ભારતનો કયો ટાપુ બ્રિટનના સમ્રાટને દહેજમાં આપ્યો હતો?`,o:[`મુંબઈ`,`લક્ષદ્વીપ`,`અંદમાન`,`નિકોબાર`],a:[0],e:[`1661 માં પોર્ટુગીઝ રાજકુમારી કેથરીનના લગ્ન સમયે મુંબઈ બ્રિટનના રાજા ચાર્લ્સ બીજાને દહેજમાં અપાયું.`],v:`badge:1661: પોર્ટુગીઝોએ બ્રિટનને મુંબઈ દહેજમાં આપ્યું`},
+  {i:166,c:`soc`,q:`વિરલ સંસાધન કયું છે?`,o:[`ગોચર ભૂમિ`,`ઓક્સિજન`,`પાણી`,`કોલસો`],a:[3],e:[`કોલસો મર્યાદિત જગ્યાએ અને મર્યાદિત જથ્થામાં મળે છે, એટલે તે વિરલ સંસાધન છે.`],v:`badge:કોલસો = વિરલ સંસાધન`},
+  {i:167,c:`soc`,q:`પૃથ્વી પર મીઠા પાણીનો જથ્થો કેટલો છે?`,o:[`1%`,`2.7%`,`27%`,`29%`],a:[1],e:[`પૃથ્વી પર 97.3% ખારું પાણી છે અને માત્ર 2.7% મીઠું પાણી છે.`],v:`pair:97.3% ખારું પાણી • 2.7% મીઠું પાણી`},
+  {i:168,c:`soc`,q:`'અયસ્ક' એટલે શું?`,o:[`અશુદ્ધ ખનિજો`,`વિદ્યુત`,`રહેવા માટે મકાન`,`હવા`],a:[0],e:[`ધાતુ મેળવવા માટેનું માટી-ખડકની અશુદ્ધિવાળું કાચું ખનિજ અયસ્ક (Ore) કહેવાય.`],v:`badge:અયસ્ક (Ore) = અશુદ્ધ કાચું ખનિજ`},
+  {i:169,c:`soc`,q:`જૈવ કચરામાંથી તૈયાર થતા વાયુયુક્ત બળતણને શું કહે છે?`,o:[`LPG`,`CNG`,`PNG`,`બાયોગેસ`],a:[3],e:[`છાણ અને ખેતીના જૈવ કચરામાંથી બનતો ગેસ બાયોગેસ કહેવાય.`],v:`pair:જૈવ કચરો / છાણ → બાયોગેસ`},
+  {i:170,c:`soc`,q:`......... ભારત દેશની અર્થવ્યવસ્થાની જીવનરેખા ગણાય છે?`,o:[`ઉદ્યોગ`,`શિક્ષણ`,`પાણી`,`ખેતી`],a:[3],e:[`ભારતની મોટા ભાગની વસ્તી ખેતી પર નિર્ભર હોવાથી ખેતી અર્થવ્યવસ્થાની જીવનરેખા ગણાય છે.`],v:`badge:ખેતી = ભારતીય અર્થવ્યવસ્થાની જીવનરેખા`},
+  {i:171,c:`soc`,q:`ગુજરાતના લગભગ 50% કરતાં વધુ વિસ્તારમાં કેવી જમીન જોવા મળે છે?`,o:[`રાતી જમીન`,`કાળી જમીન`,`કાંપની જમીન`,`પર્વતીય જમીન`],a:[2],e:[`સત્તાવાર કી મુજબ ગુજરાતના 50% થી વધુ ભાગમાં કાંપની જમીન જોવા મળે છે.`],v:`badge:ગુજરાત (>50%) = કાંપની જમીન`},
+  {i:172,c:`soc`,q:`ભૂમિખંડની સપાટી ખાસ કરીને કયા ખનીજોથી બનેલી હોય છે?`,o:[`સિલિકા અને એલ્યુમિના`,`સિલિકા અને મેગ્નેશિયમ`,`નિકલ અને ફેરસ`,`મેગ્નેશિયમ અને ફેરસ`],a:[0],e:[`ખંડીય પોપડો (SIAL) મુખ્યત્વે સિલિકા (Si) અને એલ્યુમિના (Al) થી બનેલો છે.`],v:`badge:SIAL = સિલિકા + એલ્યુમિના`},
+  {i:173,c:`soc`,q:`ભારતમાં દર વર્ષે બંધારણ દિવસની ઉજવણી કઈ તારીખે થાય છે?`,o:[`26 મી નવેમ્બર`,`26 મી જાન્યુઆરી`,`25 મી ડિસેમ્બર`,`15 મી ઓગસ્ટ`],a:[0],e:[`26 નવેમ્બર 1949 ના રોજ બંધારણ અપનાવાયું હતું, એટલે તે દિવસે બંધારણ દિવસ ઉજવાય છે.`],v:`badge:26 નવેમ્બર = બંધારણ દિવસ`},
+  {i:174,c:`soc`,q:`ભારતની સંસદના નીચલા ગૃહમાં ગુજરાતને કેટલી બેઠકો ફાળવવામાં આવી છે?`,o:[`26`,`50`,`182`,`545`],a:[0],e:[`લોકસભા (નીચલું ગૃહ) માં ગુજરાતની 26 બેઠકો છે (182 ગુજરાત વિધાનસભાની છે).`],v:`pair:લોકસભા (ગુજરાત) = 26 • વિધાનસભા = 182`},
+  {i:175,c:`soc`,q:`ખેડૂતનું શોષણ રોકવા માટે સરકારે કેવા બજારની વ્યવસ્થા કરી છે?`,o:[`મહોલ્લા બજાર`,`નિયંત્રિત બજાર`,`સાપ્તાહિક બજાર`,`ઓનલાઈન બજાર`],a:[1],e:[`નિયંત્રિત બજાર (APMC/માર્કેટ યાર્ડ) દ્વારા ખેડૂતને વાજબી ભાવ મળે અને શોષણ અટકે.`],v:`badge:નિયંત્રિત બજાર (APMC) = ખેડૂત સુરક્ષા`},
+  {i:176,c:`soc`,q:`ગઢવાલ રાજ્યના સ્થાપક ચંદ્રદેવે કનોજ સિવાય બીજા કયા શહેરને પોતાના રાજ્યની રાજધાની બનાવી હતી?`,o:[`ખજુરાહો`,`ભોજપાલ`,`કાશી`,`બુંદેલખંડ`],a:[2],e:[`ચંદ્રદેવે કનોજની સાથે કાશી (વારાણસી) ને પણ રાજધાની બનાવી હતી.`],v:`pair:ચંદ્રદેવ રાજધાની: કનોજ + કાશી`},
+  {i:177,c:`soc`,q:`નીચે પૈકી કયા રાજ્યમાં વિધાન પરિષદ નથી?`,o:[`ગુજરાત`,`બિહાર`,`મહારાષ્ટ્ર`,`ઉત્તરપ્રદેશ`],a:[0],e:[`બિહાર, મહારાષ્ટ્ર અને ઉત્તરપ્રદેશમાં વિધાન પરિષદ છે; ગુજરાતમાં માત્ર વિધાનસભા છે.`],v:`badge:ગુજરાત = એકગૃહી (વિધાન પરિષદ નથી)`},
+  {i:178,c:`soc`,q:`ગુજરાતની કઈ વાવને યુનેસ્કોએ વર્લ્ડ હેરિટેજનો દરજ્જો આપેલ છે?`,o:[`અડાલજની વાવ`,`દાદાહરિની વાવ, અમદાવાદ`,`રાણીની વાવ, પાટણ`,`માધાવાવ, વઢવાણ`],a:[2],e:[`પાટણની રાણીની વાવને 2014 માં યુનેસ્કોએ વર્લ્ડ હેરિટેજ સાઇટ જાહેર કરી.`],v:`badge:રાણીની વાવ (પાટણ) = UNESCO વર્લ્ડ હેરિટેજ`},
+  {i:179,c:`soc`,q:`કઈ વિચરતી અને વિમુક્ત જાતિનો સમુદાય ભારત અને વિશ્વ વચ્ચે કડી સમાન હતો?`,o:[`બહુરૂપી`,`વણઝારા`,`કોગસિયા`,`વાંસફોડા`],a:[1],e:[`વણઝારા સમુદાય વેપારી તરીકે દૂર દૂર સુધી મુસાફરી કરતો, એટલે ભારત અને વિશ્વ વચ્ચે કડી સમાન હતો.`],v:`badge:વણઝારા સમુદાય = વેપારની કડી`},
+  {i:180,c:`soc`,q:`કયા આવરણમાં ઋતુઓ, વાદળા, વરસાદ અને ચક્રવાત જોવા મળતા નથી અને જેટ વિમાનો ઝડપથી ઊડી શકે છે?`,o:[`સમતાપ આવરણ`,`ક્ષોભ આવરણ`,`મધ્યાવરણ`,`ઉષ્મા આવરણ`],a:[0],e:[`સમતાપ આવરણ (Stratosphere) માં હવામાનની ઘટનાઓ થતી નથી, એટલે જેટ વિમાન સરળતાથી ઊડે છે.`],v:`layers:ક્ષોભ આવરણ (વાદળ) → સમતાપ આવરણ (જેટ વિમાન ✈)`}
+];
+
+const CAT_NAMES = {
+  mat: `MAT — માનસિક ક્ષમતા`,
+  math: `SAT — ગણિત`,
+  sci: `SAT — વિજ્ઞાન`,
+  soc: `SAT — સામાજિક વિજ્ઞાન`
+};
+const LETTERS = [`A`, `B`, `C`, `D`];
+const BADGES = [
+  { id: `first`, label: `પ્રથમ પગલું ★`, check: s => s.correct >= 1 },
+  { id: `streak3`, label: `હૅટ-ટ્રિક (3 સ્ટ્રીક)`, check: s => s.bestStreak >= 3 },
+  { id: `streak5`, label: `ફાયર સ્ટ્રીક 5 🔥`, check: s => s.bestStreak >= 5 },
+  { id: `mat10`, label: `MAT માસ્ટર (10+)`, check: s => s.catSolved.mat >= 10 },
+  { id: `sat10`, label: `SAT વિજેતા (10+)`, check: s => (s.catSolved.math + s.catSolved.sci + s.catSolved.soc) >= 10 },
+  { id: `xp100`, label: `સેન્ચ્યુરી ચેમ્પિયન (100+ XP)`, check: s => s.xp >= 100 }
+];
+
+let appState = {
+  mode: `study`,
+  cat: `all`,
+  search: ``,
+  currentId: 1,
+  xp: 0,
+  streak: 0,
+  bestStreak: 0,
+  correct: 0,
+  wrong: 0,
+  answers: {},
+  quickQueue: null
+};
+
+let revealedSteps = 1;
+let autoPlayTimer = null;
+
+function getFilteredQuestions() {
+  if (appState.mode === `quiz` && Array.isArray(appState.quickQueue)) {
+    return QUESTIONS.filter(q => appState.quickQueue.includes(q.i));
+  }
+  const term = appState.search.trim().toLowerCase();
+  return QUESTIONS.filter(q => {
+    if (appState.cat === `grace` && !q.g) return false;
+    if (appState.cat === `dual` && q.a.length < 2) return false;
+    if ([`mat`,`math`,`sci`,`soc`].includes(appState.cat) && q.c !== appState.cat) return false;
+    if (term) {
+      const numMatch = String(q.i) === term;
+      const textMatch = q.q.toLowerCase().includes(term) ||
+        q.o.some(opt => opt.toLowerCase().includes(term)) ||
+        q.e.some(exp => exp.toLowerCase().includes(term));
+      return numMatch || textMatch;
+    }
+    return true;
+  });
+}
+
+async function saveState() {
+  try {
+    if (window.notebookAppApi && typeof window.notebookAppApi.setAppState === `function`) {
+      await window.notebookAppApi.setAppState(appState);
+    }
+  } catch (err) {
+    console.warn(`State save skipped`, err);
+  }
+}
+
+function getBadgeStats() {
+  const catSolved = { mat: 0, math: 0, sci: 0, soc: 0 };
+  Object.keys(appState.answers).forEach(k => {
+    const rec = appState.answers[k];
+    if (rec && rec.ok) {
+      const q = QUESTIONS.find(item => item.i === Number(k));
+      if (q && catSolved[q.c] !== undefined) catSolved[q.c]++;
+    }
+  });
+  return {
+    correct: appState.correct,
+    bestStreak: appState.bestStreak,
+    xp: appState.xp,
+    catSolved
+  };
+}
+
+function renderHeaderStats() {
+  const xpEl = document.getElementById(`stat-xp`);
+  const streakEl = document.getElementById(`stat-streak`);
+  const bestEl = document.getElementById(`stat-best`);
+  const progEl = document.getElementById(`stat-progress`);
+  const fillEl = document.getElementById(`progress-fill`);
+  const accEl = document.getElementById(`stat-acc`);
+  const countsEl = document.getElementById(`stat-counts`);
+  const badgesEl = document.getElementById(`badges-bar`);
+
+  const answeredCount = Object.keys(appState.answers).length;
+  const totalAttempts = appState.correct + appState.wrong;
+  const acc = totalAttempts > 0 ? Math.round((appState.correct / totalAttempts) * 100) : 0;
+
+  if (xpEl) xpEl.textContent = appState.xp;
+  if (streakEl) streakEl.textContent = `${appState.streak} 🔥`;
+  if (bestEl) bestEl.textContent = appState.bestStreak;
+  if (progEl) progEl.textContent = `${answeredCount} / 180`;
+  if (fillEl) fillEl.style.width = `${Math.min(100, (answeredCount / 180) * 100)}%`;
+  if (accEl) accEl.textContent = `${acc}%`;
+  if (countsEl) countsEl.textContent = `સાચા: ${appState.correct} • ખોટા: ${appState.wrong}`;
+
+  if (badgesEl) {
+    const stats = getBadgeStats();
+    badgesEl.innerHTML = `<span class="field-label">બેજ:</span>` + BADGES.map(b => {
+      const ok = b.check(stats);
+      return `<span class="badge-pill ${ok ? `unlocked` : ``}">${ok ? `✓ ` : `🔒 `}${b.label}</span>`;
+    }).join(``);
+  }
+}
+
+function renderJumpSelect() {
+  const sel = document.getElementById(`jump-select`);
+  if (!sel) return;
+  let html = ``;
+  for (let n = 1; n <= 180; n++) {
+    html += `<option value="${n}" ${n === appState.currentId ? `selected` : ``}>પ્રશ્ન ${n}</option>`;
+  }
+  sel.innerHTML = html;
+}
+
+function renderNavigator() {
+  const nav = document.getElementById(`q-nav-grid`);
+  const sum = document.getElementById(`nav-summary`);
+  if (!nav) return;
+  const list = getFilteredQuestions();
+  if (sum) {
+    sum.textContent = appState.quickQueue
+      ? `ફટાફટ 10 ચેલેન્જ: ${list.length} પ્રશ્નો`
+      : `દર્શાવેલ પ્રશ્નો: ${list.length} / 180`;
+  }
+  if (list.length === 0) {
+    nav.innerHTML = `<span class="stat-sub">કોઈ પ્રશ્ન મળ્યો નથી.</span>`;
+    return;
+  }
+  if (!list.some(q => q.i === appState.currentId)) {
+    appState.currentId = list[0].i;
+  }
+  const sel = document.getElementById(`jump-select`);
+  if (sel) sel.value = String(appState.currentId);
+
+  nav.innerHTML = list.map(q => {
+    const ans = appState.answers[q.i];
+    let cls = `q-dot`;
+    if (q.i === appState.currentId) cls += ` current`;
+    else if (ans && ans.ok) cls += ` solved-ok`;
+    else if (ans && !ans.ok) cls += ` solved-err`;
+    if (q.g) cls += ` grace-dot`;
+    return `<button type="button" class="${cls}" onclick="selectQuestion(${q.i})" aria-label="પ્રશ્ન ${q.i}">${q.i}</button>`;
+  }).join(``);
+}
+
+function buildVisualHTML(v) {
+  if (!v) return ``;
+  if (v.startsWith(`seq:`)) {
+    const parts = v.slice(4).split(`|`);
+    const items = parts[0].split(`,`);
+    const op = parts[1] || `→`;
+    return `<div class="viz-row">${items.map((it, idx) => {
+      const isLast = idx === items.length - 1;
+      const arrow = idx < items.length - 1 ? `<span class="viz-arrow">${op}</span>` : ``;
+      return `<span class="viz-node ${isLast ? `highlight` : ``}">${it.trim()}</span>${arrow}`;
+    }).join(``)}</div>`;
+  }
+  if (v.startsWith(`pair:`)) {
+    return `<div class="viz-node highlight" style="padding:0.75rem 1.25rem;">${v.slice(5)}</div>`;
+  }
+  if (v.startsWith(`badge:`)) {
+    return `<div class="viz-node" style="padding:0.75rem 1.25rem; border:2px solid var(--primary);">${v.slice(6)}</div>`;
+  }
+  if (v === `shape:hex` || v === `shape:hex120` || v === `shape:hexdiag`) {
+    const diag = v === `shape:hexdiag`
+      ? `<line x1="60" y1="15" x2="100" y2="85" stroke="var(--primary)" stroke-width="1.5" stroke-dasharray="3"/>
+         <line x1="60" y1="15" x2="20" y2="85" stroke="var(--primary)" stroke-width="1.5" stroke-dasharray="3"/>
+         <line x1="60" y1="15" x2="60" y2="105" stroke="var(--primary)" stroke-width="1.5" stroke-dasharray="3"/>
+         <line x1="20" y1="35" x2="100" y2="85" stroke="var(--secondary)" stroke-width="1.5" stroke-dasharray="3"/>
+         <line x1="20" y1="35" x2="100" y2="35" stroke="var(--secondary)" stroke-width="1.5" stroke-dasharray="3"/>
+         <line x1="20" y1="35" x2="60" y2="105" stroke="var(--secondary)" stroke-width="1.5" stroke-dasharray="3"/>
+         <line x1="100" y1="35" x2="20" y2="85" stroke="var(--tertiary)" stroke-width="1.5" stroke-dasharray="3"/>
+         <line x1="100" y1="35" x2="60" y2="105" stroke="var(--tertiary)" stroke-width="1.5" stroke-dasharray="3"/>
+         <line x1="20" y1="85" x2="100" y2="85" stroke="var(--tertiary)" stroke-width="1.5" stroke-dasharray="3"/>`
+      : ``;
+    const lbl = v === `shape:hex120` ? `દરેક ખૂણો = 120°` : (v === `shape:hexdiag` ? `9 કર્ણ` : `6 બાજુ = ષટ્કોણ`);
+    return `<svg width="140" height="115" viewBox="0 0 120 115" aria-hidden="true">
+      <polygon points="60,15 100,35 100,85 60,105 20,85 20,35" fill="var(--surface-container-low)" stroke="var(--primary)" stroke-width="3"/>
+      ${diag}
+    </svg><span class="viz-arrow">${lbl}</span>`;
+  }
+  if (v === `shape:rot90`) {
+    return `<div class="viz-row">
+      <svg width="70" height="70" viewBox="0 0 70 70" aria-hidden="true"><rect x="12" y="12" width="46" height="46" fill="var(--primary-container)" stroke="var(--primary)" stroke-width="3"/></svg>
+      <span class="viz-arrow">↻ 90°</span>
+      <svg width="70" height="70" viewBox="0 0 70 70" aria-hidden="true"><rect x="12" y="12" width="46" height="46" fill="var(--surface-container-low)" stroke="var(--secondary)" stroke-width="3"/></svg>
+    </div><span class="viz-arrow">એ જ ચોરસ મળે</span>`;
+  }
+  if (v === `shape:sq10`) {
+    return `<svg width="110" height="110" viewBox="0 0 110 110" aria-hidden="true">
+      <rect x="10" y="10" width="90" height="90" fill="var(--surface-container-low)" stroke="var(--primary)" stroke-width="3"/>
+      <line x1="55" y1="10" x2="55" y2="100" stroke="var(--secondary)" stroke-width="2"/>
+      <line x1="10" y1="55" x2="100" y2="55" stroke="var(--secondary)" stroke-width="2"/>
+      <rect x="33" y="33" width="44" height="44" fill="none" stroke="var(--tertiary)" stroke-width="2.5"/>
+    </svg><span class="viz-arrow">મોટા 1+4 + નાના 1+4 = 10 ચોરસ</span>`;
+  }
+  if (v === `shape:sq18`) {
+    return `<div class="viz-node">હરોળ: 1 + 3 + 5 + 3 + 1 = 13 (1×1)</div><div class="viz-node highlight">+ 4 (2×2) + 1 (3×3) = 18 ચોરસ</div>`;
+  }
+  if (v === `shape:train125`) {
+    return `<svg width="260" height="80" viewBox="0 0 260 80" aria-hidden="true">
+      <rect x="20" y="48" width="220" height="14" rx="4" fill="var(--outline-variant)"/>
+      <rect x="57" y="26" width="146" height="20" rx="6" fill="var(--primary)"/>
+      <text x="130" y="40" text-anchor="middle" fill="var(--on-primary)" font-size="11" font-weight="bold">ટ્રેન 100 m</text>
+      <text x="38" y="75" text-anchor="middle" fill="var(--on-surface)" font-size="10">25 m</text>
+      <text x="130" y="75" text-anchor="middle" fill="var(--on-surface)" font-size="10">પ્લેટફોર્મ 150 m</text>
+      <text x="222" y="75" text-anchor="middle" fill="var(--primary)" font-size="10">25 m →</text>
+    </svg><span class="viz-arrow">બહાર નીકળવા: 100 + 25 = 125 મીટર</span>`;
+  }
+  if (v === `shape:cube`) {
+    return `<svg width="100" height="90" viewBox="0 0 100 90" aria-hidden="true">
+      <polygon points="30,25 75,25 75,70 30,70" fill="none" stroke="var(--primary)" stroke-width="2.5"/>
+      <polygon points="45,10 90,10 90,55 45,55" fill="none" stroke="var(--secondary)" stroke-width="2"/>
+      <line x1="30" y1="25" x2="45" y2="10" stroke="var(--tertiary)" stroke-width="2"/>
+      <line x1="75" y1="25" x2="90" y2="10" stroke="var(--tertiary)" stroke-width="2"/>
+      <line x1="75" y1="70" x2="90" y2="55" stroke="var(--tertiary)" stroke-width="2"/>
+      <line x1="30" y1="70" x2="45" y2="55" stroke="var(--tertiary)" stroke-width="2"/>
+    </svg><span class="viz-arrow">12 ધાર • 6 ફલક • 8 શિરોબિંદુ</span>`;
+  }
+  if (v === `shape:plants`) {
+    return `<div class="viz-row">
+      <span class="viz-node">🌱1</span><span class="viz-arrow">¾ મી</span>
+      <span class="viz-node">🌱2</span><span class="viz-arrow">¾ મી</span>
+      <span class="viz-node">🌱3</span><span class="viz-arrow">¾ મી</span>
+      <span class="viz-node">🌱4</span>
+    </div><span class="viz-arrow">3 × ¾ = 9/4 = 2¼ મીટર</span>`;
+  }
+  if (v === `shape:angles`) {
+    return `<svg width="180" height="100" viewBox="0 0 180 100" aria-hidden="true">
+      <line x1="20" y1="30" x2="160" y2="30" stroke="var(--secondary)" stroke-width="3"/>
+      <line x1="20" y1="70" x2="160" y2="70" stroke="var(--secondary)" stroke-width="3"/>
+      <line x1="115" y1="8" x2="65" y2="92" stroke="var(--primary)" stroke-width="3"/>
+      <text x="72" y="45" fill="var(--primary)" font-weight="bold" font-size="12">∠3</text>
+      <text x="98" y="45" fill="var(--tertiary)" font-weight="bold" font-size="12">∠4</text>
+      <text x="58" y="65" fill="var(--primary)" font-weight="bold" font-size="12">∠5</text>
+      <text x="86" y="65" fill="var(--tertiary)" font-weight="bold" font-size="12">∠6</text>
+    </svg><span class="viz-arrow">એક જ બાજુના અંતઃકોણ: (3,5) અને (4,6)</span>`;
+  }
+  if (v === `shape:circle_sym`) {
+    return `<svg width="100" height="100" viewBox="0 0 100 100" aria-hidden="true">
+      <circle cx="50" cy="50" r="36" fill="var(--surface-container-low)" stroke="var(--primary)" stroke-width="3"/>
+      <line x1="14" y1="50" x2="86" y2="50" stroke="var(--secondary)" stroke-dasharray="3"/>
+      <line x1="50" y1="14" x2="50" y2="86" stroke="var(--secondary)" stroke-dasharray="3"/>
+      <line x1="24" y1="24" x2="76" y2="76" stroke="var(--tertiary)" stroke-dasharray="3"/>
+      <line x1="76" y1="24" x2="24" y2="76" stroke="var(--tertiary)" stroke-dasharray="3"/>
+    </svg><span class="viz-arrow">વર્તુળમાં અસંખ્ય સમમિતિ રેખાઓ</span>`;
+  }
+  if (v === `shape:tri91`) {
+    return `<div class="viz-row">
+      <span class="viz-node">14×12÷2 = 84</span>
+      <span class="viz-node">18×9÷2 = 81</span>
+      <span class="viz-node highlight">16×11÷2 = 88</span>
+    </div>`;
+  }
+  if (v === `shape:irregular`) {
+    return `<svg width="160" height="100" viewBox="0 0 160 100" aria-hidden="true">
+      <path d="M25,45 Q35,15 70,22 Q95,8 122,28 Q145,42 130,68 Q112,90 82,78 Q55,92 32,74 Q14,62 25,45 Z" fill="var(--surface-container-low)" stroke="var(--primary)" stroke-width="3"/>
+    </svg><span class="viz-arrow">ખંડની સીમા = અનિયમિત આકાર</span>`;
+  }
+  if (v === `shape:fold`) {
+    return `<div class="viz-row">
+      <svg width="90" height="90" viewBox="0 0 90 90" aria-hidden="true">
+        <rect x="8" y="8" width="74" height="74" fill="var(--surface-container-low)" stroke="var(--outline-variant)" stroke-width="2"/>
+        <line x1="45" y1="8" x2="45" y2="82" stroke="var(--secondary)" stroke-width="2" stroke-dasharray="4"/>
+        <line x1="8" y1="82" x2="45" y2="45" stroke="var(--primary)" stroke-width="3"/>
+        <line x1="82" y1="8" x2="45" y2="45" stroke="var(--tertiary)" stroke-width="3"/>
+      </svg>
+      <span class="viz-arrow">જમણેથી ડાબે ફોલ્ડ ➔</span>
+      <svg width="90" height="90" viewBox="0 0 90 90" aria-hidden="true">
+        <rect x="8" y="8" width="37" height="74" fill="var(--surface-container-low)" stroke="var(--secondary)" stroke-width="2"/>
+        <polyline points="8,8 45,45 8,82" fill="none" stroke="var(--primary)" stroke-width="3.5"/>
+      </svg>
+    </div><span class="viz-arrow">ફોલ્ડ પછી "&gt;" જેવી આકૃતિ (A)</span>`;
+  }
+  if (v === `shape:swap87`) {
+    return `<div class="viz-row">
+      <svg width="72" height="72" viewBox="0 0 72 72" aria-hidden="true">
+        <circle cx="36" cy="36" r="28" fill="var(--surface-container-low)" stroke="var(--secondary)" stroke-width="2.5"/>
+        <rect x="22" y="22" width="28" height="28" fill="var(--surface-container)" stroke="var(--primary)" stroke-width="2.5"/>
+      </svg>
+      <span class="viz-arrow">બહાર ↔ અંદર અદલાબદલી ➔</span>
+      <svg width="72" height="72" viewBox="0 0 72 72" aria-hidden="true">
+        <rect x="10" y="10" width="52" height="52" fill="var(--primary-container)" stroke="var(--primary)" stroke-width="2.5"/>
+        <circle cx="36" cy="36" r="16" fill="var(--surface-container-low)" stroke="var(--secondary)" stroke-width="2.5"/>
+      </svg>
+    </div><span class="viz-arrow">બહાર ચોરસ, અંદર વર્તુળ (A)</span>`;
+  }
+  if (v === `shape:star88`) {
+    return `<div class="viz-row">
+      <span class="viz-node">★ પૂર્ણ</span><span class="viz-arrow">→</span>
+      <span class="viz-node">ઓછી રેખા</span><span class="viz-arrow">→</span>
+      <span class="viz-node">3 રેખા</span><span class="viz-arrow">→</span>
+      <span class="viz-node highlight">∧ (2 રેખા — B)</span>
+    </div>`;
+  }
+  if (v.startsWith(`venn:`)) {
+    const val = v.slice(5);
+    if (val === `common3`) {
+      return `<svg width="200" height="110" viewBox="0 0 200 110" aria-hidden="true">
+        <rect x="20" y="18" width="110" height="72" fill="none" stroke="var(--secondary)" stroke-width="2.5"/>
+        <circle cx="115" cy="54" r="38" fill="none" stroke="var(--tertiary)" stroke-width="2.5"/>
+        <polygon points="95,12 45,96 155,96" fill="none" stroke="var(--primary)" stroke-width="2.5"/>
+        <text x="95" y="64" text-anchor="middle" fill="var(--primary)" font-weight="bold" font-size="16">3</text>
+        <text x="148" y="34" fill="var(--tertiary)" font-weight="bold" font-size="11">5</text>
+        <text x="166" y="62" fill="var(--tertiary)" font-weight="bold" font-size="11">6</text>
+        <text x="58" y="88" fill="var(--primary)" font-weight="bold" font-size="11">19</text>
+      </svg><span class="viz-arrow">ચારેય આકારનો સામાન્ય અંક = 3</span>`;
+    }
+    return `<svg width="230" height="120" viewBox="0 0 230 120" aria-hidden="true">
+      <polygon points="85,10 15,105 155,105" fill="none" stroke="var(--secondary)" stroke-width="2.5"/>
+      <rect x="58" y="34" width="150" height="70" fill="none" stroke="var(--primary)" stroke-width="2.5"/>
+      <circle cx="120" cy="56" r="42" fill="none" stroke="var(--tertiary)" stroke-width="2.5"/>
+      <text x="52" y="88" fill="var(--secondary)" font-weight="bold" font-size="11">67</text>
+      <text x="72" y="68" fill="var(--on-surface)" font-weight="bold" font-size="11">23</text>
+      <text x="92" y="45" fill="var(--secondary)" font-weight="bold" font-size="11">18</text>
+      <text x="108" y="68" fill="var(--primary)" font-weight="bold" font-size="13">15</text>
+      <text x="146" y="72" fill="var(--tertiary)" font-weight="bold" font-size="11">21</text>
+      <text x="180" y="82" fill="var(--primary)" font-weight="bold" font-size="13">54</text>
+      <text x="128" y="28" fill="var(--tertiary)" font-weight="bold" font-size="11">73</text>
+    </svg><span class="viz-arrow">લક્ષિત સંખ્યા = ${val}${val === `33` ? ` (18 + 15 = 33, ગ્રેસ)` : ``}</span>`;
+  }
+  if (v.startsWith(`compass:`)) {
+    const mode = v.slice(8);
+    return `<div class="viz-node highlight">${mode === `E→W` ? `સૂર્ય (પૂર્વ) ☀ ➔ પડછાયો (પશ્ચિમ)` : `પશ્ચિમ ← ડાબે (દક્ષિણ) ↓ જમણે (પશ્ચિમ) ←`}</div>`;
+  }
+  if (v.startsWith(`mirror:`)) {
+    const isWater = v.includes(`water`);
+    const label = v === `mirror:water|QUESTION`
+      ? `<div class="viz-row"><span class="viz-node">QUESTION</span><span class="viz-arrow">💧 જળપ્રતિબિંબ (ઉપર↔નીચે)</span><span class="viz-node highlight" style="transform:scaleY(-1);">QUESTION</span></div>`
+      : `<div class="viz-node highlight">${isWater ? `જળપ્રતિબિંબ: ઉપર ↔ નીચે ઊલટાય (ડાબે-જમણે એ જ)` : `દર્પણ પ્રતિબિંબ: ડાબે ↔ જમણે અદલાબદલી (ઉપર-નીચે એ જ)`}</div>`;
+    return label;
+  }
+  if (v.startsWith(`layers:`)) {
+    return `<div class="viz-node highlight">${v.slice(7)}</div>`;
+  }
+  return `<div class="viz-node">તાર્કિક આકૃતિ અને ક્રમ મુજબ ઉકેલ</div>`;
+}
+
+function renderWorkspace() {
+  const card = document.getElementById(`question-card`);
+  const panel = document.getElementById(`explain-panel`);
+  if (!card || !panel) return;
+
+  const list = getFilteredQuestions();
+  if (list.length === 0) {
+    card.innerHTML = `<div class="empty-box">
+      <h3>કોઈ પ્રશ્ન મળ્યો નથી</h3>
+      <p>કૃપા કરીને શોધ શબ્દ બદલો અથવા "બધા (180)" ફિલ્ટર પસંદ કરો.</p>
+      <button type="button" class="btn btn-primary" onclick="clearFilters()">બધા પ્રશ્નો બતાવો</button>
+    </div>`;
+    panel.innerHTML = `<h2 class="panel-title">એનિમેટેડ સમજૂતી</h2><p class="stat-sub">પ્રશ્ન પસંદ કરવાથી અહીં સ્ટેપ-બાય-સ્ટેપ સમજૂતી દેખાશે.</p>`;
+    return;
+  }
+
+  const q = QUESTIONS.find(item => item.i === appState.currentId) || list[0];
+  appState.currentId = q.i;
+  const idx = list.findIndex(item => item.i === q.i);
+  const prevId = idx > 0 ? list[idx - 1].i : null;
+  const nextId = idx < list.length - 1 ? list[idx + 1].i : null;
+
+  const ansRec = appState.answers[q.i];
+  const isQuiz = appState.mode === `quiz`;
+  const showAnswers = !isQuiz || Boolean(ansRec);
+
+  const optionsHTML = q.o.map((optText, oIdx) => {
+    let cls = `opt-btn`;
+    if (showAnswers) {
+      if (q.a.includes(oIdx)) cls += ` is-correct`;
+      else if (ansRec && ansRec.picked === oIdx && !ansRec.ok) cls += ` is-wrong`;
+    }
+    const disabled = isQuiz && Boolean(ansRec) ? `disabled` : ``;
+    return `<button type="button" class="${cls}" ${disabled} onclick="handleOptionClick(${q.i}, ${oIdx})">
+      <span class="opt-letter">${LETTERS[oIdx]}</span>
+      <span>${optText}</span>
+    </button>`;
+  }).join(``);
+
+  let feedbackHTML = ``;
+  if (!isQuiz) {
+    const ansLabels = q.a.map(ai => `(${LETTERS[ai]}) ${q.o[ai]}`).join(` અને `);
+    feedbackHTML = `<div class="feedback-banner ${q.g ? `grace` : `ok`}">
+      <span>${q.g ? `★ ગ્રેસ ગુણ (બોર્ડે બધાને ગુણ આપ્યા) — ગણતરી મુજબ: ${ansLabels}` : `✔ સત્તાવાર જવાબ: ${ansLabels}`}</span>
+    </div>`;
+  } else if (ansRec) {
+    const ansLabels = q.a.map(ai => `(${LETTERS[ai]}) ${q.o[ai]}`).join(` અને `);
+    if (q.g) {
+      feedbackHTML = `<div class="feedback-banner grace"><span>★ ગ્રેસ પ્રશ્ન! બોર્ડે બધાને ગુણ આપ્યા (+10 XP)</span></div>`;
+    } else if (ansRec.ok) {
+      feedbackHTML = `<div class="feedback-banner ok"><span>🎉 શાબાશ! બિલકુલ સાચો જવાબ (+10 XP)</span></div>`;
+    } else {
+      feedbackHTML = `<div class="feedback-banner err"><span>ખોટો જવાબ — સાચો જવાબ: ${ansLabels}</span></div>`;
+    }
+  }
+
+  let quickDoneHTML = ``;
+  if (isQuiz && Array.isArray(appState.quickQueue)) {
+    const qDone = appState.quickQueue.filter(qid => Boolean(appState.answers[qid])).length;
+    if (qDone === appState.quickQueue.length) {
+      const qRight = appState.quickQueue.filter(qid => appState.answers[qid] && appState.answers[qid].ok).length;
+      quickDoneHTML = `<div class="feedback-banner ok">
+        <span>🏆 ફટાફટ 10 ચેલેન્જ પૂર્ણ! તમારો સ્કોર: ${qRight} / ${appState.quickQueue.length}</span>
+        <button type="button" class="btn btn-secondary" onclick="startQuick10()">નવી 10 ચેલેન્જ રમો</button>
+      </div>`;
+    }
+  }
+
+  card.innerHTML = `
+    <div class="q-meta">
+      <div class="q-tags">
+        <span class="tag-num">પ્રશ્ન ${q.i}</span>
+        <span class="tag-subj">${CAT_NAMES[q.c]}</span>
+        ${q.g ? `<span class="tag-grace">★ ગ્રેસ ગુણ</span>` : ``}
+        ${q.a.length > 1 ? `<span class="tag-dual">બે વિકલ્પ માન્ય</span>` : ``}
+      </div>
+      <span class="stat-sub">${idx + 1} / ${list.length}</span>
+    </div>
+    <h2 class="q-text">${q.q}</h2>
+    <div class="options-list">${optionsHTML}</div>
+    ${feedbackHTML}
+    ${quickDoneHTML}
+    <div class="q-footer-nav">
+      <button type="button" class="btn btn-quiet" ${prevId ? `` : `disabled`} onclick="selectQuestion(${prevId})">← પાછલો પ્રશ્ન</button>
+      <button type="button" class="btn btn-primary" ${nextId ? `` : `disabled`} onclick="selectQuestion(${nextId})">આગળનો પ્રશ્ન →</button>
+    </div>
+  `;
+
+  // Render Explanation Panel
+  const hideExpInQuiz = isQuiz && !ansRec;
+  if (hideExpInQuiz) {
+    panel.innerHTML = `
+      <div class="panel-title"><span>સમજૂતી અને લોજિક</span></div>
+      <div class="empty-box" style="padding: var(--space-lg);">
+        <p style="margin:0 0 var(--space-md);">પહેલાં ડાબી બાજુથી A, B, C અથવા D જવાબ પસંદ કરો — પછી અહીં એનિમેટેડ સ્ટેપ-બાય-સ્ટેપ સમજૂતી ખૂલશે!</p>
+        <button type="button" class="btn btn-quiet" onclick="revealHint(${q.i})">સમજૂતી પહેલાં જુઓ (અભ્યાસ મોડ)</button>
+      </div>
+    `;
+    return;
+  }
+
+  const maxStep = q.e.length;
+  if (revealedSteps > maxStep) revealedSteps = maxStep;
+
+  const stepsHTML = q.e.map((txt, sIdx) => {
+    const rev = sIdx < revealedSteps;
+    const act = sIdx === revealedSteps - 1;
+    return `<div class="step-item ${rev ? `revealed` : ``} ${act ? `active-step` : ``}" onclick="jumpStep(${sIdx + 1})" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();jumpStep(${sIdx + 1})}" role="button" tabindex="0">
+      <span class="step-num">${sIdx + 1}</span>
+      <p class="step-text">${txt}</p>
+    </div>`;
+  }).join(``);
+
+  panel.innerHTML = `
+    <div class="panel-title">
+      <span>એનિમેટેડ સ્ટેપ-બાય-સ્ટેપ સમજૂતી</span>
+      <span class="stat-sub">પગલું ${revealedSteps} / ${maxStep}</span>
+    </div>
+    <div class="visual-stage">${buildVisualHTML(q.v)}</div>
+    <div class="step-controls">
+      <button type="button" class="btn btn-primary" ${revealedSteps >= maxStep ? `disabled` : ``} onclick="nextStep(${maxStep})">આગળનું પગલું ▶</button>
+      <button type="button" class="btn btn-secondary" onclick="toggleAutoPlay(${maxStep})">${autoPlayTimer ? `થોભો ⏸` : `ઓટો-પ્લે ✦`}</button>
+      <button type="button" class="btn btn-quiet" onclick="showAllSteps(${maxStep})">બધાં પગલાં</button>
+    </div>
+    <div class="steps-container">${stepsHTML}</div>
+  `;
+}
+
+// Hoisted Handlers
+function switchMode(mode) {
+  stopAutoPlay();
+  appState.mode = mode;
+  if (mode === `study`) appState.quickQueue = null;
+  const sBtn = document.getElementById(`mode-study`);
+  const qBtn = document.getElementById(`mode-quiz`);
+  const qBar = document.getElementById(`quiz-bar`);
+  if (sBtn) {
+    sBtn.classList.toggle(`active`, mode === `study`);
+    sBtn.setAttribute(`aria-selected`, String(mode === `study`));
+  }
+  if (qBtn) {
+    qBtn.classList.toggle(`active`, mode === `quiz`);
+    qBtn.setAttribute(`aria-selected`, String(mode === `quiz`));
+  }
+  if (qBar) qBar.style.display = mode === `quiz` ? `flex` : `none`;
+  revealedSteps = mode === `study` ? 1 : 99;
+  renderNavigator();
+  renderWorkspace();
+  saveState();
+}
+
+function setCategory(cat) {
+  stopAutoPlay();
+  appState.cat = cat;
+  appState.quickQueue = null;
+  document.querySelectorAll(`#filter-chips .chip`).forEach(ch => {
+    ch.classList.toggle(`active`, ch.dataset.cat === cat);
+  });
+  revealedSteps = 1;
+  renderNavigator();
+  renderWorkspace();
+  saveState();
+}
+
+function onSearchInput(val) {
+  appState.search = val;
+  appState.quickQueue = null;
+  revealedSteps = 1;
+  renderNavigator();
+  renderWorkspace();
+}
+
+function clearFilters() {
+  const inp = document.getElementById(`search-input`);
+  if (inp) inp.value = ``;
+  appState.search = ``;
+  setCategory(`all`);
+}
+
+function jumpToQuestion(val) {
+  const id = Number(val);
+  if (!id) return;
+  appState.cat = `all`;
+  appState.search = ``;
+  appState.quickQueue = null;
+  const inp = document.getElementById(`search-input`);
+  if (inp) inp.value = ``;
+  document.querySelectorAll(`#filter-chips .chip`).forEach(ch => {
+    ch.classList.toggle(`active`, ch.dataset.cat === `all`);
+  });
+  selectQuestion(id);
+}
+
+function selectQuestion(id) {
+  if (!id) return;
+  stopAutoPlay();
+  appState.currentId = id;
+  revealedSteps = appState.mode === `study` ? 1 : 99;
+  renderNavigator();
+  renderWorkspace();
+  saveState();
+}
+
+function revealHint(id) {
+  switchMode(`study`);
+  selectQuestion(id);
+}
+
+function handleOptionClick(qId, optIdx) {
+  if (appState.mode !== `quiz`) {
+    revealedSteps = 99;
+    renderWorkspace();
+    return;
+  }
+  if (appState.answers[qId]) return;
+  const q = QUESTIONS.find(item => item.i === qId);
+  if (!q) return;
+
+  const isCorrect = q.g ? true : q.a.includes(optIdx);
+  appState.answers[qId] = { picked: optIdx, ok: isCorrect };
+  if (isCorrect) {
+    appState.correct++;
+    appState.streak++;
+    if (appState.streak > appState.bestStreak) appState.bestStreak = appState.streak;
+    appState.xp += 10 + (appState.streak >= 3 ? 5 : 0);
+    launchConfetti();
+  } else {
+    appState.wrong++;
+    appState.streak = 0;
+  }
+  revealedSteps = q.e.length;
+  renderHeaderStats();
+  renderNavigator();
+  renderWorkspace();
+  saveState();
+}
+
+function nextStep(maxStep) {
+  if (revealedSteps < maxStep) {
+    revealedSteps++;
+    renderWorkspace();
+  }
+}
+
+function jumpStep(stepNum) {
+  revealedSteps = stepNum;
+  renderWorkspace();
+}
+
+function showAllSteps(maxStep) {
+  stopAutoPlay();
+  revealedSteps = maxStep;
+  renderWorkspace();
+}
+
+function stopAutoPlay() {
+  if (autoPlayTimer) {
+    clearInterval(autoPlayTimer);
+    autoPlayTimer = null;
+  }
+}
+
+function toggleAutoPlay(maxStep) {
+  if (autoPlayTimer) {
+    stopAutoPlay();
+    renderWorkspace();
+    return;
+  }
+  revealedSteps = 1;
+  renderWorkspace();
+  autoPlayTimer = setInterval(() => {
+    if (revealedSteps < maxStep) {
+      revealedSteps++;
+      renderWorkspace();
+    } else {
+      stopAutoPlay();
+      renderWorkspace();
+    }
+  }, 1100);
+}
+
+function startQuick10() {
+  const pool = [...QUESTIONS].sort(() => Math.random() - 0.5).slice(0, 10).map(q => q.i);
+  appState.quickQueue = pool;
+  appState.currentId = pool[0];
+  renderNavigator();
+  renderWorkspace();
+}
+
+function nextUnanswered() {
+  appState.quickQueue = null;
+  const list = getFilteredQuestions();
+  const nextQ = list.find(q => !appState.answers[q.i]);
+  if (nextQ) {
+    selectQuestion(nextQ.i);
+  }
+}
+
+function handleReset(btn) {
+  if (btn.dataset.armed !== `true`) {
+    btn.dataset.armed = `true`;
+    btn.textContent = `ખાતરી કરો (ફરી ક્લિક)`;
+    setTimeout(() => {
+      if (btn.dataset.armed === `true`) {
+        btn.dataset.armed = `false`;
+        btn.textContent = `રિસેટ કરો`;
+      }
+    }, 3500);
+    return;
+  }
+  btn.dataset.armed = `false`;
+  btn.textContent = `રિસેટ કરો`;
+  appState.xp = 0;
+  appState.streak = 0;
+  appState.bestStreak = 0;
+  appState.correct = 0;
+  appState.wrong = 0;
+  appState.answers = {};
+  appState.quickQueue = null;
+  renderHeaderStats();
+  renderNavigator();
+  renderWorkspace();
+  saveState();
+}
+
+// Celebratory Confetti Effect
+let confettiAnimId = null;
+function launchConfetti() {
+  if (window.matchMedia && window.matchMedia(`(prefers-reduced-motion: reduce)`).matches) return;
+  const canvas = document.getElementById(`confetti-canvas`);
+  if (!canvas) return;
+  const ctx = canvas.getContext(`2d`);
+  if (!ctx) return;
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  const cs = getComputedStyle(document.documentElement);
+  const colors = [
+    cs.getPropertyValue(`--data-1`).trim(),
+    cs.getPropertyValue(`--data-2`).trim(),
+    cs.getPropertyValue(`--data-3`).trim(),
+    cs.getPropertyValue(`--data-4`).trim(),
+    cs.getPropertyValue(`--positive`).trim()
+  ];
+  const pieces = Array.from({ length: 48 }, () => ({
+    x: canvas.width * (0.25 + Math.random() * 0.5),
+    y: canvas.height * 0.35,
+    vx: (Math.random() - 0.5) * 10,
+    vy: -Math.random() * 9 - 3,
+    size: 6 + Math.random() * 6,
+    color: colors[Math.floor(Math.random() * colors.length)],
+    life: 60
+  }));
+  if (confettiAnimId) cancelAnimationFrame(confettiAnimId);
+  function tick() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    let alive = false;
+    pieces.forEach(p => {
+      if (p.life <= 0) return;
+      alive = true;
+      p.x += p.vx;
+      p.y += p.vy;
+      p.vy += 0.35;
+      p.life--;
+      ctx.globalAlpha = Math.max(0, p.life / 60);
+      ctx.fillStyle = p.color;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size * 0.5, 0, Math.PI * 2);
+      ctx.fill();
+    });
+    ctx.globalAlpha = 1;
+    if (alive) confettiAnimId = requestAnimationFrame(tick);
+    else ctx.clearRect(0, 0, canvas.width, canvas.height);
+  }
+  confettiAnimId = requestAnimationFrame(tick);
+}
+
+async function initApp() {
+  try {
+    if (window.notebookAppApi && typeof window.notebookAppApi.getAppState === `function`) {
+      const saved = await window.notebookAppApi.getAppState();
+      if (saved && typeof saved === `object`) {
+        appState = { ...appState, ...saved, answers: saved.answers || {} };
+      }
+    }
+  } catch (err) {
+    console.warn(`State load skipped`, err);
+  }
+
+  renderJumpSelect();
+  switchMode(appState.mode || `study`);
+  document.querySelectorAll(`#filter-chips .chip`).forEach(ch => {
+    ch.classList.toggle(`active`, ch.dataset.cat === appState.cat);
+  });
+  renderHeaderStats();
+  renderNavigator();
+  renderWorkspace();
+
+  try {
+    if (window.notebookAppApi && typeof window.notebookAppApi.notifyAppReady === `function`) {
+      window.notebookAppApi.notifyAppReady();
+    }
+  } catch (err) {
+    console.warn(`notifyAppReady skipped`, err);
+  }
+}
+
+document.addEventListener(`DOMContentLoaded`, initApp);
+</script>
+</body>
+</html>
