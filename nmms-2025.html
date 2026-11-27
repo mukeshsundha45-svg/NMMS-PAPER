@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="gu">
+<html lang="en-GB">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="artifact-type" content="dashboard">
+<meta name="artifact-type" content="tool">
 <meta name="design-style" content="sticker">
-<title>NMMS 2024-25 (Set A) — અભ્યાસ અને ગેમ્સ</title>
+<title>NMMS 2024–25 Paper Solution &amp; with Games</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..900;1,9..40,400..900&family=Noto+Sans+Gujarati:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..900;1,9..40,400..900&family=Noto+Sans+Gujarati:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/lucide@1.43.0/dist/umd/lucide.min.js"></script>
 <style>
 :root {
@@ -31,6 +31,7 @@
   --primary-container: #f080c0;
   --on-primary-container: #2e1a28;
   --secondary: #7c52aa;
+  --on-secondary: #ffffff;
   --tertiary: #0096cc;
   --error: #c53030;
   --on-error: #ffffff;
@@ -57,21 +58,25 @@
   --lift: translateY(-4px);
   --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
 
-  /* 2. Shared semantic & scale tokens */
+  /* 3. Shared foundation tokens */
   --positive: #15803d;
-  --positive-bg: #e7f8ee;
+  --positive-bg: #dcfce7;
   --warning: #b45309;
   --warning-bg: #fef3c7;
-  --error-bg: #fde8e8;
-  --sky-bg: #e3f6fd;
-  --grape-bg: #f1eafb;
+  --error-bg: #fee2e2;
+  --sky-bg: #e0f5fc;
+  --grape-bg: #f3ecfb;
+  --overlay-1: rgb(194 32 127 / 0.14);
+  --overlay-2: rgb(124 82 170 / 0.15);
+  --overlay-3: rgb(0 150 204 / 0.15);
+  --overlay-4: rgb(217 106 0 / 0.16);
   --focus: #c2207f;
 
   --display-size: clamp(1.75rem, 1.4rem + 1.2vw, 2.35rem);
-  --headline-size: clamp(1.25rem, 1.1rem + 0.5vw, 1.55rem);
-  --subhead-size: clamp(1.0625rem, 1rem + 0.25vw, 1.2rem);
-  --body-size: clamp(0.95rem, 0.92rem + 0.15vw, 1.05rem);
-  --label-size: 0.78rem;
+  --headline-size: clamp(1.25rem, 1.1rem + 0.5vw, 1.5rem);
+  --subhead-size: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+  --body-size: clamp(0.95rem, 0.92rem + 0.15vw, 1.03rem);
+  --label-size: 0.75rem;
 
   --space-xs: 0.25rem;
   --space-sm: 0.5rem;
@@ -87,643 +92,706 @@
   --dur-long: 420ms;
 }
 
-/* Base reset */
 *, *::before, *::after { box-sizing: border-box; }
-html, body { overflow-x: clip; margin: 0; padding: 0; }
-header { position: static !important; }
-
-body {
+html, body {
+  overflow-x: clip;
+  margin: 0;
+  padding: 0;
   background: var(--background);
   color: var(--on-surface);
   font-family: var(--font-body);
   font-size: var(--body-size);
-  line-height: 1.65;
-  letter-spacing: 0;
+  line-height: 1.6;
 }
+header { position: static !important; }
+button, input, select, textarea { font-family: inherit; }
 
-button, input, select, textarea {
-  font-family: inherit;
-  font-size: inherit;
-  color: inherit;
-}
-
-button:focus-visible, input:focus-visible, select:focus-visible, [tabindex]:focus-visible {
+:focus-visible {
   outline: 3px solid var(--focus);
   outline-offset: 2px;
 }
 
-.page-grid {
-  display: grid;
-  gap: var(--space-lg);
-  padding: var(--space-lg);
-  max-width: 1120px;
+.app-shell {
+  max-width: 1240px;
   margin: 0 auto;
-  overflow: hidden;
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
 }
-.page-grid * { min-width: 0; }
+.app-shell * { min-width: 0; }
 
-/* Header / Masthead */
-.hero-panel {
+/* Header */
+.hero-header {
   background: var(--surface-container-low);
   border-radius: var(--rounded-lg);
-  padding: var(--space-xl);
   box-shadow: var(--shadow-pink);
+  padding: var(--space-lg) var(--space-xl);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-lg);
+  gap: var(--space-md);
 }
-
-.display {
+.brand-block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+.eyebrow-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  align-self: flex-start;
+  background: var(--primary-container);
+  color: var(--on-primary-container);
+  font-size: var(--label-size);
+  font-weight: 700;
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--rounded-full);
+}
+.hero-title {
+  margin: 0;
   font-family: var(--font-headline);
   font-weight: 900;
   font-size: var(--display-size);
-  line-height: 1.15;
-  margin: 0 0 var(--space-xs) 0;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
   color: var(--on-surface);
 }
-.display em {
+.hero-title em {
   font-style: normal;
   color: var(--primary);
 }
 .hero-sub {
   margin: 0;
   color: var(--on-surface-variant);
-  font-size: var(--body-size);
-  max-width: 62ch;
+  font-size: 0.95rem;
 }
 
-/* Primary Navigation Tabs */
-.nav-tabs {
+/* Primary Mode Switcher */
+.mode-tabs {
   display: inline-flex;
   background: var(--surface-container-high);
   padding: var(--space-xs);
   border-radius: var(--rounded-full);
   gap: var(--space-xs);
-  box-shadow: var(--shadow-grape);
 }
 .tab-btn {
-  border: none;
-  background: transparent;
-  color: var(--on-surface-variant);
-  font-weight: 700;
-  padding: var(--space-sm) var(--space-lg);
+  border: 0;
   border-radius: var(--rounded-full);
+  padding: var(--space-sm) var(--space-lg);
+  min-height: 44px;
+  font-weight: 700;
+  font-size: 0.95rem;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   gap: var(--space-sm);
-  min-height: 44px;
-  transition: transform var(--dur-short) var(--ease-bounce), background-color var(--dur-short) var(--ease-out), color var(--dur-short) var(--ease-out);
+  background: transparent;
+  color: var(--on-surface-variant);
+  transition: transform var(--dur-short) var(--ease-bounce),
+              background-color var(--dur-short) var(--ease-out),
+              color var(--dur-short) var(--ease-out),
+              box-shadow var(--dur-short) var(--ease-out);
 }
-.tab-btn:hover { transform: var(--pop-scale); }
+.tab-btn:hover { transform: var(--pop-scale); color: var(--on-surface); }
 .tab-btn.active {
   background: var(--primary);
   color: var(--on-primary);
   box-shadow: var(--shadow-pink);
 }
 
-/* Buttons & Badges */
+/* Buttons & Pills */
 .btn {
-  border: none;
+  border: 0;
   border-radius: var(--rounded-full);
   padding: var(--space-sm) var(--space-lg);
   min-height: 44px;
   font-weight: 700;
+  font-size: 0.95rem;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: var(--space-sm);
-  transition: transform var(--dur-short) var(--ease-bounce), box-shadow var(--dur-short) var(--ease-out), background-color var(--dur-short) var(--ease-out);
+  transition: transform var(--dur-short) var(--ease-bounce),
+              box-shadow var(--dur-short) var(--ease-out),
+              background-color var(--dur-micro) var(--ease-out);
 }
 .btn:hover:not(:disabled) { transform: var(--pop-scale); }
 .btn:active:not(:disabled) { transform: scale(0.97); }
-.btn:disabled { opacity: 0.48; cursor: not-allowed; }
-
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
 .btn-primary {
   background: var(--primary);
   color: var(--on-primary);
   box-shadow: var(--shadow-pink);
 }
 .btn-primary:hover:not(:disabled) { box-shadow: var(--shadow-pink-deep); }
-
 .btn-secondary {
   background: var(--secondary);
-  color: var(--on-primary);
+  color: var(--on-secondary);
   box-shadow: var(--shadow-grape);
 }
-
-.btn-soft {
+.btn-ghost {
   background: var(--surface-container);
-  color: var(--primary);
-  border: 2px solid var(--outline-variant);
+  color: var(--on-surface);
 }
-.btn-soft:hover:not(:disabled) {
-  background: var(--surface-container-high);
-  border-color: var(--primary);
+.btn-ghost:hover:not(:disabled) { background: var(--surface-container-high); }
+
+.view-panel { display: none; }
+.view-panel.active {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  animation: panelFade var(--dur-short) var(--ease-out);
 }
 
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-xs);
-  border-radius: var(--rounded-full);
-  padding: var(--space-xs) var(--space-md);
-  font-size: var(--label-size);
-  font-weight: 700;
-  background: var(--primary-container);
-  color: var(--on-primary-container);
-}
-.badge-grape {
-  background: var(--grape-bg);
-  color: var(--secondary);
-  border: 1.5px solid var(--secondary);
-}
-.badge-positive {
-  background: var(--positive-bg);
-  color: var(--positive);
-}
-.badge-warning {
-  background: var(--warning-bg);
-  color: var(--warning);
+@keyframes panelFade {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* Study Tab: Strictly 2 Filter Controls */
-.filters-bar {
+/* ==================== ABHYAS (STUDY) TAB — 2 FILTERS ONLY ==================== */
+.study-toolbar {
   background: var(--surface-container-low);
   border-radius: var(--rounded);
-  padding: var(--space-lg);
   box-shadow: var(--shadow-sky);
-  display: grid;
-  grid-template-columns: minmax(180px, 240px) minmax(0, 1fr);
-  gap: var(--space-lg);
+  padding: var(--space-lg);
+  display: flex;
+  flex-wrap: wrap;
   align-items: end;
+  justify-content: space-between;
+  gap: var(--space-md);
 }
-.field-group {
+.filter-group {
   display: flex;
   flex-direction: column;
   gap: var(--space-xs);
+  min-width: 200px;
+  flex: 1 1 220px;
 }
-.field-label {
+.filter-label {
   font-size: var(--label-size);
   font-weight: 700;
   color: var(--on-surface-variant);
+  padding-left: var(--space-sm);
 }
 .pill-input, .pill-select {
+  width: 100%;
   min-height: 44px;
   border-radius: var(--rounded-full);
-  background: var(--surface-container);
   border: 2px solid var(--outline);
-  padding: var(--space-sm) var(--space-md);
+  background: var(--surface-container);
   color: var(--on-surface);
-  font-weight: 600;
-  width: 100%;
-  transition: border-color var(--dur-micro) var(--ease-out), box-shadow var(--dur-micro) var(--ease-out);
+  padding: var(--space-sm) var(--space-lg);
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: border-color var(--dur-micro) var(--ease-out);
 }
-.pill-select {
-  padding-right: var(--space-xl);
-  cursor: pointer;
-}
-.pill-input:focus, .pill-select:focus {
-  outline: none;
-  border-color: var(--primary);
-  box-shadow: var(--shadow-pink);
-}
-.search-row {
+.pill-select { padding-right: 2.25rem; cursor: pointer; }
+.pill-input:focus, .pill-select:focus { border-color: var(--primary); }
+
+.study-meta-row {
   display: flex;
-  gap: var(--space-sm);
+  flex-wrap: wrap;
   align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  padding: 0 var(--space-xs);
+  color: var(--on-surface-variant);
+  font-size: 0.9rem;
+  font-weight: 600;
 }
 
-/* Question Cards */
-.questions-stack {
+.questions-list {
   display: grid;
+  grid-template-columns: 1fr;
   gap: var(--space-lg);
 }
 .q-card {
   background: var(--surface-container-low);
   border-radius: var(--rounded);
-  padding: var(--space-lg);
   box-shadow: var(--shadow-pink);
-  animation: cardEnter var(--dur-long) var(--ease-out) both;
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
 }
 .q-card:nth-child(3n+2) { box-shadow: var(--shadow-sky); }
 .q-card:nth-child(3n+3) { box-shadow: var(--shadow-grape); }
 
-.q-head {
+.q-header {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: var(--space-sm);
-  margin-bottom: var(--space-md);
 }
 .q-num-pill {
-  background: var(--secondary);
-  color: var(--on-primary);
+  background: var(--primary-container);
+  color: var(--on-primary-container);
   font-weight: 800;
-  font-size: var(--label-size);
+  font-size: 0.85rem;
   padding: var(--space-xs) var(--space-md);
   border-radius: var(--rounded-full);
   font-variant-numeric: tabular-nums;
 }
-.q-text {
-  font-size: var(--subhead-size);
+.q-cat-tag {
+  border: 1.5px solid var(--secondary);
+  color: var(--secondary);
+  font-size: var(--label-size);
   font-weight: 700;
-  margin: 0 0 var(--space-md) 0;
-  color: var(--on-surface);
-  max-width: 70ch;
+  padding: 2px var(--space-md);
+  border-radius: var(--rounded-full);
 }
-.q-diagram {
-  margin: var(--space-md) 0;
-  padding: var(--space-md);
-  background: var(--surface-container);
-  border-radius: var(--rounded);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  max-width: 100%;
+.q-text {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--on-surface);
+  line-height: 1.55;
 }
 .options-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
   gap: var(--space-sm);
-  margin-bottom: var(--space-md);
 }
-.opt-chip {
+.opt-pill {
   background: var(--surface-container);
-  border-radius: var(--rounded-full);
+  color: var(--on-surface);
+  border-radius: var(--rounded);
   padding: var(--space-sm) var(--space-md);
-  font-weight: 600;
+  font-weight: 500;
   display: flex;
   align-items: center;
   gap: var(--space-sm);
-  border: 2px solid transparent;
-  transition: background-color var(--dur-short) var(--ease-out), border-color var(--dur-short) var(--ease-out);
-}
-.opt-chip.is-correct-reveal {
-  background: var(--positive-bg);
-  border-color: var(--positive);
-  color: var(--positive);
+  min-height: 44px;
 }
 .opt-letter {
-  width: 28px;
-  height: 28px;
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
   border-radius: var(--rounded-full);
   background: var(--surface-container-low);
-  color: var(--secondary);
+  color: var(--primary);
+  font-weight: 800;
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.opt-pill.is-answer {
+  background: var(--positive-bg);
+  color: var(--positive);
+  font-weight: 700;
+}
+.opt-pill.is-answer .opt-letter {
+  background: var(--positive);
+  color: var(--on-primary);
+}
+.q-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-sm);
+}
+.ans-badge {
+  background: var(--sky-bg);
+  color: var(--on-surface);
+  font-weight: 700;
+  font-size: 0.88rem;
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--rounded-full);
+}
+.ans-badge.is-grace {
+  background: var(--warning-bg);
+  color: var(--warning);
+}
+.exp-box {
+  display: none;
+  background: var(--surface-container);
+  border-radius: var(--rounded);
+  padding: var(--space-md) var(--space-lg);
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+.exp-box.open {
+  display: flex;
+  animation: panelFade var(--dur-short) var(--ease-out);
+}
+.exp-step {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  opacity: 0;
+  transform: translateX(-6px);
+  animation: stepReveal var(--dur-short) var(--ease-out) forwards;
+}
+@keyframes stepReveal {
+  to { opacity: 1; transform: translateX(0); }
+}
+.step-dot {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  border-radius: var(--rounded-full);
+  background: var(--secondary);
+  color: var(--on-secondary);
+  font-size: 0.75rem;
   font-weight: 800;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
-}
-.opt-chip.is-correct-reveal .opt-letter {
-  background: var(--positive);
-  color: var(--on-primary);
+  margin-top: 2px;
 }
 
-/* Explanation Drawer Animation */
-.explain-box {
-  margin-top: var(--space-md);
-  background: var(--surface-container);
-  border-radius: var(--rounded);
-  padding: var(--space-md) var(--space-lg);
-  border-left: 5px solid var(--primary);
-  animation: stepReveal var(--dur-long) var(--ease-bounce) both;
-}
-.ans-banner {
-  font-weight: 800;
-  color: var(--positive);
-  margin-bottom: var(--space-sm);
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: var(--space-sm);
-}
-.steps-list {
-  margin: 0;
-  padding-left: var(--space-lg);
-  display: grid;
-  gap: var(--space-xs);
-}
-.steps-list li {
-  animation: stepFade var(--dur-short) var(--ease-out) both;
-}
-.steps-list li:nth-child(2) { animation-delay: 80ms; }
-.steps-list li:nth-child(3) { animation-delay: 160ms; }
-.steps-list li:nth-child(4) { animation-delay: 240ms; }
-
-/* Pagination Bar */
 .pagination-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: var(--space-md) 0;
+}
+
+/* ==================== GAMES TAB — APP / CONSOLE LAYOUT ==================== */
+.games-hud {
   background: var(--surface-container-low);
+  border-radius: var(--rounded);
+  box-shadow: var(--shadow-grape);
+  padding: var(--space-md) var(--space-lg);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: var(--space-md);
+  align-items: center;
+}
+.hud-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.hud-label {
+  font-size: var(--label-size);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--on-surface-variant);
+}
+.hud-val {
+  font-size: 1.45rem;
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
+  color: var(--on-surface);
+  line-height: 1.1;
+}
+.hud-val.pink { color: var(--primary); }
+.hud-val.grape { color: var(--secondary); }
+
+/* Mobile Horizontal Carousel (hidden on desktop >= 900px) */
+.mobile-game-strip {
+  display: none;
+  gap: var(--space-sm);
+  overflow-x: auto;
+  padding: var(--space-xs) var(--space-xs) var(--space-sm);
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+.mobile-game-chip {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  border: 0;
+  min-height: 44px;
   border-radius: var(--rounded-full);
   padding: var(--space-sm) var(--space-md);
-  box-shadow: var(--shadow-grape);
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-sm);
-}
-.page-nums {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-xs);
-  align-items: center;
-}
-.page-num-btn {
-  min-width: 40px;
-  min-height: 40px;
-  border-radius: var(--rounded-full);
-  border: none;
-  background: var(--surface-container);
+  background: var(--surface-container-low);
+  color: var(--on-surface);
+  box-shadow: var(--shadow-sky);
   font-weight: 700;
+  font-size: 0.9rem;
   cursor: pointer;
-  padding: 0 var(--space-sm);
-  transition: transform var(--dur-micro) var(--ease-bounce), background-color var(--dur-micro) var(--ease-out);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  white-space: nowrap;
+  transition: transform var(--dur-short) var(--ease-bounce), background-color var(--dur-micro) var(--ease-out);
 }
-.page-num-btn:hover { transform: var(--pop-scale); }
-.page-num-btn.active {
+.mobile-game-chip.active {
   background: var(--primary);
   color: var(--on-primary);
   box-shadow: var(--shadow-pink);
 }
 
-/* Games Tab HUD (ONLY visible in Games Tab) */
-.games-hud {
+/* Desktop Split Console Layout */
+.games-console {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr));
-  gap: var(--space-md);
-}
-.stat-card {
-  background: var(--surface-container-low);
-  border-radius: var(--rounded);
-  padding: var(--space-md) var(--space-lg);
-  box-shadow: var(--shadow-pink);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-xs);
-}
-.stat-card:nth-child(2) { box-shadow: var(--shadow-sky); }
-.stat-card:nth-child(3) { box-shadow: var(--shadow-grape); }
-.stat-card:nth-child(4) { box-shadow: var(--shadow-pink); }
-.stat-label {
-  font-size: var(--label-size);
-  font-weight: 700;
-  color: var(--on-surface-variant);
-}
-.stat-val {
-  font-size: var(--headline-size);
-  font-weight: 900;
-  color: var(--primary);
-  font-variant-numeric: tabular-nums;
-}
-
-.games-menu-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+  grid-template-columns: minmax(0, 1fr) 310px;
   gap: var(--space-lg);
+  align-items: start;
 }
-.game-tile {
-  background: var(--surface-container-low);
-  border-radius: var(--rounded);
-  padding: var(--space-lg);
-  box-shadow: var(--shadow-pink);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: var(--space-md);
-  cursor: pointer;
-  border: 2px solid transparent;
-  text-align: left;
-  transition: transform var(--dur-short) var(--ease-bounce), box-shadow var(--dur-short) var(--ease-out), border-color var(--dur-short) var(--ease-out);
-}
-.game-tile:nth-child(3n+2) { box-shadow: var(--shadow-sky); }
-.game-tile:nth-child(3n+3) { box-shadow: var(--shadow-grape); }
-.game-tile:hover {
-  transform: var(--lift);
-  box-shadow: var(--shadow-pink-deep);
-}
-.game-tile.active-game {
-  border-color: var(--primary);
-}
-.game-tile h3 {
-  margin: 0;
-  font-size: var(--subhead-size);
-  font-weight: 800;
-  color: var(--on-surface);
-}
-.game-tile p {
-  margin: 0;
-  color: var(--on-surface-variant);
-  font-size: 0.92rem;
-}
-
-.game-stage {
+.game-hero-stage {
   background: var(--surface-container-low);
   border-radius: var(--rounded-lg);
+  box-shadow: var(--shadow-pink);
   padding: var(--space-xl);
-  box-shadow: var(--shadow-grape);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  min-height: 480px;
   position: relative;
   overflow: hidden;
 }
+.stage-transition {
+  animation: stagePop var(--dur-short) var(--ease-out);
+}
+@keyframes stagePop {
+  from { opacity: 0; transform: translateY(10px) scale(0.99); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
 
-.game-top-bar {
+.games-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  position: sticky;
+  top: var(--space-md);
+}
+.sidebar-heading {
+  font-size: var(--label-size);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--on-surface-variant);
+  padding: 0 var(--space-sm);
+  margin: 0 0 var(--space-xs);
+}
+.side-game-card {
+  border: 0;
+  text-align: left;
+  width: 100%;
+  min-height: 60px;
+  background: var(--surface-container-low);
+  border-radius: var(--rounded);
+  box-shadow: var(--shadow-grape);
+  padding: var(--space-md);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  color: var(--on-surface);
+  transition: transform var(--dur-short) var(--ease-bounce),
+              box-shadow var(--dur-short) var(--ease-out),
+              background-color var(--dur-short) var(--ease-out);
+}
+.side-game-card:hover { transform: var(--lift); }
+.side-game-card.active {
+  background: var(--primary);
+  color: var(--on-primary);
+  box-shadow: var(--shadow-pink-deep);
+}
+.side-game-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--rounded-full);
+  background: var(--surface-container);
+  color: var(--primary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.side-game-card.active .side-game-icon {
+  background: var(--on-primary);
+  color: var(--primary);
+}
+.side-game-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.side-game-title { font-weight: 800; font-size: 0.95rem; line-height: 1.2; }
+.side-game-desc { font-size: 0.78rem; opacity: 0.85; line-height: 1.3; }
+
+/* Game Stage Internals */
+.stage-top-bar {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-md);
-  margin-bottom: var(--space-lg);
+  gap: var(--space-sm);
+}
+.stage-title-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.stage-title {
+  margin: 0;
+  font-size: var(--headline-size);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.stage-sub {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--on-surface-variant);
 }
 
-.progress-track {
-  width: 100%;
-  height: 14px;
-  border-radius: var(--rounded-full);
-  background: var(--surface-container-high);
-  overflow: hidden;
-  margin-bottom: var(--space-lg);
+.quiz-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+  gap: var(--space-sm);
 }
-.progress-fill {
-  height: 100%;
-  border-radius: var(--rounded-full);
-  background: var(--tertiary);
-  transition: width var(--dur-short) var(--ease-out);
-}
-
-.game-opt-btn {
-  width: 100%;
-  text-align: left;
+.quiz-opt-btn {
+  border: 0;
+  border-radius: var(--rounded);
   background: var(--surface-container);
-  border: 2px solid var(--outline-variant);
-  border-radius: var(--rounded-full);
-  padding: var(--space-md) var(--space-lg);
-  min-height: 48px;
-  font-weight: 700;
+  color: var(--on-surface);
+  padding: var(--space-md);
+  min-height: 52px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.95rem;
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: var(--space-md);
-  transition: transform var(--dur-short) var(--ease-bounce), background-color var(--dur-short) var(--ease-out), border-color var(--dur-short) var(--ease-out);
+  gap: var(--space-sm);
+  transition: transform var(--dur-short) var(--ease-bounce),
+              background-color var(--dur-micro) var(--ease-out);
 }
-.game-opt-btn:hover:not(:disabled) {
+.quiz-opt-btn:hover:not(:disabled) {
   transform: var(--pop-scale);
-  border-color: var(--primary);
-  background: var(--surface-container-low);
+  background: var(--surface-container-high);
 }
-.game-opt-btn.opt-right {
+.quiz-opt-btn.correct {
   background: var(--positive-bg);
-  border-color: var(--positive);
   color: var(--positive);
 }
-.game-opt-btn.opt-wrong {
+.quiz-opt-btn.wrong {
   background: var(--error-bg);
-  border-color: var(--error);
   color: var(--error);
 }
 
-/* Game 2: Balloon & Funny Emoji Stage */
-.balloon-zone {
-  min-height: 88px;
+.feedback-banner {
+  border-radius: var(--rounded);
+  padding: var(--space-md) var(--space-lg);
+  font-weight: 700;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+}
+.feedback-banner.ok { background: var(--positive-bg); color: var(--positive); }
+.feedback-banner.bad { background: var(--warning-bg); color: var(--warning); }
+.feedback-banner.info { background: var(--sky-bg); color: var(--on-surface); }
+
+/* Timer Bar (Game 1) */
+.timer-track {
+  width: 100%;
+  height: 12px;
+  border-radius: var(--rounded-full);
+  background: var(--surface-container-high);
+  overflow: hidden;
+}
+.timer-fill {
+  height: 100%;
+  border-radius: var(--rounded-full);
+  background: var(--tertiary);
+  transition: width 250ms linear, background-color var(--dur-short) var(--ease-out);
+}
+
+/* Balloon & Confetti Layer (Game 2) */
+.fx-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 4;
+}
+.balloon-float {
+  position: absolute;
+  bottom: -60px;
+  font-size: 2.2rem;
+  animation: floatUp 1.9s var(--ease-out) forwards;
+}
+@keyframes floatUp {
+  0% { transform: translateY(0) scale(0.8); opacity: 0.95; }
+  100% { transform: translateY(-480px) scale(1.15); opacity: 0; }
+}
+.confetti-piece {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: var(--rounded-full);
+  animation: confettiDrop 1.4s var(--ease-out) forwards;
+}
+@keyframes confettiDrop {
+  0% { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(380px) rotate(360deg); opacity: 0; }
+}
+
+/* Racing Track (Game 3) */
+.race-track-card {
+  background: var(--surface-container);
+  border-radius: var(--rounded);
+  padding: var(--space-md) var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+.race-svg { width: 100%; height: auto; display: block; }
+
+/* Shapes Puzzle SVG (Game 5) */
+.shape-stage-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--space-lg);
+  align-items: center;
+}
+.shape-canvas-wrap {
+  background: var(--surface-container);
+  border-radius: var(--rounded);
+  padding: var(--space-md);
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--space-md);
-  flex-wrap: wrap;
-  margin-bottom: var(--space-md);
-  padding: var(--space-md);
-  border-radius: var(--rounded);
-  background: var(--surface-container);
+  min-height: 240px;
 }
-.balloon-pop {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-sm);
-  font-size: 1.5rem;
-  font-weight: 800;
-  animation: popUp var(--dur-long) var(--ease-bounce) both;
+.shape-svg { width: 100%; max-width: 280px; height: auto; }
+.shape-overlay {
+  opacity: 0;
+  transition: opacity var(--dur-short) var(--ease-out);
 }
-
-/* Game 3: Racing Track */
-.race-track {
-  background: var(--surface-container);
-  border-radius: var(--rounded);
-  padding: var(--space-lg) var(--space-md);
-  margin-bottom: var(--space-lg);
-  position: relative;
-}
-.race-lane {
-  height: 16px;
-  background: var(--surface-container-high);
-  border-radius: var(--rounded-full);
-  position: relative;
-  margin-top: var(--space-lg);
-}
-.race-car {
-  position: absolute;
-  top: -28px;
-  transform: translateX(-50%);
-  font-size: 2rem;
-  transition: left var(--dur-long) var(--ease-bounce);
-}
-.race-finish {
-  position: absolute;
-  right: 0;
-  top: -28px;
-  font-size: 1.75rem;
-}
-
-/* Game 4 & 5 Interactive Step Visualizer */
-.step-cards {
-  display: grid;
-  gap: var(--space-sm);
-  margin-top: var(--space-md);
-}
-.step-pill {
-  background: var(--surface-container);
-  border-radius: var(--rounded);
-  padding: var(--space-md);
-  border-left: 4px solid var(--secondary);
-  opacity: 0.4;
-  transform: translateY(6px);
-  transition: opacity var(--dur-short) var(--ease-out), transform var(--dur-short) var(--ease-out), background-color var(--dur-short) var(--ease-out);
-}
-.step-pill.step-active {
-  opacity: 1;
-  transform: translateY(0);
-  background: var(--sky-bg);
-  border-left-color: var(--tertiary);
-  font-weight: 700;
-}
-
-.shape-svg-wrap {
-  background: var(--surface-container);
-  border-radius: var(--rounded);
-  padding: var(--space-lg);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-md);
-  margin-bottom: var(--space-lg);
-}
-
-.feedback-toast {
-  margin-top: var(--space-md);
-  padding: var(--space-md) var(--space-lg);
-  border-radius: var(--rounded);
-  font-weight: 700;
-  animation: stepReveal var(--dur-short) var(--ease-bounce) both;
-}
-.feedback-ok { background: var(--positive-bg); color: var(--positive); }
-.feedback-bad { background: var(--warning-bg); color: var(--warning); }
+.shape-overlay.active { opacity: 1; }
 
 /* Footer */
 .site-footer {
   text-align: center;
-  padding: var(--space-xl) var(--space-md) var(--space-lg);
-  color: var(--on-surface-variant);
-}
-.creator-credit {
-  display: inline-block;
+  padding: var(--space-lg);
   background: var(--surface-container-low);
-  padding: var(--space-sm) var(--space-xl);
-  border-radius: var(--rounded-full);
-  box-shadow: var(--shadow-pink);
+  border-radius: var(--rounded);
+  box-shadow: var(--shadow-sky);
+  font-weight: 800;
+  letter-spacing: 0.06em;
   color: var(--on-surface);
-  font-weight: 900;
-  font-size: var(--subhead-size);
+  font-size: 0.95rem;
 }
+.site-footer span { color: var(--primary); }
 
-.hidden { display: none !important; }
-
-@keyframes cardEnter {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+@media (max-width: 899px) {
+  .games-console { grid-template-columns: 1fr; }
+  .games-sidebar { display: none; }
+  .mobile-game-strip { display: flex; }
 }
-@keyframes stepReveal {
-  from { opacity: 0; transform: scale(0.97) translateY(6px); }
-  to { opacity: 1; transform: scale(1) translateY(0); }
-}
-@keyframes stepFade {
-  from { opacity: 0; transform: translateX(-6px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-@keyframes popUp {
-  0% { opacity: 0; transform: scale(0.6) translateY(12px); }
-  100% { opacity: 1; transform: scale(1) translateY(0); }
-}
-
 @media (max-width: 640px) {
-  .page-grid { padding: var(--space-sm); gap: var(--space-md); }
-  .hero-panel { padding: var(--space-lg); }
-  .filters-bar { grid-template-columns: 1fr; }
-  .game-stage { padding: var(--space-md); }
+  .app-shell { padding: var(--space-sm); gap: var(--space-md); }
+  .hero-header { padding: var(--space-md); border-radius: var(--rounded); }
+  .game-hero-stage { padding: var(--space-md); border-radius: var(--rounded); min-height: 400px; }
+  .shape-stage-grid { grid-template-columns: 1fr; }
+  .mode-tabs { width: 100%; }
+  .tab-btn { flex: 1; justify-content: center; }
 }
-
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -734,425 +802,558 @@ button:focus-visible, input:focus-visible, select:focus-visible, [tabindex]:focu
 </style>
 </head>
 <body>
-<div class="page-grid">
-
-  <!-- Masthead -->
-  <header class="hero-panel">
-    <div>
-      <h1 class="display">NMMS 2024-25 <em>સરળ ઉકેલ</em></h1>
-      <p class="hero-sub">પ્રશ્ન 1 થી 180 (Set A) — સત્તાવાર કી મુજબ સ્ટેપ-બાય-સ્ટેપ અભ્યાસ અને 5 ઇન્ટરેક્ટિવ રમતો</p>
+<div class="app-shell">
+  <header class="hero-header">
+    <div class="brand-block">
+      <span class="eyebrow-badge">
+        <i data-lucide="sparkles" aria-hidden="true" style="width:14px;height:14px;"></i>
+        NMMS 2024–25 (Set A) • Official Key 18-03-2025
+      </span>
+      <h1 class="hero-title">NMMS 2025 <em>Study</em> &amp; Games Hub</h1>
+      <p class="hero-sub">Complete 180-question Gujarati solution bank and five interactive practice games.</p>
     </div>
-    <nav class="nav-tabs" aria-label="મુખ્ય વિભાગો">
-      <button type="button" id="tab-study-btn" class="tab-btn active" onclick="switchTab('study')">
-        <i data-lucide="book-open" aria-hidden="true"></i>
-        <span>અભ્યાસ</span>
+    <nav class="mode-tabs" aria-label="Primary sections">
+      <button type="button" id="tab-study" class="tab-btn active" onclick="switchMainTab('study')">
+        <i data-lucide="book-open" aria-hidden="true" style="width:18px;height:18px;"></i>
+        અભ્યાસ (Study)
       </button>
-      <button type="button" id="tab-games-btn" class="tab-btn" onclick="switchTab('games')">
-        <i data-lucide="gamepad-2" aria-hidden="true"></i>
-        <span>ગેમ્સ</span>
+      <button type="button" id="tab-games" class="tab-btn" onclick="switchMainTab('games')">
+        <i data-lucide="gamepad-2" aria-hidden="true" style="width:18px;height:18px;"></i>
+        ગેમ્સ (Games)
       </button>
     </nav>
   </header>
 
-  <!-- TAB 1: અભ્યાસ (Study Tab) -->
-  <main id="study-view">
-    <!-- Strictly ONLY 2 controls at top -->
-    <section class="filters-bar" aria-label="પ્રશ્ન શોધ અને પેજ નિયંત્રણ">
-      <div class="field-group">
-        <label class="field-label" for="per-page-select">દર પેજ પર પ્રશ્નો</label>
-        <select id="per-page-select" class="pill-select" onchange="changePerPage(this.value)">
-          <option value="5">5 પ્રશ્નો</option>
-          <option value="10" selected>10 પ્રશ્નો</option>
-          <option value="25">25 પ્રશ્નો</option>
-          <option value="50">50 પ્રશ્નો</option>
-          <option value="all">બધા (180)</option>
+  <!-- ==================== TAB 1: અભ્યાસ (STUDY) — 2 FILTERS ONLY ==================== -->
+  <main id="panel-study" class="view-panel active">
+    <section class="study-toolbar" aria-label="Study Filters">
+      <div class="filter-group">
+        <label for="filter-per-page" class="filter-label">Items per page (પ્રશ્નો પ્રતિ પેજ)</label>
+        <select id="filter-per-page" class="pill-select" onchange="onStudyFilterChange()">
+          <option value="10">10 questions</option>
+          <option value="20" selected>20 questions</option>
+          <option value="30">30 questions</option>
+          <option value="50">50 questions</option>
+          <option value="180">All 180 questions</option>
         </select>
       </div>
-
-      <div class="field-group">
-        <label class="field-label" for="search-jump-input">પ્રશ્ન નંબર (1-180) અથવા શબ્દ લખીને શોધો</label>
-        <div class="search-row">
-          <input id="search-jump-input" class="pill-input" type="text" placeholder="દા.ત. 49 અથવા ત્રિકોણ અથવા રામાનુજન..." oninput="handleSearchJump(this.value)">
-          <button type="button" class="btn btn-soft" onclick="clearSearchJump()" aria-label="શોધ સાફ કરો">સાફ</button>
-        </div>
+      <div class="filter-group">
+        <label for="filter-jump" class="filter-label">Question no. / Search jump (પ્રશ્ન નં. અથવા શબ્દ)</label>
+        <input id="filter-jump" type="text" class="pill-input" placeholder="e.g. 42 or ત્રિકોણ" oninput="onStudyFilterChange()">
       </div>
     </section>
 
-    <div id="study-status" style="margin-top: var(--space-md); color: var(--on-surface-variant); font-weight: 700;"></div>
+    <div class="study-meta-row">
+      <span id="study-count-info">Showing 1–20 of 180 questions</span>
+      <span id="study-page-info">Page 1 of 9</span>
+    </div>
 
-    <section id="questions-container" class="questions-stack" style="margin-top: var(--space-md);"></section>
-
-    <nav id="pagination-bar" class="pagination-bar" style="margin-top: var(--space-lg);" aria-label="પેજ બદલો"></nav>
+    <section id="study-questions-container" class="questions-list" aria-live="polite"></section>
+    <nav id="study-pagination" class="pagination-bar" aria-label="Question pages"></nav>
   </main>
 
-  <!-- TAB 2: ગેમ્સ (Games Tab) -->
-  <section id="games-view" class="hidden">
-    <!-- Score, Streak, Badges, Points ONLY inside Games Tab -->
-    <div class="games-hud" aria-label="રમતના પોઇન્ટ અને સ્ટ્રીક">
-      <div class="stat-card">
-        <span class="stat-label">કુલ પોઇન્ટ</span>
-        <span class="stat-val" id="hud-points">0</span>
+  <!-- ==================== TAB 2: ગેમ્સ (GAMES) ==================== -->
+  <section id="panel-games" class="view-panel" aria-label="Interactive Games Console">
+    <!-- Score & Streak HUD (exclusively in Games Tab) -->
+    <div class="games-hud" aria-label="Game Scoreboard">
+      <div class="hud-stat">
+        <span class="hud-label">Total Points</span>
+        <span id="hud-points" class="hud-val pink">0</span>
       </div>
-      <div class="stat-card">
-        <span class="stat-label">વર્તમાન સ્ટ્રીક</span>
-        <span class="stat-val" id="hud-streak">0 🔥</span>
+      <div class="hud-stat">
+        <span class="hud-label">Current Streak</span>
+        <span id="hud-streak" class="hud-val grape">0 🔥</span>
       </div>
-      <div class="stat-card">
-        <span class="stat-label">શ્રેષ્ઠ સ્ટ્રીક</span>
-        <span class="stat-val" id="hud-best-streak">0</span>
+      <div class="hud-stat">
+        <span class="hud-label">Best Streak</span>
+        <span id="hud-best" class="hud-val">0</span>
       </div>
-      <div class="stat-card">
-        <span class="stat-label">મેળવેલ બેજ</span>
-        <span class="stat-val" id="hud-badges" style="font-size: var(--subhead-size);">શરૂઆત 🌟</span>
+      <div class="hud-stat">
+        <span class="hud-label">Answered</span>
+        <span id="hud-answered" class="hud-val">0</span>
+      </div>
+      <div>
+        <button type="button" class="btn btn-ghost" onclick="handleResetProgress(this)" style="width:100%;">
+          <i data-lucide="rotate-ccw" aria-hidden="true" style="width:16px;height:16px;"></i>
+          Reset Score
+        </button>
       </div>
     </div>
 
-    <!-- Exactly 5 Games Selector -->
-    <div class="games-menu-grid" style="margin-top: var(--space-lg);">
-      <button type="button" class="game-tile active-game" id="tile-speed" onclick="selectGame('speed')">
-        <span class="badge">ગેમ 1 • ટાઇમર ક્વિઝ</span>
-        <h3>સ્પીડ ચેલેન્જ ક્વિઝ</h3>
-        <p>15 સેકન્ડમાં ઝડપથી સાચો જવાબ પસંદ કરો અને બોનસ સ્પીડ પોઇન્ટ મેળવો.</p>
+    <!-- Mobile Carousel Selector (Top of stage) -->
+    <div class="mobile-game-strip" role="tablist" aria-label="Select a game">
+      <button type="button" class="mobile-game-chip active" data-game="speed" onclick="selectGame('speed')">
+        <i data-lucide="timer" aria-hidden="true" style="width:16px;height:16px;"></i> 1. Speed Quiz
       </button>
-
-      <button type="button" class="game-tile" id="tile-balloon" onclick="selectGame('balloon')">
-        <span class="badge badge-grape">ગેમ 2 • ફન રિએક્શન</span>
-        <h3>બલૂન અને ફની ઇમોજી ક્વિઝ</h3>
-        <p>સાચા જવાબ પર બલૂન ઉજવણી અને ખોટા જવાબ પર ફની ઇમોજી સાથે ટિપ્સ!</p>
+      <button type="button" class="mobile-game-chip" data-game="balloon" onclick="selectGame('balloon')">
+        <i data-lucide="party-popper" aria-hidden="true" style="width:16px;height:16px;"></i> 2. Balloon &amp; Emoji
       </button>
-
-      <button type="button" class="game-tile" id="tile-race" onclick="selectGame('race')">
-        <span class="badge">ગેમ 3 • રેસ ટ્રેક</span>
-        <h3>રેસિંગ ચેલેન્જ</h3>
-        <p>દરેક સાચા જવાબ સાથે તમારી કાર ફિનિશ લાઇન તરફ આગળ વધશે.</p>
+      <button type="button" class="mobile-game-chip" data-game="race" onclick="selectGame('race')">
+        <i data-lucide="flag" aria-hidden="true" style="width:16px;height:16px;"></i> 3. Racing Challenge
       </button>
-
-      <button type="button" class="game-tile" id="tile-solver" onclick="selectGame('solver')">
-        <span class="badge badge-grape">ગેમ 4 • સ્ટેપ એનિમેશન</span>
-        <h3>મેથ્સ અને રીઝનિંગ સોલ્વર</h3>
-        <p>જવાબ આપો અને સ્ટેપ-બાય-સ્ટેપ ગણતરીનું એનિમેશન જુઓ.</p>
+      <button type="button" class="mobile-game-chip" data-game="solver" onclick="selectGame('solver')">
+        <i data-lucide="calculator" aria-hidden="true" style="width:16px;height:16px;"></i> 4. Step-Solver
       </button>
-
-      <button type="button" class="game-tile" id="tile-shapes" onclick="selectGame('shapes')">
-        <span class="badge badge-positive">ગેમ 5 • વિઝ્યુઅલ પઝલ</span>
-        <h3>આકાર શોધ પઝલ ગેમ</h3>
-        <p>આકૃતિમાં ચોરસ, ત્રિકોણ કે લંબચોરસ ગણો અને એનિમેટેડ હાઇલાઇટથી સમજો.</p>
+      <button type="button" class="mobile-game-chip" data-game="shapes" onclick="selectGame('shapes')">
+        <i data-lucide="shapes" aria-hidden="true" style="width:16px;height:16px;"></i> 5. Shapes Puzzle
       </button>
     </div>
 
-    <!-- Active Game Stage -->
-    <div id="game-stage" class="game-stage" style="margin-top: var(--space-lg);"></div>
+    <!-- Split Console: Active Game Front & Centre + Sidebar Selector on Desktop -->
+    <div class="games-console">
+      <div id="game-hero-stage" class="game-hero-stage">
+        <!-- Rendered dynamically by JS so active game is always top/front -->
+      </div>
+
+      <aside class="games-sidebar" aria-label="Game selector">
+        <p class="sidebar-heading">Choose Game (Instant Switch)</p>
+        <button type="button" class="side-game-card active" data-game="speed" onclick="selectGame('speed')">
+          <span class="side-game-icon"><i data-lucide="timer" aria-hidden="true" style="width:20px;height:20px;"></i></span>
+          <span class="side-game-meta">
+            <span class="side-game-title">1. Speed Challenge Quiz</span>
+            <span class="side-game-desc">60s timer countdown &amp; quick streak points</span>
+          </span>
+        </button>
+        <button type="button" class="side-game-card" data-game="balloon" onclick="selectGame('balloon')">
+          <span class="side-game-icon"><i data-lucide="party-popper" aria-hidden="true" style="width:20px;height:20px;"></i></span>
+          <span class="side-game-meta">
+            <span class="side-game-title">2. Balloon &amp; Emoji Quiz</span>
+            <span class="side-game-desc">Floating balloons &amp; confetti vs funny reactions</span>
+          </span>
+        </button>
+        <button type="button" class="side-game-card" data-game="race" onclick="selectGame('race')">
+          <span class="side-game-icon"><i data-lucide="flag" aria-hidden="true" style="width:20px;height:20px;"></i></span>
+          <span class="side-game-meta">
+            <span class="side-game-title">3. Racing Challenge Game</span>
+            <span class="side-game-desc">Advance your car to the finish line</span>
+          </span>
+        </button>
+        <button type="button" class="side-game-card" data-game="solver" onclick="selectGame('solver')">
+          <span class="side-game-icon"><i data-lucide="calculator" aria-hidden="true" style="width:20px;height:20px;"></i></span>
+          <span class="side-game-meta">
+            <span class="side-game-title">4. Maths &amp; Reasoning Solver</span>
+            <span class="side-game-desc">Interactive animated step-by-step derivation</span>
+          </span>
+        </button>
+        <button type="button" class="side-game-card" data-game="shapes" onclick="selectGame('shapes')">
+          <span class="side-game-icon"><i data-lucide="shapes" aria-hidden="true" style="width:20px;height:20px;"></i></span>
+          <span class="side-game-meta">
+            <span class="side-game-title">5. Shapes Finding Puzzle</span>
+            <span class="side-game-desc">Count figures with animated colour stroke overlays</span>
+          </span>
+        </button>
+      </aside>
+    </div>
   </section>
 
-  <!-- Footer -->
   <footer class="site-footer">
-    <div class="creator-credit"><strong>CREATED BY MUKESH MAHESHWARI</strong></div>
+    CREATED BY <span>MUKESH MAHESHWARI</span>
   </footer>
-
 </div>
 
 <api-shim></api-shim>
-
 <script>
-// Compact dataset: [id, question, [optA, optB, optC, optD], answerCode, [steps]]
-// All 180 questions faithfully grounded in NMMS 2024-25 (Set A) source text
-const Q_DATA = [
-  [1, `ક્રમમાં આગળનો નંબર: 3, 6, 12, 24, 48, ....?`, [`100`,`96`,`64`,`72`], `B`, [`દરેક સંખ્યા પહેલાની સંખ્યા કરતાં 2 ગણી છે: 3×2=6, 6×2=12, 12×2=24, 24×2=48.`, `એટલે 48 × 2 = 96.`]],
-  [2, `ક્રમમાં આગળની સંખ્યા: 1, 1, 2, 9, 5, 8, ....?`, [`13`,`11`,`10`,`9`], `G`, [`પ્રશ્નમાં છાપભૂલ છે: "9" ની જગ્યાએ "3" હોવું જોઈએ (ફિબોનાચી શ્રેણી: 1, 1, 2, 3, 5, 8).`, `સાચી શ્રેણી મુજબ 5+8 = 13 આવે, પણ છાપભૂલને કારણે બોર્ડે ગ્રેસ (બધાને ગુણ) આપ્યા.`]],
-  [3, `પેટર્નમાં આગળની સંખ્યા: 3, 9, 27, 81, ....?`, [`243`,`256`,`225`,`200`], `A`, [`દરેક વખતે 3 વડે ગુણાય છે: 3×3=9, 9×3=27, 27×3=81.`, `81 × 3 = 243.`]],
-  [4, `પૃથ્વી પર પર્વતમાળાઓની પેટર્નનું શ્રેષ્ઠ વર્ણન:`, [`રેન્ડમ`,`ગોળાકાર`,`રેખીય`,`અનિયમિત`], `AD`, [`પર્વતમાળાઓ કોઈ નિશ્ચિત ગોઠવણી વગર જુદી જુદી જગ્યાએ અને દિશામાં ફેલાયેલી છે.`, `સત્તાવાર કી મુજબ (A) રેન્ડમ અને (D) અનિયમિત બંને માન્ય છે.`]],
-  [5, `કયો આકાર ખંડ (એશિયા, આફ્રિકા, યુરોપ વગેરે) ની સીમાને શ્રેષ્ઠ રીતે રજૂ કરે?`, [`ચોરસ`,`ત્રિકોણાકાર`,`અનિયમિત`,`ગોળાકાર`], `C`, [`ખંડોની સીમાઓ વાંકીચૂકી હોય છે, જેમાં અખાત, ખાડી અને દ્વીપકલ્પ હોય છે.`, `તેને ચોરસ, ત્રિકોણ કે ગોળ આકારમાં ગોઠવી શકાતી નથી.`]],
-  [6, `છ બાજુઓવાળા બહુકોણનું નામ શું છે?`, [`સાર્થકકોણ`,`અષ્ટકોણ`,`પંચકોણ`,`ષટ્કોણ`], `D`, [`ષટ્ = 6, એટલે 6 બાજુવાળો આકાર ષટ્કોણ.`, `અષ્ટકોણ = 8 બાજુ, પંચકોણ = 5 બાજુ.`]],
-  [7, `નિયમિત ષટ્કોણમાં ખૂણાઓ માટે શું સાચું છે?`, [`90°`,`60°`,`120°`,`180°`], `C`, [`નિયમિત બહુકોણનો દરેક ખૂણો = (n − 2) × 180° ÷ n.`, `n = 6 મૂકતાં: (6 − 2) × 180 ÷ 6 = 720 ÷ 6 = 120°.`]],
-  [8, `ચોરસને તેના કેન્દ્રની આસપાસ 90° ફેરવવાથી કઈ આકૃતિ બને?`, [`લંબચોરસ`,`ચોરસ`,`સમભુજ`,`પેન્ટાગોન`], `B`, [`ચોરસની ચારે બાજુ અને ચારે ખૂણા સમાન હોય છે.`, `90° ફેરવવાથી એ જ ચોરસ મળે છે, આકાર બદલાતો નથી.`]],
-  [9, `ષટ્કોણમાં કર્ણની સંખ્યા કેટલી છે?`, [`9`,`12`,`6`,`8`], `G`, [`સૂત્ર: n(n − 3) ÷ 2 = 6 × 3 ÷ 2 = 9, જે વિકલ્પ (A) છે.`, `સત્તાવાર કીમાં ગ્રેસ આપ્યા છે, એટલે બધાને ગુણ મળશે.`]],
-  [10, `પુસ્તક : વાંચન :: ચમચી : ....?`, [`ચમચીદોડ`,`લેખન`,`હલાવવું`,`ખાવું`], `D`, [`પુસ્તકનું મુખ્ય કાર્ય વાંચવા માટે છે, તેમ ચમચીનું કાર્ય ખાવા માટે છે.`]],
-  [11, `જો લાઇટ ચાલુ હોય, તો સ્વીચ ચાલુ જ હોય. મેં જોયું કે સ્વીચ ચાલુ છે. ચોક્કસ શું કહી શકાય?`, [`લાઇટ ચાલુ છે`,`લાઇટ બંધ છે`,`લાઇટ ચાલુ હોઈ શકે કે ન પણ હોઈ શકે`,`લાઇટ ચોક્કસ બંધ છે`], `C`, [`નિયમ: લાઇટ ચાલુ → સ્વીચ ચાલુ. ઊલટું જરૂરી નથી.`, `સ્વીચ ચાલુ હોય છતાં બલ્બ ફ્યુઝ હોઈ શકે અથવા વીજળી ગઈ હોઈ શકે.`]],
-  [12, `સસ્તન પ્રાણીને રૂંવાટી/વાળ હોય છે. કૂતરો સસ્તન પ્રાણી છે. કૂતરા વિશે શું અનુમાન થાય?`, [`કૂતરાને રૂંવાટી કે વાળ હોય છે`,`નથી હોતા`,`દાંત તીક્ષ્ણ છે`,`હાંફતી વખતે જીભ બહાર રહે છે`], `A`, [`નિયમ: સસ્તન → રૂંવાટી. કૂતરો સસ્તન છે, એટલે તેને રૂંવાટી હોય.`]],
-  [13, `બધાં ગુલાબ ફૂલ છે અને કેટલાંક ફૂલ ઝડપથી ઝાંખાં પડે છે. સાચો નિષ્કર્ષ?`, [`કેટલાંક ગુલાબ ઝડપથી ઝાંખાં પડે છે`,`કોઈ ગુલાબ ઝાંખાં પડતાં નથી`,`બધાં ગુલાબ ઝાંખાં પડે છે`,`કેટલાંક ફૂલો ગુલાબ નથી`], `A`, [`ગુલાબ ફૂલોનો જ ભાગ છે અને કેટલાંક ફૂલ ઝાંખાં પડે છે, એટલે કેટલાંક ગુલાબ પણ ઝાંખાં પડે એમ મનાય છે.`]],
-  [14, `"પુષ્કળ" સાથે સૌથી વધુ મળતો શબ્દ:`, [`દુર્લભ`,`પૂરગ્રસ્ત`,`ઘણું વધારે`,`પૂરતું`], `C`, [`પુષ્કળ = ખૂબ વધારે, ભરપૂર (ઘણું વધારે).`, `દુર્લભ વિરોધી શબ્દ છે.`]],
-  [15, `બે ટ્રેન એકબીજા તરફ 50 kph અને 60 kph ની ઝડપે, શરૂઆતમાં 220 કિમી દૂર. મળવામાં કેટલો સમય?`, [`2 કલાક`,`2.5 કલાક`,`3 કલાક`,`3.5 કલાક`], `A`, [`સામસામે જતી ટ્રેનોની ઝડપ ઉમેરાય: 50 + 60 = 110 km/h.`, `સમય = અંતર ÷ ઝડપ = 220 ÷ 110 = 2 કલાક.`]],
-  [16, `શર્મિષ્ઠા > આરતી, આરતી > ગીતા, ગીતા > લીલા (ઉંમરમાં મોટી). સાચું વિધાન?`, [`શર્મિષ્ઠા લીલા કરતાં નાની`,`શર્મિષ્ઠા લીલા કરતાં મોટી`,`આરતી શર્મિષ્ઠા કરતાં મોટી`,`લીલા આરતી કરતાં મોટી`], `B`, [`ક્રમ: શર્મિષ્ઠા > આરતી > ગીતા > લીલા.`, `શર્મિષ્ઠા સૌથી મોટી અને લીલા સૌથી નાની છે.`]],
-  [17, `મહિલા કહે છે, "આ મારા પતિના ભાઈની પત્ની છે." તેનો સંબંધ?`, [`નણંદ`,`પુત્રવધૂ`,`દેરાણી`,`સાસુ`], `C`, [`પતિનો ભાઈ = દિયર/જેઠ, અને તેની પત્ની = દેરાણી/જેઠાણી.`]],
-  [18, `શ્રેણીમાં ખૂટતો નંબર: 1, 3, 7, 15, 31, ....?`, [`61`,`63`,`65`,`67`], `B`, [`તફાવત: 2, 4, 8, 16 (દર વખતે બમણો થાય છે), એટલે હવે 32.`, `31 + 32 = 63.`]],
-  [19, `સમસ્યા હલ કરવાનો સૌથી તાર્કિક રસ્તો:`, [`અનુમાન કરી શ્રેષ્ઠની આશા રાખવી`,`પેટર્ન શોધવી અને કારણો સમજવા`,`ભૂતકાળના અનુભવો અવગણવા`,`ચકાસણી વિના બીજાના મંતવ્ય પર આધાર રાખવો`], `B`, [`તાર્કિક રીત એટલે નિરીક્ષણ, પેટર્ન શોધવી અને કારણ-પરિણામ સમજવાં.`]],
-  [20, `જટિલ સમસ્યામાં વિવેચનાત્મક વિચારસરણીનું પ્રથમ પગલું:`, [`નિષ્કર્ષ પર જાઓ`,`માહિતી એકત્રિત કરો અને સમસ્યાને સમજો`,`જાતે વિચાર્યા વિના બીજાના મંતવ્ય પૂછો`,`સમસ્યાને અવગણો`], `B`, [`પહેલાં સમસ્યા સમજવી અને માહિતી ભેગી કરવી, પછી વિશ્લેષણ કરવું.`]],
-  [21, `મિત્ર કહે છે ગાજર ખાવાથી દૃષ્ટિ સુધરે છે. દાવાનું મૂલ્યાંકન કરવાનો શ્રેષ્ઠ અભિગમ:`, [`મિત્રએ કહ્યું એટલે સાચું માનો`,`વિશ્વસનીય સ્રોતોમાં વૈજ્ઞાનિક પુરાવા શોધો`,`મિત્રને કહો કે તે ખોટો છે`,`અવગણો`], `B`, [`કોઈ પણ દાવો પુરાવા અને વિશ્વસનીય વૈજ્ઞાનિક સ્રોતથી તપાસીને જ સ્વીકારાય.`]],
-  [22, `મુશ્કેલ પરિસ્થિતિમાં નિર્ણય લેતી વખતે શું કરવું?`, [`ફક્ત લાગણીના આધારે`,`ફાયદા-ગેરફાયદાનું વિશ્લેષણ અને લાંબા ગાળાના પરિણામોનો વિચાર`,`બીજા કરે તેમ કરવું`,`તણાવ ટાળવા ઝડપથી નિર્ણય`], `B`, [`સારો નિર્ણય વિચારપૂર્વક, ફાયદા-ગેરફાયદા તોલીને અને ભવિષ્યના પરિણામો જોઈને લેવાય.`]],
-  [23, `"2 રબરની કિંમત રૂ. 1.50 તો 10 રબરની કિંમત?" ઉકેલવાની સૌથી સારી રીત:`, [`1.50 × 10`,`1.50 ÷ 2 પછી × 10`,`10 ÷ 2 કેલ્ક્યુલેટરથી`,`1.50 ને દસ વાર ઉમેરો`], `B`, [`પહેલાં 1 રબર: 1.50 ÷ 2 = રૂ. 0.75.`, `પછી 10 રબર: 0.75 × 10 = રૂ. 7.50.`]],
-  [24, `વસ્તુની કિંમત 25% વધે અને પછી 25% ઘટે તો કુલ શું થાય?`, [`25% વધે`,`25% ઘટે`,`એ જ રહે`,`25% થી વધુ ઘટે`], `G`, [`100 → +25% = 125 → −25% = 93.75 (કુલ 6.25% ઘટાડો).`, `ચારમાંથી એક પણ વિકલ્પ સાચો ન હોવાથી બોર્ડે ગ્રેસ આપ્યા.`]],
-  [25, `પિતાની ઉંમર દીકરા કરતાં 5 ગણી છે. 20 વર્ષ પછી પિતા દીકરા કરતાં 3 ગણા મોટા થશે. પિતાની હાલની ઉંમર?`, [`80`,`90`,`100`,`110`], `C`, [`દીકરો = x, પિતા = 5x. 20 વર્ષ પછી: 5x + 20 = 3(x + 20).`, `5x + 20 = 3x + 60 → 2x = 40 → x = 20.`, `પિતા = 5 × 20 = 100 વર્ષ.`]],
-  [26, `જયકુમાર કોકિલાબેનના પુત્ર છે. દક્ષાબેન કોકિલાબેનની બહેન છે. રઈબેન દક્ષાબેનનાં માતા છે. સુરેશભાઈ રઈબેનના પુત્ર છે. સાચું વિધાન?`, [`જયકુમાર અને સુરેશભાઈ પિતરાઈ ભાઈઓ`,`સુરેશભાઈ જયકુમારના મામા`,`દક્ષાબેન જયકુમારની ફોઈ`,`કોકિલાબેન અને સુરેશભાઈ પિતરાઈ`], `B`, [`સુરેશ રઈબેનનો પુત્ર એટલે કોકિલાબેનનો ભાઈ.`, `જયકુમાર કોકિલાબેનનો પુત્ર એટલે માતાનો ભાઈ = મામા.`]],
-  [27, `માર્ચ : ઓગસ્ટ :: C : ....?`, [`G`,`I`,`H`,`J`], `C`, [`માર્ચ 3 જો મહિનો, ઓગસ્ટ 8 મો (+5).`, `C (3) + 5 = 8 મો અક્ષર H.`]],
-  [28, `10 cm × 8 cm × 8 cm ના લંબઘનને 2 cm બાજુવાળા સમઘનમાં વિભાજિત કરતાં કુલ કેટલા સમઘન બને?`, [`70`,`60`,`88`,`80`], `D`, [`ભાગ: (10÷2) × (8÷2) × (8÷2) = 5 × 4 × 4 = 80.`]],
-  [29, `5⁴ અને 4⁵ વચ્ચે કયો સંબંધ સાચો?`, [`=`,`<`,`>`,`લગભગ =`], `B`, [`5⁴ = 625 અને 4⁵ = 1024.`, `625 < 1024, એટલે 5⁴ < 4⁵.`]],
-  [30, `દીપકભાઈ રવિભાઈના ભાઈ છે. રેખાબેન અતુલભાઈનાં બહેન છે. રવિભાઈ રેખાબેનના પુત્ર છે. દીપકભાઈ રેખાબેનના શું થાય?`, [`પુત્ર`,`ભાઈ`,`ભાણા`,`માતા`], `A`, [`રવિ રેખાબેનનો પુત્ર છે અને દીપક રવિનો ભાઈ છે, એટલે દીપક પણ રેખાબેનનો પુત્ર થાય.`]],
-  [31, `મીઠું : NaCl :: પાણી : ....?`, [`H₃O⁺`,`NaOH`,`H₂O`,`OH⁻`], `C`, [`મીઠાનું રાસાયણિક સૂત્ર NaCl છે, તેમ પાણીનું સૂત્ર H₂O છે.`]],
-  [32, `રાષ્ટ્રીય વિજ્ઞાન દિવસ : 28 ફેબ્રુઆરી :: રાષ્ટ્રીય ગણિત દિવસ : ....?`, [`22 માર્ચ`,`22 ઓગસ્ટ`,`22 સપ્ટેમ્બર`,`22 ડિસેમ્બર`], `D`, [`ગણિતશાસ્ત્રી શ્રીનિવાસ રામાનુજનનો જન્મદિવસ 22 ડિસેમ્બર રાષ્ટ્રીય ગણિત દિવસ તરીકે ઉજવાય છે.`]],
-  [33, `સવારે 9:00 વાગે પાયલ મેદાનમાં ઊભી છે. તેનો પડછાયો કઈ દિશામાં પડશે?`, [`પૂર્વ`,`પશ્ચિમ`,`ઉત્તર`,`દક્ષિણ`], `B`, [`સવારે સૂર્ય પૂર્વ દિશામાં હોય છે, એટલે પડછાયો વિરુદ્ધ દિશા (પશ્ચિમ) માં પડે.`]],
-  [34, `સ્નેહલ વર્ગમાં ઉપરથી 27 મા અને નીચેથી 20 મા ક્રમે છે. વર્ગમાં કેટલા વિદ્યાર્થી?`, [`45`,`46`,`47`,`48`], `B`, [`કુલ = 27 + 20 − 1 = 46 (સ્નેહલ બે વાર ગણાઈ એટલે 1 બાદ).`]],
-  [35, `ACE, FHJ, KMO, ....?`, [`PQR`,`QRS`,`PRT`,`SRQ`], `C`, [`ક્રમાંક: ACE(1,3,5), FHJ(6,8,10), KMO(11,13,15).`, `આગળ 16, 18, 20 = P, R, T = PRT.`]],
-  [36, `Ant, Apple, Animal, Arrange, Accept ને શબ્દકોશ ક્રમમાં ગોઠવો.`, [`Animal, Apple, Ant, Accept, Arrange`,`Arrange, Ant, Apple, Accept, Animal`,`Accept, Animal, Ant, Apple, Arrange`,`Apple, Ant, Animal, Accept, Arrange`], `C`, [`બીજો અક્ષર: Accept(c), Animal(ni), Ant(nt), Apple(p), Arrange(r).`, `સાચો ક્રમ: Accept, Animal, Ant, Apple, Arrange.`]],
-  [37, `'CARRIER' ના મૂળાક્ષરોમાંથી કયો શબ્દ બની શકે?`, [`FEAR`,`DEAR`,`REAR`,`CARD`], `C`, [`CARRIER માં C, A, R, R, I, E, R છે. તેમાંથી REAR બની શકે (F કે D નથી).`]],
-  [38, `QUESTION નું જળપ્રતિબિંબ શોધો.`, [`વિકલ્પ A (દર્પણ)`,`વિકલ્પ B (આડું)`,`વિકલ્પ C (ઊલટું ક્રમ)`,`વિકલ્પ D (ઉપર-નીચે ઊલટું, ક્રમ એ જ)`], `D`, [`જળપ્રતિબિંબમાં અક્ષરો ઉપર-નીચે ઊલટા દેખાય, પણ ડાબેથી જમણે ક્રમ એ જ રહે.`]],
-  [39, `આપેલ આકૃતિનું જળપ્રતિબિંબ શોધો. (ડાબી બાજુ પટ્ટી, ઉપર ત્રાંસી રેખા, નીચે ▷)`, [`વિકલ્પ A (પટ્ટી ડાબે, ▷ ઉપર, ત્રાંસી રેખા નીચે)`,`વિકલ્પ B`,`વિકલ્પ C`,`વિકલ્પ D`], `A`, [`જળપ્રતિબિંબમાં ઉપર-નીચે ફરે છે, ડાબી-જમણી બાજુ બદલાતી નથી.`, `એટલે પટ્ટી ડાબે જ રહે, ▷ ઉપર આવે અને ત્રાંસી રેખા નીચે જાય.`]],
-  [40, `પારદર્શક કાગળને જમણેથી ડાબે ફોલ્ડ કરતાં કેવી આકૃતિ દેખાશે? (ચોરસમાં ત્રાંસી રેખા, વચ્ચે ટપકાંવાળી ઊભી રેખા)`, [`વિકલ્પ A (">" જેવી આકૃતિ)`,`વિકલ્પ B`,`વિકલ્પ C`,`વિકલ્પ D`], `A`, [`જમણો ભાગ ડાબા પર વળતાં બંને ત્રાંસી રેખાઓ ફોલ્ડ પર મળી ">" આકાર બનાવે.`]],
-  [41, `તારાની આકૃતિમાં 54, 162, 18, 6, 2 અને ? છે. ? ની જગ્યાએ શું આવે?`, [`169`,`486`,`480`,`500`], `B`, [`2 → 6 → 18 → 54 → 162 → ? (દરેક વખતે × 3).`, `162 × 3 = 486.`]],
-  [42, `આકૃતિમાં કુલ કેટલા ચોરસ છે? (મોટો ચોરસ, વચ્ચે કાટખૂણે બે રેખા, કેન્દ્રમાં નાનો ચોરસ)`, [`8`,`7`,`10`,`12`], `C`, [`મોટો ચોરસ: 1 + મોટા ચોરસના 4 ભાગ + વચ્ચેનો નાનો ચોરસ: 1 + નાનાના 4 ભાગ = 10.`]],
-  [43, `શ્રેણી પૂર્ણ કરો: 1Z, 3X, 5V, ....`, [`6U`,`7T`,`7W`,`6T`], `B`, [`સંખ્યા +2: 1, 3, 5, 7. અક્ષર −2: Z, X, V, T. એટલે 7T.`]],
-  [44, `શ્રેણી પૂર્ણ કરો: 1/2, 3/2, 5/2, 7/2, ....`, [`8/2`,`7/3`,`9/3`,`9/2`], `D`, [`છેદ 2 સ્થિર છે. અંશ 1, 3, 5, 7 (+2) → 9. એટલે 9/2.`]],
-  [45, `શ્રેણી પૂર્ણ કરો: B, H, M, Q, T, ....`, [`U`,`W`,`V`,`X`], `C`, [`ક્રમાંક: 2, 8, 13, 17, 20. તફાવત: 6, 5, 4, 3, હવે 2 → 20+2 = 22 = V.`]],
-  [46, `આકૃતિમાં વધુમાં વધુ કેટલા લંબચોરસ છે?`, [`6`,`8`,`9`,`10`], `G`, [`સત્તાવાર કીમાં ગ્રેસ આપ્યા છે (બધાને ગુણ).`]],
-  [47, `આકૃતિમાં વધુમાં વધુ કેટલા ચોરસ છે? (હરોળમાં 1, 3, 5, 3, 1 ખાનાં)`, [`22`,`18`,`20`,`16`], `B`, [`1×1 ના ચોરસ: 1+3+5+3+1 = 13.`, `2×2 ના ચોરસ: 4, અને 3×3 નો ચોરસ: 1.`, `કુલ = 13 + 4 + 1 = 18.`]],
-  [48, `PICTURE ના મૂળાક્ષરોને અંગ્રેજી ક્રમમાં ગોઠવો.`, [`CEIPRUT`,`CEIRUTP`,`CEIPRTU`,`CEIPURT`], `C`, [`A-Z ક્રમમાં: C, E, I, P, R, T, U = CEIPRTU.`]],
-  [49, `100 મીટર લાંબી ટ્રેન 150 મીટર લાંબા પ્લેટફોર્મની બરાબર મધ્યમાં ઊભી છે. સંપૂર્ણ બહાર નીકળવા ઓછામાં ઓછું કેટલું અંતર કાપવું પડે?`, [`100 મી`,`125 મી`,`150 મી`,`175 મી`], `B`, [`બંને બાજુ ખાલી પ્લેટફોર્મ = (150 − 100) ÷ 2 = 25 મી.`, `કુલ અંતર = 25 મી + ટ્રેનની લંબાઈ 100 મી = 125 મીટર.`]],
-  [50, `ફળોને મોટાથી નાના કદના ક્રમમાં ગોઠવો: A. લીંબુ, B. તડબૂચ, C. કેરી, D. દ્રાક્ષ.`, [`D, B, A, C`,`D, A, B, C`,`D, A, C, B`,`B, C, A, D`], `D`, [`તડબૂચ (B) > કેરી (C) > લીંબુ (A) > દ્રાક્ષ (D).`]],
-  [51, `એક સંખ્યાને 6 વડે ભાગતાં શેષ 0 છે. એ જ સંખ્યાને 3 વડે ભાગતાં શેષ કેટલી રહેશે?`, [`0`,`2`,`3`,`6`], `A`, [`6 = 2 × 3, એટલે 6 નો ગુણક 3 વડે પણ નિઃશેષ ભાગી શકાય → શેષ 0.`]],
-  [52, `KIRAN = IKRNA, TWINKLE = IWTNELK, તો RUTVI = ?`, [`URTVI`,`RUTIV`,`IVTUR`,`URTIV`], `D`, [`શરૂઆતના 2 ઊલટા (RU→UR), વચ્ચેનો T એમ જ, છેલ્લા 2 ઊલટા (VI→IV) = URTIV.`]],
-  [53, `AGE = ZTV, COLD = XLOW, તો SAME = ?`, [`ZHNV`,`HZNV`,`HZVN`,`ZHVN`], `B`, [`સામેના અક્ષરો (A↔Z, B↔Y...): S→H, A→Z, M→N, E→V = HZNV.`]],
-  [54, `અંક: 2 4 6 8 | 1 3 5 | 7 9 0 અને મૂળાક્ષર: ક લ ર વ | અ જ ય | મ ગ ન. અમનરમ = ?`, [`17076`,`17706`,`17067`,`17760`], `C`, [`અ=1, મ=7, ન=0, ર=6, મ=7 → અમનરમ = 17067.`]],
-  [55, `તાર્કિક રીતે ઉતરતા ક્રમમાં ગોઠવો: 1. યુરેનસ 2. શનિ 3. નેપ્ચ્યુન 4. ગુરુ`, [`1,2,3,4`,`2,3,1,4`,`4,2,1,3`,`4,2,3,1`], `C`, [`કદ મુજબ ઉતરતો ક્રમ: ગુરુ (4) > શનિ (2) > યુરેનસ (1) > નેપ્ચ્યુન (3).`]],
-  [56, `તાર્કિક રીતે ઉતરતા ક્રમમાં ગોઠવો: 1. સાબરકાંઠા 2. ભારત 3. એશિયા 4. ગુજરાત`, [`3,2,4,1`,`3,2,1,4`,`3,1,2,4`,`3,1,4,2`], `A`, [`એશિયા (3) > ભારત (2) > ગુજરાત (4) > સાબરકાંઠા (1).`]],
-  [57, `તાર્કિક રીતે ક્રમમાં ગોઠવો: 1. ફૂલ 2. બીજ 3. ફળ 4. છોડ`, [`2,1,3,4`,`2,1,4,3`,`2,4,3,1`,`2,4,1,3`], `G`, [`જીવનક્રમ મુજબ બીજ→છોડ→ફૂલ→ફળ (2,4,1,3), પરંતુ કીમાં ગ્રેસ આપ્યા છે.`]],
-  [58, `અરીસો આકૃતિની જમણી બાજુ છે. અરીસામાં કેવી દેખાશે? (ઉપર: ચોરસ, વર્તુળ. નીચે: ત્રિકોણ, લંબચોરસ)`, [`વિકલ્પ A`,`વિકલ્પ B`,`વિકલ્પ C (વર્તુળ-ચોરસ / લંબચોરસ-ત્રિકોણ)`,`વિકલ્પ D`], `C`, [`અરીસો ઊભો હોવાથી ડાબી-જમણી બાજુ બદલાય: ઉપર વર્તુળ, ચોરસ અને નીચે લંબચોરસ, ત્રિકોણ.`]],
-  [59, `અરીસામાં જોવાથી આકૃતિ કેવી દેખાશે? (ઉપર તીર જમણે, ડાબે વર્તુળ, જમણે ત્રાંસી રેખાઓ)`, [`વિકલ્પ A`,`વિકલ્પ B (તીર ડાબે, વર્તુળ જમણે, રેખાઓ ડાબે)`,`વિકલ્પ C`,`વિકલ્પ D`], `B`, [`અરીસામાં ડાબી-જમણી બાજુ ઊલટાય: તીર ડાબી તરફ, વર્તુળ જમણા ખૂણે, ત્રાંસી રેખાઓ ડાબે.`]],
-  [60, `જયપુર : રાજસ્થાન :: લખનૌ : ?`, [`ગુજરાત`,`મધ્યપ્રદેશ`,`બિહાર`,`ઉત્તરપ્રદેશ`], `D`, [`જયપુર રાજસ્થાનની રાજધાની છે, તેમ લખનૌ ઉત્તરપ્રદેશની રાજધાની છે.`]],
-  [61, `થરમોમીટર : તાપમાન :: ઘડિયાળ : ?`, [`કલાક`,`સમય`,`સેકન્ડ`,`મિનિટ`], `B`, [`થરમોમીટર તાપમાન માપે છે, તેમ ઘડિયાળ સમય માપે છે.`]],
-  [62, `3 : 27 :: 5 : ?`, [`25`,`120`,`125`,`50`], `C`, [`3³ = 27, તેમ 5³ = 5 × 5 × 5 = 125.`]],
-  [63, `ફ્રોક : કાપડ :: ખુરશી : ?`, [`ટેબલ`,`બેન્ચ`,`લાકડું`,`ઓરડો`], `C`, [`ફ્રોક કાપડમાંથી બને છે, તેમ ખુરશી લાકડામાંથી બને છે.`]],
-  [64, `52 પત્તાની ગંજીપાની થોડીમાંથી યાદચ્છિક રીતે એક પત્તું કાઢતાં તે લાલનો એક્કો હોવાની સંભાવના?`, [`1/52`,`3/52`,`4/52`,`5/52`], `A`, [`લાલનો એક્કો ફક્ત 1 જ પત્તું હોય, કુલ 52 પત્તાં → સંભાવના = 1/52.`]],
-  [65, `2.5 કલાકની મિનિટ કેટલી થાય?`, [`120`,`140`,`150`,`250`], `C`, [`1 કલાક = 60 મિનિટ → 2.5 × 60 = 150 મિનિટ.`]],
-  [66, `(1)²⁰²⁵ + (2025)⁰ = ?`, [`1`,`2`,`0`,`2025`], `B`, [`1 ની કોઈ પણ ઘાત = 1, અને (2025)⁰ = 1. કુલ = 1 + 1 = 2.`]],
-  [67, `7 જાન્યુઆરીએ મંગળવાર હોય તો 21 જાન્યુઆરીએ કયો વાર આવશે?`, [`મંગળવાર`,`બુધવાર`,`ગુરુવાર`,`સોમવાર`], `A`, [`21 − 7 = 14 દિવસ = 2 પૂર્ણ અઠવાડિયાં → વાર એ જ રહે: મંગળવાર.`]],
-  [68, `સોફિયા પશ્ચિમમાં 2 km ચાલે, પછી ડાબે વળી 1 km, પછી જમણે વળી 1 km ચાલે. હવે તે કઈ દિશામાં ચાલતી હશે?`, [`ઉત્તર`,`દક્ષિણ`,`પશ્ચિમ`,`પૂર્વ`], `C`, [`પશ્ચિમ → ડાબે = દક્ષિણ → જમણે = ફરી પશ્ચિમ.`]],
-  [69, `વેન આકૃતિ (હિન્દી=67, હિ+ગુ=23, હિ+અં=18, ત્રણેય=15, ફક્ત ગુ=54, ફક્ત અં=73, ગુ+અં=21). ફક્ત ગુજરાતી બોલતા લોકોની સંખ્યા?`, [`21`,`23`,`54`,`15`], `C`, [`ફક્ત લંબચોરસ (ગુજરાતી) ના અલગ ભાગમાં 54 લખ્યું છે.`]],
-  [70, `વેન આકૃતિ પરથી હિન્દી અને અંગ્રેજી બોલતા લોકોની સંખ્યા?`, [`18`,`15`,`21`,`23`], `G`, [`હિન્દી અને અંગ્રેજી = 18 + 15 = 33, જે વિકલ્પોમાં ન હોવાથી બોર્ડે ગ્રેસ આપ્યા.`]],
-  [71, `વેન આકૃતિ પરથી હિન્દી, ગુજરાતી અને અંગ્રેજી ત્રણેય બોલતા લોકોની સંખ્યા?`, [`18`,`15`,`23`,`21`], `B`, [`ત્રણેય આકારોના વચ્ચેના છેદભાગમાં 15 લખ્યું છે.`]],
-  [72, `ગુજરાતી : ગરબા, પશ્ચિમ બંગાળ : ?`, [`ઓણમ`,`હોળી`,`દુર્ગાપૂજા`,`ગણેશ ચતુર્થી`], `C`, [`ગરબા ગુજરાતનો પ્રસિદ્ધ ઉત્સવ છે, તેમ દુર્ગાપૂજા પશ્ચિમ બંગાળનો જાણીતો ઉત્સવ છે.`]],
-  [73, `કચ્છ : ભુજ, નર્મદા : ?`, [`કેવડિયા`,`આહવા`,`મોડાસા`,`રાજપીપળા`], `D`, [`કચ્છનું વડું મથક ભુજ છે, તેમ નર્મદા જિલ્લાનું વડું મથક રાજપીપળા છે.`]],
-  [74, `અલગ પડતો જિલ્લો શોધો.`, [`જામનગર`,`ભાવનગર`,`રાજકોટ`,`સુરત`], `CD`, [`રાજકોટને દરિયાકિનારો નથી, અને સુરત સૌરાષ્ટ્રનો જિલ્લો નથી. બંને આધાર સાચા હોવાથી C અને D બંને માન્ય.`]],
-  [75, `અલગ પડતી રમત શોધો.`, [`ક્રિકેટ`,`ચેસ`,`વોલીબોલ`,`કબડ્ડી`], `B`, [`ક્રિકેટ, વોલીબોલ, કબડ્ડી મેદાનની રમતો છે, જ્યારે ચેસ ઇનડોર બુદ્ધિની રમત છે.`]],
-  [76, `દેશ : રાષ્ટ્રપતિ, રાજ્ય : ?`, [`મુખ્યમંત્રી`,`રાજ્યપાલ`,`ધારાસભ્ય`,`સંસદસભ્ય`], `B`, [`દેશના બંધારણીય વડા રાષ્ટ્રપતિ, તેમ રાજ્યના બંધારણીય વડા રાજ્યપાલ.`]],
-  [77, `ગામ : સરપંચ, મહાનગર પાલિકા : ?`, [`પ્રમુખ`,`ધારાસભ્ય`,`કમિશનર`,`મેયર`], `D`, [`ગામના વડા સરપંચ, તેમ મહાનગર પાલિકાના ચૂંટાયેલા વડા મેયર.`]],
-  [78, `ભારતના રાજ્યોને પૂર્વથી પશ્ચિમ ગોઠવો: 1. બિહાર 2. મધ્યપ્રદેશ 3. નાગાલેન્ડ 4. સિક્કિમ`, [`4-3-1-2`,`3-1-4-2`,`4-2-1-3`,`3-4-1-2`], `D`, [`પૂર્વથી પશ્ચિમ: નાગાલેન્ડ (3) → સિક્કિમ (4) → બિહાર (1) → મધ્યપ્રદેશ (2).`]],
-  [79, `શહેરોને ઉત્તરથી દક્ષિણ ગોઠવો: 1. ભોપાલ 2. ચંદીગઢ 3. હૈદરાબાદ 4. જયપુર`, [`2-4-1-3`,`3-1-4-2`,`2-1-4-3`,`4-2-1-3`], `A`, [`ઉત્તરથી દક્ષિણ: ચંદીગઢ (2) → જયપુર (4) → ભોપાલ (1) → હૈદરાબાદ (3).`]],
-  [80, `કિંમત મુજબ ઓછાથી વધુ તરફ ગોઠવો: 1. તાંબુ 2. સોનુ 3. સ્ટીલ 4. ચાંદી 5. યુરેનિયમ`, [`3-1-4-2-5`,`1-3-4-2-5`,`3-1-5-4-2`,`1-3-4-5-2`], `A`, [`સસ્તુંથી મોંઘું: સ્ટીલ (3) → તાંબુ (1) → ચાંદી (4) → સોનુ (2) → યુરેનિયમ (5).`]],
-  [81, `ખોટી જોડ ઓળખો.`, [`ગાંધીનગર - અક્ષરધામ`,`સાબરકાંઠા - પાવાગઢ`,`જૂનાગઢ - ગીરનાર`,`આણંદ - અમૂલ ડેરી`], `B`, [`પાવાગઢ પંચમહાલ જિલ્લામાં આવેલું છે, સાબરકાંઠામાં નહીં.`]],
-  [82, `યોગ્ય જોડ બનાવો: A. પર્યાવરણ દિન B. ગાંધી જયંતિ C. બાલ દિન D. શિક્ષક દિન (1: 14 નવે., 2: 5 જૂન, 3: 2 ઓક્ટો., 4: 5 સપ્ટે.)`, [`A-2, B-1, C-3, D-4`,`A-5, B-3, C-1, D-4`,`A-2, B-3, C-1, D-4`,`A-5, B-1, C-3, D-4`], `C`, [`પર્યાવરણ દિન = 5 જૂન (2), ગાંધી જયંતિ = 2 ઓક્ટોબર (3), બાલ દિન = 14 નવેમ્બર (1), શિક્ષક દિન = 5 સપ્ટેમ્બર (4).`]],
-  [83, `ખોટું વિધાન શોધો: 1. ચંદ્રગ્રહણ પૂનમે થાય 2. વસંત ઋતુ એટલે ચોમાસાની શરૂઆત 3. શિશિર શિયાળામાં આવે 4. નવરાત્રી શરદ ઋતુમાં હોય.`, [`2`,`2 અને 3`,`2 અને 4`,`1 અને 2`], `A`, [`વિધાન 2 ખોટું છે: ચોમાસાની શરૂઆત વર્ષા ઋતુમાં થાય, વસંત ફાગણ-ચૈત્રની ઋતુ છે.`]],
-  [84, `સાચું વિધાન શોધો: 1. સિંહ જૂનાગઢ/ગીર સોમનાથ 2. ઘુડખર કચ્છનું રણ 3. પંખી અભ્યારણ નળસરોવર 4. વેળાવદર વાઘનું અભ્યારણ.`, [`1 અને 2`,`1, 2 અને 3`,`1 અને 3`,`બધાં જ`], `B`, [`1, 2, 3 સાચાં છે. વેળાવદર કાળિયારનું અભ્યારણ છે, વાઘનું નહીં.`]],
-  [85, `આકૃતિમાં કઈ સંખ્યા એવી છે જે બધી જ આકૃતિમાં આવે છે?`, [`3`,`5`,`6`,`19`], `A`, [`લંબચોરસ, વર્તુળ, નળાકાર અને ત્રિકોણ ચારેયના સામાન્ય ભાગમાં 3 છે.`]],
-  [86, `આકૃતિમાં 3, 8, ?, 125, 27, 2, 4, 5 છે. ? ની જગ્યાએ શું આવે?`, [`8`,`16`,`64`,`32`], `C`, [`સામસામે ઘન: 3↔27 (3³), 5↔125 (5³), 2↔8 (2³). એટલે 4 ની સામે 4³ = 64.`]],
-  [87, `પહેલી ત્રણ આકૃતિઓ (બહાર-અંદર આકારની અદલાબદલી) પરથી ? ની જગ્યાએ સાચો વિકલ્પ શોધો.`, [`વિકલ્પ A (બહાર ચોરસ હેચિંગ, અંદર સફેદ વર્તુળ)`,`વિકલ્પ B`,`વિકલ્પ C`,`વિકલ્પ D`], `A`, [`બહાર અને અંદરના આકાર અદલાબદલી થાય છે: બહાર વર્તુળ, અંદર ચોરસ → બહાર ચોરસ, અંદર વર્તુળ.`]],
-  [88, `પહેલી ત્રણ આકૃતિઓ (તારો અને તેમાંથી ઘટતી રેખાઓ) પરથી ? ની જગ્યાએ સાચો વિકલ્પ શોધો.`, [`વિકલ્પ A`,`વિકલ્પ B (બે રેખાઓવાળો "∧" આકાર)`,`વિકલ્પ C`,`વિકલ્પ D`], `B`, [`ક્રમશઃ રેખાઓ ઘટતી જાય છે; કી મુજબ ચોથી આકૃતિ "∧" આકારની (B) છે.`]],
-  [89, `એક સ્ત્રી પુરુષને આંગળી ચીંધી કહે છે કે તેના ભાઈનો પિતા એ મારા દાદાનો એકમાત્ર પુત્ર છે. સ્ત્રીનો પુરુષ સાથે સંબંધ?`, [`પુરુષની મામી`,`પુરુષની દીકરી`,`પુરુષની બહેન`,`પુરુષની મા`], `C`, [`પુરુષના ભાઈનો પિતા = પુરુષના પિતા; સ્ત્રીના દાદાનો એકમાત્ર પુત્ર = સ્ત્રીના પિતા. એટલે સ્ત્રી બહેન થાય.`]],
-  [90, `ક્રમિક 1 થી 20 સંખ્યાનો સરવાળો કેટલો થશે?`, [`200`,`210`,`220`,`420`], `B`, [`સૂત્ર: n(n+1) ÷ 2 = 20 × 21 ÷ 2 = 210.`]],
-  [91, `ત્રિકોણોમાં (84, 14, 12), (81, 18, 9), (88, ?, 11). ? = ?`, [`16`,`8`,`18`,`9`], `A`, [`નિયમ: ડાબી = (જમણી × નીચે) ÷ 2. એટલે ? × 11 ÷ 2 = 88 → ? = 16.`]],
-  [92, `ત્રણ ચોકઠાં: [4 8 / 3 2], [9 7 / 6 3], [5 9 / ? 5]. ? = ?`, [`2`,`3`,`4`,`5`], `C`, [`ઉપરની બે સંખ્યાનો ગુણાકાર નીચે લખ્યો છે: 4×8=32, 9×7=63, 5×9=45 → ?=4.`]],
-  [93, `જૈમિન પાસે 21.6 મીટર લાંબું કાપડ છે. તેમાંથી 1.8 મીટરના કેટલા ટુકડા બને?`, [`10`,`12`,`20`,`16`], `B`, [`21.6 ÷ 1.8 = 216 ÷ 18 = 12 ટુકડા.`]],
-  [94, `1/2 અને 1/3 ની સરાસરી શોધો.`, [`1/6`,`5/6`,`2/6`,`5/12`], `D`, [`(1/2 + 1/3) ÷ 2 = (5/6) ÷ 2 = 5/12.`]],
-  [95, `બાજુઓના માપની દૃષ્ટિએ કયો ત્રિકોણ શક્ય નથી?`, [`2, 3, 5 સે.મી.`,`3, 6, 7 સે.મી.`,`8, 6, 10 સે.મી.`,`10.2, 5.8, 4.5 સે.મી.`], `A`, [`બે બાજુનો સરવાળો ત્રીજીથી વધુ હોવો જોઈએ; અહીં 2 + 3 = 5 (વધુ નથી), એટલે શક્ય નથી.`]],
-  [96, `એક દુકાનદાર 150 રૂ. કિંમતનું રમકડું 22% ખોટ ખાઈને વેચે છે. વેચાણ કિંમત કેટલી?`, [`130 રૂ.`,`183 રૂ.`,`117 રૂ.`,`127 રૂ.`], `C`, [`ખોટ = 150 × 22 ÷ 100 = 33 રૂ. વેચાણ કિંમત = 150 − 33 = 117 રૂ.`]],
-  [97, `સંમેય સંખ્યાઓને ચડતા ક્રમમાં ગોઠવો: −3/7, −3/2, −3/4, −3/11.`, [`−3/7, −3/4, −3/2, −3/11`,`−3/11, −3/7, −3/4, −3/2`,`−3/4, −3/2, −3/11, −3/7`,`−3/2, −3/4, −3/7, −3/11`], `D`, [`દશાંશમાં: −1.5 < −0.75 < −0.43 < −0.27 → −3/2, −3/4, −3/7, −3/11.`]],
-  [98, `ઘનની ધાર, ફલક અને શિરોબિંદુની અનુક્રમે સંખ્યા?`, [`15, 7, 10`,`12, 6, 8`,`15, 6, 11`,`8, 6, 12`], `B`, [`ઘનને 12 ધાર, 6 ફલક અને 8 શિરોબિંદુ હોય છે.`]],
-  [99, `[7/3 × (−6/13)] + [7/5 × 6/13] = ?`, [`0`,`42/65`,`84/65`,`1`], `G`, [`−14/13 + 42/65 = −28/65, જે વિકલ્પોમાં ન હોવાથી બોર્ડે ગ્રેસ આપ્યા.`]],
-  [100, `એક નિયમિત બહુકોણ જેના પ્રત્યેક બહિષ્કોણનું માપ 60° હોય તેને ..... કહે છે.`, [`નિયમિત અષ્ટકોણ`,`ચતુષ્કોણ`,`નિયમિત ષટ્કોણ`,`ત્રિકોણ`], `C`, [`બાજુઓ = 360° ÷ 60° = 6, એટલે નિયમિત ષટ્કોણ.`]],
-  [101, `ઉર્દૂ ભાષા બોલતા વિદ્યાર્થીઓની ટકાવારી? (ગુજરાતી 40, અંગ્રેજી 12, ઉર્દૂ 9, હિન્દી 7, સિંધી 4)`, [`25%`,`36%`,`10%`,`12.5%`], `D`, [`કુલ = 40+12+9+7+4 = 72. ઉર્દૂ = (9 ÷ 72) × 100 = 12.5%.`]],
-  [102, `6, 9 અને 15 વડે નિઃશેષ ભાગી શકાય તેવી નાનામાં નાની પૂર્ણવર્ગ સંખ્યા?`, [`810`,`900`,`90`,`400`], `B`, [`લ.સા.અ. = 90 (2×3²×5). પૂર્ણવર્ગ માટે 2²×3²×5² = 900.`]],
-  [103, `તનુજાએ એક હારમાં 4 છોડ રોપ્યા. બે છોડ વચ્ચે ¾ મીટર અંતર છે. પ્રથમ અને છેલ્લા છોડ વચ્ચે અંતર?`, [`2¾ મી`,`3²⁄₄ મી`,`2¼ મી`,`9/4 મી`], `CD`, [`4 છોડ વચ્ચે 3 ગાળા = 3 × ¾ = 9/4 મી = 2¼ મી. C અને D બંને માન્ય.`]],
-  [104, `આકૃતિ પરથી અંતઃકોણની જોડ ઓળખો.`, [`∠1 અને ∠2, ∠7 અને ∠8`,`∠1 અને ∠5, ∠2 અને ∠6`,`∠3 અને ∠5, ∠4 અને ∠6`,`∠3 અને ∠6, ∠4 અને ∠5`], `C`, [`સમાંતર રેખાઓ વચ્ચે છેદિકાની એક જ બાજુના ખૂણા: ∠3 અને ∠5, ∠4 અને ∠6.`]],
-  [105, `સંમેય સંખ્યાની કઈ જોડી સમાન નથી?`, [`−4/−5 = 4/5`,`−5/8 = 15/−24`,`1/−3 = 3/−9`,`−7/21 = 3/9`], `D`, [`−7/21 = −1/3, જ્યારે 3/9 = +1/3. ચિહ્ન અલગ હોવાથી સમાન નથી.`]],
-  [106, `x = −2 માટે 4(2x − 1) + 3x + 11 ની કિંમત?`, [`−4`,`−25`,`25`,`29`], `G`, [`4(−5) + (−6) + 11 = −15, જે વિકલ્પોમાં નથી → ગ્રેસ (બધાને ગુણ).`]],
-  [107, `કઈ આકૃતિમાં અસંખ્ય સમમિતિ રેખાઓ દર્શાવી શકાય?`, [`નિયમિત ષટ્કોણ`,`લંબચોરસ`,`ચતુષ્કોણ`,`વર્તુળ`], `D`, [`વર્તુળના દરેક વ્યાસ પર સમમિતિ રેખા મળે અને વ્યાસ અસંખ્ય હોય.`]],
-  [108, `નિયમિત બહુકોણના દરેક બહિષ્કોણનું માપ 20° હોય તો તેને કેટલી બાજુઓ હોય?`, [`16`,`18`,`20`,`24`], `B`, [`બાજુઓ = 360° ÷ 20° = 18.`]],
-  [109, `શાળામાં 640 વિદ્યાર્થી છે. હાર અને સ્તંભોની સંખ્યા સમાન રહે તેમ ઊભા રાખતાં કેટલાને બહાર રાખવા પડે?`, [`5`,`10`,`15`,`20`], `C`, [`640 થી નાનો સૌથી નજીકનો પૂર્ણવર્ગ 25² = 625. બહાર રહેશે = 640 − 625 = 15.`]],
-  [110, `મનિષે પગારમાંથી 75% વાપર્યા પછી રૂ. 3000 બાકી રહ્યા. તેનો પગાર?`, [`9000`,`10000`,`11000`,`12000`], `D`, [`બાકી 25% = 3000 → 100% = 3000 × 4 = રૂ. 12000.`]],
-  [111, `લંબઘનની લંબાઈ mn, પહોળાઈ mp², ઊંચાઈ m²n²p. ઘનફળ?`, [`m³n³p³`,`m³n⁴p³`,`m⁴n³p³`,`m²n³p⁴`], `C`, [`(mn)(mp²)(m²n²p) = m¹⁺¹⁺² n¹⁺² p²⁺¹ = m⁴n³p³.`]],
-  [112, `સમબાજુ ચતુષ્કોણના વિકર્ણોની લંબાઈ 8.5 સેમી અને 16 સેમી છે. ક્ષેત્રફળ?`, [`64`,`64.5`,`68.5`,`68`], `D`, [`ક્ષેત્રફળ = ½ × 8.5 × 16 = 8.5 × 8 = 68 ચો.સેમી.`]],
-  [113, `વનસ્પતિકોષનું માપ 0.00001275 મી. છે. પ્રમાણિત સ્વરૂપે?`, [`1275 × 10⁻⁵`,`1.275 × 10⁻⁵`,`127.5 × 10⁻⁵`,`12.75 × 10⁻⁵`], `B`, [`દશાંશ ચિહ્ન જમણે 5 સ્થાન ખસેડતાં 1.275 × 10⁻⁵ મી.`]],
-  [114, `એક યંત્ર 6 કલાકમાં 840 બોટલ ભરે છે. 5 કલાકમાં કેટલી ભરશે?`, [`740`,`730`,`710`,`700`], `D`, [`1 કલાકમાં = 840 ÷ 6 = 140 → 5 કલાકમાં = 140 × 5 = 700.`]],
-  [115, `સંમેય સંખ્યાઓ માટે કયું વિધાન ખોટું છે?`, [`સરવાળા-ગુણાકાર માટે ક્રમતા ગુણધર્મ પળાય છે`,`સરવાળા-ગુણાકાર માટે જૂથના ગુણધર્મ પળાય છે`,`સરવાળા અને ગુણાકાર માટે 1 સંખ્યા તટસ્થ છે`,`a(a+b)=ab+ac એ વિભાજનનો ગુણધર્મ છે`], `CD`, [`(C) ખોટું: સરવાળા માટે તટસ્થ 0 છે. (D) માં છાપભૂલ (a(b+c) હોવું જોઈએ). બંને માન્ય.`]],
-  [116, `ગાડી 1 લિટર પેટ્રોલમાં 16 કિમી કાપે છે. 2¾ લિટરમાં કેટલું અંતર?`, [`44 કિમી`,`23 કિમી`,`48 કિમી`,`24 કિમી`], `A`, [`2¾ = 11/4. અંતર = 16 × 11/4 = 44 કિમી.`]],
-  [117, `13, 16, 12, 14, 19, 12, 14, 13, 14 નો મધ્યસ્થ?`, [`14`,`13`,`19`,`12`], `A`, [`ચડતો ક્રમ: 12, 12, 13, 13, 14, 14, 14, 16, 19. વચ્ચેની 5 મી સંખ્યા = 14.`]],
-  [118, `થેલામાં 4 લાલ અને 2 પીળા દડા છે. આંખો બંધ કરી એક દડો કાઢતાં તે લીલો હોવાની સંભાવના?`, [`6/6`,`4/6`,`2/6`,`0`], `D`, [`થેલામાં લીલો દડો છે જ નહીં, એટલે અશક્ય ઘટનાની સંભાવના = 0.`]],
-  [119, `18 છોકરીઓ અને 12 છોકરાઓની સંખ્યાનો ગુણોત્તર?`, [`8:2`,`5:4`,`2:3`,`3:2`], `D`, [`18 : 12 ને 6 વડે ભાગતાં 3 : 2.`]],
-  [120, `સમાંતર રેખાઓની છેદિકાથી રચાતા ખૂણા માટે કયું વિધાન ખોટું છે?`, [`અનુકોણ સમાન હોય છે`,`અંતઃયુગ્મકોણ કોટિકોણ હોય છે`,`એક બાજુના અંતઃકોણ પૂરક હોય છે`,`અંતઃયુગ્મકોણ સમાન હોય છે`], `B`, [`અંતઃયુગ્મકોણ સમાન હોય છે, કોટિકોણ (90°) નહીં.`]],
-  [121, `ચાર સરખા પાત્રોમાં સમાન પાણી ભરી સૂર્યપ્રકાશમાં મૂકતાં કયા રંગની સપાટીવાળા પાત્રનું પાણી ઝડપથી ગરમ થશે?`, [`ગુલાબી`,`લીલો`,`કાળો`,`પીળો`], `C`, [`કાળો રંગ ઉષ્માનું સૌથી વધુ શોષણ કરે છે.`]],
-  [122, `સમતલ અરીસા માટે કયું સાચું નથી?`, [`સીધું પ્રતિબિંબ મળે`,`આભાસી પ્રતિબિંબ મળે`,`વસ્તુ અને પ્રતિબિંબ અંતર સરખું`,`વસ્તુ કરતા નાનું પ્રતિબિંબ મળે`], `D`, [`સમતલ અરીસામાં હંમેશા વસ્તુના જેટલા જ કદનું પ્રતિબિંબ મળે.`]],
-  [123, `જો જમીન બેઝિક હોય તો તેમાં શું ઉમેરવું જોઈએ?`, [`કાર્બનિક દ્રવ્ય`,`ક્વિક લાઇમ`,`સ્લેક્ડ લાઇમ`,`કેલેમાઇન દ્રાવણ`], `A`, [`ખાતર જેવું કાર્બનિક દ્રવ્ય ઉમેરવાથી જમીનની બેઝિક પ્રકૃતિ ઘટે છે.`]],
-  [124, `ખરીફ પાક કયો છે?`, [`ચણા`,`વટાણા`,`ડાંગર`,`રાઈ`], `C`, [`ડાંગર ચોમાસામાં વવાતો ખરીફ પાક છે; બાકીના ત્રણ રવી પાક છે.`]],
-  [125, `કલ્ટિવેટરનો ઉપયોગ શેના માટે થાય છે?`, [`વાવણી કરવા`,`ખેડ કરવા`,`ખાતર છાંટવા`,`લણણી કરવા`], `B`, [`કલ્ટિવેટર ટ્રેક્ટરથી જમીન ખેડવા અને પોચી કરવા વપરાય છે.`]],
-  [126, `વાઇરસ દ્વારા થતો રોગ કયો છે?`, [`કોલેરા`,`ટાઇફોઇડ`,`ક્ષય`,`પોલિયો`], `D`, [`પોલિયો વાઇરસથી થાય છે; કોલેરા, ટાઇફોઇડ, ક્ષય બેક્ટેરિયાથી થાય.`]],
-  [127, `લેક્ટોબેસિલસ બેક્ટેરિયાનું મુખ્ય કાર્ય શું છે?`, [`દૂધમાંથી દહીં બનાવવાનું`,`જમીનની ફળદ્રુપતા વધારવાનું`,`કચરાનું વિઘટન કરવાનું`,`આથવણ લાવવાનું`], `A`, [`લેક્ટોબેસિલસ દૂધને દહીંમાં ફેરવે છે.`]],
-  [128, `'પેટ્રોલિયમ' શબ્દમાં 'પેટ્રો' નો અર્થ શું થાય છે?`, [`પેટ્રોલ`,`જમીન`,`તેલ`,`ખડક`], `D`, [`પેટ્રો (ખડક) + ઓલિયમ (તેલ) = ખડકમાંથી મળતું તેલ.`]],
-  [129, `નીચેના વિકલ્પો પૈકી કોનું જ્વલનબિંદુ સૌથી ઊંચું હોય?`, [`પેટ્રોલ`,`CNG`,`લાકડું`,`કેરોસીન`], `A`, [`સત્તાવાર કી મુજબ જવાબ (A) પેટ્રોલ આપ્યો છે (પ્રશ્નમાં "નીચું" અપેક્ષિત હતું).`]],
-  [130, `પંચમઢી જીવાવરણ આરક્ષિત ક્ષેત્રમાં જોવા મળતું 'બાયસન' શું છે?`, [`જંગલી આંબો`,`વિશાળ ખિસકોલી`,`ઉડતી ખિસકોલી`,`જંગલી બળદ`], `D`, [`બાયસન (ભારતીય ગૌર) એ જંગલી બળદ છે.`]],
-  [131, `છોકરાઓમાં મોટા થયેલી સ્વરપેટી ગળાના ભાગમાં બહારની તરફ ઉપસી આવે છે, તેને શું કહે છે?`, [`કંઠસ્થાન`,`કંઠમણિ`,`સ્વરસ્થાન`,`સ્વરમણિ`], `B`, [`ગળાના ઉપસેલા ભાગને કંઠમણિ (Adam's apple) કહે છે.`]],
-  [132, `મગજ સાથે જોડાયેલી ગ્રંથિ કઈ છે?`, [`થાઇરોઇડ`,`સ્વાદુપિંડ`,`પિટ્યુટરી`,`એડ્રિનલ`], `C`, [`પિટ્યુટરી (પીયૂષ) ગ્રંથિ મગજના તળિયે જોડાયેલી મુખ્ય ગ્રંથિ છે.`]],
-  [133, `આપણાં શરીરમાં રુધિરના નિર્માણનું કામ કોણ કરે છે?`, [`આયર્ન`,`ચરબી`,`કાર્બોદિત`,`વિટામીન`], `A`, [`લોહતત્ત્વ (આયર્ન) હિમોગ્લોબિન અને રુધિર નિર્માણમાં મદદ કરે છે.`]],
-  [134, `નીચેનામાંથી કયું જોડકું યોગ્ય નથી?`, [`ફોર્મિક એસિડ – કીડી`,`એસેટિક એસિડ – વિનેગર`,`લેક્ટિક એસિડ – દહીં`,`ઓક્ઝેલિક એસિડ – નારંગી`], `D`, [`નારંગીમાં સાઇટ્રિક એસિડ હોય છે; ઓક્ઝેલિક એસિડ પાલકમાં હોય.`]],
-  [135, `વિનેગાર અને બેકિંગ સોડાને મિશ્ર કરતાં ......... વાયુ ઉત્પન્ન થાય છે?`, [`કાર્બન ડાયોક્સાઇડ`,`નાઇટ્રોજન`,`ઓક્સિજન`,`હાઇડ્રોજન`], `A`, [`એસિડ + બેકિંગ સોડા → CO₂ (કાર્બન ડાયોક્સાઇડ) વાયુ ફીણ સ્વરૂપે નીકળે.`]],
-  [136, `ભારે કસરત કરવાથી સ્નાયુઓમાં ......... એકઠું થવાના કારણે સ્નાયુઓ ખેંચાઈ જાય છે?`, [`કાર્બન ડાયોક્સાઇડ`,`આલ્કોહોલ`,`લેક્ટિક એસિડ`,`ઓક્સિજન`], `C`, [`અનોક્સિશ્વસનથી સ્નાયુઓમાં લેક્ટિક એસિડ બનવાથી સ્નાયુ ખેંચાય.`]],
-  [137, `પદાર્થે કાપેલ અંતર શોધવાનું સૂત્ર: કાપેલું અંતર = ?`, [`અંતર × સમય`,`સમય/ઝડપ`,`ઝડપ/સમય`,`ઝડપ × સમય`], `D`, [`ઝડપ = અંતર ÷ સમય → અંતર = ઝડપ × સમય.`]],
-  [138, `સાબુના પરપોટા વડે પ્રકાશનું ઘણા રંગોમાં છુટા પડવાની ઘટનાને ......... કહે છે?`, [`પ્રકાશનું વિભાજન`,`પ્રકાશનું શોષણ`,`પ્રકાશનું પ્રસરણ`,`પ્રકાશનું પરાવર્તન`], `A`, [`શ્વેત પ્રકાશનું રંગોમાં વહેંચાવું એ પ્રકાશનું વિભાજન છે.`]],
-  [139, `કાપવામાં આવેલ પાકમાંથી દાણાઓને ભૂસામાંથી અલગ કરવાની પ્રક્રિયાને શું કહે છે?`, [`વિડિંગ`,`હાર્વેસ્ટિંગ`,`થ્રેશીંગ`,`ઈરિગેશન`], `C`, [`દાણા અને ભૂસું છૂટા પાડવાની ક્રિયા થ્રેશીંગ છે.`]],
-  [140, `સુરક્ષિત દીવાસળી બનાવવા માટે શાનો ઉપયોગ થાય છે?`, [`લાલ અને સફેદ ફોસ્ફરસ`,`એન્ટિમની ટ્રાય સલ્ફાઇડ અને પોટેસિયમ ક્લોરેટ`,`સફેદ ફોસ્ફરસ અને પોટેશિયમ ક્લોરેટ`,`એન્ટિમની ટ્રાય સલ્ફાઇડ અને સફેદ ફોસ્ફરસ`], `B`, [`દીવાસળીના માથા પર એન્ટિમની ટ્રાય સલ્ફાઇડ અને પોટેસિયમ ક્લોરેટ વપરાય.`]],
-  [141, `નીચેનામાંથી કયું જોડકું યોગ્ય નથી?`, [`રેડ-ડેટા બુક → લુપ્ત જાતિઓની યાદી`,`પ્રોજેક્ટ ટાઇગર → વાઘ સંરક્ષણ`,`પુનઃવનીકરણ → જંગલોની પુનઃસ્થાપના`,`રણનિર્માણ → ભૂમિનું રણમાં ફેરવાવું`], `A`, [`રેડ ડેટા બુકમાં ભયગ્રસ્ત (નાશપ્રાય) જાતિઓની નોંધ હોય છે.`]],
-  [142, `કાર્બનનું લગભગ સંપૂર્ણ શુદ્ધ સ્વરૂપ કયું છે?`, [`ડીઝલ`,`કોલટાર`,`કોલગેસ`,`કોક`], `D`, [`કોક એ કોલસામાંથી મળતું લગભગ શુદ્ધ કાર્બન સ્વરૂપ છે.`]],
-  [143, `કઈ ગ્રંથિ યોગ્ય કામ ન કરે તો ડાયાબિટિસ થાય?`, [`પિટ્યુટરી`,`થાઇરોઇડ`,`સ્વાદુપિંડ`,`એડ્રિનલ`], `C`, [`સ્વાદુપિંડ ઇન્સ્યુલિન બનાવે છે; તેની ખામીથી ડાયાબિટિસ થાય.`]],
-  [144, `વનસ્પતિમાં ખોરાક બનાવવાના કારખાનાં કોને કહેવાય છે?`, [`પર્ણ`,`પ્રકાંડ`,`ફળ`,`મૂળ`], `A`, [`પર્ણમાં હરિતદ્રવ્યથી પ્રકાશસંશ્લેષણ દ્વારા ખોરાક બને છે.`]],
-  [145, `હાઇડ્રોક્લોરિક એસિડ અને સોડિયમ હાઇડ્રોક્સાઇડ વચ્ચેની તટસ્થીકરણની પ્રક્રિયાથી શું બને છે?`, [`હવા અને પાણી`,`ક્ષાર અને પાણી`,`ધાતુ અને મીણ`,`તેલ અને તાંબુ`], `B`, [`HCl + NaOH → NaCl (ક્ષાર) + H₂O (પાણી).`]],
-  [146, `સ્ટાર્ચનું સરળ શર્કરામાં રૂપાંતરણ કરવાનું કાર્ય કોણ કરે છે?`, [`અન્નનળી`,`રસાંકુરો`,`મુખગુહા`,`લાળરસ`], `D`, [`લાળરસમાંનું ઉત્સેચક સ્ટાર્ચને સરળ શર્કરામાં ફેરવે છે.`]],
-  [147, `બાજની મહત્તમ ઝડપ 320 km/h હોય તો તેની ઝડપ m/sec માં કેટલી?`, [`8.89`,`320`,`889`,`88.9`], `D`, [`320 × 5/18 = 1600/18 = 88.89 ≈ 88.9 m/sec.`]],
-  [148, `કુદરતી વાયુમાંથી મેળવવામાં આવતા ......... વાયુનો ઉપયોગ કૃત્રિમ ખાતરની બનાવટમાં થાય છે.`, [`કોલગેસ`,`CNG`,`હાઇડ્રોજન`,`કાર્બન ડાયોક્સાઇડ`], `C`, [`હાઇડ્રોજન વાયુ યુરિયા જેવા કૃત્રિમ ખાતર બનાવવા વપરાય છે.`]],
-  [149, `શાના દ્વારા હંમેશા ચત્તુ, આભાસી અને વસ્તુના પરિમાણ કરતા નાનું પ્રતિબિંબ મળે?`, [`બહિર્ગોળ અરીસો, અંતર્ગોળ લેન્સ`,`અંતર્ગોળ અરીસો, બહિર્ગોળ લેન્સ`,`બહિર્ગોળ લેન્સ, સમતલ અરીસો`,`અંતર્ગોળ લેન્સ, અંતર્ગોળ અરીસો`], `A`, [`બહિર્ગોળ અરીસો અને અંતર્ગોળ લેન્સ હંમેશા ચત્તું, આભાસી અને નાનું પ્રતિબિંબ આપે.`]],
-  [150, `એક સ્થાનેથી બીજા સ્થાન કે આગળ-પાછળ થતી પદાર્થની ગતિને શું કહે છે?`, [`કંપન`,`કંપવિસ્તાર`,`આવૃત્તિ`,`ઘોંઘાટ`], `A`, [`મધ્યસ્થાન ફરતે આગળ-પાછળ થતી ગતિ એ કંપન છે.`]],
-  [151, `અંગ્રેજ શાસન દરમિયાન કયા ધારા અંતર્ગત ભારતમાં સુપ્રીમ કોર્ટની સ્થાપના કરવામાં આવેલ?`, [`સનદી ધારો (1833)`,`નિયામક ધારો (1773)`,`A અને B બંને`,`એક પણ નહિ`], `B`, [`1773 ના નિયામક (રેગ્યુલેટિંગ) ધારા હેઠળ કલકત્તામાં સુપ્રીમ કોર્ટ સ્થપાઈ.`]],
-  [152, `જમીન મહેસૂલ માટે અંગ્રેજોએ બનાવેલી યોજનાઓમાં કઈ યોજના જમીન મહેસૂલ નથી?`, [`સહાયકારી યોજના`,`કાયમી જમાબંધી`,`રૈયતવારી પદ્ધતિ`,`મહાલવારી પદ્ધતિ`], `A`, [`સહાયકારી યોજના રાજ્યો પર અંકુશ રાખવાની નીતિ હતી, મહેસૂલ પદ્ધતિ નહીં.`]],
-  [153, `ઈ.સ. 1857 ના સંગ્રામમાં કઈ નવીન રાઇફલનો ઉપયોગ કરવામાં આવ્યો હતો?`, [`એનફિલ્ડ`,`એ.ડબલ્યુ.એમ.`,`બ્રાઉનબેઝ`,`રોનાલ્ડ`], `A`, [`નવી એનફિલ્ડ રાઇફલના ચરબીવાળા કારતૂસ 1857 ના સંગ્રામનું તાત્કાલિક કારણ બન્યા.`]],
-  [154, `જૂની દિલ્લીથી કઈ દિશામાં નવી દિલ્લીનું નિર્માણ કઈ પહાડી ઉપર કરવામાં આવેલ છે?`, [`ઉત્તરમાં રાજસમંદ`,`દક્ષિણમાં અજયમેરુ`,`ઉત્તરમાં અરવલ્લી`,`દક્ષિણમાં રાયસીન પહાડી વિસ્તારમાં`], `D`, [`નવી દિલ્લી જૂની દિલ્લીની દક્ષિણે રાયસીના (રાયસીન) પહાડી પર બની.`]],
-  [155, `ક્રાયોલાઇટ ખનિજ કયા સંસાધન તરીકે ઓળખાય છે?`, [`દુર્લભ સંસાધન`,`વિરલ સંસાધન`,`સામાન્ય સુલભ સંસાધન`,`સર્વ સુલભ સંસાધન`], `A`, [`ક્રાયોલાઇટ બહુ ઓછી જગ્યાએ મળે છે, એટલે કી મુજબ દુર્લભ સંસાધન.`]],
-  [156, `ખનિજ પદાર્થોમાં કોને 'કાળું સોનું' કહેવામાં આવે છે?`, [`મેંગેનીઝ`,`સોનું`,`ખનિજતેલ`,`બૉક્સાઇટ`], `C`, [`ખનિજતેલ (પેટ્રોલિયમ) કીમતી હોવાથી 'કાળું સોનું' કહેવાય છે.`]],
-  [157, `ભારતનું કયું રાજ્ય કપાસના ઉત્પાદનમાં પ્રથમ છે?`, [`ગુજરાત`,`મહારાષ્ટ્ર`,`આંધ્રપ્રદેશ`,`બિહાર`], `A`, [`કી મુજબ કપાસના ઉત્પાદનમાં ગુજરાત પ્રથમ છે.`]],
-  [158, `બાળમજૂરીનો વિરોધ કરવા કયો હક આપવામાં આવેલ છે?`, [`સ્વતંત્રતાનો હક`,`શોષણ સામે વિરોધનો હક`,`ધાર્મિક સ્વાતંત્ર્યનો હક`,`સમાનતાનો હક`], `B`, [`શોષણ સામે વિરોધનો હક બાળમજૂરી અને વેઠ પર પ્રતિબંધ મૂકે છે.`]],
-  [159, `દ્વારકેશને ફોર્ટ સેન્ટ જ્યોર્જની મુલાકાત લેવી છે. તેણે કયા શહેરમાં જવું પડશે?`, [`કોલકત્તા`,`મુંબઈ`,`ચેન્નાઈ`,`દિલ્લી`], `C`, [`ફોર્ટ સેન્ટ જ્યોર્જ ચેન્નાઈ (મદ્રાસ) માં આવેલો કિલ્લો છે.`]],
-  [160, `નીચે પૈકી કઈ જમીન મહેસૂલ પદ્ધતિ નથી?`, [`કાયમી જમાબંધી`,`ઉલગુલાન`,`મહાલવારી`,`રૈયતવારી`], `B`, [`ઉલગુલાન બિરસા મુંડાનું આદિવાસી આંદોલન હતું.`]],
-  [161, `અધાતુમય ખનિજનાં ઉદાહરણો કયા છે? (1) જસત (2) અબરખ (3) જિપ્સમ (4) તાંબુ`, [`1 અને 2`,`3 અને 4`,`2 અને 4`,`2 અને 3`], `D`, [`અબરખ અને જિપ્સમ અધાતુમય છે; જસત અને તાંબુ ધાતુમય છે.`]],
-  [162, `મગફળીની : જૂનાગઢ :: બાજરી : ?`, [`મહેસાણા`,`સાબરકાંઠા`,`બનાસકાંઠા`,`ભાવનગર`], `C`, [`જૂનાગઢ મગફળી માટે અને બનાસકાંઠા બાજરી માટે જાણીતું છે.`]],
-  [163, `બંધારણ સંદર્ભે નીચે પૈકી કઈ જોડ યોગ્ય નથી?`, [`સમિતિઓ : 23`,`અધ્યક્ષ : ડૉ. રાજેન્દ્ર પ્રસાદ`,`બંધારણ દિવસ : 26 નવેમ્બર`,`કુલ સભ્યો : 250`], `D`, [`બંધારણ સભાના મૂળ સભ્યો 389 (વિભાજન પછી 299) હતા, 250 નહીં.`]],
-  [164, `નીચે પૈકી કયું વિધાન રાષ્ટ્રપતિ સાથે સુસંગત નથી?`, [`બંધારણીય વડા છે`,`મંત્રીમંડળની બેઠકની અધ્યક્ષતા કરે છે`,`પ્રથમ નાગરિક છે`,`વહીવટ તેમના નામે ચાલે છે`], `B`, [`મંત્રીમંડળની બેઠકની અધ્યક્ષતા વડાપ્રધાન કરે છે, રાષ્ટ્રપતિ નહીં.`]],
-  [165, `પોર્ટુગીઝોએ ભારતનો કયો ટાપુ બ્રિટનના સમ્રાટને દહેજમાં આપ્યો હતો?`, [`મુંબઈ`,`લક્ષદ્વીપ`,`અંદમાન`,`નિકોબાર`], `A`, [`1661 માં બ્રિટનના રાજા ચાર્લ્સ બીજાને પોર્ટુગીઝોએ મુંબઈ દહેજમાં આપ્યું.`]],
-  [166, `વિરલ સંસાધન કયું છે?`, [`ગોચર ભૂમિ`,`ઓક્સિજન`,`પાણી`,`કોલસો`], `D`, [`કોલસો મર્યાદિત જગ્યાએ અને જથ્થામાં મળતું વિરલ સંસાધન છે.`]],
-  [167, `પૃથ્વી પર મીઠા પાણીનો જથ્થો કેટલો છે?`, [`1%`,`2.7%`,`27%`,`29%`], `B`, [`કુલ પાણીમાંથી આશરે 97.3% ખારું અને માત્ર 2.7% મીઠું પાણી છે.`]],
-  [168, `'અયસ્ક' એટલે શું?`, [`અશુદ્ધ ખનિજો`,`વિદ્યુત`,`રહેવા માટે મકાન`,`હવા`], `A`, [`ધાતુ મેળવવા માટેનું અશુદ્ધિવાળું કાચું ખનિજ અયસ્ક કહેવાય.`]],
-  [169, `જૈવ કચરામાંથી તૈયાર થતા વાયુયુક્ત બળતણને શું કહે છે?`, [`LPG`,`CNG`,`PNG`,`બાયોગેસ`], `D`, [`છાણ અને ખેતીના કચરામાંથી બનતો ગેસ બાયોગેસ છે.`]],
-  [170, `......... ભારત દેશની અર્થવ્યવસ્થાની જીવનરેખા ગણાય છે?`, [`ઉદ્યોગ`,`શિક્ષણ`,`પાણી`,`ખેતી`], `D`, [`ભારતની મોટી વસ્તી ખેતી પર નભે છે, એટલે ખેતી અર્થવ્યવસ્થાની જીવનરેખા છે.`]],
-  [171, `ગુજરાતના લગભગ 50% કરતાં વધુ વિસ્તારમાં કેવી જમીન જોવા મળે છે?`, [`રાતી જમીન`,`કાળી જમીન`,`કાંપની જમીન`,`પર્વતીય જમીન`], `C`, [`કી મુજબ ગુજરાતના અડધાથી વધુ ભાગમાં કાંપની જમીન છે.`]],
-  [172, `ભૂમિખંડની સપાટી ખાસ કરીને કયા ખનીજોથી બનેલી હોય છે?`, [`સિલિકા અને એલ્યુમિના`,`સિલિકા અને મેગ્નેશિયમ`,`નિકલ અને ફેરસ`,`મેગ્નેશિયમ અને ફેરસ`], `A`, [`ખંડીય પોપડો (SiAl) સિલિકા અને એલ્યુમિનાથી બનેલો છે.`]],
-  [173, `ભારતમાં દર વર્ષે બંધારણ દિવસની ઉજવણી કઈ તારીખે થાય છે?`, [`26 મી નવેમ્બર`,`26 મી જાન્યુઆરી`,`25 મી ડિસેમ્બર`,`15 મી ઓગસ્ટ`], `A`, [`26 નવેમ્બર 1949 ના રોજ બંધારણ અપનાવાયું હતું.`]],
-  [174, `ભારતની સંસદના નીચલા ગૃહમાં ગુજરાતને કેટલી બેઠકો ફાળવવામાં આવી છે?`, [`26`,`50`,`182`,`545`], `A`, [`લોકસભા (નીચલું ગૃહ) માં ગુજરાતની 26 બેઠકો છે (182 વિધાનસભાની છે).`]],
-  [175, `ખેડૂતનું શોષણ રોકવા માટે સરકારે કેવા બજારની વ્યવસ્થા કરી છે?`, [`મહોલ્લા બજાર`,`નિયંત્રિત બજાર`,`સાપ્તાહિક બજાર`,`ઓનલાઈન બજાર`], `B`, [`નિયંત્રિત બજાર (APMC) દ્વારા ખેડૂતોને વાજબી ભાવ મળે છે.`]],
-  [176, `ગઢવાલ રાજ્યના સ્થાપક ચંદ્રદેવે કનોજ સિવાય બીજા કયા શહેરને પોતાના રાજ્યની રાજધાની બનાવી હતી?`, [`ખજુરાહો`,`ભોજપાલ`,`કાશી`,`બુંદેલખંડ`], `C`, [`ચંદ્રદેવે કનોજ સાથે કાશી (વારાણસી) ને રાજધાની બનાવી હતી.`]],
-  [177, `નીચે પૈકી કયા રાજ્યમાં વિધાન પરિષદ નથી?`, [`ગુજરાત`,`બિહાર`,`મહારાષ્ટ્ર`,`ઉત્તરપ્રદેશ`], `A`, [`ગુજરાતમાં માત્ર વિધાનસભા છે, વિધાન પરિષદ નથી.`]],
-  [178, `ગુજરાતની કઈ વાવને યુનેસ્કોએ વર્લ્ડ હેરિટેજનો દરજ્જો આપેલ છે?`, [`અડાલજની વાવ`,`દાદાહરિની વાવ`,`રાણીની વાવ, પાટણ`,`માધાવાવ`], `C`, [`પાટણની રાણીની વાવને 2014 માં વર્લ્ડ હેરિટેજ દરજ્જો મળ્યો.`]],
-  [179, `કઈ વિચરતી અને વિમુક્ત જાતિની સમુદાય ભારત અને વિશ્વ વચ્ચે કડી સમાન હતો?`, [`બહુરૂપી`,`વણઝારા`,`કોગસિયા`,`વાંસફોડા`], `B`, [`વણઝારા સમુદાય વેપારીઓ તરીકે ભારત અને વિશ્વ વચ્ચે કડી સમાન ગણાયો.`]],
-  [180, `કયા આવરણમાં ઋતુઓ, વાદળા, વરસાદ અને ચક્રવાત વગેરે જોવા મળતા નથી અને જેટ વિમાનો ઝડપથી ઊડી શકે છે?`, [`સમતાપ આવરણ`,`ક્ષોભ આવરણ`,`મધ્યાવરણ`,`ઉષ્મા આવરણ`], `A`, [`સમતાપ આવરણમાં હવામાનની ઘટનાઓ થતી નથી, એટલે જેટ વિમાનો સરળતાથી ઊડે છે.`]]
+// ==================== SOURCE DATASET: ALL 180 NMMS 2024-25 SET A QUESTIONS ====================
+// Format: [num, questionText, [optA, optB, optC, optD], validKeysArray, explanationLinesArray, category]
+// validKeysArray: ['B'] or ['A','D'] or ['GRACE']
+const QUESTIONS = [
+[1,`ક્રમમાં આગળનો નંબર: 3, 6, 12, 24, 48, ....?`,[`100`,`96`,`64`,`72`],[`B`],[`દરેક સંખ્યા પહેલાની સંખ્યા કરતાં 2 ગણી છે: 3×2 = 6, 6×2 = 12, 12×2 = 24, 24×2 = 48.`,`એટલે 48 × 2 = 96.`],`MAT`],
+[2,`ક્રમમાં આગળની સંખ્યા: 1, 1, 2, 9, 5, 8, ....?`,[`13`,`11`,`10`,`9`],[`GRACE`],[`પ્રશ્નમાં છાપભૂલ છે: "9" ની જગ્યાએ "3" હોવું જોઈએ, એટલે શ્રેણી 1, 1, 2, 3, 5, 8 બને.`,`આ ફિબોનાચી શ્રેણી છે (પાછળની બે સંખ્યાનો સરવાળો). સાચી શ્રેણી મુજબ આગળ 5 + 8 = 13 આવે.`,`છાપભૂલને કારણે બોર્ડે ગ્રેસ ગુણ આપ્યા.`],`MAT`],
+[3,`પેટર્નમાં આગળની સંખ્યા: 3, 9, 27, 81, ....?`,[`243`,`256`,`225`,`200`],[`A`],[`દરેક વખતે 3 વડે ગુણાય છે: 3×3 = 9, 9×3 = 27, 27×3 = 81.`,`81 × 3 = 243.`],`MAT`],
+[4,`પૃથ્વી પર પર્વતમાળાઓની પેટર્નનું શ્રેષ્ઠ વર્ણન:`,[`રેન્ડમ`,`ગોળાકાર`,`રેખીય`,`અનિયમિત`],[`A`,`D`],[`પર્વતમાળાઓ પૃથ્વી પર કોઈ નિશ્ચિત ગોઠવણી વગર, જુદી જુદી જગ્યાએ અને જુદી જુદી દિશામાં ફેલાયેલી છે.`,`તે ગોળ નથી. બોર્ડે રેખીય (C) માન્ય રાખ્યું નથી. (A) અને (D) બંને માન્ય.`],`MAT`],
+[5,`કયો આકાર ખંડ (એશિયા, આફ્રિકા, યુરોપ વગેરે) ની સીમાને શ્રેષ્ઠ રીતે રજૂ કરે?`,[`ચોરસ`,`ત્રિકોણાકાર`,`અનિયમિત`,`ગોળાકાર`],[`C`],[`ખંડોની સીમાઓ વાંકીચૂકી હોય છે, જેમાં અખાત, ખાડી અને દ્વીપકલ્પ હોય છે.`,`તેને ચોરસ, ત્રિકોણ કે ગોળ જેવા નિશ્ચિત આકારમાં ગોઠવી શકાતી નથી.`],`MAT`],
+[6,`છ બાજુઓવાળા બહુકોણનું નામ શું છે?`,[`સાર્થકકોણ`,`અષ્ટકોણ`,`પંચકોણ`,`ષટ્કોણ`],[`D`],[`ષટ્ = 6, એટલે 6 બાજુવાળો આકાર ષટ્કોણ.`,`અષ્ટકોણ = 8 બાજુ, પંચકોણ = 5 બાજુ.`],`MAT`],
+[7,`નિયમિત ષટ્કોણમાં ખૂણાઓ માટે શું સાચું છે?`,[`90°`,`60°`,`120°`,`180°`],[`C`],[`નિયમિત બહુકોણનો દરેક ખૂણો = (n − 2) × 180° ÷ n.`,`n = 6: (6 − 2) × 180 ÷ 6 = 720 ÷ 6 = 120°.`],`MAT`],
+[8,`ચોરસને તેના કેન્દ્રની આસપાસ 90° ફેરવવાથી કઈ આકૃતિ બને?`,[`લંબચોરસ`,`ચોરસ`,`સમભુજ`,`પેન્ટાગોન`],[`B`],[`ચોરસની ચારે બાજુ અને ચારે ખૂણા સમાન હોય છે.`,`90° ફેરવવાથી તે એ જ ચોરસ મળે છે, આકાર બદલાતો નથી.`],`MAT`],
+[9,`ષટ્કોણમાં કર્ણની સંખ્યા કેટલી છે?`,[`9`,`12`,`6`,`8`],[`GRACE`],[`કર્ણની સંખ્યા = n(n − 3) ÷ 2 = 6 × 3 ÷ 2 = 9, જે વિકલ્પ (A) છે.`,`કીમાં ગ્રેસ આપ્યા છે, પણ તેનું કારણ લખેલું નથી. એટલે આ પ્રશ્નમાં બધાને ગુણ મળશે.`],`MAT`],
+[10,`પુસ્તક : વાંચન :: ચમચી : ....?`,[`ચમચીદોડ`,`લેખન`,`હલાવવું`,`ખાવું`],[`D`],[`પુસ્તકનું કાર્ય વાંચવા માટે છે, તેમ ચમચીનું કાર્ય ખાવા માટે છે.`],`MAT`],
+[11,`જો લાઇટ ચાલુ હોય, તો સ્વીચ ચાલુ જ હોય. મેં જોયું કે સ્વીચ ચાલુ છે. ચોક્કસ શું કહી શકાય?`,[`લાઇટ ચાલુ છે`,`લાઇટ બંધ છે`,`લાઇટ ચાલુ હોઈ શકે કે ન પણ હોઈ શકે`,`લાઇટ ચોક્કસ બંધ છે`],[`C`],[`નિયમ: લાઇટ ચાલુ → સ્વીચ ચાલુ. ઊલટું જરૂરી નથી.`,`સ્વીચ ચાલુ હોય છતાં બલ્બ ફ્યુઝ હોઈ શકે અથવા વીજળી ગઈ હોઈ શકે. એટલે લાઇટ વિશે ચોક્કસ કહી શકાય નહીં.`],`MAT`],
+[12,`સસ્તન પ્રાણીને રૂંવાટી/વાળ હોય છે. કૂતરો સસ્તન પ્રાણી છે. કૂતરા વિશે શું અનુમાન થાય?`,[`કૂતરાને રૂંવાટી કે વાળ હોય છે`,`નથી હોતા`,`દાંત તીક્ષ્ણ છે`,`હાંફતી વખતે જીભ બહાર રહે છે`],[`A`],[`નિયમ: સસ્તન → રૂંવાટી. કૂતરો સસ્તન છે, એટલે તેને રૂંવાટી હોય.`,`(C) અને (D) સાચા હોઈ શકે, પણ તે આપેલી માહિતીમાંથી નીકળતા નિષ્કર્ષ નથી.`],`MAT`],
+[13,`બધાં ગુલાબ ફૂલ છે અને કેટલાંક ફૂલ ઝડપથી ઝાંખાં પડે છે. સાચો નિષ્કર્ષ?`,[`કેટલાંક ગુલાબ ઝડપથી ઝાંખાં પડે છે`,`કોઈ ગુલાબ ઝાંખાં પડતાં નથી`,`બધાં ગુલાબ ઝાંખાં પડે છે`,`કેટલાંક ફૂલો ગુલાબ નથી`],[`A`],[`ગુલાબ ફૂલોનો જ ભાગ છે અને કેટલાંક ફૂલ ઝાંખાં પડે છે, એટલે કેટલાંક ગુલાબ પણ ઝાંખાં પડે એમ માની શકાય.`,`(B) અને (C) ચોક્કસ કહી શકાય નહીં. (D) માટે કોઈ માહિતી નથી.`],`MAT`],
+[14,`"પુષ્કળ" સાથે સૌથી વધુ મળતો શબ્દ:`,[`દુર્લભ`,`પૂરગ્રસ્ત`,`ઘણું વધારે`,`પૂરતું`],[`C`],[`પુષ્કળ = ખૂબ વધારે, ભરપૂર.`,`દુર્લભ = ભાગ્યે જ મળે તેવું (વિરોધી), પૂરતું = જરૂર જેટલું.`],`MAT`],
+[15,`બે ટ્રેન એકબીજા તરફ 50 kph અને 60 kph ની ઝડપે, શરૂઆતમાં 220 કિમી દૂર. મળવામાં કેટલો સમય?`,[`2 કલાક`,`2.5 કલાક`,`3 કલાક`,`3.5 કલાક`],[`A`],[`સામસામે જતી ટ્રેનોની ઝડપ ઉમેરાય: 50 + 60 = 110 km/h.`,`સમય = અંતર ÷ ઝડપ = 220 ÷ 110 = 2 કલાક.`],`MAT`],
+[16,`શર્મિષ્ઠા > આરતી, આરતી > ગીતા, ગીતા > લીલા (ઉંમરમાં મોટી). સાચું વિધાન?`,[`શર્મિષ્ઠા લીલા કરતાં નાની`,`શર્મિષ્ઠા લીલા કરતાં મોટી`,`આરતી શર્મિષ્ઠા કરતાં મોટી`,`લીલા આરતી કરતાં મોટી`],[`B`],[`ક્રમ: શર્મિષ્ઠા > આરતી > ગીતા > લીલા.`,`શર્મિષ્ઠા સૌથી મોટી અને લીલા સૌથી નાની છે.`],`MAT`],
+[17,`મહિલા કહે છે, "આ મારા પતિના ભાઈની પત્ની છે." તેનો સંબંધ?`,[`નણંદ`,`પુત્રવધૂ`,`દેરાણી`,`સાસુ`],[`C`],[`પતિનો ભાઈ = દિયર/જેઠ, અને તેની પત્ની = દેરાણી/જેઠાણી. વિકલ્પોમાં દેરાણી છે.`,`નણંદ = પતિની બહેન, સાસુ = પતિની માતા.`],`MAT`],
+[18,`શ્રેણીમાં ખૂટતો નંબર: 1, 3, 7, 15, 31, ....?`,[`61`,`63`,`65`,`67`],[`B`],[`તફાવત: 2, 4, 8, 16. દર વખતે બમણો થાય છે, એટલે હવે 32.`,`31 + 32 = 63.`],`MAT`],
+[19,`સમસ્યા હલ કરવાનો સૌથી તાર્કિક રસ્તો:`,[`અનુમાન કરી શ્રેષ્ઠની આશા રાખવી`,`પેટર્ન શોધવી અને કારણો સમજવા`,`ભૂતકાળના અનુભવો અવગણવા`,`ચકાસણી વિના બીજાના મંતવ્ય પર આધાર રાખવો`],[`B`],[`તાર્કિક રીત એટલે નિરીક્ષણ, પેટર્ન અને કારણ-પરિણામ સમજવાં. બાકીના ત્રણેય અતાર્કિક છે.`],`MAT`],
+[20,`જટિલ સમસ્યામાં વિવેચનાત્મક વિચારસરણીનું પ્રથમ પગલું:`,[`નિષ્કર્ષ પર જાઓ`,`માહિતી એકત્રિત કરો અને સમસ્યાને સમજો`,`જાતે વિચાર્યા વિના બીજાના મંતવ્ય પૂછો`,`સમસ્યાને અવગણો`],[`B`],[`પહેલાં સમસ્યા સમજવી અને માહિતી ભેગી કરવી, પછી વિશ્લેષણ કરી નિષ્કર્ષ કાઢવો.`],`MAT`],
+[21,`મિત્ર કહે છે ગાજર ખાવાથી દૃષ્ટિ સુધરે છે. દાવાનું મૂલ્યાંકન કરવાનો શ્રેષ્ઠ અભિગમ:`,[`મિત્રએ કહ્યું એટલે સાચું માનો`,`વિશ્વસનીય સ્રોતોમાં વૈજ્ઞાનિક પુરાવા શોધો`,`મિત્રને કહો કે તે ખોટો છે`,`અવગણો`],[`B`],[`કોઈ પણ દાવો પુરાવા અને વિશ્વસનીય સ્રોતથી તપાસીને જ સ્વીકારાય. આંધળો વિશ્વાસ, પુરાવા વિના ખોટો કહેવું કે અવગણવું ત્રણેય ખોટા છે.`],`MAT`],
+[22,`મુશ્કેલ પરિસ્થિતિમાં નિર્ણય લેતી વખતે શું કરવું?`,[`ફક્ત લાગણીના આધારે`,`ફાયદા-ગેરફાયદાનું વિશ્લેષણ અને લાંબા ગાળાના પરિણામોનો વિચાર`,`બીજા કરે તેમ કરવું`,`તણાવ ટાળવા ઝડપથી નિર્ણય`],[`B`],[`સારો નિર્ણય વિચારપૂર્વક, બંને બાજુ તોલીને અને ભવિષ્યના પરિણામો જોઈને લેવાય.`],`MAT`],
+[23,`"2 રબરની કિંમત રૂ. 1.50 તો 10 રબરની કિંમત?" ઉકેલવાની સૌથી સારી રીત:`,[`1.50 × 10`,`1.50 ÷ 2 પછી × 10`,`10 ÷ 2 કેલ્ક્યુલેટરથી`,`1.50 ને દસ વાર ઉમેરો`],[`B`],[`પહેલાં 1 રબર: 1.50 ÷ 2 = રૂ. 0.75.`,`પછી 10 રબર: 0.75 × 10 = રૂ. 7.50.`,`(A) માં 1.50 × 10 = 15 આવે, જે 20 રબરની કિંમત છે, એટલે ખોટું.`],`MAT`],
+[24,`વસ્તુની કિંમત 25% વધે અને પછી 25% ઘટે તો કુલ શું થાય?`,[`25% વધે`,`25% ઘટે`,`એ જ રહે`,`25% થી વધુ ઘટે`],[`GRACE`],[`મૂળ કિંમત 100 લો. 25% વધતાં 125. હવે 125 ના 25% = 31.25 ઘટે, એટલે 93.75.`,`કુલ ઘટાડો = 6.25%. એટલે કિંમત ઘટે છે, પણ 25% જેટલી નહીં.`,`ચારમાંથી એક પણ વિકલ્પ સાચો નથી, એટલે બોર્ડે ગ્રેસ આપ્યા.`],`MAT`],
+[25,`પિતાની ઉંમર દીકરા કરતાં 5 ગણી છે. 20 વર્ષ પછી પિતા દીકરા કરતાં 3 ગણા મોટા થશે. પિતાની હાલની ઉંમર?`,[`80`,`90`,`100`,`110`],[`C`],[`દીકરો = x, પિતા = 5x. 20 વર્ષ પછી: 5x + 20 = 3(x + 20).`,`5x + 20 = 3x + 60, એટલે 2x = 40, x = 20.`,`પિતા = 5 × 20 = 100 વર્ષ. ચકાસણી: 20 વર્ષ પછી 120 = 3 × 40.`],`MAT`],
+[26,`જયકુમાર કોકિલાબેનના પુત્ર છે. દક્ષાબેન કોકિલાબેનની બહેન છે. રઈબેન દક્ષાબેનનાં માતા છે. સુરેશભાઈ રઈબેનના પુત્ર છે. સાચું વિધાન?`,[`જયકુમાર અને સુરેશભાઈ પિતરાઈ ભાઈઓ`,`સુરેશભાઈ જયકુમારના મામા`,`દક્ષાબેન જયકુમારની ફોઈ`,`કોકિલાબેન અને સુરેશભાઈ પિતરાઈ`],[`B`],[`દક્ષા અને કોકિલા બહેનો છે, બંનેનાં માતા રઈબેન.`,`સુરેશ રઈબેનનો પુત્ર, એટલે કોકિલાનો ભાઈ.`,`જયકુમાર કોકિલાનો પુત્ર છે, એટલે માતાનો ભાઈ = મામા.`],`MAT`],
+[27,`માર્ચ : ઓગસ્ટ :: C : ....?`,[`G`,`I`,`H`,`J`],[`C`],[`માર્ચ 3 જો મહિનો, ઓગસ્ટ 8 મો. એટલે 3 → 8 (+5).`,`C મૂળાક્ષરમાં 3 જો અક્ષર છે. 3 + 5 = 8 મો અક્ષર H.`],`MAT`],
+[28,`10 cm × 8 cm × 8 cm ના લંબઘનને 2 cm બાજુવાળા સમઘનમાં વિભાજિત કરતાં કુલ કેટલા સમઘન બને?`,[`70`,`60`,`88`,`80`],[`D`],[`લંબાઈમાં 10 ÷ 2 = 5, પહોળાઈમાં 8 ÷ 2 = 4, ઊંચાઈમાં 8 ÷ 2 = 4.`,`કુલ = 5 × 4 × 4 = 80. (અથવા 640 ÷ 8 = 80).`],`MAT`],
+[29,`5⁴ અને 4⁵ વચ્ચે કયો સંબંધ સાચો?`,[`=`,`<`,`>`,`લગભગ =`],[`B`],[`5⁴ = 5×5×5×5 = 625.`,`4⁵ = 4×4×4×4×4 = 1024.`,`625 < 1024, એટલે 5⁴ < 4⁵.`],`MAT`],
+[30,`દીપકભાઈ રવિભાઈના ભાઈ છે. રેખાબેન અતુલભાઈનાં બહેન છે. રવિભાઈ રેખાબેનના પુત્ર છે. દીપકભાઈ રેખાબેનના શું થાય?`,[`પુત્ર`,`ભાઈ`,`ભાણા`,`માતા`],[`A`],[`રવિ રેખાબેનનો પુત્ર છે. દીપક રવિનો ભાઈ છે, એટલે દીપક પણ રેખાબેનનો પુત્ર.`,`અતુલભાઈની વાત માત્ર વધારાની માહિતી છે.`],`MAT`],
+[31,`મીઠું : NaCl :: પાણી : ....?`,[`H₃O⁺`,`NaOH`,`H₂O`,`OH⁻`],[`C`],[`મીઠાનું સૂત્ર NaCl છે, તેમ પાણીનું સૂત્ર H₂O છે.`],`MAT`],
+[32,`રાષ્ટ્રીય વિજ્ઞાન દિવસ : 28 ફેબ્રુઆરી :: રાષ્ટ્રીય ગણિત દિવસ : ....?`,[`22 માર્ચ`,`22 ઓગસ્ટ`,`22 સપ્ટેમ્બર`,`22 ડિસેમ્બર`],[`D`],[`ગણિતશાસ્ત્રી શ્રીનિવાસ રામાનુજનનો જન્મદિવસ 22 ડિસેમ્બર છે. તે દિવસે રાષ્ટ્રીય ગણિત દિવસ ઉજવાય છે.`],`MAT`],
+[33,`સવારે 9:00 વાગે પાયલ મેદાનમાં ઊભી છે. તેનો પડછાયો કઈ દિશામાં પડશે?`,[`પૂર્વ`,`પશ્ચિમ`,`ઉત્તર`,`દક્ષિણ`],[`B`],[`સવારે સૂર્ય પૂર્વ દિશામાં હોય છે.`,`પડછાયો સૂર્યની વિરુદ્ધ દિશામાં પડે, એટલે પશ્ચિમ.`],`MAT`],
+[34,`સ્નેહલ વર્ગમાં ઉપરથી 27 મા અને નીચેથી 20 મા ક્રમે છે. વર્ગમાં કેટલા વિદ્યાર્થી?`,[`45`,`46`,`47`,`48`],[`B`],[`કુલ = ઉપરનો ક્રમ + નીચેનો ક્રમ − 1 = 27 + 20 − 1 = 46.`,`સ્નેહલ બંને ગણતરીમાં આવી ગઈ, એટલે એક વાર બાદ કરવાનું.`],`MAT`],
+[35,`ACE, FHJ, KMO, ....?`,[`PQR`,`QRS`,`PRT`,`SRQ`],[`C`],[`અક્ષરોના ક્રમાંક: ACE = 1, 3, 5. FHJ = 6, 8, 10. KMO = 11, 13, 15.`,`દરેક જૂથમાં 2 ના અંતરે અક્ષરો છે, અને દરેક જૂથ 5 આગળ વધે છે.`,`હવે 16, 18, 20 = P, R, T, એટલે PRT.`],`MAT`],
+[36,`Ant, Apple, Animal, Arrange, Accept ને શબ્દકોશ ક્રમમાં ગોઠવો.`,[`Animal, Apple, Ant, Accept, Arrange`,`Arrange, Ant, Apple, Accept, Animal`,`Accept, Animal, Ant, Apple, Arrange`,`Apple, Ant, Animal, Accept, Arrange`],[`C`],[`બીજો અક્ષર: Accept (c), Animal (n), Ant (n), Apple (p), Arrange (r).`,`Animal અને Ant માં ત્રીજો અક્ષર i પહેલાં અને t પછી.`],`MAT`],
+[37,`'CARRIER' ના મૂળાક્ષરોમાંથી કયો શબ્દ બની શકે?`,[`FEAR`,`DEAR`,`REAR`,`CARD`],[`C`],[`CARRIER માં અક્ષરો: C, A, R, R, I, E, R.`,`REAR માટે R, E, A, R બધા ઉપલબ્ધ છે. FEAR માં F અને DEAR/CARD માં D નથી.`],`MAT`],
+[38,`QUESTION નું જળપ્રતિબિંબ શોધો.`,[`વિકલ્પ (A)`,`વિકલ્પ (B)`,`વિકલ્પ (C)`,`વિકલ્પ (D)`],[`D`],[`જળપ્રતિબિંબ એટલે પાણીમાં દેખાતું પ્રતિબિંબ. તેમાં અક્ષરો ઉપર-નીચે ઊલટા દેખાય, પણ ડાબેથી જમણે અક્ષરોનો ક્રમ એ જ રહે.`,`ડાબી-જમણી ઊલટાવાળા વિકલ્પો (દર્પણ પ્રતિબિંબ) ખોટા છે.`],`MAT`],
+[39,`આપેલ આકૃતિનું જળપ્રતિબિંબ શોધો. (ડાબી બાજુ પટ્ટી, ઉપર ત્રાંસી રેખા, નીચે ▷)`,[`વિકલ્પ (A)`,`વિકલ્પ (B)`,`વિકલ્પ (C)`,`વિકલ્પ (D)`],[`A`],[`જળપ્રતિબિંબમાં આકૃતિ ઉપર-નીચે ફરે છે, ડાબી-જમણી બાજુ બદલાતી નથી.`,`એટલે પટ્ટી ડાબે જ રહે, ▷ ઉપર આવે અને ત્રાંસી રેખા નીચે જાય.`],`MAT`],
+[40,`પારદર્શક કાગળને જમણેથી ડાબે ફોલ્ડ કરતાં કેવી આકૃતિ દેખાશે? (ચોરસમાં ત્રાંસી રેખા, વચ્ચે ટપકાંવાળી ઊભી રેખા)`,[`વિકલ્પ (A)`,`વિકલ્પ (B)`,`વિકલ્પ (C)`,`વિકલ્પ (D)`],[`A`],[`ટપકાંવાળી રેખા પરથી જમણો ભાગ ડાબા ભાગ પર વળે છે.`,`બંને રેખાઓ ભેગી થઈને ફોલ્ડ રેખા પર મળતી ">" જેવી આકૃતિ બને છે.`],`MAT`],
+[41,`તારાની આકૃતિમાં 54, 162, 18, 6, 2 અને ? છે. ? ની જગ્યાએ શું આવે?`,[`169`,`486`,`480`,`500`],[`B`],[`2 થી શરૂ કરી ગોળ ફરતાં: 2 → 6 → 18 → 54 → 162 → ?.`,`દરેક વખતે 3 વડે ગુણાય છે. 162 × 3 = 486.`],`MAT`],
+[42,`આકૃતિમાં કુલ કેટલા ચોરસ છે? (મોટો ચોરસ, વચ્ચે કાટખૂણે બે રેખા, કેન્દ્રમાં નાનો ચોરસ)`,[`8`,`7`,`10`,`12`],[`C`],[`સૌથી મોટો ચોરસ: 1. મોટા ચોરસના 4 ભાગ: 4.`,`વચ્ચેનો નાનો ચોરસ: 1. નાના ચોરસના અંદરના 4 ભાગ: 4.`,`કુલ = 1 + 4 + 1 + 4 = 10.`],`MAT`],
+[43,`શ્રેણી પૂર્ણ કરો: 1Z, 3X, 5V, ....`,[`6U`,`7T`,`7W`,`6T`],[`B`],[`સંખ્યાઓ: 1, 3, 5, 7 (+2 દરેક વખતે).`,`અક્ષરો: Z, X, V, T (એક અક્ષર છોડીને પાછળ). એટલે 7T.`],`MAT`],
+[44,`શ્રેણી પૂર્ણ કરો: 1/2, 3/2, 5/2, 7/2, ....`,[`8/2`,`7/3`,`9/3`,`9/2`],[`D`],[`છેદ બધે 2 છે. અંશ 1, 3, 5, 7 (+2 દરેક વખતે).`,`આગળ અંશ 9, એટલે 9/2.`],`MAT`],
+[45,`શ્રેણી પૂર્ણ કરો: B, H, M, Q, T, ....`,[`U`,`W`,`V`,`X`],[`C`],[`ક્રમાંક: B=2, H=8, M=13, Q=17, T=20.`,`તફાવત: 6, 5, 4, 3, એટલે હવે 2. 20 + 2 = 22 = V.`],`MAT`],
+[46,`આકૃતિમાં વધુમાં વધુ કેટલા લંબચોરસ છે?`,[`6`,`8`,`9`,`10`],[`GRACE`],[`કીમાં ગ્રેસ આપ્યા છે, એટલે બધાને ગુણ મળશે. સ્કેનમાં આકૃતિ ઝાંખી હોવાથી ગ્રેસ.`],`MAT`],
+[47,`આકૃતિમાં વધુમાં વધુ કેટલા ચોરસ છે?`,[`22`,`18`,`20`,`16`],[`B`],[`આકૃતિની હરોળમાં 1, 3, 5, 3, 1 ખાનાં છે. 1×1 ના ચોરસ: 1 + 3 + 5 + 3 + 1 = 13.`,`2×2 ના ચોરસ: વચ્ચેના ભાગમાં 4. 3×3 નો ચોરસ: વચ્ચે 1.`,`કુલ = 13 + 4 + 1 = 18.`],`MAT`],
+[48,`PICTURE ના મૂળાક્ષરોને અંગ્રેજી ક્રમમાં ગોઠવો.`,[`CEIPRUT`,`CEIRUTP`,`CEIPRTU`,`CEIPURT`],[`C`],[`અક્ષરો: P, I, C, T, U, R, E.`,`A-Z ક્રમમાં: C, E, I, P, R, T, U = CEIPRTU.`],`MAT`],
+[49,`100 મીટર લાંબી ટ્રેન 150 મીટર લાંબા પ્લેટફોર્મની બરાબર મધ્યમાં ઊભી છે. સંપૂર્ણ બહાર નીકળવા ઓછામાં ઓછું કેટલું અંતર કાપવું પડે?`,[`100 મી`,`125 મી`,`150 મી`,`175 મી`],[`B`],[`ટ્રેન મધ્યમાં હોવાથી બંને બાજુ પ્લેટફોર્મ (150 − 100) ÷ 2 = 25 m ખાલી છે.`,`પાછલો છેડો બહાર નીકળે ત્યાં સુધી 25 m + ટ્રેનની લંબાઈ 100 m = 125 m.`],`MAT`],
+[50,`ફળોને મોટાથી નાના કદના ક્રમમાં ગોઠવો: A. લીંબુ, B. તડબૂચ, C. કેરી, D. દ્રાક્ષ.`,[`D, B, A, C`,`D, A, B, C`,`D, A, C, B`,`B, C, A, D`],[`D`],[`સૌથી મોટું તડબૂચ (B), પછી કેરી (C), પછી લીંબુ (A), સૌથી નાની દ્રાક્ષ (D).`],`MAT`],
+[51,`એક સંખ્યાને 6 વડે ભાગતાં શેષ 0 છે. એ જ સંખ્યાને 3 વડે ભાગતાં શેષ કેટલી રહેશે?`,[`0`,`2`,`3`,`6`],[`A`],[`6 વડે નિઃશેષ ભાગી શકાય તો સંખ્યા 6 નો ગુણક છે.`,`6 = 2 × 3, એટલે એ સંખ્યા 3 નો પણ ગુણક છે. દા.ત. 12 ÷ 3 = 4, શેષ 0.`],`MAT`],
+[52,`KIRAN = IKRNA, TWINKLE = IWTNELK, તો RUTVI = ?`,[`URTVI`,`RUTIV`,`IVTUR`,`URTIV`],[`D`],[`નિયમ: શરૂઆતનો ભાગ ઊલટો, વચ્ચેનો એમ જ, અંતનો ભાગ ઊલટો.`,`RUTVI: RU → UR, T એમ જ, VI → IV. એટલે URTIV.`],`MAT`],
+[53,`AGE = ZTV, COLD = XLOW, તો SAME = ?`,[`ZHNV`,`HZNV`,`HZVN`,`ZHVN`],[`B`],[`નિયમ: દરેક અક્ષરની જગ્યાએ તેનો સામેનો અક્ષર (A↔Z, B↔Y, ...).`,`SAME: S→H, A→Z, M→N, E→V. એટલે HZNV.`],`MAT`],
+[54,`અંક: 2 4 6 8 | 1 3 5 | 7 9 0 અને મૂળાક્ષર: ક લ ર વ | અ જ ય | મ ગ ન. અમનરમ = ?`,[`17076`,`17706`,`17067`,`17760`],[`C`],[`કોડ: અ=1, મ=7, ન=0, ર=6, મ=7.`,`એટલે અમનરમ = 17067.`],`MAT`],
+[55,`તાર્કિક રીતે ઉતરતા ક્રમમાં ગોઠવો: 1. યુરેનસ 2. શનિ 3. નેપ્ચ્યુન 4. ગુરુ`,[`1,2,3,4`,`2,3,1,4`,`4,2,1,3`,`4,2,3,1`],[`C`],[`ગ્રહોના કદનો ઉતરતો ક્રમ: ગુરુ (4) > શનિ (2) > યુરેનસ (1) > નેપ્ચ્યુન (3).`],`MAT`],
+[56,`તાર્કિક રીતે ઉતરતા ક્રમમાં ગોઠવો: 1. સાબરકાંઠા 2. ભારત 3. એશિયા 4. ગુજરાત`,[`3,2,4,1`,`3,2,1,4`,`3,1,2,4`,`3,1,4,2`],[`A`],[`મોટા વિસ્તારથી નાના તરફ: એશિયા (3) > ભારત (2) > ગુજરાત (4) > સાબરકાંઠા (1).`],`MAT`],
+[57,`તાર્કિક રીતે ક્રમમાં ગોઠવો: 1. ફૂલ 2. બીજ 3. ફળ 4. છોડ`,[`2,1,3,4`,`2,1,4,3`,`2,4,3,1`,`2,4,1,3`],[`GRACE`],[`વનસ્પતિના જીવનક્રમ મુજબ બીજ → છોડ → ફૂલ → ફળ (2, 4, 1, 3) બને છે.`,`કીમાં આ પ્રશ્નમાં ગ્રેસ આપ્યા છે, એટલે બધાને ગુણ મળશે.`],`MAT`],
+[58,`અરીસો આકૃતિની જમણી બાજુ છે. અરીસામાં કેવી દેખાશે? (ઉપર: ચોરસ, વર્તુળ. નીચે: ત્રિકોણ, લંબચોરસ)`,[`વિકલ્પ (A)`,`વિકલ્પ (B)`,`વિકલ્પ (C)`,`વિકલ્પ (D)`],[`C`],[`અરીસો ઊભો (જમણી બાજુ) હોય ત્યારે ડાબી-જમણી બાજુ અદલાબદલી થાય, ઉપર-નીચે નહીં.`,`ઉપર વર્તુળ-ચોરસ અને નીચે લંબચોરસ-ત્રિકોણ વિકલ્પ (C) માં છે.`],`MAT`],
+[59,`અરીસામાં જોવાથી આકૃતિ કેવી દેખાશે? (ઉપર "ㄏ" જેવી રેખા અને જમણી તરફ તીર, ડાબા ખૂણે વર્તુળ)`,[`વિકલ્પ (A)`,`વિકલ્પ (B)`,`વિકલ્પ (C)`,`વિકલ્પ (D)`],[`B`],[`અરીસામાં ડાબી-જમણી બાજુ બદલાય છે. તીર જમણેથી ડાબી તરફ થાય, વર્તુળ જમણા ખૂણે જાય.`,`આ બધું વિકલ્પ (B) માં છે.`],`MAT`],
+[60,`જયપુર : રાજસ્થાન :: લખનૌ : ?`,[`ગુજરાત`,`મધ્યપ્રદેશ`,`બિહાર`,`ઉત્તરપ્રદેશ`],[`D`],[`જયપુર રાજસ્થાનની રાજધાની છે, તેમ લખનૌ ઉત્તરપ્રદેશની રાજધાની છે.`],`MAT`],
+[61,`થરમોમીટર : તાપમાન :: ઘડિયાળ : ?`,[`કલાક`,`સમય`,`સેકન્ડ`,`મિનિટ`],[`B`],[`થરમોમીટર તાપમાન માપે છે, તેમ ઘડિયાળ સમય માપે છે.`],`MAT`],
+[62,`3 : 27 :: 5 : ?`,[`25`,`120`,`125`,`50`],[`C`],[`3 નો ઘન = 3 × 3 × 3 = 27.`,`5 નો ઘન = 5 × 5 × 5 = 125.`],`MAT`],
+[63,`ફ્રોક : કાપડ :: ખુરશી : ?`,[`ટેબલ`,`બેન્ચ`,`લાકડું`,`ઓરડો`],[`C`],[`ફ્રોક કાપડમાંથી બને છે, તેમ ખુરશી લાકડામાંથી બને છે.`],`MAT`],
+[64,`52 પત્તાની ગંજીપાની થોડીમાંથી યાદચ્છિક રીતે એક પત્તું કાઢતાં તે લાલનો એક્કો હોવાની સંભાવના?`,[`1/52`,`3/52`,`4/52`,`5/52`],[`A`],[`"લાલનો એક્કો" એ ગંજીપાનું એક જ ચોક્કસ પત્તું છે, એટલે અનુકૂળ પરિણામ = 1.`,`કુલ પત્તાં = 52. એટલે સંભાવના = 1/52.`],`MAT`],
+[65,`2.5 કલાકની મિનિટ કેટલી થાય?`,[`120`,`140`,`150`,`250`],[`C`],[`1 કલાક = 60 મિનિટ. 2.5 × 60 = 150 મિનિટ.`],`MAT`],
+[66,`(1)²⁰²⁵ + (2025)⁰ = ?`,[`1`,`2`,`0`,`2025`],[`B`],[`1 ની કોઈ પણ ઘાત 1 જ થાય, એટલે (1)²⁰²⁵ = 1.`,`કોઈ પણ શૂન્યેતર સંખ્યાની ઘાત 0 હોય તો 1 થાય. કુલ = 1 + 1 = 2.`],`MAT`],
+[67,`7 જાન્યુઆરીએ મંગળવાર હોય તો 21 જાન્યુઆરીએ કયો વાર આવશે?`,[`મંગળવાર`,`બુધવાર`,`ગુરુવાર`,`સોમવાર`],[`A`],[`21 − 7 = 14 દિવસનો તફાવત = 2 અઠવાડિયાં, એટલે વાર એ જ રહે: મંગળવાર.`],`MAT`],
+[68,`સોફિયા પશ્ચિમમાં 2 km ચાલે છે. પછી ડાબા હાથે 1 km, પછી જમણા હાથે 1 km ચાલે છે. હવે કઈ દિશા?`,[`ઉત્તર`,`દક્ષિણ`,`પશ્ચિમ`,`પૂર્વ`],[`C`],[`પશ્ચિમ તરફ મોઢું હોય ત્યારે ડાબે વળે તો દક્ષિણ તરફ જાય.`,`દક્ષિણ તરફ મોઢું હોય ત્યારે જમણે વળે તો પશ્ચિમ તરફ જાય.`],`MAT`],
+[69,`વેન આકૃતિ: ફક્ત હિન્દી 67, હિન્દી+ગુજરાતી 23, હિન્દી+અંગ્રેજી 18, ત્રણેય 15, ફક્ત ગુજરાતી 54, ફક્ત અંગ્રેજી 73, ગુજ+અંગ્રે 21. ફક્ત ગુજરાતી બોલતા લોકો?`,[`21`,`23`,`54`,`15`],[`C`],[`ફક્ત ગુજરાતીનો ભાગ એટલે લંબચોરસનો એવો ભાગ જે ત્રિકોણ કે વર્તુળ સાથે ભળેલો ન હોય. તેમાં 54 લખ્યું છે.`],`MAT`],
+[70,`વેન આકૃતિ મુજબ હિન્દી અને અંગ્રેજી બોલતા લોકોની સંખ્યા?`,[`18`,`15`,`21`,`23`],[`GRACE`],[`હિન્દી અને અંગ્રેજી બંને બોલનારા = 18 + 15 = 33.`,`વિકલ્પોમાં 33 નથી, એટલે બોર્ડે ગ્રેસ આપ્યા.`],`MAT`],
+[71,`વેન આકૃતિ મુજબ હિન્દી, ગુજરાતી અને અંગ્રેજી ત્રણેય બોલતા લોકોની સંખ્યા?`,[`18`,`15`,`23`,`21`],[`B`],[`ત્રણેય આકારો જ્યાં એકબીજાને છેદે છે તે વચ્ચેના ભાગમાં 15 લખ્યું છે.`],`MAT`],
+[72,`ગુજરાતી : ગરબા, પશ્ચિમ બંગાળ : ?`,[`ઓણમ`,`હોળી`,`દુર્ગાપૂજા`,`ગણેશ ચતુર્થી`],[`C`],[`ગરબા ગુજરાતનો જાણીતો ઉત્સવ છે, તેમ પશ્ચિમ બંગાળનો જાણીતો ઉત્સવ દુર્ગાપૂજા છે.`],`MAT`],
+[73,`કચ્છ : ભુજ, નર્મદા : ?`,[`કેવડિયા`,`આહવા`,`મોડાસા`,`રાજપીપળા`],[`D`],[`કચ્છ જિલ્લાનું વડું મથક ભુજ છે, તેમ નર્મદા જિલ્લાનું વડું મથક રાજપીપળા છે.`],`MAT`],
+[74,`અલગ પડતો જિલ્લો શોધો.`,[`જામનગર`,`ભાવનગર`,`રાજકોટ`,`સુરત`],[`C`,`D`],[`રાજકોટ: બાકીના ત્રણને દરિયાકિનારો છે, રાજકોટને નથી.`,`સુરત: બાકીના ત્રણ સૌરાષ્ટ્રના છે, સુરત દક્ષિણ ગુજરાતમાં છે. બંને માન્ય.`],`MAT`],
+[75,`અલગ પડતી રમત શોધો.`,[`ક્રિકેટ`,`ચેસ`,`વોલીબોલ`,`કબડ્ડી`],[`B`],[`ક્રિકેટ, વોલીબોલ, કબડ્ડી મેદાનની રમતો છે. ચેસ ઇનડોર બુદ્ધિની રમત છે.`],`MAT`],
+[76,`દેશ : રાષ્ટ્રપતિ, રાજ્ય : ?`,[`મુખ્યમંત્રી`,`રાજ્યપાલ`,`ધારાસભ્ય`,`સંસદસભ્ય`],[`B`],[`દેશના બંધારણીય વડા રાષ્ટ્રપતિ છે, તેમ રાજ્યના બંધારણીય વડા રાજ્યપાલ છે.`],`MAT`],
+[77,`ગામ : સરપંચ, મહાનગર પાલિકા : ?`,[`પ્રમુખ`,`ધારાસભ્ય`,`કમિશનર`,`મેયર`],[`D`],[`ગામના વડા સરપંચ છે, તેમ મહાનગર પાલિકાના ચૂંટાયેલા વડા મેયર છે.`],`MAT`],
+[78,`ભારતના રાજ્યોને પૂર્વથી પશ્ચિમ ગોઠવો: 1. બિહાર 2. મધ્યપ્રદેશ 3. નાગાલેન્ડ 4. સિક્કિમ`,[`4-3-1-2`,`3-1-4-2`,`4-2-1-3`,`3-4-1-2`],[`D`],[`સૌથી પૂર્વમાં નાગાલેન્ડ (3) → સિક્કિમ (4) → બિહાર (1) → મધ્યપ્રદેશ (2).`],`MAT`],
+[79,`શહેરોને ઉત્તરથી દક્ષિણ ગોઠવો: 1. ભોપાલ 2. ચંદીગઢ 3. હૈદરાબાદ 4. જયપુર`,[`2-4-1-3`,`3-1-4-2`,`2-1-4-3`,`4-2-1-3`],[`A`],[`સૌથી ઉત્તરે ચંદીગઢ (2) → જયપુર (4) → ભોપાલ (1) → હૈદરાબાદ (3).`],`MAT`],
+[80,`કિંમત મુજબ ઓછાથી વધુ તરફ ગોઠવો: 1. તાંબુ 2. સોનુ 3. સ્ટીલ 4. ચાંદી 5. યુરેનિયમ`,[`3-1-4-2-5`,`1-3-4-2-5`,`3-1-5-4-2`,`1-3-4-5-2`],[`A`],[`સસ્તુંથી મોંઘું: સ્ટીલ (3) → તાંબુ (1) → ચાંદી (4) → સોનુ (2) → યુરેનિયમ (5).`],`MAT`],
+[81,`ખોટી જોડ ઓળખો.`,[`ગાંધીનગર - અક્ષરધામ`,`સાબરકાંઠા - પાવાગઢ`,`જૂનાગઢ - ગીરનાર`,`આણંદ - અમૂલ ડેરી`],[`B`],[`પાવાગઢ પંચમહાલ જિલ્લામાં આવેલું છે, સાબરકાંઠામાં નહીં.`],`MAT`],
+[82,`યોગ્ય જોડ: A. પર્યાવરણ દિન B. ગાંધી જયંતિ C. બાલ દિન D. શિક્ષક દિન (1. 14 નવે 2. 5 જૂન 3. 2 ઓક્ટો 4. 5 સપ્ટે)`,[`A-2, B-1, C-3, D-4`,`A-5, B-3, C-1, D-4`,`A-2, B-3, C-1, D-4`,`A-5, B-1, C-3, D-4`],[`C`],[`પર્યાવરણ દિન = 5 જૂન (2), ગાંધી જયંતિ = 2 ઓક્ટોબર (3), બાલ દિન = 14 નવેમ્બર (1), શિક્ષક દિન = 5 સપ્ટેમ્બર (4).`],`MAT`],
+[83,`ખોટું વિધાન શોધો: 1. ચંદ્રગ્રહણ પૂનમે થાય. 2. વસંત ઋતુ એટલે ચોમાસાની શરૂઆત. 3. શિશિર શિયાળામાં આવે. 4. નવરાત્રી શરદ ઋતુમાં હોય.`,[`2`,`2 અને 3`,`2 અને 4`,`1 અને 2`],[`A`],[`વિધાન 2 ખોટું છે: ચોમાસાની શરૂઆત વર્ષા ઋતુમાં થાય, વસંત ઋતુ એટલે ફાગણ-ચૈત્રની ઋતુ.`],`MAT`],
+[84,`સાચું વિધાન શોધો: 1. સિંહ જૂનાગઢ/ગીર સોમનાથમાં. 2. ઘુડખર કચ્છના રણમાં. 3. નળસરોવર પંખી અભ્યારણ. 4. વેળાવદર વાઘનું અભ્યારણ.`,[`1 અને 2`,`1, 2 અને 3`,`1 અને 3`,`બધાં જ`],[`B`],[`1, 2, 3 સાચાં છે. વેળાવદર કાળિયારનું અભ્યારણ છે, વાઘનું નહીં.`],`MAT`],
+[85,`આકૃતિમાં કઈ સંખ્યા એવી છે જે બધી જ આકૃતિમાં આવે છે?`,[`3`,`5`,`6`,`19`],[`A`],[`લંબચોરસ, વર્તુળ, નળાકાર અને ત્રિકોણ ચારેય આકારો જ્યાં ભેગા થાય છે ત્યાં 3 લખ્યું છે.`],`MAT`],
+[86,`આકૃતિમાં 3, 8, ?, 125, 27, 2, 4, 5 છે. ? ની જગ્યાએ શું આવે?`,[`8`,`16`,`64`,`32`],[`C`],[`સામસામેની સંખ્યાઓની જોડી: 3³=27, 5³=125, 2³=8.`,`એટલે 4 ની સામે 4³ = 64.`],`MAT`],
+[87,`પહેલી ત્રણ આકૃતિઓ વચ્ચેના સંબંધ પરથી ? ની જગ્યાએ સાચો વિકલ્પ શોધો.`,[`વિકલ્પ (A)`,`વિકલ્પ (B)`,`વિકલ્પ (C)`,`વિકલ્પ (D)`],[`A`],[`બહાર અને અંદરના આકાર અદલાબદલી થાય છે.`,`બહાર વર્તુળ, અંદર ચોરસ → બહાર ચોરસ (હેચિંગ), અંદર વર્તુળ (સફેદ) = (A).`],`MAT`],
+[88,`પહેલી ત્રણ આકૃતિઓ (તારો અને ઘટતી રેખાઓ) પરથી ? ની જગ્યાએ સાચો વિકલ્પ શોધો.`,[`વિકલ્પ (A)`,`વિકલ્પ (B)`,`વિકલ્પ (C)`,`વિકલ્પ (D)`],[`B`],[`આકૃતિઓમાં ક્રમશઃ રેખાઓ ઘટતી જાય છે. કી મુજબ ચોથી આકૃતિ બે રેખાઓવાળી "∧" આકારની વિકલ્પ (B) છે.`],`MAT`],
+[89,`એક સ્ત્રી પુરુષને આંગળી ચીંધીને કહે છે કે તેના ભાઈનો પિતા એ મારા દાદાનો એકમાત્ર પુત્ર છે. સંબંધ?`,[`પુરુષની મામી`,`પુરુષની દીકરી`,`પુરુષની બહેન`,`પુરુષની મા`],[`C`],[`"પુરુષના ભાઈનો પિતા" = પુરુષના પિતા. સ્ત્રીના દાદાનો એકમાત્ર પુત્ર = સ્ત્રીના પિતા.`,`બંનેના પિતા એક જ વ્યક્તિ છે, એટલે સ્ત્રી એ પુરુષની બહેન થાય.`],`MAT`],
+[90,`ક્રમિક 1 થી 20 સંખ્યાનો સરવાળો કેટલો થશે?`,[`200`,`210`,`220`,`420`],[`B`],[`સૂત્ર: n(n + 1) ÷ 2 = 20 × 21 ÷ 2 = 420 ÷ 2 = 210.`],`MAT`],
+[91,`ત્રિકોણોમાં (84, 14, 12), (81, 18, 9), (88, ?, 11). ? = ?`,[`16`,`8`,`18`,`9`],[`A`],[`નિયમ: ડાબી સંખ્યા = (જમણી × નીચેની) ÷ 2. (14×12÷2=84; 18×9÷2=81).`,`? × 11 ÷ 2 = 88 → ? = 16.`],`MAT`],
+[92,`ત્રણ ચોકઠાં: [4 8 / 3 2], [9 7 / 6 3], [5 9 / ? 5]. ? = ?`,[`2`,`3`,`4`,`5`],[`C`],[`4×8 = 32 → 3, 2. 9×7 = 63 → 6, 3.`,`5×9 = 45 → નીચે 4, 5. એટલે ? = 4.`],`MAT`],
+[93,`જૈમિન પાસે 21.6 મીટર લાંબું કાપડ છે. તેમાંથી 1.8 મીટરના કેટલા ટુકડા બને?`,[`10`,`12`,`20`,`16`],[`B`],[`ટુકડા = 21.6 ÷ 1.8 = 216 ÷ 18 = 12 ટુકડા.`],`MAT`],
+[94,`1/2 અને 1/3 ની સરાસરી શોધો.`,[`1/6`,`5/6`,`2/6`,`5/12`],[`D`],[`1/2 + 1/3 = 5/6.`,`સરાસરી = (5/6) ÷ 2 = 5/12.`],`MAT`],
+[95,`બાજુઓના માપની દૃષ્ટિએ કયો ત્રિકોણ શક્ય નથી?`,[`2, 3, 5 સે.મી.`,`3, 6, 7 સે.મી.`,`8, 6, 10 સે.મી.`,`10.2, 5.8, 4.5 સે.મી.`],[`A`],[`ત્રિકોણ માટે કોઈ પણ બે બાજુનો સરવાળો ત્રીજી બાજુ કરતાં વધુ હોવો જોઈએ.`,`(A) માં 2 + 3 = 5, જે 5 કરતાં વધુ નથી, એટલે શક્ય નથી.`],`MAT`],
+[96,`એક દુકાનદાર 150 રૂ. કિંમતનું રમકડું 22% ખોટ ખાઈને વેચે છે. વેચાણ કિંમત કેટલી?`,[`130 રૂ.`,`183 રૂ.`,`117 રૂ.`,`127 રૂ.`],[`C`],[`ખોટ = 150 × 22 ÷ 100 = 33 રૂ.`,`વેચાણ કિંમત = 150 − 33 = 117 રૂ.`],`MAT`],
+[97,`સંમેય સંખ્યાઓને ચડતા ક્રમમાં ગોઠવો: −3/7, −3/2, −3/4, −3/11.`,[`−3/7, −3/4, −3/2, −3/11`,`−3/11, −3/7, −3/4, −3/2`,`−3/4, −3/2, −3/11, −3/7`,`−3/2, −3/4, −3/7, −3/11`],[`D`],[`દશાંશમાં: −1.5 < −0.75 < −0.43 < −0.27.`,`એટલે −3/2, −3/4, −3/7, −3/11.`],`MAT`],
+[98,`ઘનની ધાર, ફલક અને શિરોબિંદુની અનુક્રમે સંખ્યા?`,[`15, 7, 10`,`12, 6, 8`,`15, 6, 11`,`8, 6, 12`],[`B`],[`ઘનને 12 ધાર, 6 ફલક અને 8 શિરોબિંદુ હોય છે. (ઓયલર સૂત્ર: 8 + 6 − 12 = 2).`],`MAT`],
+[99,`[7/3 × (−6/13)] + [7/5 × 6/13] = ?`,[`0`,`42/65`,`84/65`,`1`],[`GRACE`],[`પહેલો ભાગ: −14/13, બીજો ભાગ: 42/65. સરવાળો = −28/65.`,`આ જવાબ વિકલ્પોમાં નથી, એટલે બોર્ડે ગ્રેસ આપ્યા.`],`MAT`],
+[100,`એક નિયમિત બહુકોણ જેના પ્રત્યેક બહિષ્કોણનું માપ 60° હોય તેને ..... કહે છે.`,[`નિયમિત અષ્ટકોણ`,`ચતુષ્કોણ`,`નિયમિત ષટ્કોણ`,`ત્રિકોણ`],[`C`],[`બાજુઓની સંખ્યા = 360° ÷ 60° = 6.`,`6 બાજુવાળો નિયમિત બહુકોણ એટલે નિયમિત ષટ્કોણ.`],`MAT`],
+[101,`ઉર્દૂ ભાષા બોલતા વિદ્યાર્થીઓની ટકાવારી? (ગુજરાતી 40, અંગ્રેજી 12, ઉર્દૂ 9, હિન્દી 7, સિંધી 4)`,[`25%`,`36%`,`10%`,`12.5%`],[`D`],[`કુલ વિદ્યાર્થી = 40 + 12 + 9 + 7 + 4 = 72.`,`ઉર્દૂની ટકાવારી = 9 ÷ 72 × 100 = 12.5%.`],`MAT`],
+[102,`6, 9 અને 15 વડે નિઃશેષ ભાગી શકાય તેવી નાનામાં નાની પૂર્ણવર્ગ સંખ્યા?`,[`810`,`900`,`90`,`400`],[`B`],[`લ.સા.અ. = 90 = 2¹ × 3² × 5¹.`,`પૂર્ણવર્ગ માટે 2² × 3² × 5² = 4 × 9 × 25 = 900.`],`MAT`],
+[103,`તનુજાએ એક હારમાં 4 છોડ રોપ્યા. બે છોડ વચ્ચે ¾ મીટર અંતર. પ્રથમ અને છેલ્લા છોડ વચ્ચે અંતર?`,[`2¾ મી`,`3²⁄₄ મી`,`2¼ મી`,`9/4 મી`],[`C`,`D`],[`4 છોડ વચ્ચે 3 ગાળા = 3 × ¾ = 9/4 મી = 2¼ મી. (C અને D બંને માન્ય).`],`MAT`],
+[104,`આકૃતિ પરથી અંતઃકોણની જોડ ઓળખો.`,[`∠1 અને ∠2, ∠7 અને ∠8`,`∠1 અને ∠5, ∠2 અને ∠6`,`∠3 અને ∠5, ∠4 અને ∠6`,`∠3 અને ∠6, ∠4 અને ∠5`],[`C`],[`બે સમાંતર રેખાઓ વચ્ચે અને છેદિકાની એક જ બાજુએ આવેલા ખૂણા અંતઃકોણ કહેવાય: ∠3 અને ∠5, ∠4 અને ∠6.`],`MAT`],
+[105,`સંમેય સંખ્યાની કઈ જોડી સમાન નથી?`,[`−4/−5 = 4/5`,`−5/8 = 15/−24`,`1/−3 = 3/−9`,`−7/21 = 3/9`],[`D`],[`(D) −7/21 = −1/3, જ્યારે 3/9 = 1/3. ચિહ્ન અલગ છે.`],`MAT`],
+[106,`x = −2 માટે 4(2x − 1) + 3x + 11 ની કિંમત?`,[`−4`,`−25`,`25`,`29`],[`GRACE`],[`4(−5) + 3(−2) + 11 = −20 − 6 + 11 = −15.`,`−15 વિકલ્પોમાં નથી, એટલે ગ્રેસ આપ્યા.`],`MAT`],
+[107,`કઈ આકૃતિમાં અસંખ્ય સમમિતિ રેખાઓ દર્શાવી શકાય?`,[`નિયમિત ષટ્કોણ`,`લંબચોરસ`,`ચતુષ્કોણ`,`વર્તુળ`],[`D`],[`વર્તુળના દરેક વ્યાસ પર સમમિતિ રેખા મળે, અને વ્યાસ અસંખ્ય દોરી શકાય.`],`MAT`],
+[108,`નિયમિત બહુકોણના દરેક બહિષ્કોણનું માપ 20° હોય તો તેને કેટલી બાજુઓ હોય?`,[`16`,`18`,`20`,`24`],[`B`],[`બાજુઓ = 360° ÷ 20° = 18.`],`MAT`],
+[109,`શાળામાં 640 વિદ્યાર્થી છે. હાર અને સ્તંભ સમાન રહે તેમ ઊભા રાખતાં કેટલાને બહાર રાખવા પડે?`,[`5`,`10`,`15`,`20`],[`C`],[`640 ની સૌથી નજીકનો નાનો પૂર્ણવર્ગ 25² = 625 છે.`,`બહાર રાખવા પડે = 640 − 625 = 15.`],`MAT`],
+[110,`મનિષે પગારમાંથી 75% વાપર્યા પછી રૂ. 3000 બાકી રહ્યા. તેનો પગાર?`,[`9000`,`10000`,`11000`,`12000`],[`D`],[`બાકી = 25% = 3000, એટલે 100% = 3000 × 4 = 12000.`],`MAT`],
+[111,`લંબઘનની લંબાઈ mn, પહોળાઈ mp², ઊંચાઈ m²n²p. ઘનફળ?`,[`m³n³p³`,`m³n⁴p³`,`m⁴n³p³`,`m²n³p⁴`],[`C`],[`ઘનફળ = (mn)(mp²)(m²n²p) = m⁴n³p³.`],`MAT`],
+[112,`સમબાજુ ચતુષ્કોણના વિકર્ણોની લંબાઈ 8.5 સેમી અને 16 સેમી છે. ક્ષેત્રફળ?`,[`64`,`64.5`,`68.5`,`68`],[`D`],[`ક્ષેત્રફળ = ½ × 8.5 × 16 = 8.5 × 8 = 68 ચો.સેમી.`],`MAT`],
+[113,`વનસ્પતિકોષનું માપ 0.00001275 મી. છે. પ્રમાણિત સ્વરૂપે?`,[`1275 × 10⁻⁵`,`1.275 × 10⁻⁵`,`127.5 × 10⁻⁵`,`12.75 × 10⁻⁵`],[`B`],[`દશાંશ ચિહ્ન જમણે 5 સ્થાન ખસેડતાં 1.275 × 10⁻⁵ મળે.`],`MAT`],
+[114,`એક યંત્ર 6 કલાકમાં 840 બોટલ ભરે છે. 5 કલાકમાં કેટલી ભરશે?`,[`740`,`730`,`710`,`700`],[`D`],[`1 કલાકમાં = 840 ÷ 6 = 140 બોટલ. 5 કલાકમાં = 140 × 5 = 700.`],`MAT`],
+[115,`સંમેય સંખ્યાઓ માટે કયું વિધાન ખોટું છે?`,[`સરવાળા અને ગુણાકાર માટે ક્રમતા ગુણધર્મ પળાય છે.`,`સરવાળા અને ગુણાકાર માટે જૂથના ગુણધર્મ પળાય છે.`,`સરવાળા અને ગુણાકાર માટે 1 સંખ્યા તટસ્થ છે.`,`a (a + b) = ab + ac અને a (a − b) = ab − ac એ વિભાજનનો ગુણધર્મ છે.`],[`C`,`D`],[`(C) સરવાળા માટે તટસ્થ 0 અને ગુણાકાર માટે 1 છે. (D) માં છાપભૂલને કારણે બંને માન્ય.`],`MAT`],
+[116,`ગાડી 1 લિટર પેટ્રોલમાં 16 કિમી કાપે છે. 2¾ લિટરમાં કેટલું અંતર?`,[`44 કિમી`,`23 કિમી`,`48 કિમી`,`24 કિમી`],[`A`],[`2¾ = 11/4. અંતર = 16 × 11/4 = 44 કિમી.`],`MAT`],
+[117,`13, 16, 12, 14, 19, 12, 14, 13, 14 નો મધ્યસ્થ?`,[`14`,`13`,`19`,`12`],[`A`],[`ચડતા ક્રમમાં: 12, 12, 13, 13, 14, 14, 14, 16, 19. વચ્ચેની 5 મી સંખ્યા = 14.`],`MAT`],
+[118,`થેલામાં 4 લાલ અને 2 પીળા દડા છે. એક દડો કાઢતાં તે લીલો હોવાની સંભાવના?`,[`6/6`,`4/6`,`2/6`,`0`],[`D`],[`થેલામાં લીલો દડો નથી, એટલે અનુકૂળ પરિણામ 0. સંભાવના = 0.`],`MAT`],
+[119,`18 છોકરીઓ અને 12 છોકરાઓની સંખ્યાનો ગુણોત્તર?`,[`8:2`,`5:4`,`2:3`,`3:2`],[`D`],[`18 : 12 ને 6 વડે ભાગતાં 3 : 2.`],`MAT`],
+[120,`સમાંતર રેખાઓની છેદિકાથી રચાતા ખૂણા માટે કયું વિધાન ખોટું છે?`,[`અનુકોણની જોડ સમાન હોય.`,`અંતઃયુગ્મકોણની જોડ કોટિકોણ હોય.`,`એકબાજુના અંતઃકોણ પૂરક હોય.`,`અંતઃ યુગ્મકોણની દરેક જોડ સમાન હોય.`],[`B`],[`એકાંતર (યુગ્મ) ખૂણા સમાન હોય છે, કોટિકોણ (સરવાળો 90°) નહીં.`],`MAT`],
+[121,`ચાર સરખા પાત્રોમાં સમાન પાણી ભરી સૂર્યપ્રકાશમાં મૂકતાં કયા રંગનું પાણી ઝડપથી ગરમ થશે?`,[`ગુલાબી`,`લીલો`,`કાળો`,`પીળો`],[`C`],[`કાળો રંગ ઉષ્માનું શોષણ સૌથી વધુ કરે છે, એટલે તેનું પાણી ઝડપથી ગરમ થાય.`],`Science`],
+[122,`સમતલ અરીસા માટે કયું સાચું નથી?`,[`સીધું (ચત્તું) પ્રતિબિંબ મળે`,`આભાસી પ્રતિબિંબ મળે`,`વસ્તુ અંતર અને પ્રતિબિંબ અંતર સરખું હોય`,`વસ્તુ કરતા નાનું પ્રતિબિંબ મળે`],[`D`],[`સમતલ અરીસામાં પ્રતિબિંબ ચત્તું, આભાસી અને વસ્તુના જેટલા જ કદનું મળે છે.`],`Science`],
+[123,`જો જમીન બેઝિક હોય તો તેમાં શું ઉમેરવું જોઈએ?`,[`કાર્બનિક દ્રવ્ય`,`ક્વિક લાઇમ`,`સ્લેક્ડ લાઇમ`,`કેલેમાઇન દ્રાવણ`],[`A`],[`ખાતર, છાણ જેવું કાર્બનિક દ્રવ્ય ઉમેરવાથી જમીનની બેઝિક પ્રકૃતિ ઘટે છે અને ફળદ્રુપતા સુધરે છે.`],`Science`],
+[124,`ખરીફ પાક કયો છે?`,[`ચણા`,`વટાણા`,`ડાંગર`,`રાઈ`],[`C`],[`ખરીફ પાક ચોમાસામાં વવાય છે (ડાંગર). ચણા, વટાણા, રાઈ રવી પાક છે.`],`Science`],
+[125,`કલ્ટિવેટરનો ઉપયોગ શેના માટે થાય છે?`,[`વાવણી કરવા`,`ખેડ કરવા`,`ખાતર છાંટવા`,`લણણી કરવા`],[`B`],[`કલ્ટિવેટર ટ્રેક્ટર સાથે જોડાતું સાધન છે, જે જમીન ખેડવા અને પોચી કરવા વપરાય છે.`],`Science`],
+[126,`વાઇરસ દ્વારા થતો રોગ કયો છે?`,[`કોલેરા`,`ટાઇફોઇડ`,`ક્ષય`,`પોલિયો`],[`D`],[`કોલેરા, ટાઇફોઇડ અને ક્ષય બેક્ટેરિયાથી થાય છે. પોલિયો વાઇરસથી થાય છે.`],`Science`],
+[127,`લેક્ટોબેસિલસ બેક્ટેરિયાનું મુખ્ય કાર્ય શું છે?`,[`દૂધમાંથી દહીં બનાવવાનું`,`જમીનની ફળદ્રુપતા વધારવાનું`,`કચરાનું વિઘટન કરવાનું`,`આથવણ લાવવાનું`],[`A`],[`લેક્ટોબેસિલસ દૂધમાં વૃદ્ધિ પામી તેને દહીંમાં ફેરવે છે.`],`Science`],
+[128,`'પેટ્રોલિયમ' શબ્દમાં 'પેટ્રો' નો અર્થ શું થાય છે?`,[`પેટ્રોલ`,`જમીન`,`તેલ`,`ખડક`],[`D`],[`'પેટ્રોલિયમ' = પેટ્રો (ખડક) + ઓલિયમ (તેલ). એટલે ખડકમાંથી મળતું તેલ.`],`Science`],
+[129,`નીચેના વિકલ્પો પૈકી કોનું જ્વલનબિંદુ સૌથી ઊંચું હોય?`,[`પેટ્રોલ`,`CNG`,`લાકડું`,`કેરોસીન`],[`A`],[`કી મુજબ જવાબ (A) પેટ્રોલ રાખ્યો છે (જોકે વૈજ્ઞાનિક રીતે પેટ્રોલનું જ્વલનબિંદુ નીચું હોય છે — પ્રશ્નમાં "નીચું" છપાવાની ભૂલ હોઈ શકે).`],`Science`],
+[130,`પંચમઢી જીવાવરણ આરક્ષિત ક્ષેત્રમાં જોવા મળતું 'બાયસન' શું છે?`,[`જંગલી આંબો`,`વિશાળ ખિસકોલી`,`ઉડતી ખિસકોલી`,`જંગલી બળદ`],[`D`],[`બાયસન (ભારતીય ગૌર) એ જંગલી બળદ જેવું વિશાળ પ્રાણી છે.`],`Science`],
+[131,`છોકરાઓમાં મોટા થયેલી સ્વરપેટી ગળાના ભાગમાં બહાર ઉપસી આવે છે, તેને શું કહે છે?`,[`કંઠસ્થાન`,`કંઠમણિ`,`સ્વરસ્થાન`,`સ્વરમણિ`],[`B`],[`તરુણાવસ્થામાં છોકરાઓની સ્વરપેટી મોટી થઈ ગળામાં ઉપસે છે, તેને કંઠમણિ કહે છે.`],`Science`],
+[132,`મગજ સાથે જોડાયેલી ગ્રંથિ કઈ છે?`,[`થાઇરોઇડ`,`સ્વાદુપિંડ`,`પિટ્યુટરી`,`એડ્રિનલ`],[`C`],[`પિટ્યુટરી (પીયૂષ) ગ્રંથિ મગજના તળિયે જોડાયેલી છે અને તેને "મુખ્ય ગ્રંથિ" કહે છે.`],`Science`],
+[133,`આપણાં શરીરમાં રુધિરના નિર્માણનું કામ કોણ કરે છે?`,[`આયર્ન`,`ચરબી`,`કાર્બોદિત`,`વિટામીન`],[`A`],[`લોહતત્ત્વ (આયર્ન) હિમોગ્લોબિન બનાવવા માટે જરૂરી છે.`],`Science`],
+[134,`નીચેનામાંથી કયું જોડકું યોગ્ય નથી?`,[`ફોર્મિક એસિડ – કીડીના ડંખમાં`,`એસેટિક એસિડ – વિનેગર`,`લેક્ટિક એસિડ – દહીં`,`ઓક્ઝેલિક એસિડ – નારંગી`],[`D`],[`નારંગીમાં સાઇટ્રિક એસિડ હોય છે. ઓક્ઝેલિક એસિડ પાલકમાં હોય છે.`],`Science`],
+[135,`વિનેગાર અને બેકિંગ સોડાને મિશ્ર કરતાં ......... વાયુ ઉત્પન્ન થાય છે?`,[`કાર્બન ડાયોક્સાઇડ`,`નાઇટ્રોજન`,`ઓક્સિજન`,`હાઇડ્રોજન`],[`A`],[`એસિડ + બેકિંગ સોડા → CO₂ વાયુ, જે ફીણ સ્વરૂપે દેખાય છે.`],`Science`],
+[136,`ભારે કસરત કરવાથી સ્નાયુઓમાં ......... એકઠું થવાના કારણે સ્નાયુઓ ખેંચાઈ જાય છે?`,[`કાર્બન ડાયોક્સાઇડ`,`આલ્કોહોલ`,`લેક્ટિક એસિડ`,`ઓક્સિજન`],[`C`],[`ભારે કસરતમાં ઓક્સિજન ઓછો પડતાં સ્નાયુઓમાં લેક્ટિક એસિડ બને છે.`],`Science`],
+[137,`પદાર્થે કાપેલ અંતર શોધવાનું સૂત્ર: કાપેલું અંતર = ?`,[`અંતર × સમય`,`સમય/ઝડપ`,`ઝડપ/સમય`,`ઝડપ × સમય`],[`D`],[`ઝડપ = અંતર ÷ સમય, એટલે અંતર = ઝડપ × સમય.`],`Science`],
+[138,`સાબુના પરપોટા વડે પ્રકાશનું ઘણા રંગોમાં છુટા પડવાની ઘટનાને ......... કહે છે?`,[`પ્રકાશનું વિભાજન`,`પ્રકાશનું શોષણ`,`પ્રકાશનું પ્રસરણ`,`પ્રકાશનું પરાવર્તન`],[`A`],[`શ્વેત પ્રકાશ જુદા જુદા રંગોમાં વહેંચાઈ જાય તેને પ્રકાશનું વિભાજન કહે છે.`],`Science`],
+[139,`કાપવામાં આવેલ પાકમાંથી દાણાઓને ભૂસામાંથી અલગ કરવાની પ્રક્રિયાને શું કહે છે?`,[`વિડિંગ`,`હાર્વેસ્ટિંગ`,`થ્રેશીંગ`,`ઈરિગેશન`],[`C`],[`દાણા અને ભૂસું છૂટા પાડવાની ક્રિયા થ્રેશીંગ (ઝૂડવું) છે.`],`Science`],
+[140,`સુરક્ષિત દીવાસળી બનાવવા માટે શાનો ઉપયોગ થાય છે?`,[`લાલ ફોસ્ફરસ અને સફેદ ફોસ્ફરસ`,`એન્ટિમની ટ્રાય સલ્ફાઇડ અને પોટેસિયમ ક્લોરેટ`,`સફેદ ફોસ્ફરસ અને પોટેશિયમ ક્લોરેટ`,`એન્ટિમની ટ્રાય સલ્ફાઇડ અને સફેદ ફોસ્ફરસ`],[`B`],[`સુરક્ષિત દીવાસળીના માથા પર એન્ટિમની ટ્રાય સલ્ફાઇડ અને પોટેસિયમ ક્લોરેટ હોય છે.`],`Science`],
+[141,`નીચેનામાંથી કયું જોડકું યોગ્ય નથી?`,[`રેડ-ડેટા બુક → લુપ્ત જાતિઓની યાદી`,`પ્રોજેક્ટ ટાઇગર → વાઘના સંરક્ષણ માટે`,`પુનઃવનીકરણ → નાશ પામેલ જંગલોની પુનઃસ્થાપના`,`રણનિર્માણ → ફળદ્રુપ ભૂમિનું રણમાં ફેરવાવું`],[`A`],[`રેડ ડેટા બુકમાં ભયગ્રસ્ત (લુપ્ત થવાના આરે) જાતિઓની યાદી હોય છે, લુપ્ત થયેલી નહીં.`],`Science`],
+[142,`કાર્બનનું લગભગ સંપૂર્ણ શુદ્ધ સ્વરૂપ કયું છે?`,[`ડીઝલ`,`કોલટાર`,`કોલગેસ`,`કોક`],[`D`],[`કોલસાને હવા વિના ગરમ કરવાથી કોક મળે છે, જે લગભગ શુદ્ધ કાર્બન છે.`],`Science`],
+[143,`કઈ ગ્રંથિ યોગ્ય કામ ન કરે તો ડાયાબિટિસ થાય?`,[`પિટ્યુટરી`,`થાઇરોઇડ`,`સ્વાદુપિંડ`,`એડ્રિનલ`],[`C`],[`સ્વાદુપિંડ ઇન્સ્યુલિન બનાવે છે. ઇન્સ્યુલિન ઓછું બને તો ડાયાબિટિસ થાય.`],`Science`],
+[144,`વનસ્પતિમાં ખોરાક બનાવવાના કારખાનાં કોને કહેવાય છે?`,[`પર્ણ`,`પ્રકાંડ`,`ફળ`,`મૂળ`],[`A`],[`પર્ણમાં હરિતદ્રવ્ય હોય છે, જેની મદદથી પ્રકાશસંશ્લેષણ દ્વારા ખોરાક બને છે.`],`Science`],
+[145,`હાઇડ્રોક્લોરિક એસિડ અને સોડિયમ હાઇડ્રોક્સાઇડ વચ્ચેની તટસ્થીકરણની પ્રક્રિયાથી શું બને છે?`,[`હવા અને પાણી`,`ક્ષાર અને પાણી`,`ધાતુ અને મીણ`,`તેલ અને તાંબુ`],[`B`],[`HCl + NaOH → NaCl (ક્ષાર) + H₂O (પાણી).`],`Science`],
+[146,`સ્ટાર્ચનું સરળ શર્કરામાં રૂપાંતરણ કરવાનું કાર્ય કોણ કરે છે?`,[`અન્નનળી`,`રસાંકુરો`,`મુખગુહા`,`લાળરસ`],[`D`],[`લાળરસમાં રહેલું ઉત્સેચક સ્ટાર્ચને સરળ શર્કરા (માલ્ટોઝ) માં ફેરવે છે.`],`Science`],
+[147,`બાજની મહત્તમ ઝડપ 320 km/h હોય તો તેની ઝડપ m/sec માં કેટલી?`,[`8.89`,`320`,`889`,`88.9`],[`D`],[`km/h ને m/s માં ફેરવવા 5/18 વડે ગુણાય. 320 × 5/18 = 88.89 ≈ 88.9 m/s.`],`Science`],
+[148,`કુદરતી વાયુમાંથી મેળવવામાં આવતા ......... વાયુનો ઉપયોગ કૃત્રિમ ખાતરની બનાવટમાં થાય છે.`,[`કોલગેસ`,`CNG`,`હાઇડ્રોજન`,`કાર્બન ડાયોક્સાઇડ`],[`C`],[`હાઇડ્રોજનનો ઉપયોગ એમોનિયા અને યુરિયા જેવા કૃત્રિમ ખાતર બનાવવા થાય છે.`],`Science`],
+[149,`શાના દ્વારા હંમેશા ચત્તુ, આભાસી અને વસ્તુના પરિમાણ કરતા નાનું પ્રતિબિંબ મળે?`,[`બહિર્ગોળ અરીસો, અંતર્ગોળ લેન્સ`,`અંતર્ગોળ અરીસો, બહિર્ગોળ લેન્સ`,`બહિર્ગોળ લેન્સ, સમતલ અરીસો`,`અંતર્ગોળ લેન્સ, અંતર્ગોળ અરીસો`],[`A`],[`બહિર્ગોળ અરીસો અને અંતર્ગોળ લેન્સ હંમેશા ચત્તું, આભાસી અને નાનું પ્રતિબિંબ આપે છે.`],`Science`],
+[150,`એક સ્થાનેથી બીજા સ્થાન કે આગળ-પાછળ થતી પદાર્થની ગતિને શું કહે છે?`,[`કંપન`,`કંપવિસ્તાર`,`આવૃત્તિ`,`ઘોંઘાટ`],[`A`],[`પદાર્થનું તેના મધ્યસ્થાન ફરતે આગળ-પાછળ ગતિ કરવું એ કંપન છે.`],`Science`],
+[151,`અંગ્રેજ શાસન દરમિયાન કયા ધારા અંતર્ગત ભારતમાં સુપ્રીમ કોર્ટની સ્થાપના કરવામાં આવેલ?`,[`સનદી ધારો (1833)`,`નિયામક ધારો (1773)`,`A અને B બંને`,`એક પણ નહિ`],[`B`],[`1773 ના રેગ્યુલેટિંગ (નિયામક) ધારા હેઠળ કલકત્તામાં સુપ્રીમ કોર્ટની સ્થાપના થઈ.`],`Social`],
+[152,`જમીન મહેસૂલ માટે અંગ્રેજોએ બનાવેલી યોજનાઓમાં કઈ યોજના જમીન મહેસૂલ નથી?`,[`સહાયકારી યોજના`,`કાયમી જમાબંધી`,`રૈયતવારી પદ્ધતિ`,`મહાલવારી પદ્ધતિ`],[`A`],[`સહાયકારી યોજના લોર્ડ વેલેસ્લીની રાજ્યો પર અંકુશ રાખવાની નીતિ છે, જમીન મહેસૂલ નહીં.`],`Social`],
+[153,`ઈ.સ. 1857 ના સંગ્રામમાં કઈ નવીન રાઇફલનો ઉપયોગ કરવામાં આવ્યો હતો?`,[`એનફિલ્ડ`,`એ.ડબલ્યુ.એમ.`,`બ્રાઉનબેઝ`,`રોનાલ્ડ`],[`A`],[`નવી એનફિલ્ડ રાઇફલના કારતૂસ પર ચરબીવાળું આવરણ હતું, જે 1857 ના વિદ્રોહનું તાત્કાલિક કારણ બન્યું.`],`Social`],
+[154,`જૂની દિલ્લીથી કઈ દિશામાં નવી દિલ્લીનું નિર્માણ કઈ પહાડી ઉપર કરવામાં આવેલ છે?`,[`ઉત્તરમાં રાજસમંદની ટેકરી પર`,`દક્ષિણમાં અજયમેરુ પહાડી ઉપર`,`ઉત્તરમાં અરવલ્લીની ટેકરી ઉપર`,`દક્ષિણમાં રાયસીન પહાડી વિસ્તારમાં`],[`D`],[`નવી દિલ્લી જૂની દિલ્લીની દક્ષિણે, રાયસીના હિલ વિસ્તારમાં બનાવવામાં આવી.`],`Social`],
+[155,`ક્રાયોલાઇટ ખનિજ કયા સંસાધન તરીકે ઓળખાય છે?`,[`દુર્લભ સંસાધન`,`વિરલ સંસાધન`,`સામાન્ય સુલભ સંસાધન`,`સર્વ સુલભ સંસાધન`],[`A`],[`ક્રાયોલાઇટ ખનિજ દુનિયામાં બહુ ઓછી જગ્યાએ જ મળે છે, એટલે તેને દુર્લભ સંસાધન ગણવામાં આવ્યું છે.`],`Social`],
+[156,`ખનિજ પદાર્થોમાં કોને 'કાળું સોનું' કહેવામાં આવે છે?`,[`મેંગેનીઝ`,`સોનું`,`ખનિજતેલ`,`બૉક્સાઇટ`],[`C`],[`ખનિજતેલ ખૂબ કીમતી અને ઉપયોગી હોવાથી તેને 'કાળું સોનું' કહે છે.`],`Social`],
+[157,`ભારતનું કયું રાજ્ય કપાસના ઉત્પાદનમાં પ્રથમ છે?`,[`ગુજરાત`,`મહારાષ્ટ્ર`,`આંધ્રપ્રદેશ`,`બિહાર`],[`A`],[`કી મુજબ કપાસના ઉત્પાદનમાં ગુજરાત પ્રથમ છે.`],`Social`],
+[158,`બાળમજૂરીનો વિરોધ કરવા કયો હક આપવામાં આવેલ છે?`,[`સ્વતંત્રતાનો હક`,`શોષણ સામે વિરોધનો હક`,`ધાર્મિક સ્વાતંત્ર્યનો હક`,`સમાનતાનો હક`],[`B`],[`બંધારણનો શોષણ વિરુદ્ધનો હક બાળમજૂરી, વેઠ અને માનવવેપાર પર પ્રતિબંધ મૂકે છે.`],`Social`],
+[159,`દ્વારકેશને ફોર્ટ સેન્ટ જ્યોર્જની મુલાકાત લેવી છે. તેણે કયા શહેરમાં જવું પડશે?`,[`કોલકત્તા`,`મુંબઈ`,`ચેન્નાઈ`,`દિલ્લી`],[`C`],[`ફોર્ટ સેન્ટ જ્યોર્જ ચેન્નાઈ (પહેલાંનું મદ્રાસ) માં આવેલો કિલ્લો છે.`],`Social`],
+[160,`નીચે પૈકી કઈ જમીન મહેસૂલ પદ્ધતિ નથી?`,[`કાયમી જમાબંધી`,`ઉલગુલાન`,`મહાલવારી`,`રૈયતવારી`],[`B`],[`ઉલગુલાન એ બિરસા મુંડાએ કરેલું આદિવાસી આંદોલન છે, મહેસૂલ પદ્ધતિ નથી.`],`Social`],
+[161,`અધાતુમય ખનિજનાં ઉદાહરણો કયા છે? (1) જસત (2) અબરખ (3) જિપ્સમ (4) તાંબુ`,[`1 અને 2`,`3 અને 4`,`2 અને 4`,`2 અને 3`],[`D`],[`અબરખ (મીકા) અને જિપ્સમ અધાતુમય ખનિજ છે. જસત અને તાંબુ ધાતુમય છે.`],`Social`],
+[162,`મગફળીની : જૂનાગઢ :: બાજરી : ?`,[`મહેસાણા`,`સાબરકાંઠા`,`બનાસકાંઠા`,`ભાવનગર`],[`C`],[`જૂનાગઢ મગફળીના ઉત્પાદન માટે, તેમ બનાસકાંઠા બાજરીના ઉત્પાદન માટે જાણીતું છે.`],`Social`],
+[163,`બંધારણ સંદર્ભે નીચે પૈકી કઈ જોડ યોગ્ય નથી?`,[`સમિતિઓ : 23`,`અધ્યક્ષ : ડૉ. રાજેન્દ્ર પ્રસાદ`,`બંધારણ દિવસ - 26 નવેમ્બર`,`બંધારણ સભાના કુલ સભ્યો : 250`],[`D`],[`બંધારણ સભામાં મૂળ સભ્યો 389 હતા (વિભાજન પછી 299). 250 સાચી સંખ્યા નથી.`],`Social`],
+[164,`નીચે પૈકી કયું વિધાન રાષ્ટ્રપતિ સાથે સુસંગત નથી?`,[`તેઓ દેશના બંધારણીય વડા છે.`,`તેઓ મંત્રીમંડળની બેઠકની અધ્યક્ષતા કરે છે.`,`તેઓ દેશના પ્રથમ નાગરિક છે.`,`દેશનો સમગ્ર વહીવટ તેમના નામે ચાલે છે.`],[`B`],[`મંત્રીમંડળની બેઠકની અધ્યક્ષતા વડાપ્રધાન કરે છે, રાષ્ટ્રપતિ નહીં.`],`Social`],
+[165,`પોર્ટુગીઝોએ ભારતનો કયો ટાપુ બ્રિટનના સમ્રાટને દહેજમાં આપ્યો હતો?`,[`મુંબઈ`,`લક્ષદ્વીપ`,`અંદમાન`,`નિકોબાર`],[`A`],[`1661 માં પોર્ટુગીઝ રાજકુમારી કેથરીનનાં લગ્ન સમયે મુંબઈ દહેજમાં અપાયું.`],`Social`],
+[166,`વિરલ સંસાધન કયું છે?`,[`ગોચર ભૂમિ`,`ઓક્સિજન`,`પાણી`,`કોલસો`],[`D`],[`કોલસો મર્યાદિત જગ્યાએ અને મર્યાદિત જથ્થામાં મળે છે, એટલે તેને વિરલ સંસાધન ગણ્યું છે.`],`Social`],
+[167,`પૃથ્વી પર મીઠા પાણીનો જથ્થો કેટલો છે?`,[`1%`,`2.7%`,`27%`,`29%`],[`B`],[`પૃથ્વી પરના કુલ પાણીમાંથી આશરે 97.3% ખારું અને માત્ર 2.7% મીઠું પાણી છે.`],`Social`],
+[168,`'અયસ્ક' એટલે શું?`,[`અશુદ્ધ ખનિજો`,`વિદ્યુત`,`રહેવા માટે મકાન`,`હવા`],[`A`],[`ધાતુ મેળવવા માટેનું માટી-ખડક વગેરેની અશુદ્ધિવાળું કાચું ખનિજ અયસ્ક કહેવાય છે.`],`Social`],
+[169,`જૈવ કચરામાંથી તૈયાર થતા વાયુયુક્ત બળતણને શું કહે છે?`,[`LPG`,`CNG`,`PNG`,`બાયોગેસ`],[`D`],[`છાણ, ખેતીનો કચરો વગેરે જૈવ કચરામાંથી બનતો ગેસ બાયોગેસ છે.`],`Social`],
+[170,`......... ભારત દેશની અર્થવ્યવસ્થાની જીવનરેખા ગણાય છે?`,[`ઉદ્યોગ`,`શિક્ષણ`,`પાણી`,`ખેતી`],[`D`],[`ભારતની મોટી વસ્તી ખેતી પર નભે છે, એટલે ખેતીને અર્થવ્યવસ્થાની જીવનરેખા કહે છે.`],`Social`],
+[171,`ગુજરાતના લગભગ 50% કરતાં વધુ વિસ્તારમાં કેવી જમીન જોવા મળે છે?`,[`રાતી જમીન`,`કાળી જમીન`,`કાંપની જમીન`,`પર્વતીય જમીન`],[`C`],[`કી મુજબ ગુજરાતના અડધાથી વધુ ભાગમાં કાંપની જમીન જોવા મળે છે.`],`Social`],
+[172,`ભૂમિખંડની સપાટી ખાસ કરીને કયા ખનીજોથી બનેલી હોય છે?`,[`સિલિકા અને એલ્યુમિના`,`સિલિકા અને મેગ્નેશિયમ`,`નિકલ અને ફેરસ`,`મેગ્નેશિયમ અને ફેરસ`],[`A`],[`ખંડીય પોપડો મુખ્યત્વે સિલિકા (Si) અને એલ્યુમિના (Al) થી બનેલો છે.`],`Social`],
+[173,`ભારતમાં દર વર્ષે બંધારણ દિવસની ઉજવણી કઈ તારીખે થાય છે?`,[`26 મી નવેમ્બર`,`26 મી જાન્યુઆરી`,`25 મી ડિસેમ્બર`,`15 મી ઓગસ્ટ`],[`A`],[`26 નવેમ્બર 1949 ના રોજ બંધારણ અપનાવાયું હતું, એટલે તે દિવસે બંધારણ દિવસ ઉજવાય છે.`],`Social`],
+[174,`ભારતની સંસદના નીચલા ગૃહમાં ગુજરાતને કેટલી બેઠકો ફાળવવામાં આવી છે?`,[`26`,`50`,`182`,`545`],[`A`],[`લોકસભા (નીચલું ગૃહ) માં ગુજરાતની 26 બેઠકો છે.`],`Social`],
+[175,`ખેડૂતનું શોષણ રોકવા માટે સરકારે કેવા બજારની વ્યવસ્થા કરી છે?`,[`મહોલ્લા બજાર`,`નિયંત્રિત બજાર`,`સાપ્તાહિક બજાર`,`ઓનલાઈન બજાર`],[`B`],[`નિયંત્રિત બજાર (APMC/માર્કેટ યાર્ડ) માં સરકારની દેખરેખ હોય છે.`],`Social`],
+[176,`ગઢવાલ રાજ્યના સ્થાપક ચંદ્રદેવે કનોજ સિવાય બીજા કયા શહેરને રાજધાની બનાવી હતી?`,[`ખજુરાહો`,`ભોજપાલ`,`કાશી`,`બુંદેલખંડ`],[`C`],[`ગહડવાલ વંશના ચંદ્રદેવે કનોજની સાથે કાશી (વારાણસી) ને પણ રાજધાની બનાવી હતી.`],`Social`],
+[177,`નીચે પૈકી કયા રાજ્યમાં વિધાન પરિષદ નથી?`,[`ગુજરાત`,`બિહાર`,`મહારાષ્ટ્ર`,`ઉત્તરપ્રદેશ`],[`A`],[`બિહાર, મહારાષ્ટ્ર અને ઉત્તરપ્રદેશમાં વિધાન પરિષદ છે. ગુજરાતમાં માત્ર વિધાનસભા છે.`],`Social`],
+[178,`ગુજરાતની કઈ વાવને યુનેસ્કોએ વર્લ્ડ હેરિટેજનો દરજ્જો આપેલ છે?`,[`અડાલજની વાવ`,`દાદાહરિની વાવ`,`રાણીની વાવ, પાટણ`,`માધાવાવ, વઢવાણ`],[`C`],[`રાણકી વાવ (રાણીની વાવ) ને 2014 માં યુનેસ્કોએ વિશ્વ ધરોહર જાહેર કરી.`],`Social`],
+[179,`કઈ વિચરતી અને વિમુક્ત જાતિની સમુદાય ભારત અને વિશ્વ વચ્ચે કડી સમાન હતો?`,[`બહુરૂપી`,`વણઝારા`,`કોગસિયા`,`વાંસફોડા`],[`B`],[`વણઝારા સમુદાય વેપારીઓ તરીકે દૂર દૂર સુધી મુસાફરી કરતો.`],`Social`],
+[180,`કયા આવરણમાં ઋતુઓ, વાદળા, વરસાદ થતા નથી અને જેટ વિમાનો ઝડપથી ઊડી શકે છે?`,[`સમતાપ આવરણ`,`ક્ષોભ આવરણ`,`મધ્યાવરણ`,`ઉષ્મા આવરણ`],[`A`],[`સમતાપ આવરણ (સ્ટ્રેટોસ્ફિયર) માં હવામાનની ઘટનાઓ થતી નથી અને હવા શાંત હોય છે.`],`Social`]
 ];
 
-// Shapes Puzzles for Game 5 (Visual SVG + Animated Step-by-step Highlight)
-const SHAPES_PUZZLES = [
+// Geometric Puzzles for Game 5 (NMMS Q42, Q47, Q6/Q7/Q100 + Classic Triangles/Rectangles)
+const SHAPE_PUZZLES = [
   {
-    id: `sq-10`,
-    title: `પ્રશ્ન 42: આકૃતિમાં કુલ કેટલા ચોરસ છે?`,
+    id: `sq10`,
+    title: `NMMS Q42: Nested Cross Squares`,
+    prompt: `આ આકૃતિમાં કુલ કેટલા ચોરસ (Squares) છે?`,
     options: [`8`, `7`, `10`, `12`],
-    ansIndex: 2,
-    svgBase: `
-      <rect x="30" y="30" width="160" height="160" fill="none" stroke="var(--on-surface)" stroke-width="3"/>
-      <line x1="110" y1="30" x2="110" y2="190" stroke="var(--on-surface)" stroke-width="2.5"/>
-      <line x1="30" y1="110" x2="190" y2="110" stroke="var(--on-surface)" stroke-width="2.5"/>
-      <rect x="70" y="70" width="80" height="80" fill="none" stroke="var(--secondary)" stroke-width="3"/>
+    answer: `10`,
+    viewBox: `0 0 240 240`,
+    baseSvg: `
+      <rect x="20" y="20" width="200" height="200" fill="none" stroke="var(--on-surface)" stroke-width="3"/>
+      <line x1="120" y1="20" x2="120" y2="220" stroke="var(--on-surface)" stroke-width="2.5"/>
+      <line x1="20" y1="120" x2="220" y2="120" stroke="var(--on-surface)" stroke-width="2.5"/>
+      <rect x="70" y="70" width="100" height="100" fill="none" stroke="var(--on-surface)" stroke-width="3"/>
     `,
     steps: [
-      { label: `પગલું 1: સૌથી મોટો બહારનો ચોરસ = 1`, hl: `<rect x="30" y="30" width="160" height="160" fill="var(--primary)" fill-opacity="0.22" stroke="var(--primary)" stroke-width="4"/>` },
-      { label: `પગલું 2: મોટા ચોરસના 4 સરખા ખૂણાના ચોરસ = 4`, hl: `<rect x="30" y="30" width="80" height="80" fill="var(--tertiary)" fill-opacity="0.25"/><rect x="110" y="30" width="80" height="80" fill="var(--tertiary)" fill-opacity="0.25"/><rect x="30" y="110" width="80" height="80" fill="var(--tertiary)" fill-opacity="0.25"/><rect x="110" y="110" width="80" height="80" fill="var(--tertiary)" fill-opacity="0.25"/>` },
-      { label: `પગલું 3: વચ્ચેનો નાનો ચોરસ = 1`, hl: `<rect x="70" y="70" width="80" height="80" fill="var(--secondary)" fill-opacity="0.28" stroke="var(--secondary)" stroke-width="4"/>` },
-      { label: `પગલું 4: નાના ચોરસની અંદરના 4 ભાગ = 4 → કુલ = 1 + 4 + 1 + 4 = 10`, hl: `<rect x="70" y="70" width="40" height="40" fill="var(--positive)" fill-opacity="0.35"/><rect x="110" y="70" width="40" height="40" fill="var(--positive)" fill-opacity="0.35"/><rect x="70" y="110" width="40" height="40" fill="var(--positive)" fill-opacity="0.35"/><rect x="110" y="110" width="40" height="40" fill="var(--positive)" fill-opacity="0.35"/>` }
+      {
+        label: `Step 1: 1 Big Outer Square (સૌથી મોટો ચોરસ = 1)`,
+        svg: `<rect x="20" y="20" width="200" height="200" fill="var(--overlay-1)" stroke="var(--data-1)" stroke-width="6"/>`
+      },
+      {
+        label: `Step 2: 4 Quadrant Squares of Outer Square (મોટા ચોરસના 4 ભાગ = 4)`,
+        svg: `
+          <rect x="20" y="20" width="100" height="100" fill="var(--overlay-2)" stroke="var(--data-2)" stroke-width="4.5"/>
+          <rect x="120" y="20" width="100" height="100" fill="var(--overlay-2)" stroke="var(--data-2)" stroke-width="4.5"/>
+          <rect x="20" y="120" width="100" height="100" fill="var(--overlay-2)" stroke="var(--data-2)" stroke-width="4.5"/>
+          <rect x="120" y="120" width="100" height="100" fill="var(--overlay-2)" stroke="var(--data-2)" stroke-width="4.5"/>
+        `
+      },
+      {
+        label: `Step 3: 1 Inner Middle Square (વચ્ચેનો નાનો ચોરસ = 1)`,
+        svg: `<rect x="70" y="70" width="100" height="100" fill="var(--overlay-3)" stroke="var(--data-3)" stroke-width="6"/>`
+      },
+      {
+        label: `Step 4: 4 Small Inner Quadrants (અંદરના 4 ભાગ = 4) → Total: 1 + 4 + 1 + 4 = 10`,
+        svg: `
+          <rect x="70" y="70" width="50" height="50" fill="var(--overlay-4)" stroke="var(--data-4)" stroke-width="4.5"/>
+          <rect x="120" y="70" width="50" height="50" fill="var(--overlay-4)" stroke="var(--data-4)" stroke-width="4.5"/>
+          <rect x="70" y="120" width="50" height="50" fill="var(--overlay-4)" stroke="var(--data-4)" stroke-width="4.5"/>
+          <rect x="120" y="120" width="50" height="50" fill="var(--overlay-4)" stroke="var(--data-4)" stroke-width="4.5"/>
+        `
+      }
     ]
   },
   {
-    id: `sq-18`,
-    title: `પ્રશ્ન 47: હીરા આકારની આકૃતિમાં વધુમાં વધુ કેટલા ચોરસ છે?`,
+    id: `sq18`,
+    title: `NMMS Q47: 1-3-5-3-1 Diamond Square Grid`,
+    prompt: `આ 1-3-5-3-1 ખાનાંવાળી આકૃતિમાં વધુમાં વધુ કેટલા ચોરસ છે?`,
     options: [`22`, `18`, `20`, `16`],
-    ansIndex: 1,
-    svgBase: `
-      <g stroke="var(--on-surface)" stroke-width="2" fill="none">
-        <rect x="94" y="18" width="32" height="32"/>
-        <rect x="62" y="50" width="32" height="32"/><rect x="94" y="50" width="32" height="32"/><rect x="126" y="50" width="32" height="32"/>
-        <rect x="30" y="82" width="32" height="32"/><rect x="62" y="82" width="32" height="32"/><rect x="94" y="82" width="32" height="32"/><rect x="126" y="82" width="32" height="32"/><rect x="158" y="82" width="32" height="32"/>
-        <rect x="62" y="114" width="32" height="32"/><rect x="94" y="114" width="32" height="32"/><rect x="126" y="114" width="32" height="32"/>
-        <rect x="94" y="146" width="32" height="32"/>
+    answer: `18`,
+    viewBox: `0 0 240 240`,
+    baseSvg: `
+      <g fill="none" stroke="var(--on-surface)" stroke-width="2.5">
+        <rect x="100" y="20" width="40" height="40"/>
+        <rect x="60" y="60" width="40" height="40"/><rect x="100" y="60" width="40" height="40"/><rect x="140" y="60" width="40" height="40"/>
+        <rect x="20" y="100" width="40" height="40"/><rect x="60" y="100" width="40" height="40"/><rect x="100" y="100" width="40" height="40"/><rect x="140" y="100" width="40" height="40"/><rect x="180" y="100" width="40" height="40"/>
+        <rect x="60" y="140" width="40" height="40"/><rect x="100" y="140" width="40" height="40"/><rect x="140" y="140" width="40" height="40"/>
+        <rect x="100" y="180" width="40" height="40"/>
       </g>
     `,
     steps: [
-      { label: `પગલું 1: 1×1 ના નાના ચોરસ (1 + 3 + 5 + 3 + 1) = 13`, hl: `<rect x="94" y="18" width="32" height="32" fill="var(--primary)" fill-opacity="0.28"/><rect x="62" y="50" width="96" height="32" fill="var(--primary)" fill-opacity="0.28"/><rect x="30" y="82" width="160" height="32" fill="var(--primary)" fill-opacity="0.28"/><rect x="62" y="114" width="96" height="32" fill="var(--primary)" fill-opacity="0.28"/><rect x="94" y="146" width="32" height="32" fill="var(--primary)" fill-opacity="0.28"/>` },
-      { label: `પગલું 2: વચ્ચેના ભાગમાં 2×2 ના ચોરસ = 4`, hl: `<rect x="62" y="50" width="64" height="64" fill="var(--tertiary)" fill-opacity="0.3" stroke="var(--tertiary)" stroke-width="3"/><rect x="94" y="82" width="64" height="64" fill="var(--tertiary)" fill-opacity="0.3" stroke="var(--tertiary)" stroke-width="3"/>` },
-      { label: `પગલું 3: વચ્ચેનો સૌથી મોટો 3×3 ચોરસ = 1 → કુલ = 13 + 4 + 1 = 18`, hl: `<rect x="62" y="50" width="96" height="96" fill="var(--positive)" fill-opacity="0.28" stroke="var(--positive)" stroke-width="4"/>` }
+      {
+        label: `Step 1: 1×1 Unit Squares = 1 + 3 + 5 + 3 + 1 = 13`,
+        svg: `
+          <g fill="var(--overlay-1)" stroke="var(--data-1)" stroke-width="3.5">
+            <rect x="100" y="20" width="40" height="40"/>
+            <rect x="60" y="60" width="40" height="40"/><rect x="100" y="60" width="40" height="40"/><rect x="140" y="60" width="40" height="40"/>
+            <rect x="20" y="100" width="40" height="40"/><rect x="60" y="100" width="40" height="40"/><rect x="100" y="100" width="40" height="40"/><rect x="140" y="100" width="40" height="40"/><rect x="180" y="100" width="40" height="40"/>
+            <rect x="60" y="140" width="40" height="40"/><rect x="100" y="140" width="40" height="40"/><rect x="140" y="140" width="40" height="40"/>
+            <rect x="100" y="180" width="40" height="40"/>
+          </g>
+        `
+      },
+      {
+        label: `Step 2: Four 2×2 Squares in the central 3×3 core = 4`,
+        svg: `
+          <rect x="60" y="60" width="80" height="80" fill="var(--overlay-3)" stroke="var(--data-3)" stroke-width="4.5"/>
+          <rect x="100" y="60" width="80" height="80" fill="none" stroke="var(--data-3)" stroke-width="4.5" stroke-dasharray="6 4"/>
+          <rect x="60" y="100" width="80" height="80" fill="none" stroke="var(--data-2)" stroke-width="4.5"/>
+          <rect x="100" y="100" width="80" height="80" fill="none" stroke="var(--data-2)" stroke-width="4.5" stroke-dasharray="6 4"/>
+        `
+      },
+      {
+        label: `Step 3: One 3×3 Centre Square = 1 → Total: 13 + 4 + 1 = 18`,
+        svg: `<rect x="60" y="60" width="120" height="120" fill="var(--overlay-4)" stroke="var(--data-4)" stroke-width="6"/>`
+      }
     ]
   },
   {
-    id: `tri-6`,
-    title: `ત્રિકોણમાં મધ્યથી બે વિભાજન રેખાઓ હોય તો કુલ કેટલા ત્રિકોણ બને?`,
+    id: `tri6`,
+    title: `Triangle Partition Counting`,
+    prompt: `આ ત્રિકોણમાં કુલ કેટલા ત્રિકોણ (Triangles) છે?`,
     options: [`3`, `4`, `6`, `5`],
-    ansIndex: 2,
-    svgBase: `
-      <polygon points="110,25 30,185 190,185" fill="none" stroke="var(--on-surface)" stroke-width="3"/>
-      <line x1="110" y1="25" x2="83" y2="185" stroke="var(--on-surface)" stroke-width="2.5"/>
-      <line x1="110" y1="25" x2="137" y2="185" stroke="var(--on-surface)" stroke-width="2.5"/>
+    answer: `6`,
+    viewBox: `0 0 240 220`,
+    baseSvg: `
+      <polygon points="120,25 25,195 215,195" fill="none" stroke="var(--on-surface)" stroke-width="3"/>
+      <line x1="120" y1="25" x2="88" y2="195" stroke="var(--on-surface)" stroke-width="2.5"/>
+      <line x1="120" y1="25" x2="152" y2="195" stroke="var(--on-surface)" stroke-width="2.5"/>
     `,
     steps: [
-      { label: `પગલું 1: 3 નાના સિંગલ ત્રિકોણ = 3`, hl: `<polygon points="110,25 30,185 83,185" fill="var(--primary)" fill-opacity="0.28"/><polygon points="110,25 83,185 137,185" fill="var(--tertiary)" fill-opacity="0.28"/><polygon points="110,25 137,185 190,185" fill="var(--secondary)" fill-opacity="0.28"/>` },
-      { label: `પગલું 2: બે-બે ભાગ જોડીને બનતા ત્રિકોણ = 2`, hl: `<polygon points="110,25 30,185 137,185" fill="var(--warning)" fill-opacity="0.3" stroke="var(--warning)" stroke-width="3"/>` },
-      { label: `પગલું 3: સૌથી મોટો આખો ત્રિકોણ = 1 → સૂત્ર: 1+2+3 = 6`, hl: `<polygon points="110,25 30,185 190,185" fill="var(--positive)" fill-opacity="0.28" stroke="var(--positive)" stroke-width="4"/>` }
+      {
+        label: `Step 1: 3 Single Small Triangles (નાના 3 ત્રિકોણ: 1, 2, 3)`,
+        svg: `
+          <polygon points="120,25 25,195 88,195" fill="var(--overlay-1)" stroke="var(--data-1)" stroke-width="4"/>
+          <polygon points="120,25 88,195 152,195" fill="var(--overlay-3)" stroke="var(--data-3)" stroke-width="4"/>
+          <polygon points="120,25 152,195 215,195" fill="var(--overlay-2)" stroke="var(--data-2)" stroke-width="4"/>
+        `
+      },
+      {
+        label: `Step 2: 2 Double Combined Triangles (બે-બે ભેગા: 1+2 અને 2+3)`,
+        svg: `
+          <polygon points="120,25 25,195 152,195" fill="var(--overlay-4)" stroke="var(--data-4)" stroke-width="5"/>
+          <polygon points="120,25 88,195 215,195" fill="none" stroke="var(--data-2)" stroke-width="5" stroke-dasharray="7 5"/>
+        `
+      },
+      {
+        label: `Step 3: 1 Whole Outer Triangle (આખો મોટો 1+2+3) → Total: 3 + 2 + 1 = 6`,
+        svg: `<polygon points="120,25 25,195 215,195" fill="var(--overlay-1)" stroke="var(--data-1)" stroke-width="6"/>`
+      }
     ]
   },
   {
-    id: `rect-9`,
-    title: `2×2 ગ્રીડમાં કુલ કેટલા લંબચોરસ (ચોરસ સહિત) ગણાય?`,
-    options: [`5`, `8`, `9`, `10`],
-    ansIndex: 2,
-    svgBase: `
-      <rect x="40" y="40" width="140" height="140" fill="none" stroke="var(--on-surface)" stroke-width="3"/>
-      <line x1="110" y1="40" x2="110" y2="180" stroke="var(--on-surface)" stroke-width="2.5"/>
-      <line x1="40" y1="110" x2="180" y2="110" stroke="var(--on-surface)" stroke-width="2.5"/>
+    id: `rect9`,
+    title: `2×2 Grid Rectangle Counting`,
+    prompt: `આ 2×2 ચોકઠામાં કુલ કેટલા લંબચોરસ (Rectangles, ચોરસ સહિત) બને?`,
+    options: [`4`, `6`, `9`, `8`],
+    answer: `9`,
+    viewBox: `0 0 240 220`,
+    baseSvg: `
+      <rect x="40" y="30" width="160" height="160" fill="none" stroke="var(--on-surface)" stroke-width="3"/>
+      <line x1="120" y1="30" x2="120" y2="190" stroke="var(--on-surface)" stroke-width="2.5"/>
+      <line x1="40" y1="110" x2="200" y2="110" stroke="var(--on-surface)" stroke-width="2.5"/>
     `,
     steps: [
-      { label: `પગલું 1: 4 નાના ખાનાં = 4`, hl: `<rect x="40" y="40" width="70" height="70" fill="var(--primary)" fill-opacity="0.25"/><rect x="110" y="40" width="70" height="70" fill="var(--primary)" fill-opacity="0.25"/><rect x="40" y="110" width="70" height="70" fill="var(--primary)" fill-opacity="0.25"/><rect x="110" y="110" width="70" height="70" fill="var(--primary)" fill-opacity="0.25"/>` },
-      { label: `પગલું 2: આડી 2 પટ્ટી + ઊભી 2 પટ્ટી = 4`, hl: `<rect x="40" y="40" width="140" height="70" fill="var(--tertiary)" fill-opacity="0.3" stroke="var(--tertiary)" stroke-width="3"/><rect x="40" y="40" width="70" height="140" fill="var(--secondary)" fill-opacity="0.25" stroke="var(--secondary)" stroke-width="3"/>` },
-      { label: `પગલું 3: આખો મોટો 2×2 આકાર = 1 → કુલ = 4 + 4 + 1 = 9`, hl: `<rect x="40" y="40" width="140" height="140" fill="var(--positive)" fill-opacity="0.28" stroke="var(--positive)" stroke-width="4"/>` }
+      {
+        label: `Step 1: 4 Single 1×1 Boxes (એક-એક ખાનાં = 4)`,
+        svg: `
+          <rect x="40" y="30" width="80" height="80" fill="var(--overlay-1)" stroke="var(--data-1)" stroke-width="4"/>
+          <rect x="120" y="30" width="80" height="80" fill="var(--overlay-1)" stroke="var(--data-1)" stroke-width="4"/>
+          <rect x="40" y="110" width="80" height="80" fill="var(--overlay-1)" stroke="var(--data-1)" stroke-width="4"/>
+          <rect x="120" y="110" width="80" height="80" fill="var(--overlay-1)" stroke="var(--data-1)" stroke-width="4"/>
+        `
+      },
+      {
+        label: `Step 2: 2 Horizontal + 2 Vertical Pairs (આડા 2 + ઊભા 2 = 4)`,
+        svg: `
+          <rect x="40" y="30" width="160" height="80" fill="var(--overlay-3)" stroke="var(--data-3)" stroke-width="5"/>
+          <rect x="40" y="110" width="160" height="80" fill="none" stroke="var(--data-3)" stroke-width="5"/>
+          <rect x="40" y="30" width="80" height="160" fill="none" stroke="var(--data-2)" stroke-width="4.5" stroke-dasharray="7 5"/>
+          <rect x="120" y="30" width="80" height="160" fill="none" stroke="var(--data-2)" stroke-width="4.5" stroke-dasharray="7 5"/>
+        `
+      },
+      {
+        label: `Step 3: 1 Whole 2×2 Outer Shape (આખો મોટો = 1) → Total: 4 + 4 + 1 = 9`,
+        svg: `<rect x="40" y="30" width="160" height="160" fill="var(--overlay-4)" stroke="var(--data-4)" stroke-width="6"/>`
+      }
     ]
   },
   {
-    id: `sq-5`,
-    title: `2×2 સાદા ચોરસમાં કુલ કેટલા ચોરસ હોય?`,
-    options: [`4`, `5`, `6`, `8`],
-    ansIndex: 1,
-    svgBase: `
-      <rect x="45" y="45" width="130" height="130" fill="none" stroke="var(--on-surface)" stroke-width="3"/>
-      <line x1="110" y1="45" x2="110" y2="175" stroke="var(--on-surface)" stroke-width="2.5"/>
-      <line x1="45" y1="110" x2="175" y2="110" stroke="var(--on-surface)" stroke-width="2.5"/>
+    id: `hex9`,
+    title: `NMMS Q9: Hexagon Diagonals`,
+    prompt: `નિયમિત ષટ્કોણ (Hexagon) માં કુલ કેટલા કર્ણ (Diagonals) હોય છે?`,
+    options: [`6`, `8`, `9`, `12`],
+    answer: `9`,
+    viewBox: `0 0 240 220`,
+    baseSvg: `
+      <polygon points="120,25 198,70 198,150 120,195 42,150 42,70" fill="none" stroke="var(--on-surface)" stroke-width="3.5"/>
     `,
     steps: [
-      { label: `પગલું 1: 4 નાના ચોરસ = 4`, hl: `<rect x="45" y="45" width="65" height="65" fill="var(--primary)" fill-opacity="0.25"/><rect x="110" y="45" width="65" height="65" fill="var(--primary)" fill-opacity="0.25"/><rect x="45" y="110" width="65" height="65" fill="var(--primary)" fill-opacity="0.25"/><rect x="110" y="110" width="65" height="65" fill="var(--primary)" fill-opacity="0.25"/>` },
-      { label: `પગલું 2: બહારનો 1 મોટો ચોરસ = 1 → કુલ = 1² + 2² = 5`, hl: `<rect x="45" y="45" width="130" height="130" fill="var(--positive)" fill-opacity="0.28" stroke="var(--positive)" stroke-width="4"/>` }
+      {
+        label: `Step 1: 3 Main Long Diagonals through centre (સામસામેના ખૂણા = 3)`,
+        svg: `
+          <line x1="120" y1="25" x2="120" y2="195" stroke="var(--data-1)" stroke-width="4"/>
+          <line x1="198" y1="70" x2="42" y2="150" stroke="var(--data-1)" stroke-width="4"/>
+          <line x1="42" y1="70" x2="198" y2="150" stroke="var(--data-1)" stroke-width="4"/>
+        `
+      },
+      {
+        label: `Step 2: 3 Diagonals forming Upright Triangle (ત્રિકોણ-1 = 3)`,
+        svg: `
+          <polygon points="120,25 198,150 42,150" fill="none" stroke="var(--data-3)" stroke-width="4"/>
+        `
+      },
+      {
+        label: `Step 3: 3 Diagonals forming Inverted Triangle (ત્રિકોણ-2 = 3) → Total: 3 + 3 + 3 = 9`,
+        svg: `
+          <polygon points="198,70 120,195 42,70" fill="none" stroke="var(--data-2)" stroke-width="4" stroke-dasharray="6 4"/>
+        `
+      }
     ]
   }
 ];
 
-// App State
+// ==================== APP STATE ====================
 const appState = {
-  activeTab: `study`,
-  perPage: 10,
-  currentPage: 1,
-  searchQuery: ``,
-  revealedIds: {},
+  mainTab: `study`,
+  studyPerPage: 20,
+  studyQuery: ``,
+  studyPage: 1,
+  activeGame: `speed`,
   points: 0,
   streak: 0,
   bestStreak: 0,
-  activeGame: `speed`
+  answeredCount: 0
 };
 
-let gameSession = {
-  deck: [],
-  idx: 0,
-  answered: false,
-  timerId: null,
-  timeLeft: 15,
-  racePos: 0,
-  raceTotal: 6,
-  solverStep: 0,
-  shapeStep: 0,
-  shapeDeck: []
-};
+// Runtime Game States (Shuffled fresh on init & reset)
+let speedState = { active: false, timeLeft: 60, timerId: null, deck: [], idx: 0, roundPts: 0, locked: false, feedback: null };
+let balloonState = { deck: [], idx: 0, locked: false, feedback: null };
+let raceState = { deck: [], idx: 0, pos: 0, goal: 10, locked: false, feedback: null };
+let solverState = { deck: [], idx: 0, revealedSteps: 0, selectedOpt: null };
+let shapeState = { deck: [], idx: 0, animStep: -1, timerId: null, locked: false, feedback: null };
+
+const LETTERS = [`A`, `B`, `C`, `D`];
 
 // Fisher-Yates Shuffle
 function shuffleArray(arr) {
@@ -1166,616 +1367,814 @@ function shuffleArray(arr) {
   return copy;
 }
 
-function getAnswerDisplay(code, opts) {
-  if (code === `G`) return `ગ્રેસ (બધાને ગુણ મળશે)`;
-  if (code === `AD`) return `(A) ${opts[0]} અને (D) ${opts[3]} — બંને માન્ય`;
-  if (code === `CD`) return `(C) ${opts[2]} અને (D) ${opts[3]} — બંને માન્ય`;
-  const idx = `ABCD`.indexOf(code);
-  if (idx >= 0) return `(${code}) ${opts[idx]}`;
-  return code;
+function getPlayableQuestions() {
+  // Exclude visual-only placeholder option questions from text quizzes unless needed
+  return QUESTIONS.filter(function(q) {
+    return q[2][0] !== `વિકલ્પ (A)` && !q[3].includes(`GRACE`);
+  });
 }
 
-function isOptionCorrect(optIdx, code) {
-  const ch = `ABCD`[optIdx];
-  if (code === `G`) return true;
-  return code.indexOf(ch) !== -1;
+function getMathReasoningQuestions() {
+  return getPlayableQuestions().filter(function(q) {
+    return q[5] === `MAT` && q[4].length >= 2;
+  });
 }
 
-// Persistence helpers
-async function saveProgress() {
-  if (window.notebookAppApi && typeof window.notebookAppApi.setAppState === `function`) {
-    try {
+function initGameDecks() {
+  const playable = getPlayableQuestions();
+  speedState.deck = shuffleArray(playable);
+  speedState.idx = 0;
+
+  balloonState.deck = shuffleArray(playable);
+  balloonState.idx = 0;
+
+  raceState.deck = shuffleArray(playable);
+  raceState.idx = 0;
+
+  solverState.deck = shuffleArray(getMathReasoningQuestions());
+  solverState.idx = 0;
+
+  shapeState.deck = shuffleArray(SHAPE_PUZZLES);
+  shapeState.idx = 0;
+}
+
+// ==================== PERSISTENCE VIA SHIM ====================
+async function saveState() {
+  try {
+    if (window.notebookAppApi && typeof window.notebookAppApi.setAppState === `function`) {
       await window.notebookAppApi.setAppState({
-        perPage: appState.perPage,
-        currentPage: appState.currentPage,
+        mainTab: appState.mainTab,
+        activeGame: appState.activeGame,
         points: appState.points,
         streak: appState.streak,
-        bestStreak: appState.bestStreak
+        bestStreak: appState.bestStreak,
+        answeredCount: appState.answeredCount
       });
-    } catch (e) {}
-  }
-}
-
-// Navigation Tab Switcher
-function switchTab(tab) {
-  appState.activeTab = tab;
-  const studyView = document.getElementById(`study-view`);
-  const gamesView = document.getElementById(`games-view`);
-  const studyBtn = document.getElementById(`tab-study-btn`);
-  const gamesBtn = document.getElementById(`tab-games-btn`);
-  if (!studyView || !gamesView || !studyBtn || !gamesBtn) return;
-
-  if (tab === `study`) {
-    stopSpeedTimer();
-    studyView.classList.remove(`hidden`);
-    gamesView.classList.add(`hidden`);
-    studyBtn.classList.add(`active`);
-    gamesBtn.classList.remove(`active`);
-  } else {
-    studyView.classList.add(`hidden`);
-    gamesView.classList.remove(`hidden`);
-    studyBtn.classList.remove(`active`);
-    gamesBtn.classList.add(`active`);
-    updateGamesHud();
-    startGame(appState.activeGame);
-  }
-}
-
-// STUDY TAB LOGIC
-function changePerPage(val) {
-  appState.perPage = val === `all` ? `all` : parseInt(val, 10);
-  appState.currentPage = 1;
-  renderStudy();
-  saveProgress();
-}
-
-function handleSearchJump(val) {
-  appState.searchQuery = val.trim();
-  appState.currentPage = 1;
-  renderStudy();
-}
-
-function clearSearchJump() {
-  const inp = document.getElementById(`search-jump-input`);
-  if (inp) inp.value = ``;
-  appState.searchQuery = ``;
-  appState.currentPage = 1;
-  renderStudy();
-}
-
-function getFilteredQuestions() {
-  const q = appState.searchQuery;
-  if (!q) return Q_DATA;
-  if (/^\d+$/.test(q)) {
-    const num = parseInt(q, 10);
-    if (num >= 1 && num <= 180) {
-      return Q_DATA.filter(item => item[0] === num);
     }
-  }
-  const low = q.toLowerCase();
-  return Q_DATA.filter(item =>
-    String(item[0]).includes(low) ||
-    item[1].toLowerCase().includes(low) ||
-    item[2].some(o => o.toLowerCase().includes(low)) ||
-    item[4].some(s => s.toLowerCase().includes(low))
-  );
+  } catch (e) { /* Ignore in standalone preview */ }
 }
 
-function toggleExplanation(qid) {
-  appState.revealedIds[qid] = !appState.revealedIds[qid];
-  renderStudy();
-}
-
-function goToPage(page) {
-  appState.currentPage = page;
-  renderStudy();
-  saveProgress();
-  window.scrollTo({ top: 0, behavior: `smooth` });
-}
-
-function renderStudy() {
-  const container = document.getElementById(`questions-container`);
-  const statusEl = document.getElementById(`study-status`);
-  const pageBar = document.getElementById(`pagination-bar`);
-  if (!container || !statusEl || !pageBar) return;
-
-  const list = getFilteredQuestions();
-  const total = list.length;
-  const perPage = appState.perPage === `all` ? (total || 1) : appState.perPage;
-  const totalPages = Math.max(1, Math.ceil(total / perPage));
-  if (appState.currentPage > totalPages) appState.currentPage = totalPages;
-
-  const start = (appState.currentPage - 1) * perPage;
-  const end = Math.min(total, start + perPage);
-  const pageItems = list.slice(start, end);
-
-  if (total === 0) {
-    statusEl.textContent = `કોઈ પ્રશ્ન મળ્યો નથી.`;
-    container.innerHTML = `<div class="q-card"><p class="q-text">તમારી શોધ મુજબ કોઈ પ્રશ્ન મળ્યો નથી. 1 થી 180 વચ્ચેનો નંબર અથવા અન્ય શબ્દ લખો.</p></div>`;
-    pageBar.innerHTML = ``;
-    return;
-  }
-
-  statusEl.textContent = `કુલ ${total} પ્રશ્નોમાંથી ${start + 1} થી ${end} બતાવે છે (પેજ ${appState.currentPage} / ${totalPages})`;
-
-  let html = ``;
-  for (let i = 0; i < pageItems.length; i++) {
-    const q = pageItems[i];
-    const id = q[0];
-    const text = q[1];
-    const opts = q[2];
-    const ans = q[3];
-    const steps = q[4];
-    const isOpen = !!appState.revealedIds[id];
-
-    let optsHtml = ``;
-    const letters = [`A`, `B`, `C`, `D`];
-    for (let j = 0; j < opts.length; j++) {
-      const correctClass = isOpen && isOptionCorrect(j, ans) ? ` is-correct-reveal` : ``;
-      optsHtml += `<div class="opt-chip${correctClass}"><span class="opt-letter">${letters[j]}</span><span>${opts[j]}</span></div>`;
-    }
-
-    let explainHtml = ``;
-    if (isOpen) {
-      let stepsLi = ``;
-      for (let s = 0; s < steps.length; s++) {
-        stepsLi += `<li>${steps[s]}</li>`;
+async function loadState() {
+  try {
+    if (window.notebookAppApi && typeof window.notebookAppApi.getAppState === `function`) {
+      const saved = await window.notebookAppApi.getAppState();
+      if (saved) {
+        if (typeof saved.points === `number`) appState.points = saved.points;
+        if (typeof saved.streak === `number`) appState.streak = saved.streak;
+        if (typeof saved.bestStreak === `number`) appState.bestStreak = saved.bestStreak;
+        if (typeof saved.answeredCount === `number`) appState.answeredCount = saved.answeredCount;
+        if (saved.activeGame) appState.activeGame = saved.activeGame;
+        if (saved.mainTab === `study` || saved.mainTab === `games`) appState.mainTab = saved.mainTab;
       }
-      explainHtml = `
-        <div class="explain-box">
-          <div class="ans-banner">
-            <span>✔ સાચો જવાબ: ${getAnswerDisplay(ans, opts)}</span>
-          </div>
-          <ol class="steps-list">${stepsLi}</ol>
-        </div>
-      `;
     }
-
-    html += `
-      <article class="q-card">
-        <div class="q-head">
-          <span class="q-num-pill">પ્રશ્ન ${id}</span>
-        </div>
-        <p class="q-text">${text}</p>
-        <div class="options-grid">${optsHtml}</div>
-        <button type="button" class="btn btn-primary" onclick="toggleExplanation(${id})">
-          <span>${isOpen ? `સમજૂતી છુપાવો` : `સમજૂતી જુઓ`}</span>
-        </button>
-        ${explainHtml}
-      </article>
-    `;
-  }
-  container.innerHTML = html;
-
-  // Pagination controls
-  if (totalPages <= 1) {
-    pageBar.innerHTML = `<span style="font-weight:700; color:var(--on-surface-variant);">બધા ${total} પ્રશ્નો એક જ પેજ પર</span>`;
-    return;
-  }
-
-  let numsHtml = ``;
-  const maxBtns = 7;
-  let pStart = Math.max(1, appState.currentPage - 3);
-  let pEnd = Math.min(totalPages, pStart + maxBtns - 1);
-  if (pEnd - pStart < maxBtns - 1) pStart = Math.max(1, pEnd - maxBtns + 1);
-
-  if (pStart > 1) {
-    numsHtml += `<button type="button" class="page-num-btn" onclick="goToPage(1)">1</button>`;
-    if (pStart > 2) numsHtml += `<span>…</span>`;
-  }
-  for (let p = pStart; p <= pEnd; p++) {
-    numsHtml += `<button type="button" class="page-num-btn ${p === appState.currentPage ? `active` : ``}" onclick="goToPage(${p})">${p}</button>`;
-  }
-  if (pEnd < totalPages) {
-    if (pEnd < totalPages - 1) numsHtml += `<span>…</span>`;
-    numsHtml += `<button type="button" class="page-num-btn" onclick="goToPage(${totalPages})">${totalPages}</button>`;
-  }
-
-  pageBar.innerHTML = `
-    <button type="button" class="btn btn-soft" onclick="goToPage(${appState.currentPage - 1})" ${appState.currentPage === 1 ? `disabled` : ``}>◀ અગાઉનું</button>
-    <div class="page-nums">${numsHtml}</div>
-    <button type="button" class="btn btn-soft" onclick="goToPage(${appState.currentPage + 1})" ${appState.currentPage === totalPages ? `disabled` : ``}>આગળનું ▶</button>
-  `;
+  } catch (e) { /* Ignore */ }
 }
 
-// GAMES TAB LOGIC
-function getBadgeLabel(pts) {
-  if (pts >= 200) return `NMMS ચેમ્પિયન 🏆`;
-  if (pts >= 100) return `સુપર સ્ટાર ⭐`;
-  if (pts >= 50) return `સ્માર્ટ શીખનાર 🚀`;
-  return `શરૂઆત 🌟`;
+function updateHud() {
+  const ptsEl = document.getElementById(`hud-points`);
+  const strEl = document.getElementById(`hud-streak`);
+  const bestEl = document.getElementById(`hud-best`);
+  const ansEl = document.getElementById(`hud-answered`);
+  if (ptsEl) ptsEl.textContent = String(appState.points);
+  if (strEl) strEl.textContent = appState.streak + ` 🔥`;
+  if (bestEl) bestEl.textContent = String(appState.bestStreak);
+  if (ansEl) ansEl.textContent = String(appState.answeredCount);
 }
 
-function updateGamesHud() {
-  const pEl = document.getElementById(`hud-points`);
-  const sEl = document.getElementById(`hud-streak`);
-  const bEl = document.getElementById(`hud-best-streak`);
-  const bgEl = document.getElementById(`hud-badges`);
-  if (pEl) pEl.textContent = String(appState.points);
-  if (sEl) sEl.textContent = `${appState.streak} 🔥`;
-  if (bEl) bEl.textContent = String(appState.bestStreak);
-  if (bgEl) bgEl.textContent = getBadgeLabel(appState.points);
-}
-
-function recordGameResult(isRight, bonusPts) {
-  if (isRight) {
+function recordOutcome(isCorrect, bonusPts) {
+  appState.answeredCount += 1;
+  if (isCorrect) {
     appState.streak += 1;
     if (appState.streak > appState.bestStreak) appState.bestStreak = appState.streak;
-    appState.points += (10 + (bonusPts || 0));
+    appState.points += (10 + (bonusPts || 0) + Math.min(appState.streak * 2, 20));
   } else {
     appState.streak = 0;
   }
-  updateGamesHud();
-  saveProgress();
+  updateHud();
+  saveState();
 }
 
-function selectGame(gameKey) {
-  appState.activeGame = gameKey;
-  const keys = [`speed`, `balloon`, `race`, `solver`, `shapes`];
-  for (let i = 0; i < keys.length; i++) {
-    const tile = document.getElementById(`tile-${keys[i]}`);
-    if (tile) {
-      if (keys[i] === gameKey) tile.classList.add(`active-game`);
-      else tile.classList.remove(`active-game`);
+function handleResetProgress(btn) {
+  if (!btn) return;
+  if (btn.dataset.armed !== `true`) {
+    btn.dataset.armed = `true`;
+    btn.textContent = `Tap again to confirm`;
+    setTimeout(function() {
+      if (btn.dataset.armed === `true`) {
+        btn.dataset.armed = `false`;
+        btn.innerHTML = `<i data-lucide="rotate-ccw" aria-hidden="true" style="width:16px;height:16px;"></i> Reset Score`;
+        refreshIcons();
+      }
+    }, 3000);
+    return;
+  }
+  btn.dataset.armed = `false`;
+  btn.innerHTML = `<i data-lucide="rotate-ccw" aria-hidden="true" style="width:16px;height:16px;"></i> Reset Score`;
+  appState.points = 0;
+  appState.streak = 0;
+  appState.bestStreak = 0;
+  appState.answeredCount = 0;
+  updateHud();
+  saveState();
+  refreshIcons();
+}
+
+function refreshIcons() {
+  if (window.lucide && typeof window.lucide.createIcons === `function`) {
+    window.lucide.createIcons();
+  }
+}
+
+// ==================== TAB SWITCHING ====================
+function switchMainTab(tab) {
+  appState.mainTab = tab;
+  const studyTabBtn = document.getElementById(`tab-study`);
+  const gamesTabBtn = document.getElementById(`tab-games`);
+  const studyPanel = document.getElementById(`panel-study`);
+  const gamesPanel = document.getElementById(`panel-games`);
+
+  if (studyTabBtn) studyTabBtn.classList.toggle(`active`, tab === `study`);
+  if (gamesTabBtn) gamesTabBtn.classList.toggle(`active`, tab === `games`);
+  if (studyPanel) studyPanel.classList.toggle(`active`, tab === `study`);
+  if (gamesPanel) gamesPanel.classList.toggle(`active`, tab === `games`);
+
+  if (tab !== `games` && speedState.timerId) {
+    clearInterval(speedState.timerId);
+    speedState.timerId = null;
+  }
+  if (tab === `games`) {
+    renderActiveGame();
+  }
+  saveState();
+}
+
+// ==================== STUDY TAB (2 FILTERS ONLY) ====================
+function getFilteredStudyQuestions() {
+  const raw = (appState.studyQuery || ``).trim();
+  if (!raw) return QUESTIONS;
+  const numOnly = Number(raw);
+  if (!Number.isNaN(numOnly) && numOnly >= 1 && numOnly <= 180 && String(numOnly) === raw) {
+    return QUESTIONS.filter(function(q) { return q[0] === numOnly; });
+  }
+  const lower = raw.toLowerCase();
+  return QUESTIONS.filter(function(q) {
+    return String(q[0]).includes(lower) ||
+           q[1].toLowerCase().includes(lower) ||
+           q[2].some(function(o) { return o.toLowerCase().includes(lower); });
+  });
+}
+
+function onStudyFilterChange() {
+  const perEl = document.getElementById(`filter-per-page`);
+  const jumpEl = document.getElementById(`filter-jump`);
+  if (perEl) appState.studyPerPage = Number(perEl.value) || 20;
+  if (jumpEl) appState.studyQuery = jumpEl.value;
+  appState.studyPage = 1;
+  renderStudyList();
+}
+
+function goStudyPage(page) {
+  appState.studyPage = page;
+  renderStudyList();
+  const toolbar = document.querySelector(`.study-toolbar`);
+  if (toolbar) toolbar.scrollIntoView({ behavior: `smooth`, block: `start` });
+}
+
+function toggleExplanation(qNum) {
+  const box = document.getElementById(`exp-box-` + qNum);
+  const btn = document.getElementById(`exp-btn-` + qNum);
+  const card = document.getElementById(`q-card-` + qNum);
+  if (!box || !btn) return;
+  const willOpen = !box.classList.contains(`open`);
+  box.classList.toggle(`open`, willOpen);
+  if (card) {
+    const opts = card.querySelectorAll(`.opt-pill[data-ans="true"]`);
+    opts.forEach(function(el) { el.classList.toggle(`is-answer`, willOpen); });
+  }
+  btn.textContent = willOpen ? `સમજૂતી છુપાવો` : `સમજૂતી જુઓ`;
+}
+
+function escapeHtml(str) {
+  return String(str)
+    .replace(/&/g, `&amp;`)
+    .replace(/</g, `&lt;`)
+    .replace(/>/g, `&gt;`)
+    .replace(/"/g, `&quot;`);
+}
+
+function renderStudyList() {
+  const container = document.getElementById(`study-questions-container`);
+  const pagEl = document.getElementById(`study-pagination`);
+  const countEl = document.getElementById(`study-count-info`);
+  const pageEl = document.getElementById(`study-page-info`);
+  if (!container || !pagEl) return;
+
+  const filtered = getFilteredStudyQuestions();
+  const total = filtered.length;
+  const perPage = appState.studyPerPage;
+  const totalPages = Math.max(1, Math.ceil(total / perPage));
+  if (appState.studyPage > totalPages) appState.studyPage = totalPages;
+
+  const startIdx = (appState.studyPage - 1) * perPage;
+  const slice = filtered.slice(startIdx, startIdx + perPage);
+
+  if (countEl) {
+    if (total === 0) {
+      countEl.textContent = `No matching questions found`;
+    } else {
+      countEl.textContent = `Showing ` + (startIdx + 1) + `–` + (startIdx + slice.length) + ` of ` + total + ` questions`;
     }
   }
-  startGame(gameKey);
-}
-
-function stopSpeedTimer() {
-  if (gameSession.timerId) {
-    clearInterval(gameSession.timerId);
-    gameSession.timerId = null;
+  if (pageEl) {
+    pageEl.textContent = `Page ` + appState.studyPage + ` of ` + totalPages;
   }
-}
 
-function startGame(gameKey) {
-  stopSpeedTimer();
-  // Always use Fisher-Yates shuffle on game start / reload so sequence never repeats
-  if (gameKey === `solver`) {
-    const mathReasoningPool = Q_DATA.filter(q => q[4].length >= 2 && q[3] !== `G` && q[0] <= 120);
-    gameSession.deck = shuffleArray(mathReasoningPool);
-  } else if (gameKey === `shapes`) {
-    gameSession.shapeDeck = shuffleArray(SHAPES_PUZZLES);
-  } else {
-    const cleanPool = Q_DATA.filter(q => q[3] !== `G`);
-    gameSession.deck = shuffleArray(cleanPool);
-  }
-  gameSession.idx = 0;
-  gameSession.answered = false;
-  gameSession.racePos = 0;
-  gameSession.solverStep = 0;
-  gameSession.shapeStep = 0;
-  renderActiveGame();
-}
-
-function nextGameQuestion() {
-  if (appState.activeGame === `shapes`) {
-    gameSession.idx = (gameSession.idx + 1) % gameSession.shapeDeck.length;
-    if (gameSession.idx === 0) gameSession.shapeDeck = shuffleArray(SHAPES_PUZZLES);
-    gameSession.shapeStep = 0;
-  } else {
-    gameSession.idx += 1;
-    if (gameSession.idx >= gameSession.deck.length) {
-      gameSession.deck = shuffleArray(gameSession.deck);
-      gameSession.idx = 0;
-    }
-    if (appState.activeGame === `race` && gameSession.racePos >= gameSession.raceTotal) {
-      gameSession.racePos = 0;
-    }
-  }
-  gameSession.answered = false;
-  gameSession.solverStep = 0;
-  renderActiveGame();
-}
-
-function renderActiveGame() {
-  const stage = document.getElementById(`game-stage`);
-  if (!stage) return;
-  const g = appState.activeGame;
-
-  if (g === `shapes`) {
-    renderShapesGame(stage);
+  if (slice.length === 0) {
+    container.innerHTML = `<div class="q-card"><p class="q-text">No questions matched your search. Clear the search box to view all 180 questions.</p></div>`;
+    pagEl.innerHTML = ``;
     return;
   }
 
-  const q = gameSession.deck[gameSession.idx];
-  const letters = [`A`, `B`, `C`, `D`];
-  let optsHtml = ``;
-  for (let i = 0; i < 4; i++) {
-    optsHtml += `
-      <button type="button" class="game-opt-btn" id="gopt-${i}" onclick="answerStandardGame(${i})">
-        <span class="opt-letter">${letters[i]}</span>
-        <span>${q[2][i]}</span>
-      </button>
-    `;
-  }
+  container.innerHTML = slice.map(function(q) {
+    const num = q[0];
+    const text = q[1];
+    const opts = q[2];
+    const keys = q[3];
+    const exp = q[4];
+    const cat = q[5];
+    const isGrace = keys.includes(`GRACE`);
+    const ansLabel = isGrace ? `ગ્રેસ (બધાને ગુણ)` : `સત્તાવાર જવાબ: ` + keys.join(` & `);
 
-  if (g === `speed`) {
-    gameSession.timeLeft = 15;
-    stage.innerHTML = `
-      <div class="game-top-bar">
-        <span class="badge">⏱️ સ્પીડ ચેલેન્જ (પ્રશ્ન ${q[0]})</span>
-        <span class="badge badge-warning" id="speed-timer-badge">સમય: 15 સે.</span>
-        <button type="button" class="btn btn-soft" onclick="startGame('speed')">નવી શફલ</button>
-      </div>
-      <div class="progress-track"><div class="progress-fill" id="speed-bar" style="width:100%;"></div></div>
-      <p class="q-text">${q[1]}</p>
-      <div class="options-grid" style="grid-template-columns: 1fr;">${optsHtml}</div>
-      <div id="game-feedback"></div>
-    `;
-    startSpeedTimer();
-  } else if (g === `balloon`) {
-    stage.innerHTML = `
-      <div class="game-top-bar">
-        <span class="badge badge-grape">🎈 બલૂન અને ફની ઇમોજી (પ્રશ્ન ${q[0]})</span>
-        <button type="button" class="btn btn-soft" onclick="startGame('balloon')">નવી શફલ</button>
-      </div>
-      <div class="balloon-zone" id="balloon-zone">
-        <span style="font-weight:700; color:var(--on-surface-variant);">જવાબ પસંદ કરો — સાચા જવાબ પર બલૂન ઊડશે! 🎈</span>
-      </div>
-      <p class="q-text">${q[1]}</p>
-      <div class="options-grid" style="grid-template-columns: 1fr;">${optsHtml}</div>
-      <div id="game-feedback"></div>
-    `;
-  } else if (g === `race`) {
-    const pct = Math.min(100, Math.round((gameSession.racePos / gameSession.raceTotal) * 100));
-    stage.innerHTML = `
-      <div class="game-top-bar">
-        <span class="badge">🏎️ રેસિંગ ચેલેન્જ (${gameSession.racePos}/${gameSession.raceTotal} પગલાં)</span>
-        <button type="button" class="btn btn-soft" onclick="startGame('race')">રેસ ફરી શરૂ કરો</button>
-      </div>
-      <div class="race-track">
-        <div style="font-weight:700; color:var(--on-surface-variant);">સાચો જવાબ આપો અને કારને ફિનિશ લાઇન સુધી પહોંચાડો!</div>
-        <div class="race-lane">
-          <div class="race-car" id="race-car-icon" style="left: ${Math.max(4, pct)}%;">🏎️</div>
-          <div class="race-finish">🏁</div>
+    const optsHtml = opts.map(function(opt, idx) {
+      const letter = LETTERS[idx];
+      const isCorrect = keys.includes(letter);
+      return `<div class="opt-pill" data-ans="` + isCorrect + `"><span class="opt-letter">` + letter + `</span><span>` + escapeHtml(opt) + `</span></div>`;
+    }).join(``);
+
+    const expHtml = exp.map(function(line, i) {
+      return `<div class="exp-step" style="animation-delay:` + (i * 80) + `ms"><span class="step-dot">` + (i + 1) + `</span><span>` + escapeHtml(line) + `</span></div>`;
+    }).join(``);
+
+    return `
+      <article id="q-card-` + num + `" class="q-card">
+        <div class="q-header">
+          <span class="q-num-pill">પ્રશ્ન ` + num + `</span>
+          <span class="q-cat-tag">` + escapeHtml(cat) + `</span>
         </div>
-      </div>
-      <p class="q-text">પ્રશ્ન ${q[0]}: ${q[1]}</p>
-      <div class="options-grid" style="grid-template-columns: 1fr;">${optsHtml}</div>
-      <div id="game-feedback"></div>
+        <p class="q-text">` + escapeHtml(text) + `</p>
+        <div class="options-grid">` + optsHtml + `</div>
+        <div class="q-actions">
+          <button type="button" id="exp-btn-` + num + `" class="btn btn-primary" onclick="toggleExplanation(` + num + `)">સમજૂતી જુઓ</button>
+          <span class="ans-badge` + (isGrace ? ` is-grace` : ``) + `">` + escapeHtml(ansLabel) + `</span>
+        </div>
+        <div id="exp-box-` + num + `" class="exp-box">` + expHtml + `</div>
+      </article>
     `;
-  } else if (g === `solver`) {
-    stage.innerHTML = `
-      <div class="game-top-bar">
-        <span class="badge badge-grape">🧠 મેથ્સ & રીઝનિંગ સોલ્વર (પ્રશ્ન ${q[0]})</span>
-        <button type="button" class="btn btn-soft" onclick="startGame('solver')">નવી શફલ</button>
-      </div>
-      <p class="q-text">${q[1]}</p>
-      <div class="options-grid" style="grid-template-columns: 1fr;">${optsHtml}</div>
-      <div id="game-feedback"></div>
-      <div id="solver-anim-area"></div>
-    `;
+  }).join(``);
+
+  // Pagination buttons
+  if (totalPages <= 1) {
+    pagEl.innerHTML = ``;
+  } else {
+    let pHtml = `<button type="button" class="btn btn-ghost" ` + (appState.studyPage === 1 ? `disabled` : ``) + ` onclick="goStudyPage(` + (appState.studyPage - 1) + `)">Prev</button>`;
+    for (let p = 1; p <= totalPages; p++) {
+      pHtml += `<button type="button" class="btn ` + (p === appState.studyPage ? `btn-primary` : `btn-ghost`) + `" onclick="goStudyPage(` + p + `)">` + p + `</button>`;
+    }
+    pHtml += `<button type="button" class="btn btn-ghost" ` + (appState.studyPage === totalPages ? `disabled` : ``) + ` onclick="goStudyPage(` + (appState.studyPage + 1) + `)">Next</button>`;
+    pagEl.innerHTML = pHtml;
   }
 }
 
-function startSpeedTimer() {
-  stopSpeedTimer();
-  gameSession.timerId = setInterval(function() {
-    if (gameSession.answered) { stopSpeedTimer(); return; }
-    gameSession.timeLeft -= 1;
-    const badge = document.getElementById(`speed-timer-badge`);
-    const bar = document.getElementById(`speed-bar`);
-    if (badge) badge.textContent = `સમય: ${gameSession.timeLeft} સે.`;
-    if (bar) bar.style.width = `${Math.max(0, (gameSession.timeLeft / 15) * 100)}%`;
-    if (gameSession.timeLeft <= 0) {
-      stopSpeedTimer();
-      gameSession.answered = true;
-      recordGameResult(false, 0);
-      const q = gameSession.deck[gameSession.idx];
-      const fb = document.getElementById(`game-feedback`);
-      if (fb) {
-        fb.innerHTML = `<div class="feedback-toast feedback-bad">⏰ સમય પૂરો! સાચો જવાબ: ${getAnswerDisplay(q[3], q[2])}<br><button type="button" class="btn btn-primary" style="margin-top:var(--space-sm);" onclick="nextGameQuestion()">આગળનો પ્રશ્ન ▶</button></div>`;
-      }
+// ==================== GAMES CONSOLE SWITCHING (INSTANT FRONT & CENTRE) ====================
+function selectGame(gameId) {
+  if (speedState.timerId && gameId !== `speed`) {
+    clearInterval(speedState.timerId);
+    speedState.timerId = null;
+  }
+  if (shapeState.timerId && gameId !== `shapes`) {
+    clearInterval(shapeState.timerId);
+    shapeState.timerId = null;
+  }
+  appState.activeGame = gameId;
+
+  document.querySelectorAll(`.side-game-card`).forEach(function(btn) {
+    btn.classList.toggle(`active`, btn.dataset.game === gameId);
+  });
+  document.querySelectorAll(`.mobile-game-chip`).forEach(function(chip) {
+    chip.classList.toggle(`active`, chip.dataset.game === gameId);
+  });
+
+  renderActiveGame();
+
+  // Keep user anchored cleanly at top of the game stage without jumping down
+  const stage = document.getElementById(`game-hero-stage`);
+  if (stage) {
+    const rect = stage.getBoundingClientRect();
+    if (rect.top < 0 || rect.top > window.innerHeight * 0.5) {
+      stage.scrollIntoView({ behavior: `smooth`, block: `nearest` });
+    }
+  }
+  saveState();
+}
+
+function renderActiveGame() {
+  const stage = document.getElementById(`game-hero-stage`);
+  if (!stage) return;
+  stage.classList.remove(`stage-transition`);
+  void stage.offsetWidth;
+  stage.classList.add(`stage-transition`);
+
+  if (appState.activeGame === `speed`) renderSpeedGame(stage);
+  else if (appState.activeGame === `balloon`) renderBalloonGame(stage);
+  else if (appState.activeGame === `race`) renderRaceGame(stage);
+  else if (appState.activeGame === `solver`) renderSolverGame(stage);
+  else renderShapesGame(stage);
+
+  refreshIcons();
+}
+
+function getDeckQuestion(stateObj) {
+  if (!stateObj.deck || stateObj.deck.length === 0) {
+    stateObj.deck = shuffleArray(getPlayableQuestions());
+    stateObj.idx = 0;
+  }
+  if (stateObj.idx >= stateObj.deck.length) {
+    stateObj.deck = shuffleArray(stateObj.deck);
+    stateObj.idx = 0;
+  }
+  return stateObj.deck[stateObj.idx];
+}
+
+// ==================== GAME 1: SPEED CHALLENGE QUIZ ====================
+function startSpeedRound() {
+  if (speedState.timerId) clearInterval(speedState.timerId);
+  speedState.deck = shuffleArray(getPlayableQuestions());
+  speedState.idx = 0;
+  speedState.timeLeft = 60;
+  speedState.roundPts = 0;
+  speedState.active = true;
+  speedState.locked = false;
+  speedState.feedback = null;
+
+  renderActiveGame();
+  speedState.timerId = setInterval(function() {
+    speedState.timeLeft -= 1;
+    const fill = document.getElementById(`speed-timer-fill`);
+    const txt = document.getElementById(`speed-timer-txt`);
+    if (fill) {
+      const pct = Math.max(0, (speedState.timeLeft / 60) * 100);
+      fill.style.width = pct + `%`;
+      fill.style.backgroundColor = speedState.timeLeft <= 12 ? `var(--error)` : `var(--tertiary)`;
+    }
+    if (txt) txt.textContent = speedState.timeLeft + `s`;
+
+    if (speedState.timeLeft <= 0) {
+      clearInterval(speedState.timerId);
+      speedState.timerId = null;
+      speedState.active = false;
+      renderActiveGame();
     }
   }, 1000);
 }
 
-function answerStandardGame(chosenIdx) {
-  if (gameSession.answered) return;
-  gameSession.answered = true;
-  stopSpeedTimer();
-
-  const q = gameSession.deck[gameSession.idx];
-  const right = isOptionCorrect(chosenIdx, q[3]);
-  const g = appState.activeGame;
-
-  for (let i = 0; i < 4; i++) {
-    const btn = document.getElementById(`gopt-${i}`);
-    if (!btn) continue;
-    btn.disabled = true;
-    if (isOptionCorrect(i, q[3])) btn.classList.add(`opt-right`);
-    else if (i === chosenIdx) btn.classList.add(`opt-wrong`);
+function answerSpeed(letter) {
+  if (!speedState.active || speedState.locked) return;
+  speedState.locked = true;
+  const q = getDeckQuestion(speedState);
+  const ok = q[3].includes(letter);
+  if (ok) {
+    speedState.roundPts += 15;
+    recordOutcome(true, 5);
+    speedState.feedback = { ok: true, msg: `⚡ Spot on! +15 pts (` + q[3].join(`/`) + `)` };
+  } else {
+    recordOutcome(false, 0);
+    speedState.feedback = { ok: false, msg: `⏱️ Answer was (` + q[3].join(`/`) + `) — keep moving!` };
   }
-
-  let bonus = 0;
-  if (g === `speed` && right) bonus = Math.max(0, gameSession.timeLeft);
-  if (g === `race` && right) {
-    gameSession.racePos += 1;
-    const car = document.getElementById(`race-car-icon`);
-    if (car) car.style.left = `${Math.min(96, Math.round((gameSession.racePos / gameSession.raceTotal) * 100))}%`;
-    if (gameSession.racePos >= gameSession.raceTotal) bonus = 25;
-  }
-
-  recordGameResult(right, bonus);
-
-  if (g === `balloon`) {
-    const bz = document.getElementById(`balloon-zone`);
-    if (bz) {
-      if (right) {
-        bz.innerHTML = `<div class="balloon-pop">🎈🎉🎈 વાહ! બલૂન આકાશમાં ઊડ્યા! (+10 પોઇન્ટ) 🥳</div>`;
-      } else {
-        const funnyMsgs = [
-          `🤪 અરેરે! ચિંતા નહીં, આગલી વખતે ચોક્કસ આવડશે! 💡 ટિપ: ${q[4][0]}`,
-          `🙈 ઓહ! થોડું ચૂકી ગયા! 💡 ટિપ: ${q[4][0]}`,
-          `🐢 ધીમે પણ મક્કમ! 💡 ટિપ: ${q[4][0]}`
-        ];
-        bz.innerHTML = `<div class="balloon-pop" style="font-size:1.1rem;">${funnyMsgs[Math.floor(Math.random() * funnyMsgs.length)]}</div>`;
-      }
+  renderActiveGame();
+  setTimeout(function() {
+    if (appState.activeGame === `speed` && speedState.active) {
+      speedState.idx += 1;
+      speedState.locked = false;
+      speedState.feedback = null;
+      renderActiveGame();
     }
-  }
+  }, 750);
+}
 
-  const fb = document.getElementById(`game-feedback`);
-  if (fb) {
-    if (g === `race` && gameSession.racePos >= gameSession.raceTotal) {
-      fb.innerHTML = `<div class="feedback-toast feedback-ok">🏆 અભિનંદન! તમે રેસ જીતી લીધી! (+35 પોઇન્ટ)<br><button type="button" class="btn btn-primary" style="margin-top:var(--space-sm);" onclick="nextGameQuestion()">નવી રેસ શરૂ કરો 🏁</button></div>`;
-    } else {
-      fb.innerHTML = `
-        <div class="feedback-toast ${right ? `feedback-ok` : `feedback-bad`}">
-          ${right ? `✔ શાબાશ! સાચો જવાબ (+${10 + bonus} પોઇન્ટ)` : `✖ ખોટો જવાબ! સાચો જવાબ: ${getAnswerDisplay(q[3], q[2])}`}
-          <div style="margin-top:var(--space-xs); font-weight:600;">${q[4][0]}</div>
-          <button type="button" class="btn btn-primary" style="margin-top:var(--space-sm);" onclick="nextGameQuestion()">આગળનો પ્રશ્ન ▶</button>
+function renderSpeedGame(stage) {
+  if (!speedState.active) {
+    const finished = speedState.roundPts > 0 || speedState.timeLeft === 0;
+    stage.innerHTML = `
+      <div class="stage-top-bar">
+        <div class="stage-title-wrap">
+          <h2 class="stage-title">Speed Challenge Quiz</h2>
+          <p class="stage-sub">Beat the 60-second clock with randomly shuffled NMMS questions.</p>
         </div>
-      `;
-    }
-  }
-
-  if (g === `solver`) {
-    renderSolverSteps(q);
-  }
-}
-
-function renderSolverSteps(q) {
-  const area = document.getElementById(`solver-anim-area`);
-  if (!area) return;
-  const steps = q[4];
-  let html = `<div class="step-cards">`;
-  for (let i = 0; i < steps.length; i++) {
-    html += `<div class="step-pill ${i <= gameSession.solverStep ? `step-active` : ``}">પગલું ${i + 1}: ${steps[i]}</div>`;
-  }
-  html += `</div>`;
-  if (gameSession.solverStep < steps.length - 1) {
-    html += `<button type="button" class="btn btn-secondary" style="margin-top:var(--space-md);" onclick="advanceSolverStep()">આગળનું સ્ટેપ એનિમેટ કરો ▶</button>`;
-  }
-  area.innerHTML = html;
-}
-
-function advanceSolverStep() {
-  const q = gameSession.deck[gameSession.idx];
-  if (gameSession.solverStep < q[4].length - 1) {
-    gameSession.solverStep += 1;
-    renderSolverSteps(q);
-  }
-}
-
-// GAME 5: SHAPES FINDING PUZZLE GAME
-function renderShapesGame(stage) {
-  const puzzle = gameSession.shapeDeck[gameSession.idx];
-  const letters = [`A`, `B`, `C`, `D`];
-  let optsHtml = ``;
-  for (let i = 0; i < puzzle.options.length; i++) {
-    optsHtml += `
-      <button type="button" class="game-opt-btn" id="sopt-${i}" onclick="answerShapeGame(${i})">
-        <span class="opt-letter">${letters[i]}</span>
-        <span>${puzzle.options[i]}</span>
-      </button>
-    `;
-  }
-
-  stage.innerHTML = `
-    <div class="game-top-bar">
-      <span class="badge badge-positive">🔺 આકાર શોધ પઝલ (${gameSession.idx + 1}/${gameSession.shapeDeck.length})</span>
-      <button type="button" class="btn btn-soft" onclick="startGame('shapes')">નવી શફલ</button>
-    </div>
-    <p class="q-text">${puzzle.title}</p>
-    <div class="shape-svg-wrap">
-      <svg id="shape-puzzle-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 210" width="240" height="225" aria-label="આકાર ગણતરી આકૃતિ">
-        ${puzzle.svgBase}
-      </svg>
-    </div>
-    <div class="options-grid">${optsHtml}</div>
-    <div id="shape-feedback"></div>
-    <div id="shape-breakdown"></div>
-  `;
-}
-
-function answerShapeGame(chosenIdx) {
-  if (gameSession.answered) return;
-  gameSession.answered = true;
-  const puzzle = gameSession.shapeDeck[gameSession.idx];
-  const right = chosenIdx === puzzle.ansIndex;
-
-  for (let i = 0; i < puzzle.options.length; i++) {
-    const btn = document.getElementById(`sopt-${i}`);
-    if (!btn) continue;
-    btn.disabled = true;
-    if (i === puzzle.ansIndex) btn.classList.add(`opt-right`);
-    else if (i === chosenIdx) btn.classList.add(`opt-wrong`);
-  }
-
-  recordGameResult(right, right ? 5 : 0);
-
-  const fb = document.getElementById(`shape-feedback`);
-  if (fb) {
-    fb.innerHTML = `
-      <div class="feedback-toast ${right ? `feedback-ok` : `feedback-bad`}">
-        ${right ? `✔ અદ્ભુત! સાચો જવાબ: ${puzzle.options[puzzle.ansIndex]} (+15 પોઇન્ટ)` : `✖ સાચો જવાબ ${puzzle.options[puzzle.ansIndex]} છે. નીચે સ્ટેપ-બાય-સ્ટેપ જુઓ:`}
+      </div>
+      <div class="feedback-banner info">
+        <span>` + (finished ? `🏁 Time's up! You scored ` + speedState.roundPts + ` speed points this round.` : `Ready for a 60-second sprint? Earn +15 points per correct answer!`) + `</span>
+      </div>
+      <div>
+        <button type="button" class="btn btn-primary" onclick="startSpeedRound()">
+          <i data-lucide="play" aria-hidden="true" style="width:18px;height:18px;"></i>
+          ` + (finished ? `Play Another 60s Sprint` : `Start 60s Speed Quiz`) + `
+        </button>
       </div>
     `;
+    return;
   }
-  gameSession.shapeStep = 0;
-  renderShapeBreakdown();
-}
 
-function renderShapeBreakdown() {
-  const puzzle = gameSession.shapeDeck[gameSession.idx];
-  const svg = document.getElementById(`shape-puzzle-svg`);
-  const bd = document.getElementById(`shape-breakdown`);
-  if (!svg || !bd) return;
+  const q = getDeckQuestion(speedState);
+  const pct = Math.max(0, (speedState.timeLeft / 60) * 100);
+  const optsHtml = q[2].map(function(o, i) {
+    const letter = LETTERS[i];
+    let cls = `quiz-opt-btn`;
+    if (speedState.locked) {
+      if (q[3].includes(letter)) cls += ` correct`;
+      else cls += ``;
+    }
+    return `<button type="button" class="` + cls + `" ` + (speedState.locked ? `disabled` : ``) + ` onclick="answerSpeed('` + letter + `')"><span class="opt-letter">` + letter + `</span><span>` + escapeHtml(o) + `</span></button>`;
+  }).join(``);
 
-  const stepObj = puzzle.steps[gameSession.shapeStep];
-  svg.innerHTML = puzzle.svgBase + stepObj.hl;
-
-  let stepsHtml = `<div class="step-cards">`;
-  for (let i = 0; i < puzzle.steps.length; i++) {
-    stepsHtml += `<div class="step-pill ${i === gameSession.shapeStep ? `step-active` : ``}">${puzzle.steps[i].label}</div>`;
-  }
-  stepsHtml += `</div>`;
-
-  const hasMore = gameSession.shapeStep < puzzle.steps.length - 1;
-  bd.innerHTML = `
-    ${stepsHtml}
-    <div style="display:flex; flex-wrap:wrap; gap:var(--space-sm); margin-top:var(--space-md);">
-      ${hasMore ? `<button type="button" class="btn btn-secondary" onclick="nextShapeHighlight()">આગળનો આકાર હાઇલાઇટ કરો ✨</button>` : ``}
-      <button type="button" class="btn btn-primary" onclick="nextGameQuestion()">આગળની આકાર પઝલ ▶</button>
+  stage.innerHTML = `
+    <div class="stage-top-bar">
+      <div class="stage-title-wrap">
+        <h2 class="stage-title">Speed Challenge Quiz</h2>
+        <p class="stage-sub">Q` + q[0] + ` • Round Score: ` + speedState.roundPts + `</p>
+      </div>
+      <span id="speed-timer-txt" class="q-num-pill" style="font-size:1rem;">` + speedState.timeLeft + `s</span>
     </div>
+    <div class="timer-track"><div id="speed-timer-fill" class="timer-fill" style="width:` + pct + `%"></div></div>
+    <p class="q-text">` + escapeHtml(q[1]) + `</p>
+    <div class="quiz-options">` + optsHtml + `</div>
+    ` + (speedState.feedback ? `<div class="feedback-banner ` + (speedState.feedback.ok ? `ok` : `bad`) + `"><span>` + escapeHtml(speedState.feedback.msg) + `</span></div>` : ``) + `
   `;
 }
 
-function nextShapeHighlight() {
-  const puzzle = gameSession.shapeDeck[gameSession.idx];
-  if (gameSession.shapeStep < puzzle.steps.length - 1) {
-    gameSession.shapeStep += 1;
-    renderShapeBreakdown();
+// ==================== GAME 2: BALLOON & EMOJI QUIZ ====================
+const FUNNY_EMOJIS = [`😅 Oops! Close one!`, `🧐 Almost had it!`, `💪 Keep going, scholar!`, `🚀 Next one is yours!`];
+
+function spawnBalloonsAndConfetti() {
+  const layer = document.getElementById(`balloon-fx-layer`);
+  if (!layer) return;
+  layer.innerHTML = ``;
+  const icons = [`🎈`, `🎉`, `✨`, `🎈`, `🎊`, `🎈`];
+  for (let i = 0; i < 10; i++) {
+    const b = document.createElement(`span`);
+    b.className = `balloon-float`;
+    b.textContent = icons[i % icons.length];
+    b.style.left = (6 + Math.random() * 84) + `%`;
+    b.style.animationDelay = (i * 70) + `ms`;
+    layer.appendChild(b);
+  }
+  const colours = [`var(--data-1)`, `var(--data-2)`, `var(--data-3)`, `var(--data-4)`];
+  for (let c = 0; c < 18; c++) {
+    const p = document.createElement(`span`);
+    p.className = `confetti-piece`;
+    p.style.left = (5 + Math.random() * 90) + `%`;
+    p.style.top = `0px`;
+    p.style.background = colours[c % colours.length];
+    p.style.animationDelay = (c * 45) + `ms`;
+    layer.appendChild(p);
   }
 }
 
-// Initialization
+function answerBalloon(letter) {
+  if (balloonState.locked) return;
+  balloonState.locked = true;
+  const q = getDeckQuestion(balloonState);
+  const ok = q[3].includes(letter);
+  recordOutcome(ok, 0);
+  if (ok) {
+    balloonState.feedback = { ok: true, msg: `🎈 Woohoo! Correct answer (` + q[3].join(`/`) + `)! Balloons away!` };
+    renderActiveGame();
+    spawnBalloonsAndConfetti();
+  } else {
+    const react = FUNNY_EMOJIS[Math.floor(Math.random() * FUNNY_EMOJIS.length)];
+    balloonState.feedback = { ok: false, msg: react + ` Correct answer is (` + q[3].join(`/`) + `).` };
+    renderActiveGame();
+  }
+}
+
+function nextBalloonQuestion() {
+  balloonState.idx += 1;
+  balloonState.locked = false;
+  balloonState.feedback = null;
+  renderActiveGame();
+}
+
+function renderBalloonGame(stage) {
+  const q = getDeckQuestion(balloonState);
+  const optsHtml = q[2].map(function(o, i) {
+    const letter = LETTERS[i];
+    let cls = `quiz-opt-btn`;
+    if (balloonState.locked && q[3].includes(letter)) cls += ` correct`;
+    return `<button type="button" class="` + cls + `" ` + (balloonState.locked ? `disabled` : ``) + ` onclick="answerBalloon('` + letter + `')"><span class="opt-letter">` + letter + `</span><span>` + escapeHtml(o) + `</span></button>`;
+  }).join(``);
+
+  stage.innerHTML = `
+    <div id="balloon-fx-layer" class="fx-layer" aria-hidden="true"></div>
+    <div class="stage-top-bar">
+      <div class="stage-title-wrap">
+        <h2 class="stage-title">Balloon &amp; Emoji Quiz</h2>
+        <p class="stage-sub">Correct answers launch balloons &amp; confetti; wrong picks give friendly emoji cheer!</p>
+      </div>
+      <span class="q-num-pill">Q` + q[0] + `</span>
+    </div>
+    <p class="q-text">` + escapeHtml(q[1]) + `</p>
+    <div class="quiz-options">` + optsHtml + `</div>
+    ` + (balloonState.feedback ? `
+      <div class="feedback-banner ` + (balloonState.feedback.ok ? `ok` : `bad`) + `">
+        <span>` + escapeHtml(balloonState.feedback.msg) + `</span>
+        <button type="button" class="btn btn-primary" onclick="nextBalloonQuestion()">Next Question →</button>
+      </div>
+    ` : ``) + `
+  `;
+}
+
+// ==================== GAME 3: RACING CHALLENGE GAME ====================
+function answerRace(letter) {
+  if (raceState.locked) return;
+  raceState.locked = true;
+  const q = getDeckQuestion(raceState);
+  const ok = q[3].includes(letter);
+  recordOutcome(ok, ok ? 5 : 0);
+  if (ok) {
+    raceState.pos = Math.min(raceState.goal, raceState.pos + 1);
+    raceState.feedback = { ok: true, msg: `🏎️ Turbo boost! Car moved to checkpoint ` + raceState.pos + `/` + raceState.goal + `!` };
+  } else {
+    raceState.feedback = { ok: false, msg: `🛞 Pit stop! Correct was (` + q[3].join(`/`) + `). Try the next lap!` };
+  }
+  renderActiveGame();
+}
+
+function nextRaceQuestion() {
+  if (raceState.pos >= raceState.goal) {
+    raceState.pos = 0;
+    raceState.deck = shuffleArray(getPlayableQuestions());
+    raceState.idx = 0;
+  } else {
+    raceState.idx += 1;
+  }
+  raceState.locked = false;
+  raceState.feedback = null;
+  renderActiveGame();
+}
+
+function renderRaceGame(stage) {
+  const q = getDeckQuestion(raceState);
+  const carX = 24 + (raceState.pos / raceState.goal) * 490;
+  const won = raceState.pos >= raceState.goal;
+
+  const optsHtml = q[2].map(function(o, i) {
+    const letter = LETTERS[i];
+    let cls = `quiz-opt-btn`;
+    if (raceState.locked && q[3].includes(letter)) cls += ` correct`;
+    return `<button type="button" class="` + cls + `" ` + (raceState.locked || won ? `disabled` : ``) + ` onclick="answerRace('` + letter + `')"><span class="opt-letter">` + letter + `</span><span>` + escapeHtml(o) + `</span></button>`;
+  }).join(``);
+
+  stage.innerHTML = `
+    <div class="stage-top-bar">
+      <div class="stage-title-wrap">
+        <h2 class="stage-title">Racing Challenge Game</h2>
+        <p class="stage-sub">Reach 10 checkpoints to cross the chequered finish line!</p>
+      </div>
+      <span class="q-num-pill">Lap ` + raceState.pos + ` / ` + raceState.goal + `</span>
+    </div>
+    <div class="race-track-card">
+      <svg class="race-svg" viewBox="0 0 600 90" aria-label="Racetrack progress">
+        <rect x="10" y="25" width="580" height="44" rx="22" fill="var(--surface-container-high)"/>
+        <line x1="30" y1="47" x2="555" y2="47" stroke="var(--outline)" stroke-width="3" stroke-dasharray="10 8"/>
+        <rect x="546" y="25" width="16" height="44" rx="4" fill="var(--primary)"/>
+        <text x="554" y="20" text-anchor="middle" font-size="14" font-weight="800" fill="var(--on-surface)">🏁</text>
+        <g transform="translate(` + carX + `, 27)" style="transition: transform 350ms var(--ease-bounce);">
+          <rect x="0" y="10" width="46" height="22" rx="10" fill="var(--primary)"/>
+          <rect x="10" y="2" width="24" height="12" rx="6" fill="var(--tertiary)"/>
+          <circle cx="11" cy="33" r="6" fill="var(--on-surface)"/>
+          <circle cx="35" cy="33" r="6" fill="var(--on-surface)"/>
+        </g>
+      </svg>
+    </div>
+    ` + (won ? `
+      <div class="feedback-banner ok">
+        <span>🏆 Victory! You crossed the finish line!</span>
+        <button type="button" class="btn btn-primary" onclick="nextRaceQuestion()">Start New Race →</button>
+      </div>
+    ` : `
+      <p class="q-text">Q` + q[0] + `: ` + escapeHtml(q[1]) + `</p>
+      <div class="quiz-options">` + optsHtml + `</div>
+      ` + (raceState.feedback ? `
+        <div class="feedback-banner ` + (raceState.feedback.ok ? `ok` : `bad`) + `">
+          <span>` + escapeHtml(raceState.feedback.msg) + `</span>
+          <button type="button" class="btn btn-primary" onclick="nextRaceQuestion()">Next Turn →</button>
+        </div>
+      ` : ``) + `
+    `) + `
+  `;
+}
+
+// ==================== GAME 4: MATHS & REASONING STEP-SOLVER ====================
+function answerSolver(letter) {
+  if (solverState.selectedOpt) return;
+  solverState.selectedOpt = letter;
+  const q = getDeckQuestion(solverState);
+  const ok = q[3].includes(letter);
+  recordOutcome(ok, 0);
+  if (solverState.revealedSteps === 0) solverState.revealedSteps = 1;
+  renderActiveGame();
+}
+
+function revealSolverStep() {
+  const q = getDeckQuestion(solverState);
+  if (solverState.revealedSteps < q[4].length) {
+    solverState.revealedSteps += 1;
+    renderActiveGame();
+  }
+}
+
+function nextSolverQuestion() {
+  solverState.idx += 1;
+  solverState.revealedSteps = 0;
+  solverState.selectedOpt = null;
+  renderActiveGame();
+}
+
+function renderSolverGame(stage) {
+  const q = getDeckQuestion(solverState);
+  const steps = q[4];
+  const shown = steps.slice(0, solverState.revealedSteps);
+
+  const optsHtml = q[2].map(function(o, i) {
+    const letter = LETTERS[i];
+    let cls = `quiz-opt-btn`;
+    if (solverState.selectedOpt) {
+      if (q[3].includes(letter)) cls += ` correct`;
+      else if (solverState.selectedOpt === letter) cls += ` wrong`;
+    }
+    return `<button type="button" class="` + cls + `" ` + (solverState.selectedOpt ? `disabled` : ``) + ` onclick="answerSolver('` + letter + `')"><span class="opt-letter">` + letter + `</span><span>` + escapeHtml(o) + `</span></button>`;
+  }).join(``);
+
+  const stepsHtml = shown.map(function(line, i) {
+    return `<div class="exp-step"><span class="step-dot">` + (i + 1) + `</span><span>` + escapeHtml(line) + `</span></div>`;
+  }).join(``);
+
+  stage.innerHTML = `
+    <div class="stage-top-bar">
+      <div class="stage-title-wrap">
+        <h2 class="stage-title">Maths &amp; Reasoning Step-Solver</h2>
+        <p class="stage-sub">Solve first or unlock the animated derivation step by step.</p>
+      </div>
+      <span class="q-num-pill">Q` + q[0] + `</span>
+    </div>
+    <p class="q-text">` + escapeHtml(q[1]) + `</p>
+    <div class="quiz-options">` + optsHtml + `</div>
+    <div style="display:flex;flex-wrap:wrap;gap:var(--space-sm);">
+      <button type="button" class="btn btn-secondary" ` + (solverState.revealedSteps >= steps.length ? `disabled` : ``) + ` onclick="revealSolverStep()">
+        <i data-lucide="layers" aria-hidden="true" style="width:16px;height:16px;"></i>
+        Reveal Step (` + solverState.revealedSteps + `/` + steps.length + `)
+      </button>
+      <button type="button" class="btn btn-primary" onclick="nextSolverQuestion()">Next Puzzle →</button>
+    </div>
+    ` + (shown.length > 0 ? `<div class="exp-box open">` + stepsHtml + `</div>` : ``) + `
+  `;
+}
+
+// ==================== GAME 5: SHAPES FINDING PUZZLE ====================
+function answerShape(opt) {
+  if (shapeState.locked) return;
+  shapeState.locked = true;
+  const puz = shapeState.deck[shapeState.idx % shapeState.deck.length];
+  const ok = opt === puz.answer;
+  recordOutcome(ok, ok ? 10 : 0);
+  shapeState.feedback = ok
+    ? { ok: true, msg: `📐 Spot on! Total count is ` + puz.answer + `. Watch the step-by-step breakdown!` }
+    : { ok: false, msg: `🔍 Not quite — the correct count is ` + puz.answer + `. Watch how each shape is formed!` };
+  shapeState.animStep = 0;
+  renderActiveGame();
+  startShapeAnimation(puz.steps.length);
+}
+
+function startShapeAnimation(totalSteps) {
+  if (shapeState.timerId) clearInterval(shapeState.timerId);
+  shapeState.timerId = setInterval(function() {
+    if (appState.activeGame !== `shapes`) {
+      clearInterval(shapeState.timerId);
+      shapeState.timerId = null;
+      return;
+    }
+    if (shapeState.animStep < totalSteps - 1) {
+      shapeState.animStep += 1;
+      updateShapeOverlayDom();
+    } else {
+      clearInterval(shapeState.timerId);
+      shapeState.timerId = null;
+    }
+  }, 1300);
+}
+
+function setShapeStep(stepIdx) {
+  if (shapeState.timerId) {
+    clearInterval(shapeState.timerId);
+    shapeState.timerId = null;
+  }
+  shapeState.animStep = stepIdx;
+  updateShapeOverlayDom();
+}
+
+function updateShapeOverlayDom() {
+  const puz = shapeState.deck[shapeState.idx % shapeState.deck.length];
+  puz.steps.forEach(function(_, i) {
+    const ov = document.getElementById(`shape-ov-` + i);
+    const lbl = document.getElementById(`shape-step-btn-` + i);
+    if (ov) ov.classList.toggle(`active`, i === shapeState.animStep);
+    if (lbl) lbl.classList.toggle(`btn-primary`, i === shapeState.animStep);
+    if (lbl) lbl.classList.toggle(`btn-ghost`, i !== shapeState.animStep);
+  });
+  const cap = document.getElementById(`shape-step-caption`);
+  if (cap && shapeState.animStep >= 0 && puz.steps[shapeState.animStep]) {
+    cap.textContent = puz.steps[shapeState.animStep].label;
+  }
+}
+
+function nextShapePuzzle() {
+  if (shapeState.timerId) {
+    clearInterval(shapeState.timerId);
+    shapeState.timerId = null;
+  }
+  shapeState.idx += 1;
+  if (shapeState.idx >= shapeState.deck.length) {
+    shapeState.deck = shuffleArray(SHAPE_PUZZLES);
+    shapeState.idx = 0;
+  }
+  shapeState.animStep = -1;
+  shapeState.locked = false;
+  shapeState.feedback = null;
+  renderActiveGame();
+}
+
+function renderShapesGame(stage) {
+  if (!shapeState.deck || shapeState.deck.length === 0) shapeState.deck = shuffleArray(SHAPE_PUZZLES);
+  const puz = shapeState.deck[shapeState.idx % shapeState.deck.length];
+
+  const overlaysSvg = puz.steps.map(function(st, i) {
+    return `<g id="shape-ov-` + i + `" class="shape-overlay ` + (i === shapeState.animStep ? `active` : ``) + `">` + st.svg + `</g>`;
+  }).join(``);
+
+  const optsHtml = puz.options.map(function(o, i) {
+    let cls = `quiz-opt-btn`;
+    if (shapeState.locked && o === puz.answer) cls += ` correct`;
+    return `<button type="button" class="` + cls + `" ` + (shapeState.locked ? `disabled` : ``) + ` onclick="answerShape('` + o + `')"><span class="opt-letter">` + LETTERS[i] + `</span><span>` + escapeHtml(o) + `</span></button>`;
+  }).join(``);
+
+  const stepBtns = puz.steps.map(function(st, i) {
+    return `<button type="button" id="shape-step-btn-` + i + `" class="btn ` + (i === shapeState.animStep ? `btn-primary` : `btn-ghost`) + `" onclick="setShapeStep(` + i + `)">Step ` + (i + 1) + `</button>`;
+  }).join(``);
+
+  const activeCaption = shapeState.animStep >= 0 && puz.steps[shapeState.animStep]
+    ? puz.steps[shapeState.animStep].label
+    : `Pick your answer or tap a Step button below to animate coloured shape overlays.`;
+
+  stage.innerHTML = `
+    <div class="stage-top-bar">
+      <div class="stage-title-wrap">
+        <h2 class="stage-title">Shapes Finding Puzzle</h2>
+        <p class="stage-sub">` + escapeHtml(puz.title) + `</p>
+      </div>
+      <button type="button" class="btn btn-ghost" onclick="nextShapePuzzle()">Next Figure →</button>
+    </div>
+    <div class="shape-stage-grid">
+      <div class="shape-canvas-wrap">
+        <svg class="shape-svg" viewBox="` + puz.viewBox + `" aria-label="` + escapeHtml(puz.title) + `">
+          ` + puz.baseSvg + `
+          ` + overlaysSvg + `
+        </svg>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:var(--space-md);">
+        <p class="q-text">` + escapeHtml(puz.prompt) + `</p>
+        <div class="quiz-options">` + optsHtml + `</div>
+        <div style="display:flex;flex-wrap:wrap;gap:var(--space-xs);">` + stepBtns + `</div>
+        <div class="feedback-banner info"><span id="shape-step-caption">` + escapeHtml(activeCaption) + `</span></div>
+      </div>
+    </div>
+    ` + (shapeState.feedback ? `
+      <div class="feedback-banner ` + (shapeState.feedback.ok ? `ok` : `bad`) + `">
+        <span>` + escapeHtml(shapeState.feedback.msg) + `</span>
+        <button type="button" class="btn btn-primary" onclick="nextShapePuzzle()">Next Shape Puzzle →</button>
+      </div>
+    ` : ``) + `
+  `;
+}
+
+// ==================== INITIALIZATION ====================
 async function initApp() {
-  if (window.notebookAppApi && typeof window.notebookAppApi.getAppState === `function`) {
-    try {
-      const saved = await window.notebookAppApi.getAppState();
-      if (saved) {
-        if (saved.perPage) {
-          appState.perPage = saved.perPage;
-          const sel = document.getElementById(`per-page-select`);
-          if (sel) sel.value = String(saved.perPage);
-        }
-        if (typeof saved.currentPage === `number`) appState.currentPage = saved.currentPage;
-        if (typeof saved.points === `number`) appState.points = saved.points;
-        if (typeof saved.streak === `number`) appState.streak = saved.streak;
-        if (typeof saved.bestStreak === `number`) appState.bestStreak = saved.bestStreak;
-      }
-    } catch (e) {}
-  }
+  initGameDecks();
+  await loadState();
+  updateHud();
+  renderStudyList();
+  switchMainTab(appState.mainTab);
+  selectGame(appState.activeGame);
+  refreshIcons();
 
-  renderStudy();
-  updateGamesHud();
-
-  if (window.lucide && typeof window.lucide.createIcons === `function`) {
-    window.lucide.createIcons();
-  }
   if (window.notebookAppApi && typeof window.notebookAppApi.notifyAppReady === `function`) {
     window.notebookAppApi.notifyAppReady();
   }
